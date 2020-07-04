@@ -11231,6 +11231,30 @@ h1, h2, h3, h4, h5,
   color: #fff;
 }
 
+.btn.btn-blue {
+  background: #2568cc;
+  border: 1px solid #2568cc;
+  color: #fff;
+}
+
+.btn.btn-blue:hover {
+  border: 1px solid #2568cc;
+  background: transparent;
+  color: #2568cc;
+}
+
+.btn.btn-blue.btn-outline-primary {
+  border: 1px solid #2568cc;
+  background: transparent;
+  color: #2568cc;
+}
+
+.btn.btn-blue.btn-outline-primary:hover {
+  border: 1px solid transparent;
+  background: #2568cc;
+  color: #fff;
+}
+
 .btn.btn-white {
   background: #fff;
   border: 1px solid #fff;

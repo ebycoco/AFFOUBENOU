@@ -2,32 +2,34 @@
 
 namespace App\Form;
 
-use App\Entity\Articles;
-use Symfony\Component\Form\AbstractType; 
-use FOS\CKEditorBundle\Form\Type\CKEditorType;
+use App\Entity\Equipes;
+use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
-class ArticlesType extends AbstractType
+class EquipesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('titre')
-            ->add('contenu',CKEditorType::class, [
-                'config_name' => 'main_config',
-                    ])
+            ->add('nom')
+            ->add('prenom')
             ->add('imageFile',VichImageType::class,[ 
                 'required'=>false
             ])
+            ->add('description')
+            ->add('profession')
+            ->add('contact')
+            ->add('email')
+            ->add('sexe')  
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Articles::class,
+            'data_class' => Equipes::class,
         ]);
     }
 }

@@ -1,0 +1,343 @@
+/*------------------ FORMATION -----------------*/
+#formation{
+    background: #dbd5d5;
+}
+.border-tarifs{
+    width: 160px;
+    height: 2px;
+    background: #f39c12;
+    margin: 40px auto;
+}
+.pricing-table{
+    max-width: 1200px;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.table ul{
+    text-align: left;
+    justify-content: none;
+}
+.fa-check-circle{
+    color: green;
+    margin-right: 10px;
+    font-size: 20px
+}
+.fa-times-circle{
+    color: red;
+    margin-right: 10px;
+    font-size: 20px
+}
+.section-title-f{
+    text-align: center;
+    color: rgb(11, 199, 216);
+    text-transform: uppercase;
+    font-size: 30px;
+}
+.col{
+    flex: 25%;
+    padding: 10px;
+    max-width: 320px;
+    box-sizing: border-box;
+}
+.table{
+    margin-bottom: 20px;
+    background: #fff;
+    padding: 40px 20px;
+    font-family: "montserrat" ,sans-serif;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+}
+.table:hover{
+    box-shadow: 0 0 10px #00000070;
+}
+.table h2{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.table ul{
+    padding: 0;
+    margin: 0;
+}
+.table ul li{
+    padding: 10px 0;
+    list-style: none;
+}
+.price{
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.price span{
+    display: block;
+    font-size: 14px;
+}
+.table a{
+    text-decoration: none;
+    color: #f39c12;
+    border: 2px solid #f39c12;
+    display: block;
+    padding: 10px 0;
+    margin: 10px 0;
+    border-radius: 40px;
+    text-transform: uppercase;
+    font-size: 14px;
+    transition:  0.5s linear;
+}
+.table a:hover{
+    background: #f39c12;
+    color: #fff;
+}
+.pop{
+    background: #f39c12;
+    color: #fff;
+    transform: rotate(45deg);
+    padding: 10px 40px;
+    position: absolute;
+    top: 16px;
+    right: -34px;  
+}
+@media screen and (max-width:980px){
+    .col{
+        flex: 50%;
+    }
+}
+@media screen and (max-width:700px){
+    .col{
+        flex: 100%;
+    }
+} 
+
+/*---------------- footer------------------*/
+.clr{
+    clear: both;
+}
+#footer{
+    width: 100%;
+    height: auto;
+    min-width: 250px;
+    margin: auto;
+    background-image: url(../img/f021.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+    bottom: 0;
+}
+.footer-icon{
+width: 100%;
+height: auto;
+margin: auto;
+margin-top: 20px;
+margin-bottom: 40px;
+}
+.footer-icon ul{
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+.footer-icon ul li{
+    display: inline-block;
+    margin-right: 2px;
+    width: 36px;
+    height: 36px;
+    text-align: center;
+}
+.footer-icon ul li a{
+    color: #fff;
+    display: block;
+    font-size: 22px;
+    text-shadow: 0px 0px 5px rgba(0,0,0, 0.175)
+}
+.footer-icon ul li a i{
+line-height: 36px;
+}
+.footer-icon ul li:nth-child(1){
+    background: #3b5998;
+}
+.footer-icon ul li:nth-child(2){
+    background: #3b5998;
+}
+.footer-icon ul li:nth-child(3){
+    background: #1da1f2;
+}
+.footer-icon ul li:nth-child(4){
+    background: #007bb5;
+}
+.footer-icon ul li:nth-child(5){
+    background: #25d366;
+}
+.footer-icon ul li:nth-child(6){
+    background: #ff0000;
+}
+.footer-icon ul li:nth-child(7){
+    background: #db4435;
+}
+.footer-table{
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-wrap: wrap;
+}
+.footer-section-one{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px 20px;
+    background: rgba(255, 255, 255, .1)
+}
+.footer-section-two{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px 20px;
+}
+.footer-section-three{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 20px 20px;
+    background: rgba(255, 255, 255, .1)
+}
+.footer-heading{
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+.footer-heading h2{
+    font-size: 18px;
+    text-align: left;
+    color: #fff;
+    text-transform: uppercase;
+    margin: 0;
+}
+.footer-contact-box{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 13px;
+}
+.footer-contact-icon{
+    width: 25px;
+    height: 25px;
+    float: left;
+}
+.footer-contact-icon i{
+    color: #fff;
+    font-size: 20px;
+}
+.footer-contact-text{
+    width: 85%;
+    height: auto;
+    float: left;
+    margin-left: 10px;
+}
+.footer-contact-text p{
+    font-size: 14px;
+    text-align: left;
+    color: #fff;
+    cursor: pointer;
+}
+.footer-contact-text p a{
+    font-size: 14px;
+    text-align: left;
+    color: #fff;
+    text-decoration: none;
+}
+.footer-contact-text p:hover{
+    color: #f39c12;
+}
+.footer-contact-box:hover .footer-contact-icon i{
+    color: #f39c12;
+}
+.footer-contact-text p a:hover{
+    color: #f39c12;
+}
+.footer-link{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+}
+.footer-link ul{
+    margin: 0;
+    padding: 0;
+}
+.footer-link ul li{
+    list-style-type: none;
+    text-align: center;
+    color: #fff;
+    padding-top: 5px;
+    cursor: pointer;
+}
+.footer-link ul li a{
+    font-size: 14px;
+    color: #fff;
+    text-decoration: none;
+    text-transform: capitalize;
+}
+.footer-link ul li a:hover{
+    color: #f39c12;
+}
+.footer-section-two .footer-heading h2{
+    text-align: center;
+}
+.footer-form{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+}
+.footer-form-box{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 20px;
+}
+.footer-form-style{
+    width: 100%;
+    height: 40px;
+    border-left: none;
+    border-top: none;
+    border-right: none;
+    color: #fff;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    background: transparent;
+    font-size: 14px;
+    text-align: left;
+    padding: 0px 10px;
+}
+.footer-form-style-submit{
+    width: 129px;
+    height: 35px;
+    font-size: 16px;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    background: rgba(255, 255, 255, .5);
+    border: none;
+    margin-top: 10px;
+}
+.footer-form-style-submit:hover{
+    background: #f39c12;
+}
+.footer-bottom{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    text-align: center;
+    color: #fff;
+}
+.fa-chevron-up{
+    font-size: 25px;
+    margin: 20px;
+    color: #0069d6;
+    height: 30px;
+}

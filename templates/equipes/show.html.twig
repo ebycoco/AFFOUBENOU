@@ -1,0 +1,58 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Equipes{% endblock %}
+
+{% block body %}
+    <h1>Equipes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ equipe.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ equipe.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ equipe.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ equipe.description }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ equipe.profession }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ equipe.contact }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ equipe.email }}</td>
+            </tr>
+            <tr>
+                <th>Sexe</th>
+                <td>{{ equipe.sexe }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ equipe.createdAt ? equipe.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ equipe.updatedAt ? equipe.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('equipes_index') }}">back to list</a>
+
+    <a href="{{ path('equipes_edit', {'id': equipe.id}) }}">edit</a>
+
+    {{ include('equipes/_delete_form.html.twig') }}
+{% endblock %}

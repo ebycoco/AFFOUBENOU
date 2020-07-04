@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Services index{% endblock %}
+
+{% block body %}
+    <h1>Services index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th> 
+                <th>Titre</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service in services %}
+            <tr>
+                <td>{{ service.id }}</td> 
+                <td>{{ service.titre }}</td>
+                <td>{{ service.description }}</td> 
+                <td>
+                    <a href="{{ path('services_show', {'id': service.id}) }}" class="btn btn-blue">show</a>
+                    <a href="{{ path('services_edit', {'id': service.id}) }}" class="btn btn-secondary">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('services_new') }}"class="btn btn-blue">Ajouter</a>
+{% endblock %}
