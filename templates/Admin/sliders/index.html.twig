@@ -23,8 +23,8 @@
                 <td>{{ slider.createdAt ? slider.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ slider.updatedAt ? slider.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('sliders_show', {'id': slider.id}) }}">show</a>
-                    <a href="{{ path('sliders_edit', {'id': slider.id}) }}">edit</a>
+                    <a href="{{ path('admin_sliders_show', {'id': slider.id}) }}">show</a>
+                    <a href="{{ path('admin_sliders_edit', {'id': slider.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -35,5 +35,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('sliders_new') }}">Create new</a>
+    <a href="{{ path('admin_sliders_new') }}">Create new</a>
 {% endblock %}

@@ -197,7 +197,7 @@
 				class="main-sidebar sidebar-dark-primary elevation-4">
 				<!-- Brand Logo -->
 				<a href="{{path('admin_home')}}" class="brand-link">
-					<img src="{{asset('images/logo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+					<img src="{{asset('images/logo.png')}}" alt="Affoubenou Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
 					<span class="brand-text font-weight-light">AFFOUBENOU</span>
 				</a>
 
@@ -233,15 +233,15 @@
 								</a>
 								<ul class="nav nav-treeview">
 									<li class="nav-item">
-										<a href="{{path('articles_index')}}" class="nav-link active">
+										<a href="{{path('admin_articles_index')}}" class="nav-link {{set_active_route('admin_articles_index')}} {{set_active_route('admin_articles_new')}} {{set_active_route('admin_articles_show')}} {{set_active_route('admin_articles_edit')}}">
 											<i class="far fa-circle nav-icon"></i>
 											<p>Articles</p>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="./index2.html" class="nav-link">
+										<a href="{{path('admin_sliders_index')}}" class="nav-link {{set_active_route('admin_sliders_index')}} {{set_active_route('admin_sliders_new')}} {{set_active_route('admin_sliders_show')}}{{set_active_route('sliders_edit')}}">
 											<i class="far fa-circle nav-icon"></i>
-											<p>Dashboard v2</p>
+											<p>Slider</p>
 										</a>
 									</li>
 									<li class="nav-item">
