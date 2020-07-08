@@ -1,21 +1,92 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Register{% endblock %}
+{% block title %}Register
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{asset('css/login.css')}}">
+{% endblock %}
 
 {% block body %}
-    {% for flashError in app.flashes('verify_email_error') %}
-        <div class="alert alert-danger" role="alert">{{ flashError }}</div>
-    {% endfor %}
+	{% for flashError in app.flashes('verify_email_error') %}
+		<div class="alert alert-danger" role="alert">{{ flashError }}</div>
+	{% endfor %} 
 
-    <h1>Register</h1>
+	<div class="row justify-content-center pb-5 mt-3 page">
+		<div class="col-md-10">
+			<div class="reply">
+				<a href='{{path('app_login')}}'><img src="images/reply.png" width="50" height="50"><span class="retour">Retour</span>
+				</a>
+			</div>
+			<div class="wrapper">
+				<div class="row no-gutters">
+					<div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
+						<div class="contact-wrap w-100 p-md-5 p-4">
+							<h3 class="mb-4 text-center">S'incrire</h3>
+							<div id="form-message-warning" class="mb-4"></div>
+							<div id="form-message-success" class="mb-4">
+								Inscrivez vous maintenant
+							</div>
+							{{ form_start(registrationForm) }} 
+								<div class="row">
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form_row(registrationForm.nom) }}
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form_row(registrationForm.prenom) }}
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form_row(registrationForm.email) }}
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="form-group">
+											{{ form_row(registrationForm.plainPassword, { label: 'Password'}) }}
+										</div>
+                                    </div>
+                                    {{ form_row(registrationForm.agreeTerms) }}
 
-    {{ form_start(registrationForm) }}
-        {{ form_row(registrationForm.email) }}
-        {{ form_row(registrationForm.plainPassword, {
-            label: 'Password'
-        }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="submit" value="créer un compte affoubenou" class="btn btn-primary">
+											<div class="submitting"></div>
+										</div>
+                                    </div>
+                                    {{ form_end(registrationForm) }}
 
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+									<p>
+										<a href="{{path('app_login')}}" class="login">
+											<span class='pass' style='color:#000'>déjà un compte ?
+											</span>connectez vous</a>
+									</p>
+								</div> 
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-5 d-flex align-items-stretch">
+						<div class="info-wrap bg-primary w-100 p-md-5 p-4">
+							<h3></h3>
+
+							<div class="dbox w-100 d-flex align-items-start">
+
+								<div class="text pl-3"></div>
+							</div>
+							<div class="dbox w-100 d-flex align-items-center">
+
+								<div class="text pl-3"></div>
+							</div>
+							<div class="dbox w-100 d-flex align-items-center">
+
+								<div class="text pl-3"></div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div> 
 {% endblock %}

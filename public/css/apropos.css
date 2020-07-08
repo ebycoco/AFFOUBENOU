@@ -1,0 +1,48 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.apropos{
+    background: #eee;
+    padding: 5px;
+}
+.titre{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+}
+.imgapro{
+    width: auto;
+    height: 450px;
+    padding-left: 5px;
+}
+.separer{
+    height:5px;
+}
+.imgbanner{
+    width: 100%;
+    background-size: cover;
+    padding: 60px 0;
+    height: 346px;
+}
+.banner{
+    position: relative;
+}
+.question{
+    position: absolute;
+    top: 35%;
+    left: 25%;
+    color: #fff;
+    font-weight: bold;
+}
+.explication{
+    padding: 16px;
+    margin: 50px 50px 50px 70px;
+}
+.card{
+    border-radius: 10px;
+    background: #F6a722;
+    border: none;
+}
+.text_ecrit{
+    color: #fff;
+}

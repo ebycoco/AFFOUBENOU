@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello AproposController!{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/apropos.css')}}">
+{% endblock %}
+
+{% block body %}
+<section class="apropos">
+    <div class="mt-5 mb-4">
+        <h1 class="text-center titre">A propos de Nous</h1>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-6">
+            <div class="imgapro pl-6" style="background-image:url(images/aprpos.png);"></div>
+        </div>
+        <div class="col-md-6">
+            <p class="mt-5">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque suscipit corrupti autem ea! Ratione vel
+                itaque quidem autem! Optio, suscipit vitae necessitatibus aliquam similique repudiandae velit illo fugit
+                debitis autem.
+            </p>
+        </div>
+    </div>
+    <div class="separer"></div>
+    <div class="banner mt-5">
+        <div class="imgbanner" style="background-image:url(images/ba.png);"></div>
+        <h1 class="question">Pourquoi choisir Affoubenou ?</h1>
+    </div>
+    <div class="explication">
+        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque dolores omnis odit natus alias fugiat quia
+            officiis laborum ex velit nobis quidem, sit reprehenderit sunt. Quam perspiciatis veritatis quia officiis.
+        </p>
+    </div>
+    <div class="mt-5 mb-4">
+        <h1 class="text-center titre">Témoignages</h1>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card">
+                <img src="temoignages/1.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text text_ecrit">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="temoignages/2.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text text_ecrit">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  
+                </div>
+              </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <img src="temoignages/3.png" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title">Card title</h5>
+                  <p class="card-text text_ecrit">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                  
+                </div>
+              </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

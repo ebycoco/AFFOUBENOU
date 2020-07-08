@@ -1,0 +1,16 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+.service-web{
+    background: #eee;
+    padding: 5px;
+}
+.web{
+    border: none;
+}
+.bouton{
+    position: absolute;
+    top: 50%;
+    left: 45%;
+}

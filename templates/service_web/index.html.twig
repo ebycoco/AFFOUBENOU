@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServiceWebController!{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="{{asset('css/servweb.css')}}">
+{% endblock %}
+{% block body %}
+<section class="service-web">
+    <div class="mt-5 mb-4">
+        <h1 class="text-center titre">Faites votre choix avec panoplie de templates a l'africaine</h1>
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card web">
+                <img src="{{asset('images/45.png')}}" class="card-img-top" alt="..."> 
+                <a href="" class="bouton btn btn-primary">Voir</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card web">
+                <img src="{{asset('images/blog.png')}}" class="card-img-top" alt="...">
+                <a href="" class="bouton btn btn-primary">Voir</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card web">
+                <img src="{{asset('images/s_5.png')}}" class="card-img-top" alt="...">
+                <a href="" class="bouton btn btn-primary">Voir</a>
+            </div>
+        </div> 
+    </div>
+    <div class="row mb-5">
+        <div class="col-md-4">
+            <div class="card web">
+                <a href=""><img src="{{asset('images/45.png')}}" class="card-img-top" alt="..."></a>
+                <a href="" class="bouton btn btn-primary">Voir</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card web">
+                <img src="{{asset('images/blog.png')}}" class="card-img-top" alt="...">
+                <a href="" class="bouton btn btn-primary">Voir</a>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card web">
+                <img src="{{asset('images/s_5.png')}}" class="card-img-top" alt="...">
+                <a href="" class="bouton btn btn-primary">Voir</a>
+            </div>
+        </div> 
+    </div>
+</section>
+{% endblock %}

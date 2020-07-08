@@ -153,4 +153,9 @@ transform: translateX(0);
         padding: 10px 15px;
     }
 }
-/***** main *****/
+/***** main *****/ 
+.bouton{
+    position: absolute;
+    top: 35%;
+    left: 35%;
+}
