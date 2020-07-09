@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit Graphisme{% endblock %}
+
+{% block body %}
+    <h1>Edit Graphisme</h1>
+
+    {{ include('Admin/graphisme/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_graphisme_index') }}">back to list</a>
+
+    {{ include('Admin/graphisme/_delete_form.html.twig') }}
+{% endblock %}

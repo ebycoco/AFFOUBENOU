@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Services Graphisme | AFFOUBENOU{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block body %}
+<section class="service-web">
+    <div class="container">
+        <div class="mt-5 mb-4">
+        <h1 class="text-center titre">Obtenez un graphisme sur mesure</h1>
+    </div>
+    <div class="row mb-5">
+    {% for serviceGraph in serviceGraphs %}
+        <div class="col-md-4 mb-5">
+            <div class="card">
+                <img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')}}" class="card-img-top" alt="..."> 
+                <a href="#" class="bouton btn btn-primary">Voir</a>
+                <h2 class="text-center">{{serviceGraph.titre}}</h2>
+            </div>
+        </div>  
+    {% endfor %} 
+    </div>
+    </div> 
+</section>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit ServiceWeb{% endblock %}
+
+{% block body %}
+    <h1>Edit ServiceWeb</h1>
+
+    {{ include('Admin/service_web/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_service_web_index') }}">back to list</a>
+
+    {{ include('Admin/service_web/_delete_form.html.twig') }}
+{% endblock %}

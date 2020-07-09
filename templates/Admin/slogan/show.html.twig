@@ -1,0 +1,42 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Slogan{% endblock %}
+
+{% block body %}
+    <h1>Slogan</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ slogan.id }}</td>
+            </tr>
+            <tr>
+                <th>Titre</th>
+                <td>{{ slogan.titre }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ slogan.description }}</td>
+            </tr>
+            <tr>
+                <th>Icon</th>
+                <td>{{ slogan.icon }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ slogan.createdAt ? slogan.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ slogan.updatedAt ? slogan.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_slogan_index') }}">back to list</a>
+
+    <a href="{{ path('admin_slogan_edit', {'id': slogan.id}) }}">edit</a>
+
+    {{ include('Admin/slogan/_delete_form.html.twig') }}
+{% endblock %}

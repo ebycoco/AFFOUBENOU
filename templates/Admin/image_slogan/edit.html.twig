@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit ImageSlogan{% endblock %}
+
+{% block body %}
+    <h1>Edit ImageSlogan</h1>
+
+    {{ include('Admin/image_slogan/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_image_slogan_index') }}">back to list</a>
+
+    {{ include('Admin/image_slogan/_delete_form.html.twig') }}
+{% endblock %}

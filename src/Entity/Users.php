@@ -93,6 +93,11 @@ class Users implements UserInterface
      */
     private $offres;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ServiceWeb::class, mappedBy="user")
+     */
+    private $serviceWebs;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -102,6 +107,7 @@ class Users implements UserInterface
         $this->articles = new ArrayCollection();
         $this->commentaires = new ArrayCollection();
         $this->offres = new ArrayCollection();
+        $this->serviceWebs = new ArrayCollection();
     }
 
     
@@ -443,6 +449,37 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($offre->getUser() === $this) {
                 $offre->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceWeb[]
+     */
+    public function getServiceWebs(): Collection
+    {
+        return $this->serviceWebs;
+    }
+
+    public function addServiceWeb(ServiceWeb $serviceWeb): self
+    {
+        if (!$this->serviceWebs->contains($serviceWeb)) {
+            $this->serviceWebs[] = $serviceWeb;
+            $serviceWeb->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServiceWeb(ServiceWeb $serviceWeb): self
+    {
+        if ($this->serviceWebs->contains($serviceWeb)) {
+            $this->serviceWebs->removeElement($serviceWeb);
+            // set the owning side to null (unless already changed)
+            if ($serviceWeb->getUser() === $this) {
+                $serviceWeb->setUser(null);
             }
         }
 

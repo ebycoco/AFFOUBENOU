@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Accueil
+{% block title %}Accueil | AFFOUBENOU
 {% endblock %}
 
 {% block body %} 
@@ -31,43 +31,25 @@
 	<div class="container">
 		<div class="row d-flex no-gutters">
 			<div class="col-md-6 d-flex">
+			{% for imageslogan in imageslogans %}
 				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-					style="background-image:url(images/femme.png);"></div>
+					style="background-image:url({{ vich_uploader_asset(imageslogan, 'imageFile')}});"></div>
+					{% endfor %} 
 			</div>
 			<div class="col-md-6 pl-md-5 py-md-5">
+			{% for slogan in slogans %}
 				<div class="services-2 w-100 d-flex">
 					<div class="icon d-flex align-items-center justify-content-center">
 						<span class="flaticon-touch">
-							<i class="fas fa-desktop"></i>
+							<i class="{{ slogan.icon }}"></i>
 						</span>
 					</div>
 					<div class="text pl-4">
-						<h4>Simplicité et rapidité</h4>
-						<p>Profiter de la simplicité d'affoubenou pour gagnez en productivité</p>
+						<h4>{{ slogan.titre }}</h4>
+						<p>{{ slogan.description }}</p>
 					</div>
 				</div>
-				<div class="services-2 w-100 d-flex">
-					<div class="icon d-flex align-items-center justify-content-center">
-						<span class="flaticon-medapps">
-							<i class="fab fa-medapps"></i>
-						</span>
-					</div>
-					<div class="text pl-4">
-						<h4>Creativité et inovation</h4>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-					</div>
-				</div>
-				<div class="services-2 w-100 d-flex">
-					<div class="icon d-flex align-items-center justify-content-center">
-						<span class="flaticon-shopping-cart">
-							<i class="fas fa-shopping-cart"></i>
-						</span>
-					</div>
-					<div class="text pl-4">
-						<h4>Vente</h4>
-						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia</p>
-					</div>
-				</div>
+				{% endfor %} 
 			</div>
 		</div>
 	</div>
@@ -360,6 +342,4 @@
 		</div>
 	</div>
 </section>
-
-
 {% endblock %} 

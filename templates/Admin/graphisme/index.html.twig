@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Graphisme index{% endblock %}
+
+{% block body %}
+    <h1>Graphisme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Titre</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for graphisme in graphismes %}
+            <tr>
+                <td>{{ graphisme.id }}</td>
+                <td>{{ graphisme.titre }}</td>
+                <td>{{ graphisme.imageName }}</td>
+                <td>{{ graphisme.createdAt ? graphisme.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ graphisme.updatedAt ? graphisme.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_graphisme_show', {'id': graphisme.id}) }}">show</a>
+                    <a href="{{ path('admin_graphisme_edit', {'id': graphisme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_graphisme_new') }}">Create new</a>
+{% endblock %}

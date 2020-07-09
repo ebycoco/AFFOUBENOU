@@ -1,0 +1,39 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}ImageSlogan index{% endblock %}
+
+{% block body %}
+    <h1>ImageSlogan index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for image_slogan in image_slogans %}
+            <tr>
+                <td>{{ image_slogan.id }}</td>
+                <td>{{ image_slogan.imageName }}</td>
+                <td>{{ image_slogan.createdAt ? image_slogan.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ image_slogan.updatedAt ? image_slogan.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_image_slogan_show', {'id': image_slogan.id}) }}">show</a>
+                    <a href="{{ path('admin_image_slogan_edit', {'id': image_slogan.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_image_slogan_new') }}">Create new</a>
+{% endblock %}

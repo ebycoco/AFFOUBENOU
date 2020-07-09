@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/sliders", name="admin_")
  */ 
-class SlidersController extends AbstractController
+class AdminSlidersController extends AbstractController
 {
     /**
      * @Route("/", name="sliders_index", methods={"GET"})

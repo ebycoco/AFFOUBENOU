@@ -1,0 +1,39 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}ServiceWeb index{% endblock %}
+
+{% block body %}
+    <h1>ServiceWeb index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service_web in service_webs %}
+            <tr>
+                <td>{{ service_web.id }}</td>
+                <td>{{ service_web.imageName }}</td>
+                <td>{{ service_web.createdAt ? service_web.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ service_web.updatedAt ? service_web.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_service_web_show', {'id': service_web.id}) }}">show</a>
+                    <a href="{{ path('admin_service_web_edit', {'id': service_web.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_service_web_new') }}">Create new</a>
+{% endblock %}

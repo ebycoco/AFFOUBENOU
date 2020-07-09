@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
  * @Route("/admin", name="admin_")
  */
-class AdminController extends AbstractController
+class AdminMainController extends AbstractController
 {
     /**
      * @Route("/", name="home", methods={"GET"})
@@ -18,7 +18,7 @@ class AdminController extends AbstractController
     public function index()
     {
         return $this->render('Admin/index.html.twig', [
-            'controller_name' => 'AdminController',
+            'controller_name' => 'AdminMainController',
         ]);
     }
     

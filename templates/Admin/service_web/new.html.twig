@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New ServiceWeb{% endblock %}
+
+{% block body %}
+    <h1>Create new ServiceWeb</h1>
+
+    {{ include('Admin/service_web/_form.html.twig') }}
+
+    <a href="{{ path('admin_service_web_index') }}">back to list</a>
+{% endblock %}
