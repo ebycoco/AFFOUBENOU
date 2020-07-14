@@ -1,0 +1,39 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}AvantageDuSite index{% endblock %}
+
+{% block body %}
+    <h1>AvantageDuSite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th> 
+                <th>Question</th> 
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for avantage_du_site in avantage_du_sites %}
+            <tr>
+                <td>{{ avantage_du_site.id }}</td> 
+                <td>{{ avantage_du_site.question }}</td> 
+                <td>{{ avantage_du_site.createdAt ? avantage_du_site.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ avantage_du_site.updatedAt ? avantage_du_site.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_avantage_du_site_show', {'id': avantage_du_site.id}) }}">show</a>
+                    <a href="{{ path('admin_avantage_du_site_edit', {'id': avantage_du_site.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_avantage_du_site_new') }}">Create new</a>
+{% endblock %}

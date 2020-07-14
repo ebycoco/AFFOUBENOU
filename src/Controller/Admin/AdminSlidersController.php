@@ -41,7 +41,7 @@ class AdminSlidersController extends AbstractController
             $entityManager->persist($slider);
             $entityManager->flush();
 
-            return $this->redirectToRoute('sliders_index');
+            return $this->redirectToRoute('admin_sliders_index');
         }
 
         return $this->render('Admin/sliders/new.html.twig', [
@@ -72,7 +72,7 @@ class AdminSlidersController extends AbstractController
             
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('sliders_index');
+            return $this->redirectToRoute('admin_sliders_index');
         }
 
         return $this->render('Admin/sliders/edit.html.twig', [
@@ -92,6 +92,6 @@ class AdminSlidersController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('sliders_index');
+        return $this->redirectToRoute('admin_sliders_index');
     }
 }

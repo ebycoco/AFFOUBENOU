@@ -1,3 +1,6 @@
+body{
+    overflow: hidden;
+}
 /*------------------ FORMATION -----------------*/
 #formation{
     background: #dbd5d5;
@@ -340,4 +343,170 @@ line-height: 36px;
     margin: 20px;
     color: #0069d6;
     height: 30px;
+} 
+.banner1,.banner2,.banner3,.banner4{
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; 
 }
+.banner1 img,.banner2 img,.banner3 img,.banner4 img{
+    width: 120%;
+    position: absolute;
+    left: 50%;
+    top: 60%; 
+    transform: translate(-50%,-50%);
+    animation: zoom-out 3s linear infinite;
+}
+@keyframes zoom-out {
+    100%{
+        width: 100%;
+    }
+}
+.banner1 .text-box,.banner2 .text-box,.banner3 .text-box,.banner4 .text-box{
+    width: 600px;
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    color: #fff;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    border-radius: 10px;
+    animation: textup 12s linear infinite;
+    transform: translateY(100px);
+}
+.banner1 .text-box h1,.banner2 .text-box h1,.banner3 .text-box h1,.banner4 .text-box h1{
+     margin-bottom: 40px;
+     margin-left: 15px;
+    color: #fff;
+}
+.text-box p{
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 80px;
+    margin-left: 15px;
+}
+.text-box span{
+    background: #f39c12;
+    height: 1px;
+    width: 100px;
+    position: absolute;
+    left: 0;
+    margin-left: 15px;
+}
+.banner1{
+    animation: slide1 12s linear infinite;
+}
+.banner2{
+    animation: slide2 12s linear infinite;
+}
+.banner3{
+    animation: slide3 12s linear infinite;
+}
+.banner4{
+    animation: slide4 12s linear infinite;
+}
+@keyframes slide1{
+    0%{
+        visibility: visible;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        visibility: hidden;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        visibility: visible;
+    }
+}
+@keyframes slide2{
+    0%{
+        visibility: hidden;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        visibility: visible;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        visibility: hidden;
+    }
+}
+@keyframes slide3{
+    0%{
+        visibility: hidden;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        visibility: hidden;
+    }
+    75%{
+        visibility: visible;
+    }
+    100%{
+        visibility: hidden;
+    }
+}
+@keyframes slide4{
+    0%{
+        visibility: hidden;
+    }
+    25%{
+        visibility: hidden;
+    }
+    50%{
+        visibility: hidden;
+    }
+    75%{
+        visibility: hidden;
+    }
+    100%{
+        visibility: visible;
+    }
+}
+
+@keyframes textup{
+    10%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(0px);
+    }
+}
+.banner1 .text-box1{
+    animation-delay: 0s;
+}
+.banner2 .text-box2{
+    animation-delay: 3s;
+}
+.banner3 .text-box3{
+    animation-delay: 6s;
+}
+.banner4 .text-box4{
+    animation-delay: 9s;
+}
+.hero-wrap{
+    margin-bottom: 650px;
+}
+.navbar{
+    position: fixed;
+    width: 100%;  
+    z-index: 1000;
+}
+.slogan{
+    top: 80px;
+}
+.img-accueil{
+    border-radius: 50px; 
+    box-shadow: 10px 5px 5px black; 
+} 

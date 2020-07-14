@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New IdentiteDuSite{% endblock %}
+
+{% block body %}
+    <h1>Create new IdentiteDuSite</h1>
+
+    {{ include('Admin/identite_du_site/_form.html.twig') }}
+
+    <a href="{{ path('admin_identite_du_site_index') }}">back to list</a>
+{% endblock %}

@@ -1,7 +1,7 @@
 {% include ("partials/header.html.twig") with {"title": block("title")} %}
 {% include ("partials/navbar.html.twig") %}
 <div class="container-fluid"> {% block body %}{% endblock %}
-						
+				{% include ("partials/footer.html.twig") %}		
 </div>
 
 <script src="{{asset('js/jquery.min.js')}}"></script>
@@ -18,4 +18,25 @@
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 <script src="{{asset('js/google-map.js')}}"></script>
 <script src="{{asset('js/main.js')}}"></script>
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+        var swiper = new Swiper('.swiper-container', {
+          effect: 'coverflow',
+          grabCursor: true,
+          centeredSlides: true,
+          slidesPerView: 'auto',
+          coverflowEffect: {
+            rotate: 20,
+            stretch: 0,
+            depth: 200,
+            modifier: 1,
+            slideShadows: true,
+          },
+          loop: true,
+          autoplay: {
+            delay: 1500,
+            disableOnInteraction: false,
+          },
+        });
+      </script>
 {% block javascripts %}{% endblock %}</body></html>

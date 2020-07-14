@@ -6,13 +6,9 @@
 	<link rel="stylesheet" href="{{asset('css/login.css')}}">
 {% endblock %}
 {% block body %}
-	<div class="row justify-content-center pb-5 mt-3 page">
-		<div class="col-md-8 col-md-offset-1">
-			<div class="reply">
-				<a href='{{path('app_register')}}'><img src="images/reply.png" width="50" height="50"><span class="retour">Retour</span>
-				</a>
-			</div>
-			<div class="wrapper">
+	<div class="row justify-content-center pb-5 mt-3 page ">
+		<div class="col-md-8 col-md-offset-1 log"> 
+			<div class="wrapper ">
 				<div class="row no-gutters">
 					<div class="col-lg-8 col-md-7 order-md-last d-flex align-items-stretch">
 						<div class="contact-wrap w-100 p-md-5 p-4">
@@ -40,12 +36,14 @@
 											<input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
 										</div>
 									</div>
+									<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="label" for="password"></label>
 											<input type="password" name="password" id="inputPassword" class="form-control" required placeholder="Mot de passe">
 											<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 										</div>
+									</div>
 									</div>
 									</div>
 									<div class="row">

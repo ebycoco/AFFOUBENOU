@@ -1,6 +1,30 @@
 vich_uploader:
     db_driver: orm
     mappings:
+        temoignages:
+            uri_prefix: /images/temoignages
+            upload_destination: '%kernel.project_dir%/public/images/temoignages'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer 
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        identite_du_site:
+            uri_prefix: /images/identite_du_site
+            upload_destination: '%kernel.project_dir%/public/images/identite_du_site'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer 
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+        avantage_site:
+            uri_prefix: /images/avantage_site
+            upload_destination: '%kernel.project_dir%/public/images/avantage_site'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer 
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
         image_Graph:
             uri_prefix: /images/image_Graph
             upload_destination: '%kernel.project_dir%/public/images/image_Graph'

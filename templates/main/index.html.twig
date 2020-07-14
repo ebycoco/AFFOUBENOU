@@ -3,343 +3,370 @@
 {% block title %}Accueil | AFFOUBENOU
 {% endblock %}
 
-{% block body %} 
-<div class="hero-wrap">
-	<div class="home-slider owl-carousel">
-		{% for slider in sliders %}
-		<div class="slider-item" style="background-image:url({{ vich_uploader_asset(slider, 'imageFile')}});">
-
-			<div class="overlay"></div>
-			<div class="container">
-				<div class="row no-gutters slider-text align-items-center justify-content-center">
-					<div class="col-md-8 ftco-animate">
-						<div class="text w-100 text-center">
-							<h1 class="mb-4">{{ slider.titre }}</h1>
-							<p>
-								<a href="#" class="btn btn-white">Commander maintenant</a>
-							</p>
-						</div>
-					</div>
+{% block body %}
+	<div class="hero-wrap">
+	{% set numero = 1 %}
+		{% for slider in sliders %} 
+			<div class="banner{{numero}}">
+				<img src="{{ vich_uploader_asset(slider, 'imageFile')}}" class="banner{{numero}}">
+				<div class="text-box text-box{{numero}}">
+					<h1>{{slider.titre}}</h1>
+					<span></span>
+					<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Similique aspernatur itaque odit esse deleniti fugiat laboriosam vel beatae, facere vero recusandae explicabo illo assumenda commodi nihil voluptate, quam asperiores exercitationem.</p>
 				</div>
 			</div>
-		</div>
+			{% set numero = numero + 1 %}
 		{% endfor %}
 	</div>
-</div>
-
-<section class="ftco-section mt-5 ftco-no-pt bg-light">
-	<div class="container">
-		<div class="row d-flex no-gutters">
-			<div class="col-md-6 d-flex">
-			{% for imageslogan in imageslogans %}
-				<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0"
-					style="background-image:url({{ vich_uploader_asset(imageslogan, 'imageFile')}});"></div>
-					{% endfor %} 
-			</div>
-			<div class="col-md-6 pl-md-5 py-md-5">
-			{% for slogan in slogans %}
-				<div class="services-2 w-100 d-flex">
-					<div class="icon d-flex align-items-center justify-content-center">
-						<span class="flaticon-touch">
-							<i class="{{ slogan.icon }}"></i>
-						</span>
-					</div>
-					<div class="text pl-4">
-						<h4>{{ slogan.titre }}</h4>
-						<p>{{ slogan.description }}</p>
-					</div>
+	<section class="ftco-section mt-5 ftco-no-pt bg-light slogan">
+		<div class="container">
+			<div class="row d-flex no-gutters">
+				<div class="col-md-6 d-flex">
+					{% for imageslogan in imageslogans %}
+						<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0 img-accueil" style="background-image:url({{ vich_uploader_asset(imageslogan, 'imageFile')}});"></div>
+					{% endfor %}
 				</div>
-				{% endfor %} 
-			</div>
-		</div>
-	</div>
-</section>
-
-<section class="ftco-section">
-	<div class="container">
-		<div class="row justify-content-center pb-5 mb-3">
-			<div class="col-md-7 heading-section text-center ftco-animate">
-				<h2>Nos services</h2>
-				<div class="border-tarifs"></div>
-			</div>
-		</div>
-		<div class="row d-flex">
-			{% for service in services  %}
-			<div class="col-md-4 mb-3">
-				<div class="card">
-					<img src="{{ vich_uploader_asset(service, 'imageFile')}}" class="card-img-top" alt="...">
-					<a href="#" class="bouton btn btn-blue">Ajouter</a>
-					<div class="card-body ">
-						<h5 class="card-title text-center">{{service.titre}}</h5>
-						<p class="card-text">{{service.description}}.</p>
-					</div>
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
-</section>
-<section class="ftco-section testimony-section bg-light">
-	<div class="overlay"></div>
-	<div class="container">
-		<div class="row justify-content-center pb-5 mb-3">
-			<div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
-				<h2>Equipe</h2>
-				<div class="border-tarifs"></div>
-			</div>
-		</div>
-		<div class="row ftco-animate">
-			<div class="col-md-12">
-				<div class="carousel-testimony owl-carousel ftco-owl">
-					{% for equipe in equipes %}
-					<div class="item">
-						<div class="testimony-wrap py-4">
+				<div class="col-md-6 pl-md-5 py-md-5">
+					{% for slogan in slogans %}
+						<div class="services-2 w-100 d-flex">
 							<div class="icon d-flex align-items-center justify-content-center">
-								<span class="fa fa-quote-left"></span>
+								<span class="flaticon-touch">
+									<i class="{{ slogan.icon }}"></i>
+								</span>
 							</div>
-							<div class="text">
-								<p class="mb-4">{{equipe.description}}.</p>
-								<div class="d-flex align-items-center">
-									<div class="user-img"
-										style="background-image: url({{ vich_uploader_asset(equipe, 'imageFile')}})">
-									</div>
-									<div class="pl-3">
-										<p class="name">{{equipe.prenom}} {{equipe.nom}}</p>
-										<span class="position">{{equipe.profession}}</span>
-									</div>
-								</div>
+							<div class="text pl-4">
+								<h4>{{ slogan.titre }}</h4>
+								<p>{{ slogan.description }}</p>
 							</div>
 						</div>
-					</div>
 					{% endfor %}
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section> 
 
-<section class="ftco-section ftco-no-pt bg-light ftco-faqs">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-6">
-				<div class="img-faqs w-100">
-					<div class="img mb-4 mb-sm-0" style="background-image:url(images/masor.jpg);"></div>
-					<div class="img img-2 mb-4 mb-sm-0 " style="background-image:url(images/hapel.jpg);"></div>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center pb-5 mb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<h2>Nos services</h2>
+					<div class="border-tarifs"></div>
 				</div>
 			</div>
-			<div class="col-lg-6 pl-lg-5">
-				<div class="heading-section mb-5 mt-5 mt-lg-0">
-					<h2 class="mb-3">Frequently Asks Questions</h2>
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
-						live the blind texts.</p>
+			<div class="row d-flex">
+				{% for serviceGraph in serviceGraphs  %}
+					<div class="col-md-4 mb-3">
+						<div class="card service-cad">
+							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')}}" class="card-img-top card-img-service" alt="...">
+							<a href="#" class="bouton btn btn-blue">Ajouter</a>
+							<div class="card-body ">
+								<h5 class="card-title text-center">{{serviceGraph.titre}}</h5> 
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<section class="ftco-section testimony-section bg-light">
+		<div class="overlay"></div>
+		<div class="container">
+			<div class="row justify-content-center pb-5 mb-3">
+				<div class="col-md-7 heading-section heading-section-white text-center ftco-animate">
+					<h2>Equipe</h2>
+					<div class="border-tarifs"></div>
 				</div>
-				<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
-					<div class="card">
-						<div class="card-header p-0" id="headingOne">
-							<h2 class="mb-0">
-								<button href="#collapseOne"
-									class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link"
-									data-parent="#accordion" data-toggle="collapse" aria-expanded="true"
-									aria-controls="collapseOne">
-									<p class="mb-0">How to fixed a problem?</p>
-									<i class="fa" aria-hidden="true"></i>
-								</button>
-							</h2>
-						</div>
-						<div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
-							<div class="card-body py-3 px-0">
-								<ol>
-									<li>Far far away, behind the word mountains</li>
-									<li>Consonantia, there live the blind texts</li>
-									<li>When she reached the first hills of the Italic Mountains</li>
-									<li>Bookmarksgrove, the headline of Alphabet Village</li>
-									<li>Separated they live in Bookmarksgrove right</li>
-								</ol>
+			</div>
+			<div class="row ftco-animate">
+				<div class="col-md-12">
+					<div class="carousel-testimony owl-carousel ftco-owl">
+						{% for equipe in equipes %}
+							<div class="item">
+								<div class="testimony-wrap py-4">
+									<div class="icon d-flex align-items-center justify-content-center">
+										<span class="fa fa-quote-left"></span>
+									</div>
+									<div class="text">
+										<p class="mb-4">{{equipe.description}}.</p>
+										<div class="d-flex align-items-center">
+											<div class="user-img" style="background-image: url({{ vich_uploader_asset(equipe, 'imageFile')}})"></div>
+											<div class="pl-3">
+												<p class="name">{{equipe.prenom}}
+													{{equipe.nom}}</p>
+												<span class="position">{{equipe.profession}}</span>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="ftco-section ftco-no-pt bg-light ftco-faqs">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="img-faqs w-100">
+						<div class="img mb-4 mb-sm-0" style="background-image:url(images/masor.jpg);"></div>
+						<div class="img img-2 mb-4 mb-sm-0 " style="background-image:url(images/hapel.jpg);"></div>
+					</div>
+				</div>
+				<div class="col-lg-6 pl-lg-5">
+					<div class="heading-section mb-5 mt-5 mt-lg-0">
+						<h2 class="mb-3">Frequently Asks Questions</h2>
+						<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there
+													live the blind texts.</p>
+					</div>
+					<div id="accordion" class="myaccordion w-100" aria-multiselectable="true">
+						<div class="card">
+							<div class="card-header p-0" id="headingOne">
+								<h2 class="mb-0">
+									<button href="#collapseOne" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="true" aria-controls="collapseOne">
+										<p class="mb-0">How to fixed a problem?</p>
+										<i class="fa" aria-hidden="true"></i>
+									</button>
+								</h2>
+							</div>
+							<div class="collapse show" id="collapseOne" role="tabpanel" aria-labelledby="headingOne">
+								<div class="card-body py-3 px-0">
+									<ol>
+										<li>Far far away, behind the word mountains</li>
+										<li>Consonantia, there live the blind texts</li>
+										<li>When she reached the first hills of the Italic Mountains</li>
+										<li>Bookmarksgrove, the headline of Alphabet Village</li>
+										<li>Separated they live in Bookmarksgrove right</li>
+									</ol>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="card">
-						<div class="card-header p-0" id="headingTwo" role="tab">
-							<h2 class="mb-0">
-								<button href="#collapseTwo"
-									class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link"
-									data-parent="#accordion" data-toggle="collapse" aria-expanded="false"
-									aria-controls="collapseTwo">
-									<p class="mb-0">How to manage your business loans?</p>
-									<i class="fa" aria-hidden="true"></i>
-								</button>
-							</h2>
-						</div>
-						<div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="card-body py-3 px-0">
-								<ol>
-									<li>Far far away, behind the word mountains</li>
-									<li>Consonantia, there live the blind texts</li>
-									<li>When she reached the first hills of the Italic Mountains</li>
-									<li>Bookmarksgrove, the headline of Alphabet Village</li>
-									<li>Separated they live in Bookmarksgrove right</li>
-								</ol>
+						<div class="card">
+							<div class="card-header p-0" id="headingTwo" role="tab">
+								<h2 class="mb-0">
+									<button href="#collapseTwo" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseTwo">
+										<p class="mb-0">How to manage your business loans?</p>
+										<i class="fa" aria-hidden="true"></i>
+									</button>
+								</h2>
+							</div>
+							<div class="collapse" id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo">
+								<div class="card-body py-3 px-0">
+									<ol>
+										<li>Far far away, behind the word mountains</li>
+										<li>Consonantia, there live the blind texts</li>
+										<li>When she reached the first hills of the Italic Mountains</li>
+										<li>Bookmarksgrove, the headline of Alphabet Village</li>
+										<li>Separated they live in Bookmarksgrove right</li>
+									</ol>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="card">
-						<div class="card-header p-0" id="headingThree" role="tab">
-							<h2 class="mb-0">
-								<button href="#collapseThree"
-									class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link"
-									data-parent="#accordion" data-toggle="collapse" aria-expanded="false"
-									aria-controls="collapseThree">
-									<p class="mb-0">How to grow your investments funds?</p>
-									<i class="fa" aria-hidden="true"></i>
-								</button>
-							</h2>
-						</div>
-						<div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="card-body py-3 px-0">
-								<ol>
-									<li>Far far away, behind the word mountains</li>
-									<li>Consonantia, there live the blind texts</li>
-									<li>When she reached the first hills of the Italic Mountains</li>
-									<li>Bookmarksgrove, the headline of Alphabet Village</li>
-									<li>Separated they live in Bookmarksgrove right</li>
-								</ol>
+						<div class="card">
+							<div class="card-header p-0" id="headingThree" role="tab">
+								<h2 class="mb-0">
+									<button href="#collapseThree" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseThree">
+										<p class="mb-0">How to grow your investments funds?</p>
+										<i class="fa" aria-hidden="true"></i>
+									</button>
+								</h2>
+							</div>
+							<div class="collapse" id="collapseThree" role="tabpanel" aria-labelledby="headingTwo">
+								<div class="card-body py-3 px-0">
+									<ol>
+										<li>Far far away, behind the word mountains</li>
+										<li>Consonantia, there live the blind texts</li>
+										<li>When she reached the first hills of the Italic Mountains</li>
+										<li>Bookmarksgrove, the headline of Alphabet Village</li>
+										<li>Separated they live in Bookmarksgrove right</li>
+									</ol>
+								</div>
 							</div>
 						</div>
-					</div>
 
-					<div class="card">
-						<div class="card-header p-0" id="headingFour" role="tab">
-							<h2 class="mb-0">
-								<button href="#collapseFour"
-									class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link"
-									data-parent="#accordion" data-toggle="collapse" aria-expanded="false"
-									aria-controls="collapseFour">
-									<p class="mb-0">What are those requirements for businesses?</p>
-									<i class="fa" aria-hidden="true"></i>
-								</button>
-							</h2>
-						</div>
-						<div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
-							<div class="card-body py-3 px-0">
-								<p>Far far away, behind the word mountains, far from the countries Vokalia and
-									Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
-									at the coast of the Semantics, a large language ocean.</p>
+						<div class="card">
+							<div class="card-header p-0" id="headingFour" role="tab">
+								<h2 class="mb-0">
+									<button href="#collapseFour" class="d-flex py-3 px-4 align-items-center justify-content-between btn btn-link" data-parent="#accordion" data-toggle="collapse" aria-expanded="false" aria-controls="collapseFour">
+										<p class="mb-0">What are those requirements for businesses?</p>
+										<i class="fa" aria-hidden="true"></i>
+									</button>
+								</h2>
+							</div>
+							<div class="collapse" id="collapseFour" role="tabpanel" aria-labelledby="headingTwo">
+								<div class="card-body py-3 px-0">
+									<p>Far far away, behind the word mountains, far from the countries Vokalia and
+																			Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right
+																			at the coast of the Semantics, a large language ocean.</p>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 
-<section class="ftco-section">
-	<div class="container">
-		<div class="row justify-content-center pb-5 mb-3">
-			<div class="col-md-7 heading-section text-center ftco-animate">
-				<h2>BLOG</h2>
+	<section class="ftco-section">
+		<div class="container">
+			<div class="row justify-content-center pb-5 mb-3">
+				<div class="col-md-7 heading-section text-center ftco-animate">
+					<h2>BLOG</h2>
+					<div class="border-tarifs"></div>
+				</div>
+			</div>
+			<div class="row d-flex">
+				{% for article in articles  %}
+					<div class="col-md-4 d-flex ftco-animate">
+						<div class="blog-entry align-self-stretch">
+							<a href="blog-single.html" class="block-20 rounded" style="background-image: url({{ vich_uploader_asset(article, 'imageFile')}});"></a>
+							<div class="text p-4">
+								<div class="meta mb-2">
+									<div>
+										<P>March 31, 2020</P>
+									</div>
+									<div>
+										<a href="#">Admin</a>
+									</div>
+									<div>
+										<a href="#" class="meta-chat">
+											<span class="fa fa-comment"></span>
+											3</a>
+									</div>
+								</div>
+								<h3 class="heading">
+									<a href="#">{{article.contenu | raw}}</a>
+								</h3>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</section>
+	<section id="formation">
+		<div class="formation-section">
+			<div class="inner-width">
+				<h1 class="section-title-f">Nos tarifs</h1>
 				<div class="border-tarifs"></div>
-			</div>
-		</div>
-		<div class="row d-flex">
-			{% for article in articles  %}
-			<div class="col-md-4 d-flex ftco-animate">
-				<div class="blog-entry align-self-stretch">
-					<a href="blog-single.html" class="block-20 rounded"
-						style="background-image: url({{ vich_uploader_asset(article, 'imageFile')}});"></a>
-					<div class="text p-4">
-						<div class="meta mb-2">
-							<div>
-								<P>March 31, 2020</P>
+				<div class="pricing-table">
+					<div class="col">
+						<div class="table">
+							<div class="title">
+								<h2>Personnel</h2>
+								<div class="price">
+									<p>$25<span>par mois</span>
+									</p>
+								</div>
 							</div>
-							<div>
-								<a href="#">Admin</a>
-							</div>
-							<div>
-								<a href="#" class="meta-chat">
-									<span class="fa fa-comment"></span>
-									3</a>
-							</div>
+							<ul>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										2</strong>
+									vidéo</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										1</strong>
+									fichier pdf</li>
+								<li>
+									<i class="fas fa-times-circle"></i>
+									<strong>
+										0</strong>
+									exo corriger</li>
+							</ul>
+							<a href="gratuit.php">Choisir</a>
 						</div>
-						<h3 class="heading">
-							<a href="#">{{article.contenu | raw}}</a>
-						</h3>
 					</div>
-				</div>
-			</div>
-			{% endfor %}
-		</div>
-	</div>
-</section>
-<section id="formation">
-	<div class="formation-section">
-		<div class="inner-width">
-			<h1 class="section-title-f">Nos tarifs</h1>
-			<div class="border-tarifs"></div>
-			<div class="pricing-table">
-				<div class="col">
-					<div class="table">
-						<div class="title">
-							<h2>Personnel</h2>
+					<div class="col">
+						<div class="table">
+							<h2>Normal</h2>
+							<div class="pop">Populaire</div>
 							<div class="price">
-								<p>$25<span>par mois</span></p>
+								<p>$50<span>par mois</span>
+								</p>
 							</div>
+							<ul>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										2</strong>
+									vidéo</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										10</strong>
+									fichier pdf</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										2</strong>
+									exo corriger</li>
+							</ul>
+							<a href="#">Acheter</a>
 						</div>
-						<ul>
-							<li><i class="fas fa-check-circle"></i><strong> 2</strong> vidéo</li>
-							<li><i class="fas fa-check-circle"></i><strong> 1</strong> fichier pdf</li>
-							<li><i class="fas fa-times-circle"></i><strong> 0</strong> exo corriger</li>
-						</ul>
-						<a href="gratuit.php">Choisir</a>
 					</div>
-				</div>
-				<div class="col">
-					<div class="table">
-						<h2>Normal</h2>
-						<div class="pop">Populaire</div>
-						<div class="price">
-							<p>$50<span>par mois</span></p>
+					<div class="col">
+						<div class="table">
+							<h2>Preminum</h2>
+							<div class="price">
+								<p>$100<span>par mois</span>
+								</p>
+							</div>
+							<ul>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										2</strong>
+									vidéo</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										10</strong>
+									fichier pdf</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										5</strong>
+									exo corriger</li>
+							</ul>
+							<a href="#">Acheter</a>
 						</div>
-						<ul>
-							<li><i class="fas fa-check-circle"></i><strong> 2</strong> vidéo</li>
-							<li><i class="fas fa-check-circle"></i><strong> 10</strong> fichier pdf</li>
-							<li><i class="fas fa-check-circle"></i><strong> 2</strong> exo corriger</li>
-						</ul>
-						<a href="#">Acheter</a>
 					</div>
-				</div>
-				<div class="col">
-					<div class="table">
-						<h2>Preminum</h2>
-						<div class="price">
-							<p>$100<span>par mois</span></p>
+					<div class="col">
+						<div class="table">
+							<h2>Pro +</h2>
+							<div class="price">
+								<p>$150<span>par mois</span>
+								</p>
+							</div>
+							<ul>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										20</strong>
+									vidéo</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										15</strong>
+									fichier pdf</li>
+								<li>
+									<i class="fas fa-check-circle"></i>
+									<strong>
+										10</strong>
+									exo corriger</li>
+							</ul>
+							<a href="#">Acheter</a>
 						</div>
-						<ul>
-							<li><i class="fas fa-check-circle"></i><strong> 2</strong> vidéo</li>
-							<li><i class="fas fa-check-circle"></i><strong> 10</strong> fichier pdf</li>
-							<li><i class="fas fa-check-circle"></i><strong> 5</strong> exo corriger</li>
-						</ul>
-						<a href="#">Acheter</a>
-					</div>
-				</div>
-				<div class="col">
-					<div class="table">
-						<h2>Pro +</h2>
-						<div class="price">
-							<p>$150<span>par mois</span></p>
-						</div>
-						<ul>
-							<li><i class="fas fa-check-circle"></i><strong> 20</strong> vidéo</li>
-							<li><i class="fas fa-check-circle"></i><strong> 15</strong> fichier pdf</li>
-							<li><i class="fas fa-check-circle"></i><strong> 10</strong> exo corriger</li>
-						</ul>
-						<a href="#">Acheter</a>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
-{% endblock %} 
+	</section>
+{% endblock %}

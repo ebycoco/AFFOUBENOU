@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit Temoignages{% endblock %}
+
+{% block body %}
+    <h1>Edit Temoignages</h1>
+
+    {{ include('temoignages/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('temoignages_index') }}">back to list</a>
+
+    {{ include('temoignages/_delete_form.html.twig') }}
+{% endblock %}

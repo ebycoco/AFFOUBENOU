@@ -1,0 +1,34 @@
+.contact {
+    background-color: #f6a722;
+    margin-top: 80px;
+}
+
+
+/* bleu =7c22f6*/
+
+.button {
+    padding-top: 30px;
+    padding-left: 200px;
+    color: #7c22f6 !important;
+}
+
+.btn-contact {
+    background-color: blue !important;
+    border-radius: 20px;
+}
+
+.form-contact {
+    background: #f6a722 !important;
+    border: none;
+    
+    color: #fff !important;
+}
+input{
+    border-bottom: 1px solid #eee !important; 
+}
+
+.contact img {
+    padding-top: 30px;
+    width: 600px;
+    height: 400px;
+}

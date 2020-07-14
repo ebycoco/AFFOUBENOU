@@ -1,48 +1,104 @@
-body{
+body {
     margin: 0;
     padding: 0;
 }
-.apropos{
+
+.apropos {
     background: #eee;
-    padding: 5px;
-}
-.titre{
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight: bold;
-}
-.imgapro{
+    padding: 80px;
+    margin-top: 55px;
+} 
+.imgapro {
     width: auto;
     height: 450px;
     padding-left: 5px;
+    border-radius: 50px;
 }
-.separer{
-    height:5px;
+
+.separer {
+    height: 5px;
 }
-.imgbanner{
+
+.imgbanner {
     width: 100%;
     background-size: cover;
     padding: 60px 0;
     height: 346px;
 }
-.banner{
+
+.banner {
+    width: 100%;
+    height: 50vh;
     position: relative;
+    overflow: hidden;
 }
-.question{
+
+.slider {
+    width: 100%;
+    height: 50vh;
     position: absolute;
-    top: 35%;
+    top: 0;
+}
+
+#slideImg {
+    width: 100%;
+    height: 100%;
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7));
+    position: absolute;
+    top: 0;
+}
+
+.question h1 {
+    width: 60%;
+    position: absolute;
+    top: 50%;
     left: 25%;
+    text-align: center;
     color: #fff;
     font-weight: bold;
 }
-.explication{
+
+.explication {
     padding: 16px;
     margin: 50px 50px 50px 70px;
 }
-.jaune{
+
+.jaune {
+    display: inline-block;
+    font-size: 16px;
     border-radius: 10px;
     background: #F6a722;
-    border: none;
-}
-.text_ecrit{
     color: #fff;
+    border: none;
+} 
+.titre {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
+.temoignage-titre{
+    margin-bottom: 60px;
+}
+
+.img-temoignage {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    margin-left: 0;
+    margin-top: -40px;
+    border-radius: 50%;
+}
+.swiper-container {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  .swiper-slide {
+    background-position: center;
+    background-size: cover;  
+   } 

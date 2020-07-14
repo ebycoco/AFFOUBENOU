@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New AvantageDuSite{% endblock %}
+
+{% block body %}
+    <h1>Create new AvantageDuSite</h1>
+
+    {{ include('Admin/avantage_du_site/_form.html.twig') }}
+
+    <a href="{{ path('admin_avantage_du_site_index') }}">back to list</a>
+{% endblock %}

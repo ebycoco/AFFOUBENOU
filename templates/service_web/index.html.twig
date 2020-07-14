@@ -9,10 +9,11 @@
         <h1 class="text-center titre">Faites votre choix avec panoplie de templates a l'africaine</h1>
     </div>
     <div class="row mb-5">
+            
     {% for serviceWeb in serviceWebs %}
-        <div class="col-md-4 mb-5">
+        <div class="col-md-4 mb-5"> 
             <div class="card web">
-                <img src="{{ vich_uploader_asset(serviceWeb, 'imageFile')}}" class="card-img-top" alt="..."> 
+                <img src="{{ vich_uploader_asset(serviceWeb, 'imageFile')}}" class="card-img-top img-service" alt="..."> 
                 <a href="#" class="bouton btn btn-primary">Voir</a>
             </div>
         </div>  
