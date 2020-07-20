@@ -82,6 +82,11 @@ class Articles
      */
     private $favoris;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default": false})
+     */
+    private $active =false;
+
     
 
     public function __construct()
@@ -235,6 +240,18 @@ class Articles
         if ($this->favoris->contains($favori)) {
             $this->favoris->removeElement($favori);
         }
+
+        return $this;
+    }
+
+    public function getActive(): ?bool
+    {
+        return $this->active;
+    }
+
+    public function setActive(bool $active): self
+    {
+        $this->active = $active;
 
         return $this;
     }

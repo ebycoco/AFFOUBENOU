@@ -19,6 +19,15 @@ class SloganRepository extends ServiceEntityRepository
         parent::__construct($registry, Slogan::class);
     }
 
+    public function findBySlogan()
+    {
+        return $this->createQueryBuilder('s') 
+            ->orderBy('s.id', 'ASC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     // /**
     //  * @return Slogan[] Returns an array of Slogan objects
     //  */

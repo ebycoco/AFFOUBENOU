@@ -19,6 +19,15 @@ class SlidersRepository extends ServiceEntityRepository
         parent::__construct($registry, Sliders::class);
     }
 
+    public function findBySlid()
+    {
+        return $this->createQueryBuilder('s') 
+            ->orderBy('s.id', 'DESC')
+            ->setMaxResults(4)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     // /**
     //  * @return Sliders[] Returns an array of Sliders objects
     //  */

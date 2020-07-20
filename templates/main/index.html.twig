@@ -220,26 +220,26 @@
 				</div>
 			</div>
 			<div class="row d-flex">
-				{% for article in articles  %}
+				{% for article in articles %}
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
 							<a href="blog-single.html" class="block-20 rounded" style="background-image: url({{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}});"></a>
 							<div class="text p-4">
 								<div class="meta mb-2">
 									<div>
-										<P>March 31, 2020</P>
+										<P>{{article.createdAt | date('F')}} {{article.createdAt | date('d')}},{{article.createdAt | date('Y')}}</P>
 									</div>
 									<div>
-										<a href="#">Admin</a>
+										<a href="#">{{article.user.prenom}}</a>
 									</div>
 									<div>
 										<a href="#" class="meta-chat">
 											<span class="fa fa-comment"></span>
-											3</a>
+											{{article.commentaires | length}}</a>
 									</div>
 								</div>
 								<h3 class="heading">
-									<a href="#">{{article.contenu | raw}}</a>
+									<a href="{{ path('app_articles_show', {'slug': article.slug}) }}">{{article.contenu |striptags |u.truncate(50,'...')}}</a>
 								</h3>
 							</div>
 						</div>

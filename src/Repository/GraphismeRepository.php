@@ -18,6 +18,15 @@ class GraphismeRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Graphisme::class);
     }
+    public function findByGraphisme()
+    {
+        return $this->createQueryBuilder('g') 
+            ->orderBy('g.id', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     // /**
     //  * @return Graphisme[] Returns an array of Graphisme objects

@@ -17,8 +17,19 @@ class ArticlesRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Articles::class);
-    }
+    } 
 
+    public function findByPopulaireRecent($value)
+    {
+        return $this->createQueryBuilder('a')
+        ->andWhere('a.active = :val')
+        ->setParameter('val', $value) 
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(2)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     // /**
     //  * @return Articles[] Returns an array of Articles objects
     //  */

@@ -18,6 +18,16 @@ class IdentiteDuSiteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, IdentiteDuSite::class);
     }
+    
+    public function findBylast()
+    {
+        return $this->createQueryBuilder('i') 
+            ->orderBy('i.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     // /**
     //  * @return IdentiteDuSite[] Returns an array of IdentiteDuSite objects

@@ -15,6 +15,7 @@ class ArticlesType extends AbstractType
     {
         $builder
             ->add('titre')
+            ->add('active')
             ->add('contenu',CKEditorType::class, [
                 'config_name' => 'main_config',
                     ])

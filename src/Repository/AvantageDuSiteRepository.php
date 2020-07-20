@@ -19,6 +19,16 @@ class AvantageDuSiteRepository extends ServiceEntityRepository
         parent::__construct($registry, AvantageDuSite::class);
     }
 
+    public function findByLast()
+    {
+        return $this->createQueryBuilder('a') 
+            ->orderBy('a.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return AvantageDuSite[] Returns an array of AvantageDuSite objects
     //  */

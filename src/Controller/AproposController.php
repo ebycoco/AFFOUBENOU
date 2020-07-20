@@ -17,9 +17,9 @@ class AproposController extends AbstractController
     {
         return $this->render('apropos/index.html.twig', [
             'controller_name' => 'AproposController',
-            'identite_du_sites' => $identiteDuSiteRepository->findAll(), 
-            'avantage_du_sites' => $avantageDuSiteRepository->findAll(),
-            'temoignages' => $temoignagesRepository->findAll(),
+            'identite_du_sites' => $identiteDuSiteRepository->findBylast(), 
+            'avantage_du_sites' => $avantageDuSiteRepository->findByLast(),
+            'temoignages' => $temoignagesRepository->findByLast(),
 
         ]);
     }

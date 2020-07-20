@@ -10,7 +10,7 @@
 			<div class="col-md-7 hauteur">
 				<div class="resu-haut">
 					<h1>{{ article.titre }}</h1>
-					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam veniam eveniet tenetur perferendis laboriosam, recusandae minus cupiditate voluptatum maiores inventore debitis expedita quo omnis reiciendis quae ratione, a nostrum adipisci.</p>
+					<p>{{article.contenu |striptags |u.truncate(200,'...')}}</p>
 				</div>
 				<div class="row sous ">
 					<div class=" col-md-12 image">
@@ -49,8 +49,8 @@
                 <div class="row mt-5 ml-1 commentaire">
 					<h4 class="ml-3 ">{{pluralize(article.commentaires | length,'commentaire')}} </h4> 
 					<div class="row mt-4">
-						{% if article.commentaires | length > 0 %}
-						{% for commentaire in article.commentaires %}
+						{% if article.commentaires | length > 0 %} 
+						{% for commentaire in article.commentaires | slice(2) %}
 						<div class="col-md-2 avatar mt-3">
 							<img src="{{asset('images/masor.jpg')}}" alt=""> 
 						</div>

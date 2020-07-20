@@ -11,8 +11,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\CommentairesRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController; 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
@@ -25,6 +24,7 @@ class ArticlesController extends AbstractController
     {
         return $this->render('articles/index.html.twig', [
             'articles' => $articlesRepository->findAll(),
+            'populaires' => $articlesRepository->findByPopulaireRecent('1')
         ]);
     }
     
@@ -49,8 +49,7 @@ class ArticlesController extends AbstractController
         return $this->render('articles/show.html.twig', [
             'article' => $article, 
             'form' => $form->createView(),
-            'populaires' => $articlesRepository->findAll(),
-            'commentaires' => $commentairesRepository->findAll(),
+            'populaires' => $articlesRepository->findByPopulaireRecent('1'),
         ]);
     }
 
@@ -76,8 +75,7 @@ class ArticlesController extends AbstractController
         return $this->render('articles/show.html.twig', [
             'article' => $article, 
             'form' => $form->createView(),
-            'populaires' => $articlesRepository->findAll(),
-            'commentaires' => $commentairesRepository->findAll(),
+            'populaires' => $articlesRepository->findByPopulaireRecent('1'),
         ]);
     }
 

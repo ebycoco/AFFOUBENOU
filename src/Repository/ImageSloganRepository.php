@@ -19,6 +19,15 @@ class ImageSloganRepository extends ServiceEntityRepository
         parent::__construct($registry, ImageSlogan::class);
     }
 
+    public function findByImagSlog()
+    {
+        return $this->createQueryBuilder('i') 
+            ->orderBy('i.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     // /**
     //  * @return ImageSlogan[] Returns an array of ImageSlogan objects
     //  */

@@ -46,34 +46,36 @@
 				<div class="populaires">
 					<h1>Populaires</h1>
 				</div>
-                {% for article in articles %}
+                {% for populaire in populaires %} 
+				{% for favoris in populaire.favoris %}
 				<div class="row sous-haut-rigth">
 					<div class="col-md-6 ">
-                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
-						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+                        <a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+						<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}" alt="">
                         </a>
 					</div>
 					<div class="col-md-6">
-                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
-						<p>{{ article.titre }}</p>
+                        <a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+						<p>{{ populaire.titre }}</p>
                     </a>
 					</div>
 					<div class="bar"></div>
 				</div>
-                {% endfor %}{{asset('images/image_2.jpg')}}
+                {% endfor %}
+                {% endfor %}
 				<div class="Récents">
 					<h1>Récents</h1>
 				</div>
-                {% for article in articles %}
+                {% for populaire in populaires %}
 				<div class="row sous-haut-rigth">
 					<div class="col-md-6 ">
-                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
-						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+                        <a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+						<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}" alt="">
                         </a>
 					</div>
 					<div class="col-md-6">
-                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
-						<p>{{ article.titre }}</p>
+                        <a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+						<p>{{ populaire.titre }}</p>
                         </a>
 					</div>
 					<div class="bar"></div>

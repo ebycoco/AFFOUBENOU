@@ -21,12 +21,12 @@ class MainController extends AbstractController
     public function index(SlidersRepository $slidersRepository,ArticlesRepository $articlesRepository,EquipesRepository $equipesRepository, GraphismeRepository $graphismeRepository,ImageSloganRepository $imageSloganRepository,SloganRepository $sloganRepository)
     {
         return $this->render('main/index.html.twig', [ 
-            'sliders' => $slidersRepository->findAll(), 
-            'serviceGraphs' => $graphismeRepository->findAll(),
+            'sliders' => $slidersRepository->findBySlid(), 
+            'serviceGraphs' => $graphismeRepository->findByGraphisme(),
             'equipes' => $equipesRepository->findAll(), 
-            'articles' => $articlesRepository->findAll(), 
-            'slogans' => $sloganRepository->findAll(), 
-            'imageslogans' => $imageSloganRepository->findAll(), 
+            'articles' => $articlesRepository->findBy(['active'=>true],['createdAt'=>'desc'],3), 
+            'slogans' => $sloganRepository->findBySlogan(), 
+            'imageslogans' => $imageSloganRepository->findByImagSlog(), 
         ]);
     }
 }

@@ -19,6 +19,16 @@ class TemoignagesRepository extends ServiceEntityRepository
         parent::__construct($registry, Temoignages::class);
     }
 
+    public function findByLast()
+    {
+        return $this->createQueryBuilder('t') 
+            ->orderBy('t.id', 'ASC')
+            ->setMaxResults(8)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return Temoignages[] Returns an array of Temoignages objects
     //  */
