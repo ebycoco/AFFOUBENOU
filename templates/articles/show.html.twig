@@ -1,0 +1,153 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ article.slug }}
+{% endblock %}
+
+{% block body %}
+	<section class="Blog">
+		<div class="row">
+			<div class="col-md-7 hauteur">
+				<div class="resu-haut">
+					<h1>{{ article.titre }}</h1>
+					<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quibusdam veniam eveniet tenetur perferendis laboriosam, recusandae minus cupiditate voluptatum maiores inventore debitis expedita quo omnis reiciendis quae ratione, a nostrum adipisci.</p>
+				</div>
+				<div class="row sous ">
+					<div class=" col-md-12 image">
+						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+					</div>
+				</div>
+				<div class="row">
+					<div class=" col-md-12 bar-article mt-5">
+						<h1 class="text-center">{{ article.titre }}</h1>
+						<p>{{article.contenu | raw}}</p>
+						<div class="like">
+							{% if is_granted("ROLE_USER") %}
+								{% for favoris in article.favoris %} 
+									 {% if favoris.id == app.user.id %}
+										 <a href="{{path('app_retrait_favoris',{id:article.id})}}">
+											<i class="fas fa-heart"></i>
+										</a>
+									 {% else %}
+										 <a href="{{path('app_ajout_favoris',{id:article.id})}}">
+											<i class="far fa-heart"></i>
+										</a>
+									 {% endif %}
+								{% else %}
+									<a href="{{path('app_ajout_favoris',{id:article.id})}}">
+										<i class="far fa-heart"></i>
+									</a>
+								{% endfor %}
+							{% else %} 
+								<a href="{{path('app_ajout_favoris',{id:article.id})}}">
+									<i class="far fa-heart"></i>
+								</a>
+							{% endif %} 
+						</div>
+					</div>
+				</div>
+                <div class="row mt-5 ml-1 commentaire">
+					<h4 class="ml-3 ">{{pluralize(article.commentaires | length,'commentaire')}} </h4> 
+					<div class="row mt-4">
+						{% if article.commentaires | length > 0 %}
+						{% for commentaire in article.commentaires %}
+						<div class="col-md-2 avatar mt-3">
+							<img src="{{asset('images/masor.jpg')}}" alt=""> 
+						</div>
+						<div class="col-md-10 text mt-3">
+							<h6> {{commentaire.user.prenom}}</h6>
+							<span>{{commentaire.createdAt | date('d')}} {{commentaire.createdAt | date('F')}} {{commentaire.createdAt | date('Y')}} à  {{commentaire.createdAt | date('H:i')}} min</span>
+							<p>{{commentaire.contenu}}</p>
+							<button type="submit" class="boutton-commentaire">Répondre</button>
+						</div>
+						{% endfor %}
+						{% else %}
+							
+						{% endif %}
+						
+					</div> 
+				</div>
+				<div class="row mt-5 ml-1 commentaire-saisi">
+					<h1 class="text-center">Laisser un commentaire</h1>
+					<div class="saisir col-md-12"> 
+							{% if not app.user%}
+							{{ form_start(form) }}
+							<div class="form-group col-md-12"> 
+								{{ form_row(form.nom,{'label':false}) }}
+							</div>
+							<div class="form-group col-md-12"> 
+								{{ form_row(form.email,{'label':false}) }}
+							</div>
+							<div class="form-group col-md-12"> 
+								{{ form_row(form.contenu,{'label':'commentaire'})}}
+							</div>
+							<div class="button-comment text-center pb-3">
+								<button type="submit">Envoyer</button>
+							</div> 
+							{{ form_end(form) }}
+							{% else %} 
+							{{ form_start(form) }}
+							<div class="form-group col-md-12"> 
+								{{ form_row(form.contenu,{'label':'commentaire'})}}
+							</div>
+							<div class="button-comment text-center pb-3">
+								<button>Envoyer</button>
+							</div>
+							{{ form_end(form) }}
+							{% endif %}
+					</div>
+				</div>
+				<div class="retour text-center mt-5">
+					<a class="btn btn-blue" href="{{path('app_articles_index')}}">Retour au blog</a>
+				</div>
+			</div>
+			<div class="col-md-1"></div>
+			<div class="col-md-4 hauteur-rigth">
+				<div class="populaires-1">
+					<h1>Populaires</h1>
+				</div>
+				{% for populaire in populaires %}
+					<div class="row sous-haut-rigth">
+						<div class="col-md-6 ">
+							<a href="">
+								<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}" alt="">
+							</a>
+						</div>
+						<div class="col-md-6">
+							<a href="">
+								<p>{{ populaire.titre }}</p>
+							</a>
+						</div>
+						<div class="bar"></div>
+					</div>
+				{% endfor %}
+				<div class="Récents">
+					<h1>Récents</h1>
+				</div>
+				{% for populaire in populaires %}
+					<div class="row sous-haut-rigth">
+						<div class="col-md-6 ">
+							<a href="">
+								<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}" alt="">
+							</a>
+						</div>
+						<div class="col-md-6">
+							<a href="">
+								<p>{{ populaire.titre }}</p>
+							</a>
+						</div>
+						<div class="bar"></div>
+					</div>
+				{% endfor %}
+				<div class="auteur mt-3">
+				<h1 class="text-center">Auteur de l'article</h1>
+				<div class="avatar-auteur">
+					<img src="{{asset('images/masor.jpg')}}" alt="">
+					<h1 class="text-center">{{article.user.prenom}}</h1>
+				</div>
+			</div>
+			</div>
+			
+		</div>
+	</section>
+{% endblock %}

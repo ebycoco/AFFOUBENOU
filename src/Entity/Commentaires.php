@@ -22,13 +22,7 @@ class Commentaires
      * @ORM\Column(type="text")
      */
     private $contenu;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="commentaires")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $user;
-
+  
     /**
      * @ORM\ManyToOne(targetEntity=Articles::class, inversedBy="commentaires")
      * @ORM\JoinColumn(nullable=false)
@@ -47,6 +41,21 @@ class Commentaires
      */
     private $updatedAt;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $nom;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $email;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="commentaires")
+     */
+    private $user;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -63,18 +72,7 @@ class Commentaires
 
         return $this;
     }
-
-    public function getUser(): ?Users
-    {
-        return $this->user;
-    }
-
-    public function setUser(?Users $user): self
-    {
-        $this->user = $user;
-
-        return $this;
-    }
+ 
 
     public function getArticle(): ?Articles
     {
@@ -97,6 +95,42 @@ class Commentaires
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    }
+
+    public function getNom(): ?string
+    {
+        return $this->nom;
+    }
+
+    public function setNom(string $nom): self
+    {
+        $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getEmail(): ?string
+    {
+        return $this->email;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+
+        return $this;
+    }
+
+    public function getUser(): ?Users
+    {
+        return $this->user;
+    }
+
+    public function setUser(?Users $user): self
+    {
+        $this->user = $user;
+
+        return $this;
     }
  
 }

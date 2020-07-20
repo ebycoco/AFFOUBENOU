@@ -8,7 +8,7 @@
 	{% set numero = 1 %}
 		{% for slider in sliders %} 
 			<div class="banner{{numero}}">
-				<img src="{{ vich_uploader_asset(slider, 'imageFile')}}" class="banner{{numero}}">
+				<img src="{{ vich_uploader_asset(slider, 'imageFile')|imagine_filter('slider')}}" class="banner{{numero}}">
 				<div class="text-box text-box{{numero}}">
 					<h1>{{slider.titre}}</h1>
 					<span></span>
@@ -23,7 +23,7 @@
 			<div class="row d-flex no-gutters">
 				<div class="col-md-6 d-flex">
 					{% for imageslogan in imageslogans %}
-						<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0 img-accueil" style="background-image:url({{ vich_uploader_asset(imageslogan, 'imageFile')}});"></div>
+						<div class="img img-video d-flex align-self-stretch align-items-center justify-content-center justify-content-md-center mb-4 mb-sm-0 img-accueil" style="background-image:url({{ vich_uploader_asset(imageslogan, 'imageFile')|imagine_filter('slogan')}});"></div>
 					{% endfor %}
 				</div>
 				<div class="col-md-6 pl-md-5 py-md-5">
@@ -57,7 +57,7 @@
 				{% for serviceGraph in serviceGraphs  %}
 					<div class="col-md-4 mb-3">
 						<div class="card service-cad">
-							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')}}" class="card-img-top card-img-service" alt="...">
+							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')|imagine_filter('service_graph_accueil')}}" class="card-img-top card-img-service" alt="...">
 							<a href="#" class="bouton btn btn-blue">Ajouter</a>
 							<div class="card-body ">
 								<h5 class="card-title text-center">{{serviceGraph.titre}}</h5> 
@@ -89,7 +89,7 @@
 									<div class="text">
 										<p class="mb-4">{{equipe.description}}.</p>
 										<div class="d-flex align-items-center">
-											<div class="user-img" style="background-image: url({{ vich_uploader_asset(equipe, 'imageFile')}})"></div>
+											<div class="user-img" style="background-image: url({{ vich_uploader_asset(equipe, 'imageFile')|imagine_filter('equipe')}})"></div>
 											<div class="pl-3">
 												<p class="name">{{equipe.prenom}}
 													{{equipe.nom}}</p>
@@ -223,7 +223,7 @@
 				{% for article in articles  %}
 					<div class="col-md-4 d-flex ftco-animate">
 						<div class="blog-entry align-self-stretch">
-							<a href="blog-single.html" class="block-20 rounded" style="background-image: url({{ vich_uploader_asset(article, 'imageFile')}});"></a>
+							<a href="blog-single.html" class="block-20 rounded" style="background-image: url({{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}});"></a>
 							<div class="text p-4">
 								<div class="meta mb-2">
 									<div>

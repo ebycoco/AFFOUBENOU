@@ -77,11 +77,17 @@ class Articles
      */
     private $commentaires;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Users::class, inversedBy="favoris")
+     */
+    private $favoris;
+
     
 
     public function __construct()
     {
-        $this->commentaires = new ArrayCollection(); 
+        $this->commentaires = new ArrayCollection();
+        $this->favoris = new ArrayCollection(); 
     }
 
     public function getId(): ?int
@@ -205,6 +211,32 @@ class Articles
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    /**
+     * @return Collection|Users[]
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Users $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Users $favori): self
+    {
+        if ($this->favoris->contains($favori)) {
+            $this->favoris->removeElement($favori);
+        }
+
+        return $this;
     }
     
 }

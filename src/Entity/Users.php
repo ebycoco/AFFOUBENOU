@@ -84,11 +84,6 @@ class Users implements UserInterface
     private $articles;
 
     /**
-     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
-     */
-    private $commentaires;
-
-    /**
      * @ORM\OneToMany(targetEntity=Offres::class, mappedBy="user")
      */
     private $offres;
@@ -97,6 +92,16 @@ class Users implements UserInterface
      * @ORM\OneToMany(targetEntity=ServiceWeb::class, mappedBy="user")
      */
     private $serviceWebs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Commentaires::class, mappedBy="user")
+     */
+    private $commentaires;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="favoris")
+     */
+    private $favoris;
 
     public function __construct()
     {
@@ -108,6 +113,7 @@ class Users implements UserInterface
         $this->commentaires = new ArrayCollection();
         $this->offres = new ArrayCollection();
         $this->serviceWebs = new ArrayCollection();
+        $this->favoris = new ArrayCollection();
     }
 
     
@@ -391,38 +397,7 @@ class Users implements UserInterface
         }
 
         return $this;
-    }
-
-    /**
-     * @return Collection|Commentaires[]
-     */
-    public function getCommentaires(): Collection
-    {
-        return $this->commentaires;
-    }
-
-    public function addCommentaire(Commentaires $commentaire): self
-    {
-        if (!$this->commentaires->contains($commentaire)) {
-            $this->commentaires[] = $commentaire;
-            $commentaire->setUser($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommentaire(Commentaires $commentaire): self
-    {
-        if ($this->commentaires->contains($commentaire)) {
-            $this->commentaires->removeElement($commentaire);
-            // set the owning side to null (unless already changed)
-            if ($commentaire->getUser() === $this) {
-                $commentaire->setUser(null);
-            }
-        }
-
-        return $this;
-    }
+    } 
 
     /**
      * @return Collection|Offres[]
@@ -481,6 +456,65 @@ class Users implements UserInterface
             if ($serviceWeb->getUser() === $this) {
                 $serviceWeb->setUser(null);
             }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Commentaires[]
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaires $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires[] = $commentaire;
+            $commentaire->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaires $commentaire): self
+    {
+        if ($this->commentaires->contains($commentaire)) {
+            $this->commentaires->removeElement($commentaire);
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getUser() === $this) {
+                $commentaire->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Articles[]
+     */
+    public function getFavoris(): Collection
+    {
+        return $this->favoris;
+    }
+
+    public function addFavori(Articles $favori): self
+    {
+        if (!$this->favoris->contains($favori)) {
+            $this->favoris[] = $favori;
+            $favori->addFavori($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFavori(Articles $favori): self
+    {
+        if ($this->favoris->contains($favori)) {
+            $this->favoris->removeElement($favori);
+            $favori->removeFavori($this);
         }
 
         return $this;

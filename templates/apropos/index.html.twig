@@ -12,7 +12,7 @@
 		<div class="row mb-5">
 		{% for identite_du_site in identite_du_sites %}
 			<div class="col-md-6">
-				<div class="imgapro pl-6" style="background-image:url({{ vich_uploader_asset(identite_du_site, 'imageFile')}})"></);"></div>
+				<div class="imgapro pl-6" style="background-image:url({{ vich_uploader_asset(identite_du_site, 'imageFile')|imagine_filter('identite_site')}})"></div>
 			</div>
 			<div class="col-md-6">
 				<p class="mt-5">
@@ -25,7 +25,7 @@
 		<div class="banner mt-5">
 		{% for avantage_du_site in avantage_du_sites %}
 			<div class="slider">
-				<img src="{{ vich_uploader_asset(avantage_du_site, 'imageFile')}}" id="slideImg">
+				<img src="{{ vich_uploader_asset(avantage_du_site, 'imageFile')|imagine_filter('banner_avantage')}}" id="slideImg">
 			</div>
 			<div class="overlay">
 				<div class="question">

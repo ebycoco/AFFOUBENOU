@@ -14,7 +14,7 @@
 					<div class="col-md-4 mb-5">
 						<div class="card service-cad">
                         <a href="#">
-							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')}}" class="card-img-top card-img-service" alt="..."></a>
+							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')|imagine_filter('service_graph_accueil')}}" class="card-img-top card-img-service" alt="..."></a>
 							
 							<div class="content-graphisme">
 								<h5 class="text-center titre-grapgisme">{{serviceGraph.titre}}</h5>  

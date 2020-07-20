@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Blog | AFFOUBENOU
+{% endblock %}
+
+{% block body %}
+	<section class="Blog">
+		<div class="row">
+			<div class="col-md-8 hauteur-left">
+				<img src="{{asset('images/image_2.jpg')}}" alt="">
+                {% for article in articles %}
+				<div class="row sous-haut">
+					<div class="col-md-6 ">
+						{% if not app.user%}
+						<a href="{{ path('app_articles_inconnu', {'slug': article.slug}) }}">
+						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+                    </a>
+						{% else %}
+						<a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
+						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+                    </a>
+						{% endif %}
+                    
+					</div>
+					<div class="col-md-6">
+						{% if not app.user%}
+						<a href="{{ path('app_articles_inconnu', {'slug': article.slug}) }}">
+						<h2>{{ article.titre }}</h2>
+                    </a>
+						{% else %}
+						<a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
+						<h2>{{ article.titre }}</h2>
+                    </a>
+						{% endif %}
+                    
+					</div>
+					<div class="bar"></div>
+				</div>
+                {% else %}
+                <div class="row sous-haut">
+					<h1>Pas d'article</h1>
+				</div>
+                {% endfor %} 
+			</div>
+			<div class="col-md-4 hauteur-rigth">
+				<div class="populaires">
+					<h1>Populaires</h1>
+				</div>
+                {% for article in articles %}
+				<div class="row sous-haut-rigth">
+					<div class="col-md-6 ">
+                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
+						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+                        </a>
+					</div>
+					<div class="col-md-6">
+                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
+						<p>{{ article.titre }}</p>
+                    </a>
+					</div>
+					<div class="bar"></div>
+				</div>
+                {% endfor %}{{asset('images/image_2.jpg')}}
+				<div class="Récents">
+					<h1>Récents</h1>
+				</div>
+                {% for article in articles %}
+				<div class="row sous-haut-rigth">
+					<div class="col-md-6 ">
+                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
+						<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" alt="">
+                        </a>
+					</div>
+					<div class="col-md-6">
+                        <a href="{{ path('app_articles_show', {'slug': article.slug}) }}">
+						<p>{{ article.titre }}</p>
+                        </a>
+					</div>
+					<div class="bar"></div>
+				</div>
+                {% endfor %} 
+			</div>
+		</div>
+	</section>
+{% endblock %}
