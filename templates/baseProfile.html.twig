@@ -1,6 +1,22 @@
 {% include ("partials/headerProfil.html.twig") with {"title": block("title")} %}
 {% include ("partials/navbarProfil.html.twig") %}
-<div class="container-fluid"> {% block body %}{% endblock %} 
+<div class="container-fluid">
+    <div class="container-fluid profile">
+    <div class="row">
+        <div class="col-md-3">
+            {% include ("partials/sidebarProfil.html.twig") %}
+        </div>
+        <div class="col-md-1"></div>
+        <div class="col-md-8">
+            <div class="content ">
+    {% block body %}{% endblock %} 
+    </div>
+    </div>
+</div>
+<div class="footer">
+{% include ("partials/footerProfil.html.twig") %}
+    
+</div>
 </div>
  
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
