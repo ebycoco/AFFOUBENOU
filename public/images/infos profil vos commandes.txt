@@ -1,0 +1,29 @@
+profil mise à jour 
+
+
+taille des icones du profil 
+width:42px, height:42px
+
+icon photo
+width: 176px, height:176px;
+
+
+ ***navbar (menu)
+
+logo affoubenou 
+width:130px, height:130px;
+
+champ recherche : width :535px, height:66;
+icon search : width :53px, height:53px;
+
+rectangle blue : width :185px, height:58px;
+
+icon panier
+width:72px, height:72px;
+
+2eme rectangle:
+width :840px, height:628;
+
+
+
+
