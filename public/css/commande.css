@@ -1,0 +1,31 @@
+.image-commande {
+    width: 28px;
+    height: 28px;
+    margin-right: 22px;
+}
+
+.tableau {
+    border: 2px solid #000 !important;
+}
+
+.nombre-commande {
+    padding-left: 50px !important;
+}
+
+.date-commande {
+    padding-left: 50px !important;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+.bouton {
+    margin-top: 48.5%;
+    position: absolute;
+    background-color: #fff;
+    color: #f6a722;
+    border-radius: 10px;
+    height: 32px;
+    width: 100px;
+}

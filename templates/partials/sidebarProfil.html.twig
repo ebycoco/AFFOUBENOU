@@ -5,7 +5,7 @@
 		</div>
 		<ul class="nav flex-column">
 			<li class="nav-item">
-				<a class="nav-link" href="#"><img src="{{asset('images/order.png')}}" class="img-circle" alt="">
+				<a class="nav-link {{set_active_route('profile_commande')}}" href="{{path('profile_commande')}}"><img src="{{asset('images/order.png')}}" class="img-circle" alt="">
 					Vos commandes</a>
 			</li>
 			<li class="nav-item">
@@ -13,13 +13,13 @@
 					Vos avis en attentes</a>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link" href="#"><img src="{{asset('images/medical-record.png')}}" class="img-circle" alt="">
+				<a class="nav-link {{set_active_route('profile_index')}}" href="{{path('profile_index')}}"><img src="{{asset('images/medical-record.png')}}" class="img-circle" alt="">
 					Informations personnels</a>
 			</li>
 		</ul>
 		<ul class="nav flex-column sous-menu mt-5">
 			<li class="nav-item">
-				<a class="nav-link active" href="#"><img src="{{asset('images/edit.png')}}" class="img-circle" alt="">
+				<a class="nav-link {{set_active_route('profile_mise_a_jour')}}" href="{{path('profile_mise_a_jour',{'id': app.user.id})}}"><img src="{{asset('images/edit.png')}}" class="img-circle" alt="">
 					Mise à jour</a>
 			</li>
 			<li class="nav-item decon">

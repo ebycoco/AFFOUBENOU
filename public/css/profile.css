@@ -83,3 +83,33 @@
     font-weight: 900;
     color: #F6a722 ;
 }
+
+/* info personnel */
+
+.card-personnelle {
+    width: 390px !important;
+    height: 200px !important;
+    border-color: #ccc !important;
+}
+ 
+
+.card-header-personnel {
+    text-align: center;
+    background-color: #fff;
+    text-transform: uppercase;
+}
+
+.card-title-personnel {
+    font-weight: bold;
+    color: #000;
+}
+
+.text1 {
+    color: #000;
+}
+
+.text2 {
+    color: #F6a722;
+    margin-top: 40px;
+    font-size: 20px;
+}

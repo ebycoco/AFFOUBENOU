@@ -28,7 +28,7 @@
 						<li class="nav-item {{set_active_route('app_contact')}}">
 							<a href="{{path('app_contact')}}" class="nav-link">Contact</a>
 						</li>
-						{% if not app.user%}
+						{% if not app.user %}
 							<li class="nav-item {{set_active_route('app_login')}}">
 								<a href="{{path('admin_home')}}" class="nav-link">Login</a>
 							</li>

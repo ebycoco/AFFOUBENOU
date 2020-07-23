@@ -15,6 +15,10 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class Users implements UserInterface
 {
+    const SEXE = [
+        0 => 'Homme',
+        1 => 'Femme'
+    ];
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -49,7 +53,7 @@ class Users implements UserInterface
     private $prenom;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=true)
+     * @ORM\Column(type="integer", nullable=true)
      */
     private $sexe;
 
@@ -102,6 +106,21 @@ class Users implements UserInterface
      * @ORM\ManyToMany(targetEntity=Articles::class, mappedBy="favoris")
      */
     private $favoris;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $numeroTel;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $adresse;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $ville;
 
     public function __construct()
     {
@@ -516,6 +535,42 @@ class Users implements UserInterface
             $this->favoris->removeElement($favori);
             $favori->removeFavori($this);
         }
+
+        return $this;
+    }
+
+    public function getNumeroTel(): ?int
+    {
+        return $this->numeroTel;
+    }
+
+    public function setNumeroTel(?int $numeroTel): self
+    {
+        $this->numeroTel = $numeroTel;
+
+        return $this;
+    }
+
+    public function getAdresse(): ?string
+    {
+        return $this->adresse;
+    }
+
+    public function setAdresse(?string $adresse): self
+    {
+        $this->adresse = $adresse;
+
+        return $this;
+    }
+
+    public function getVille(): ?string
+    {
+        return $this->ville;
+    }
+
+    public function setVille(?string $ville): self
+    {
+        $this->ville = $ville;
 
         return $this;
     }
