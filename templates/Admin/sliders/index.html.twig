@@ -3,13 +3,16 @@
 {% block title %}Sliders index{% endblock %}
 
 {% block body %}
-    <h1>Sliders index</h1>
+    <h1>Les images defilant</h1>
+    <a href="{{ path('admin_sliders_new') }}" class=" btn btn-primary">Nouveau</a>
 
-    <table class="table">
+    <table class="table mt-3">
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Utilisateur</th>
                 <th>Titre</th>
+                <th>Image</th>
                 <th>CreatedAt</th>
                 <th>UpdatedAt</th>
                 <th>actions</th>
@@ -19,12 +22,16 @@
         {% for slider in sliders %}
             <tr>
                 <td>{{ slider.id }}</td>
+                <td>{{ slider.user.prenom }}</td>
                 <td>{{ slider.titre }}</td>
-                <td>{{ slider.createdAt ? slider.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ slider.updatedAt ? slider.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('admin_sliders_show', {'id': slider.id}) }}">show</a>
-                    <a href="{{ path('admin_sliders_edit', {'id': slider.id}) }}">edit</a>
+                    <img src="{{ vich_uploader_asset(slider, 'imageFile')|imagine_filter('slider_admin')}}" alt="">
+                </td>
+                <td>{{ slider.createdAt ? slider.createdAt|date('d-F-Y H:i') : '' }}</td>
+                <td>{{ slider.updatedAt ? slider.updatedAt|date('d-F-Y H:i') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_sliders_show', {'id': slider.id}) }}" class="btn btn-warning">show</a>
+                    <a href="{{ path('admin_sliders_edit', {'id': slider.id}) }}"class="btn btn-secondary">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -33,7 +40,5 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
-
-    <a href="{{ path('admin_sliders_new') }}">Create new</a>
+    </table> 
 {% endblock %}

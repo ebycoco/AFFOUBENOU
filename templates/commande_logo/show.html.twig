@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeLogo{% endblock %}
+
+{% block body %}
+    <h1>CommandeLogo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande_logo.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ commande_logo.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ commande_logo.createdAt ? commande_logo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ commande_logo.updatedAt ? commande_logo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NomLogo</th>
+                <td>{{ commande_logo.nomLogo }}</td>
+            </tr>
+            <tr>
+                <th>Couleur</th>
+                <td>{{ commande_logo.couleur }}</td>
+            </tr>
+            <tr>
+                <th>Modification</th>
+                <td>{{ commande_logo.modification }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_logo_index') }}">back to list</a>
+
+    <a href="{{ path('commande_logo_edit', {'id': commande_logo.id}) }}">edit</a>
+
+    {{ include('commande_logo/_delete_form.html.twig') }}
+{% endblock %}

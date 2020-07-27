@@ -25,10 +25,11 @@
         <thead>
             <tr>
                 <th>Id</th>
+                <th>Auteur</th> 
                 <th>Titre</th> 
-                <th>Slug</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
+                <th>Image</th>
+                <th>Date de création</th>
+                <th>Date de modification</th> 
                 <th>actions</th>
             </tr>
         </thead>
@@ -36,8 +37,9 @@
         {% for article in articles %}
             <tr>
                 <td>{{ article.id }}</td>
+                <td>{{ article.user.prenom }}</td> 
                 <td>{{ article.titre }}</td> 
-                <td>{{ article.slug }}</td>
+                <td><img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_admin')}}" alt=""></td>
                 <td>{{ article.createdAt ? article.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ article.updatedAt ? article.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

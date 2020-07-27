@@ -1,0 +1,32 @@
+{% extends 'basecommande.html.twig' %}
+{% block title %}Affoubenou | commande - logo
+{% endblock %}
+{% block body %}
+	<section class="container-fluid commande-logo">
+		<div class="text-commande-logo mb-5">
+			<h1>Commandez des {{categorie.nom}} sur mesure</h1>
+					
+		</div>
+		{% for row in serviceGraphs|batch(3) %}
+		<div class="row ">
+		{% for serviceGraph in row %}
+			<div class="col-sm-12 col-md-4 mb-5 ">
+					<div class="card thumbnail-log">
+						<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')|imagine_filter('service_graph_accueil')}}" alt="image-logo">
+						<div class="prix-logo">{{serviceGraph.prix}}f</div>
+						<div class="caption caption-logo">
+							<h4>{{serviceGraph.nom}}</h4>
+							{% if serviceGraph.nom == 'Logo' %}
+								<a href="{{path('commande_graphisme',{'id': serviceGraph.id})}}" class="btn btn-order" role="button">
+								<i class="fa fa-shopping-cart image-shopping"></i>
+								Commander</a>
+							{% endif %} 
+							
+						</div>
+					</div>
+				</div>
+		{% endfor %} 
+			</div> 
+			{% endfor %} 
+	</section>
+{% endblock %}

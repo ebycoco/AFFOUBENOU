@@ -1,0 +1,44 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}Hello CommandeGraphismeController!{% endblock %}
+
+{% block body %}
+<section class="formulaire-commande">
+    <div class="container">  
+            {{ form_start(form) }}
+            <div class="row mt-3">
+                <div class="col-md-12"> 
+                    <div class="form-group"> 
+                        <label for="logo" class="text-label">Entrez le nom du logo <span class="text-required">*</span></label>
+                        {{ form_row(form.nomLogo,{'label':false}) }}
+                    </div> 
+                </div>
+                <div class="col-md-12">
+                    <label for="couleur" class="text-label">Desirez vous changer de couleur ?</label>
+                    <div class="form-group">
+                        {{ form_row(form.couleur,{'label':false}) }}
+                    </div>  
+                </div>
+                <div class="col-md-12">
+                    <label for="message" class="text-message1">Si vous souhaitez apportez des modifications <br> <span style="margin-left:20%">personnelles sur votre logo</span> </label>
+                    <div class="form-group">
+                        {{ form_row(form.modification,{'label':false}) }}
+                    </div> 
+                </div>
+            </div>
+            <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-6 text-center "> 
+                    <h2 class="text-center">Si vous avez un exemple telechargez le ici</h2>
+                    <i class="fa fa-download "></i>
+                    <div class="form-group col-md-12">
+                        {{ form_row(form.imageFile) }}
+                    </div> 
+                </div> 
+                <button type="submit " class="btn btn-order bouton-envoyer ">Envoyer</button> 
+                <div class="col-md-3"></div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</section>
+{% endblock %} 

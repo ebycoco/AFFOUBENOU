@@ -4,8 +4,6 @@
 
 {% block body %}
     <h1>Create new Articles</h1>
-
-    {{ include('Admin/articles/_form.html.twig') }}
-
-    <a href="{{ path('admin_articles_index') }}">back to list</a>
+    <a href="{{ path('admin_articles_index') }}"class="btn btn-primary">Retour à la liste</a> 
+    {{ include('Admin/articles/_form.html.twig') }} 
 {% endblock %}

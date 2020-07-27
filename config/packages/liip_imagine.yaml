@@ -36,7 +36,19 @@ liip_imagine:
                 thumbnail:
                     size: [350,250]
                     mode: outbound
-
+        article_admin:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [100,75]
+                    mode: outbound
+        
+        slider_admin:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [100,75]
+                    mode: outbound
         identite_site:
             quality: 75
             filters:
@@ -63,4 +75,10 @@ liip_imagine:
             filters:
                 thumbnail:
                     size: [369,467]
+                    mode: outbound
+        services_graphisme:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [200,150]
                     mode: outbound

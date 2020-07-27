@@ -1,0 +1,20 @@
+{% extends 'baseProfile.html.twig' %}
+{% block title %}Hello CommandeDispoController!
+{% endblock %}
+{% block body %}
+	<section class="commande-dispo mb-5">
+		<div>
+			<img src="{{asset('images/notification.png')}}" alt="image-commande-dispo" class="image-commande-dispo"><span class="titre-dispo">Votre Logo est disponible</span>
+		</div>
+		<div class="row">
+			<div class="col-sm-8 col-md-8 col-lg-8">
+				<div class="card card-commande-dispo">
+					<img src="{{asset('images/logo/logo4.png')}}" class="card-img-top image-filigrane" alt="">
+
+				</div>
+
+			</div>
+			<button class="btn btn-order bouton-commande-dispo">Acheter sans le filigrane</button>
+		</div>
+	</section>
+{% endblock %}

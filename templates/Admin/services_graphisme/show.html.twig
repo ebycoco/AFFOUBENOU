@@ -1,0 +1,34 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}ServicesGraphisme{% endblock %}
+
+{% block body %}
+    <h1>ServicesGraphisme</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ services_graphisme.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ services_graphisme.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ services_graphisme.createdAt ? services_graphisme.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ services_graphisme.updatedAt ? services_graphisme.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_services_graphisme_index') }}">back to list</a>
+
+    <a href="{{ path('admin_services_graphisme_edit', {'id': services_graphisme.id}) }}">edit</a>
+
+    {{ include('Admin/services_graphisme/_delete_form.html.twig') }}
+{% endblock %}

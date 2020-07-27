@@ -15,7 +15,9 @@ class SlidersType extends AbstractType
         $builder
             ->add('titre')
             ->add('imageFile',VichImageType::class,[ 
-                'required'=>false
+                'required'=>false,
+                'download_link' => false,
+                'image_uri' => false,
             ])
         ;
     }

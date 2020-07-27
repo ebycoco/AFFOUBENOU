@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeLogo index{% endblock %}
+
+{% block body %}
+    <h1>CommandeLogo index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>NomLogo</th>
+                <th>Couleur</th>
+                <th>Modification</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_logo in commande_logos %}
+            <tr>
+                <td>{{ commande_logo.id }}</td>
+                <td>{{ commande_logo.imageName }}</td>
+                <td>{{ commande_logo.createdAt ? commande_logo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande_logo.updatedAt ? commande_logo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande_logo.nomLogo }}</td>
+                <td>{{ commande_logo.couleur }}</td>
+                <td>{{ commande_logo.modification }}</td>
+                <td>
+                    <a href="{{ path('commande_logo_show', {'id': commande_logo.id}) }}">show</a>
+                    <a href="{{ path('commande_logo_edit', {'id': commande_logo.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_logo_new') }}">Create new</a>
+{% endblock %}

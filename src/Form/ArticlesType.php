@@ -20,7 +20,11 @@ class ArticlesType extends AbstractType
                 'config_name' => 'main_config',
                     ])
             ->add('imageFile',VichImageType::class,[ 
-                'required'=>false
+                'required'=>false,
+                'download_link' => false,
+                'image_uri' => false,
+                'label' => 'Image de l\'article',
+                
             ])
         ;
     }

@@ -9,20 +9,22 @@
 			<div class="mt-5 mb-4">
 				<h1 class="text-center titre">Obtenez un graphisme sur mesure</h1>
 			</div>
-			<div class="row mb-5">
-				{% for serviceGraph in serviceGraphs %}
-					<div class="col-md-4 mb-5">
-						<div class="card service-cad">
-                        <a href="#">
-							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')|imagine_filter('service_graph_accueil')}}" class="card-img-top card-img-service" alt="..."></a>
-							
-							<div class="content-graphisme">
-								<h5 class="text-center titre-grapgisme">{{serviceGraph.titre}}</h5>  
+			{% for row in serviceGraphs|batch(3) %}
+				<div class="row mb-5">
+					{% for serviceGraph in row %}
+						<div class="col-md-4 mb-5">
+							<div class="card service-cad">
+								<a href="#">
+									<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')|imagine_filter('service_graph_accueil')}}" class="card-img-top card-img-service" alt="..."></a>
+
+								<div class="content-graphisme">
+									<h5 class="text-center titre-grapgisme">{{serviceGraph.titre}}</h5>
+								</div>
 							</div>
 						</div>
-					</div>
-				{% endfor %}
-			</div>
+					{% endfor %}
+				</div>
+			{% endfor %}
 		</div>
 	</section>
 {% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New ServicesGraphisme{% endblock %}
+
+{% block body %}
+    <h1>Create new ServicesGraphisme</h1>
+
+    {{ include('Admin/services_graphisme/_form.html.twig') }}
+
+    <a href="{{ path('admin_services_graphisme_index') }}">back to list</a>
+{% endblock %}

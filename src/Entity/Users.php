@@ -122,6 +122,21 @@ class Users implements UserInterface
      */
     private $ville;
 
+    /**
+     * @ORM\OneToMany(targetEntity=ServicesGraphisme::class, mappedBy="user")
+     */
+    private $servicesGraphismes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Categorie::class, mappedBy="user")
+     */
+    private $categories;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeLogo::class, mappedBy="user")
+     */
+    private $commandeLogos;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -133,6 +148,9 @@ class Users implements UserInterface
         $this->offres = new ArrayCollection();
         $this->serviceWebs = new ArrayCollection();
         $this->favoris = new ArrayCollection();
+        $this->servicesGraphismes = new ArrayCollection();
+        $this->categories = new ArrayCollection();
+        $this->commandeLogos = new ArrayCollection();
     }
 
     
@@ -571,6 +589,99 @@ class Users implements UserInterface
     public function setVille(?string $ville): self
     {
         $this->ville = $ville;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServicesGraphisme[]
+     */
+    public function getServicesGraphismes(): Collection
+    {
+        return $this->servicesGraphismes;
+    }
+
+    public function addServicesGraphisme(ServicesGraphisme $servicesGraphisme): self
+    {
+        if (!$this->servicesGraphismes->contains($servicesGraphisme)) {
+            $this->servicesGraphismes[] = $servicesGraphisme;
+            $servicesGraphisme->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServicesGraphisme(ServicesGraphisme $servicesGraphisme): self
+    {
+        if ($this->servicesGraphismes->contains($servicesGraphisme)) {
+            $this->servicesGraphismes->removeElement($servicesGraphisme);
+            // set the owning side to null (unless already changed)
+            if ($servicesGraphisme->getUser() === $this) {
+                $servicesGraphisme->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Categorie[]
+     */
+    public function getCategories(): Collection
+    {
+        return $this->categories;
+    }
+
+    public function addCategory(Categorie $category): self
+    {
+        if (!$this->categories->contains($category)) {
+            $this->categories[] = $category;
+            $category->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategory(Categorie $category): self
+    {
+        if ($this->categories->contains($category)) {
+            $this->categories->removeElement($category);
+            // set the owning side to null (unless already changed)
+            if ($category->getUser() === $this) {
+                $category->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeLogo[]
+     */
+    public function getCommandeLogos(): Collection
+    {
+        return $this->commandeLogos;
+    }
+
+    public function addCommandeLogo(CommandeLogo $commandeLogo): self
+    {
+        if (!$this->commandeLogos->contains($commandeLogo)) {
+            $this->commandeLogos[] = $commandeLogo;
+            $commandeLogo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeLogo(CommandeLogo $commandeLogo): self
+    {
+        if ($this->commandeLogos->contains($commandeLogo)) {
+            $this->commandeLogos->removeElement($commandeLogo);
+            // set the owning side to null (unless already changed)
+            if ($commandeLogo->getUser() === $this) {
+                $commandeLogo->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -29,3 +29,157 @@ h1 {
     height: 32px;
     width: 100px;
 }
+
+.commande-logo {
+    margin-top: 55px;
+    padding: 80px;
+}
+
+.image-logo {
+    width: 200;
+    height: 150;  
+
+}
+
+.thumbnail-log {
+    background-color: #f6a722;
+}
+
+.prix-logo {
+    background: #5cb85c !important;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.2) !important;
+    -moz-box-shadow: 0 1px rgba(0, 0, 0, 0.2) !important;
+    -webkit-box-shadow: 0 1px rgba(0, 0, 0, 0.2) !important;
+    color: #fff !important;
+    text-shadow: 2px 2px #333 !important;
+    position: absolute;
+    right: -9px;
+    top: 20px !important;
+    left: 70%;
+    font-size: 20px;
+    border-radius: 3px;
+}
+
+.prix-logo:before {
+    border: 4px solid transparent;
+    border-bottom: 4px solid #4a934a;
+    border-left: 4px solid #4a934a;
+    content: "";
+    position: absolute;
+    right: 1px;
+    top: -8px;
+}
+
+.caption-logo>h4 {
+    color: #fff;
+    font-size: 30px;
+    text-align: center;
+}
+
+.btn-order {
+    width: 50%;
+    padding: 10px;
+    margin-left: 100px;
+    color: #fff;
+    background-color: #7c22f6;
+    margin-bottom: 40px;
+    text-decoration: none;
+    text-shadow: 2px 2px #333;
+}
+
+.btn-order:hover {
+    color: #fff; 
+    ;
+}
+
+.btn-order:focus { 
+    color: #fff;
+}
+
+.text-commande-logo h1 {
+    text-align: center;
+}
+
+/* commande article */
+
+.formulaire {
+    margin-top: 20px;
+    padding: 80px;
+}
+
+.commande-graphisme{
+    border: 1px solid #ccc;
+}
+
+.text-required{
+    color: rgb(253, 14, 14);
+}
+
+.formulaire-logo {
+    margin-top: 5%;
+}
+
+.text-label {
+    font-size: 25px;
+    text-align: center;
+    margin-left: 30%;
+    color: #000;
+}
+
+.btn-telecharger {
+    margin-left: 35%;
+    width: 25%;
+    background-color: #f6a722;
+    box-shadow: none;
+}
+
+.btn-telecharger:hover,
+ :focus {
+    color: none !important;
+}
+
+.bouton-envoyer {
+    margin-left: 38%;
+    width: 20%;
+    background-color: #7c22f6;
+    ;
+    box-shadow: none;
+}
+
+.name-couleur {
+    width: 60%;
+    margin-left: 23%;
+}
+
+.text-message {
+    width: 62%;
+    height: 200%;
+    text-align: center;
+    font-weight: none;
+    font-size: 15px;
+    margin-left: 22%;
+    color: #000;
+}
+
+.text-message1 {
+    font-size: 25px;
+    margin-left: 25%;
+    color: #000;
+}
+
+.name-couleur:focus {
+    border: none;
+}
+
+.name-couleur::placeholder {
+    text-align: center;
+}
+
+#message::placeholder {
+    margin-top: 200px;
+}
+
+.fa-download {
+    width: 20px;
+    height: 25px;
+}

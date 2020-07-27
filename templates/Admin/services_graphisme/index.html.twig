@@ -1,0 +1,39 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}ServicesGraphisme index{% endblock %}
+
+{% block body %}
+    <h1>ServicesGraphisme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for services_graphisme in services_graphismes %}
+            <tr>
+                <td>{{ services_graphisme.id }}</td>
+                <td>{{ services_graphisme.imageName }}</td>
+                <td>{{ services_graphisme.createdAt ? services_graphisme.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ services_graphisme.updatedAt ? services_graphisme.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_services_graphisme_show', {'id': services_graphisme.id}) }}">show</a>
+                    <a href="{{ path('admin_services_graphisme_edit', {'id': services_graphisme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_services_graphisme_new') }}">Create new</a>
+{% endblock %}

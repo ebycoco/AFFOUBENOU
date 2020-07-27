@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Profil;
 
 use App\Entity\Users;
 use App\Form\UsersType;
 use App\Repository\UsersRepository;
+use App\Repository\CommandeLogoRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -13,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 /**
  *  @Route("/profile", name="profile_")
  */
-class ProfilController extends AbstractController
+class ProfilUserController extends AbstractController
 {
     /**
      * @Route("/", name="index")
@@ -25,12 +26,14 @@ class ProfilController extends AbstractController
     }
 
     /**
-     * @Route("/commande", name="commande")
+     * @Route("/commande", name="commande", methods={"GET"})
      */
-    public function commande()
+    public function commande(CommandeLogoRepository $commandeLogoRepository): Response
     {
         
-        return $this->render('profil/commande.html.twig');
+        return $this->render('profil/commande.html.twig',[
+            'commande_logos' => $commandeLogoRepository->findByLastCommand(),
+        ]);
     }
 
     /**

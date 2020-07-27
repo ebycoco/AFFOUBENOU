@@ -14,50 +14,31 @@
                     <th scope="col">Quantité</th> 
                     <th scope="col">Prix</th>
                     <th scope="col">Etat</th> 
+                    <th scope="col">Image</th> 
                     <th scope="col">Dates de commandes</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th scope="row">5</th> 
-                    <td>site web</td>
-                    <td class="nombre-commande">4</td>
-                    <td>50.000fcfa</td>
-                    <td style="color: #f6a722;">attente</td>  
-                    <td class="date-commande">15/07/2020</td>
-                </tr>
-                <tr>
-                    <th scope="row">4</th> 
-                    <td>Carte de mariage</td>
+            {% for commande_logo in commande_logos %}
+              <tr>
+                    <th scope="row">{{commande_logo.id}}</th> 
+                    <td>{{commande_logo.servicesGraphisme.nom}}</td>
+                    {% if commande_logo.servicesGraphisme.nom == 'Logo' %}
                     <td class="nombre-commande">1</td>
-                     <td>5000fcfa</td>
-                    <td style="color: green;">validé</td> 
-                    <td class="date-commande">13/07/2020</td>
+                    {% else %}
+                      <td class="nombre-commande">4</td>
+                    {% endif %} 
+                    <td>{{commande_logo.servicesGraphisme.prix}}fcfa</td>
+                    {% if commande_logo.etat == false %}
+                       <td style="color: #f6a722;">attente</td>  
+                       <td style="color: #f6a722;">attente</td>  
+                    {% else %}
+                      <td style="color: green;">validé</td>
+                      <td><a class="btn btn-success" href="{{path('vue_produit')}}">Voir Produits</a></td>
+                    {% endif %} 
+                    <td class="date-commande">{{ commande_logo.createdAt ? commande_logo.createdAt|date('d-m-Y') : '' }}</td>
                 </tr>
-                <tr>
-                    <th scope="row">3</th> 
-                    <td>carte de visite</td>
-                    <td class="nombre-commande">1</td>
-                     <td>5000fcfa</td>
-                    <td style="color: green;">validé</td> 
-                    <td class="date-commande">12/07/2020</td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th> 
-                    <td>Flyers</td>
-                    <td class="nombre-commande">2</td>
-                    <td>50.000fcfa</td>
-                    <td style="color: green;">validé</td> 
-                    <td class="date-commande">07/07/2020</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th> 
-                    <td>Affiche publicitaire</td>
-                    <td class="nombre-commande">1</td>
-                    <td>50.000fcfa</td>
-                    <td style="color: green;">validé</td> 
-                    <td class="date-commande">05/07/2020</td>
-                </tr>
+            {% endfor %} 
             </tbody>
         </table>
         <nav class="text-center" aria-label="...">
