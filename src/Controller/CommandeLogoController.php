@@ -3,25 +3,31 @@
 namespace App\Controller;
 
 use App\Entity\CommandeLogo;
+use App\Entity\CommandePredefine;
 use App\Form\CommandeLogoType;
+use App\Repository\CommandeFinaleRepository;
 use App\Repository\CommandeLogoRepository;
+use App\Repository\CommandePredefineRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/commande/logo")
+ * @Route("/admin/commande/logo", name="admin_")
  */
 class CommandeLogoController extends AbstractController
 {
     /**
      * @Route("/", name="commande_logo_index", methods={"GET"})
      */
-    public function index(CommandeLogoRepository $commandeLogoRepository): Response
-    {
+    public function index(CommandeLogoRepository $commandeLogoRepository,CommandePredefineRepository $commandePredefineRepository,CommandeFinaleRepository $commandeFinaleRepository): Response
+    { 
         return $this->render('commande_logo/index.html.twig', [
             'commande_logos' => $commandeLogoRepository->findAll(),
+            'commande_logo_pres' => $commandePredefineRepository->findAll(),
+            'commande_logo_finale' => $commandeFinaleRepository->findAll(),
+            'commande_predefinies' => $commandePredefineRepository->findAll(),
         ]);
     }
 
@@ -67,8 +73,9 @@ class CommandeLogoController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
-
+            $entityManager = $this->getDoctrine()->getManager();
+            $commandeLogo->setEtat('1');
+            $entityManager->flush(); 
             return $this->redirectToRoute('commande_logo_index');
         }
 

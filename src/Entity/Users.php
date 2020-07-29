@@ -137,6 +137,11 @@ class Users implements UserInterface
      */
     private $commandeLogos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommandePredefine::class, mappedBy="user")
+     */
+    private $commandePredefines;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -151,6 +156,7 @@ class Users implements UserInterface
         $this->servicesGraphismes = new ArrayCollection();
         $this->categories = new ArrayCollection();
         $this->commandeLogos = new ArrayCollection();
+        $this->commandePredefines = new ArrayCollection();
     }
 
     
@@ -680,6 +686,37 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($commandeLogo->getUser() === $this) {
                 $commandeLogo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandePredefine[]
+     */
+    public function getCommandePredefines(): Collection
+    {
+        return $this->commandePredefines;
+    }
+
+    public function addCommandePredefine(CommandePredefine $commandePredefine): self
+    {
+        if (!$this->commandePredefines->contains($commandePredefine)) {
+            $this->commandePredefines[] = $commandePredefine;
+            $commandePredefine->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandePredefine(CommandePredefine $commandePredefine): self
+    {
+        if ($this->commandePredefines->contains($commandePredefine)) {
+            $this->commandePredefines->removeElement($commandePredefine);
+            // set the owning side to null (unless already changed)
+            if ($commandePredefine->getUser() === $this) {
+                $commandePredefine->setUser(null);
             }
         }
 

@@ -9,7 +9,7 @@
 		<div class="row">
 			<div class="col-sm-8 col-md-8 col-lg-8">
 				<div class="card card-commande-dispo">
-					<img src="{{asset('images/logo/logo4.png')}}" class="card-img-top image-filigrane" alt="">
+					<img src="{{ vich_uploader_asset(commandeLogo, 'imageFile')|imagine_filter('service_graph_accueil')}} class="card-img-top image-filigrane" alt="">
 
 				</div>
 

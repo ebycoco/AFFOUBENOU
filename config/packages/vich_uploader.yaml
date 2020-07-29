@@ -99,3 +99,21 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true
+
+        logo_Graph_filgrame:
+            uri_prefix: /images/logo_Graph_filgrame
+            upload_destination: '%kernel.project_dir%/public/images/logo_Graph_filgrame'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        logo_Graph_finale:
+            uri_prefix: /images/logo_Graph_finale
+            upload_destination: '%kernel.project_dir%/public/images/logo_Graph_finale'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

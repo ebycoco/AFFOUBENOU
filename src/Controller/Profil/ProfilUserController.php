@@ -32,7 +32,7 @@ class ProfilUserController extends AbstractController
     {
         
         return $this->render('profil/commande.html.twig',[
-            'commande_logos' => $commandeLogoRepository->findByLastCommand(),
+            'commande_logos' => $commandeLogoRepository->findByLastCommand($this->getUser()),
         ]);
     }
 

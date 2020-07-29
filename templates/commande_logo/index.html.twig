@@ -1,37 +1,32 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}CommandeLogo index{% endblock %}
 
 {% block body %}
-    <h1>CommandeLogo index</h1>
-
-    <table class="table">
+    <h1>CommandeLogo index</h1> 
+    <a href="{{ path('admin_commande_logo_new') }}">Create new</a>
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table">
         <thead>
             <tr>
                 <th>Id</th>
-                <th>ImageName</th>
-                <th>CreatedAt</th>
-                <th>UpdatedAt</th>
-                <th>NomLogo</th>
-                <th>Couleur</th>
-                <th>Modification</th>
-                <th>actions</th>
+                <th>Client</th>  
+                <th>Détails</th>  
+                <th>Ajouter</th>  
             </tr>
         </thead>
         <tbody>
         {% for commande_logo in commande_logos %}
             <tr>
                 <td>{{ commande_logo.id }}</td>
-                <td>{{ commande_logo.imageName }}</td>
-                <td>{{ commande_logo.createdAt ? commande_logo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ commande_logo.updatedAt ? commande_logo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ commande_logo.nomLogo }}</td>
-                <td>{{ commande_logo.couleur }}</td>
-                <td>{{ commande_logo.modification }}</td>
-                <td>
-                    <a href="{{ path('commande_logo_show', {'id': commande_logo.id}) }}">show</a>
-                    <a href="{{ path('commande_logo_edit', {'id': commande_logo.id}) }}">edit</a>
-                </td>
+                <td>{{ commande_logo.user.prenom }}</td> 
+                 
+                <td><a class="btn btn-info" href="{{ path('admin_commande_logo_show', {'id': commande_logo.id}) }}"> <i class="fas fa-info"></i>  Afficher</a></td> 
+                <td class="text-center">
+                    <a class="btn btn-primary" href="{{ path('admin_commande_predefine_new', {'id': commande_logo.id}) }}"> <i class="fas fas fa-upload"></i> filigrame</a>
+                    <a class="btn btn-primary" href="{{ path('admin_commande_finale_new', {'id': commande_logo.id}) }}"> <i class="fas fas fa-upload"></i> sans filigrame</a>
+                </td> 
             </tr>
         {% else %}
             <tr>
@@ -40,6 +35,30 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('commande_logo_new') }}">Create new</a>
+        </div>
+        <div class="col-md-4">
+            <table class="table">
+        <thead>
+            <tr>     
+                <th colspan="2" class="text-center">Voir</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_logo_pre in commande_logo_pres %} 
+            <tr>  
+                <td class="text-center">
+                    <a class="btn btn-success" href="{{ path('admin_commande_predefine_show', {'id': commande_logo_pre.id}) }}"> <i class="fas fa-eye"></i> filigrame</a>
+                    
+                </td> 
+        {% endfor %}
+        {% for commande_logo_finale in commande_logo_finale %}  
+                <td class="text-center">
+                <a class="btn btn-success" href="{{ path('admin_commande_finale_show', {'id': commande_logo_finale.id}) }}"> <i class="fas fa-eye"></i> sans filigrame</a>
+                </td>
+            </tr>  
+        {% endfor %}
+        </tbody>
+    </table>
+        </div>
+    </div>
 {% endblock %}

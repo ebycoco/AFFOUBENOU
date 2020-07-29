@@ -19,9 +19,11 @@ class CommandeLogoRepository extends ServiceEntityRepository
         parent::__construct($registry, CommandeLogo::class);
     }
 
-    public function findByLastCommand()
+    public function findByLastCommand($value)
     {
         return $this->createQueryBuilder('c')
+        ->andWhere('c.user = :val')
+            ->setParameter('val', $value)
             ->orderBy('c.id', 'DESC')
             ->setMaxResults(6)
             ->getQuery()

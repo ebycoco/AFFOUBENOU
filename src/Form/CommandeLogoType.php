@@ -8,6 +8,7 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class CommandeLogoType extends AbstractType
@@ -28,7 +29,7 @@ class CommandeLogoType extends AbstractType
                     'placeholder' => 'nom du logo'
                 ]
             ])
-            ->add('couleur',TextType::class, [
+            ->add('couleur',ColorType::class, [
                 'required'=>false,
                 'attr' => [ 
                     'class' => 'form-control name-couleur',

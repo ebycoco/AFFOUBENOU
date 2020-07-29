@@ -4,7 +4,8 @@ namespace App\Controller;
 
 use App\Entity\ServicesGraphisme;
 use App\Entity\CommandeLogo;
-use App\Form\CommandeLogoType; 
+use App\Entity\CommandePredefine;
+use App\Form\CommandeLogoType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
@@ -14,14 +15,12 @@ class CommandeGraphismeController extends AbstractController
     /**
      * @Route("/commande/graphisme/{id}", name="commande_graphisme", methods={"GET","POST"})
      */
-    public function logo(ServicesGraphisme $servicesGraphisme,Request $request)
+    public function logo(ServicesGraphisme $servicesGraphisme, Request $request)
     {
-         
-        
-        if ($servicesGraphisme->getCategorie()->getNom()=='Conception de logo') {
+        if ($servicesGraphisme->getCategorie()->getNom() == 'Conception de logo') {
             $commandeLogo = new CommandeLogo();
             $form = $this->createForm(CommandeLogoType::class, $commandeLogo);
-            $form->handleRequest($request); 
+            $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager = $this->getDoctrine()->getManager();
@@ -29,7 +28,6 @@ class CommandeGraphismeController extends AbstractController
                 $commandeLogo->setServicesGraphisme($servicesGraphisme);
                 $entityManager->persist($commandeLogo);
                 $entityManager->flush();
-    
                 return $this->redirectToRoute('profile_commande');
             }
             return $this->render('service_graphisme/commande_graphisme.html.twig', [
@@ -37,10 +35,10 @@ class CommandeGraphismeController extends AbstractController
                 'commande_logo' => $commandeLogo,
                 'form' => $form->createView(),
             ]);
-        }elseif ($servicesGraphisme->getCategorie()->getNom()=='Conception de logo') {
+        } elseif ($servicesGraphisme->getCategorie()->getNom() == 'Conception de logo') {
             $commandeLogo = new CommandeLogo();
             $form = $this->createForm(CommandeLogoType::class, $commandeLogo);
-            $form->handleRequest($request); 
+            $form->handleRequest($request);
 
             if ($form->isSubmitted() && $form->isValid()) {
                 $entityManager = $this->getDoctrine()->getManager();
@@ -48,7 +46,7 @@ class CommandeGraphismeController extends AbstractController
                 $commandeLogo->setServicesGraphisme($servicesGraphisme);
                 $entityManager->persist($commandeLogo);
                 $entityManager->flush();
-    
+
                 return $this->redirectToRoute('profile_commande');
             }
             return $this->render('service_graphisme/commande_graphisme.html.twig', [
@@ -56,12 +54,28 @@ class CommandeGraphismeController extends AbstractController
                 'commande_logo' => $commandeLogo,
                 'form' => $form->createView(),
             ]);
-        }
-         else {
+        } else {
             return $this->redirectToRoute('service_graphisme');
         }
-        
-        
-       
+    }
+
+    /**
+     * @Route("/commande/graphisme/predefinie/{id}", name="commande_graphisme_fili", methods={"GET","POST"})
+     */
+    public function etapefiligrame(CommandePredefine $commandePredefine)
+    {
+        return $this->render('service_graphisme/commande_graphisme_filigra_logo.html.twig', [
+            'commandePredefine' => $commandePredefine,
+        ]);
+    }
+
+    /**
+     * @Route("/commande/graphisme/paiement/{id}", name="commande_graphisme_mod", methods={"GET","POST"})
+     */
+    public function modepaiement(CommandePredefine $commandePredefine)
+    {
+        return $this->render('service_graphisme/modePaiement.html.twig', [
+            'commandePredefine' => $commandePredefine,
+        ]);
     }
 }

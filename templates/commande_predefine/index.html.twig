@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CommandePredefine index{% endblock %}
+
+{% block body %}
+    <h1>CommandePredefine index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageFiligrame</th>
+                <th>ImageFinale</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_predefine in commande_predefines %}
+            <tr>
+                <td>{{ commande_predefine.id }}</td>
+                <td>{{ commande_predefine.imageFiligrame }}</td>
+                <td>{{ commande_predefine.imageFinale }}</td>
+                <td>{{ commande_predefine.createdAt ? commande_predefine.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande_predefine.updatedAt ? commande_predefine.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('commande_predefine_show', {'id': commande_predefine.id}) }}">show</a>
+                    <a href="{{ path('commande_predefine_edit', {'id': commande_predefine.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_predefine_new') }}">Create new</a>
+{% endblock %}

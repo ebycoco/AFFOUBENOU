@@ -82,3 +82,10 @@ liip_imagine:
                 thumbnail:
                     size: [200,150]
                     mode: outbound
+
+        image_filigrane:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [200,150]
+                    mode: outbound

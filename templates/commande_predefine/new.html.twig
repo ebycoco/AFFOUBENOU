@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New CommandePredefine{% endblock %}
+
+{% block body %}
+    <h1>Mettre l'image</h1>
+
+    {{ include('commande_predefine/_form.html.twig') }}
+
+    <a href="{{ path('admin_commande_logo_index') }}">Retour à la liste</a>
+<img src="{{ vich_uploader_asset(commandeLogo.servicesGraphisme, 'imageFile')|imagine_filter('article_admin')}}" alt="">
+    
+{% endblock %}

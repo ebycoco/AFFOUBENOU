@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CommandeLogoRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -80,6 +82,22 @@ class CommandeLogo
      * @ORM\Column(type="boolean", options={"default": false})
      */
     private $etat=false;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandePredefine::class, mappedBy="commandelogo")
+     */
+    private $commandePredefines;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=CommandePredefine::class, inversedBy="commandeLogos")
+     */
+    private $predefinie;
+ 
+
+    public function __construct()
+    {
+        $this->commandePredefines = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -199,6 +217,49 @@ class CommandeLogo
     public function setEtat(bool $etat): self
     {
         $this->etat = $etat;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandePredefine[]
+     */
+    public function getCommandePredefines(): Collection
+    {
+        return $this->commandePredefines;
+    }
+
+    public function addCommandePredefine(CommandePredefine $commandePredefine): self
+    {
+        if (!$this->commandePredefines->contains($commandePredefine)) {
+            $this->commandePredefines[] = $commandePredefine;
+            $commandePredefine->setCommandelogo($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandePredefine(CommandePredefine $commandePredefine): self
+    {
+        if ($this->commandePredefines->contains($commandePredefine)) {
+            $this->commandePredefines->removeElement($commandePredefine);
+            // set the owning side to null (unless already changed)
+            if ($commandePredefine->getCommandelogo() === $this) {
+                $commandePredefine->setCommandelogo(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getPredefinie(): ?CommandePredefine
+    {
+        return $this->predefinie;
+    }
+
+    public function setPredefinie(?CommandePredefine $predefinie): self
+    {
+        $this->predefinie = $predefinie;
 
         return $this;
     }
