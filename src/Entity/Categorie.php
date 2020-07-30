@@ -48,6 +48,11 @@ class Categorie
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $nomCategorie;
+
     public function __construct()
     {
         $this->servicesGraphismes = new ArrayCollection();
@@ -119,6 +124,18 @@ class Categorie
     public function setUser(?Users $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getNomCategorie(): ?string
+    {
+        return $this->nomCategorie;
+    }
+
+    public function setNomCategorie(string $nomCategorie): self
+    {
+        $this->nomCategorie = $nomCategorie;
 
         return $this;
     }

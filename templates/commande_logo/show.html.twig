@@ -1,42 +1,37 @@
 {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}CommandeLogo{% endblock %}
+{% block title %}Detail du Logo{% endblock %}
 
 {% block body %}
-    <h1>CommandeLogo</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ commande_logo.id }}</td>
-            </tr>
-            <tr>
-                <th>Image</th>
-                <td><img src="{{ vich_uploader_asset(commande_logo.servicesGraphisme, 'imageFile')|imagine_filter('article_admin')}}" alt=""></td>
-            </tr>
-            <tr>
-                <th>CreatedAt</th>
-                <td>{{ commande_logo.createdAt ? commande_logo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>UpdatedAt</th>
-                <td>{{ commande_logo.updatedAt ? commande_logo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
-            </tr>
-            <tr>
-                <th>NomLogo</th>
-                <td>{{ commande_logo.nomLogo }}</td>
-            </tr>
-            <tr>
-                <th>Couleur</th>
-                <td>{{ commande_logo.couleur }}</td>
-            </tr>
-            <tr>
-                <th>Modification</th>
-                <td>{{ commande_logo.modification }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-   <a class="btn btn-primary" href="{{ path('admin_commande_logo_index') }}">Retour à la liste</a>
+    <div class="detail pl-3 pb-3" style="background: #fff;">
+        <h1>Commande Logo {{commande_logo.id}}</h1>
+        <a class="btn btn-primary" href="{{ path('admin_commande_logo_index') }}">Retour à la liste</a>
+    <div class="row">
+        <div class="col-md-6">
+            <img src="{{ vich_uploader_asset(commande_logo.servicesGraphisme, 'imageFile')|imagine_filter('image_detail_admin')}}" alt="">
+        </div>
+        <div class="col-md-6 mt-2">
+            
+            <div class="col-md-12 text-center"> 
+                <h4 style="font-weight: bold;">Nom du logo</h4>
+                <p style="color:#f6a722;font-size:24px;">{{ commande_logo.nomLogo }}</p>
+            </div>
+            <div class="col-md-12 text-center">
+            {% if commande_logo.couleur == null %}
+            {% else %} 
+            <h4 style="font-weight: bold;">Code couleur</h4>
+                <p style="color:#f6a722;font-size:24px;">{{ commande_logo.couleur }}</p>
+            {% endif %}  
+            </div>
+            <div class="col-md-12 text-center"> 
+                {% if commande_logo.modification == null %}
+            {% else %}
+            <h4 style="font-weight: bold;">Détails</h4>
+                <p style="color:#f6a722;font-size:24px;">{{ commande_logo.modification }}</p> 
+            {% endif %}
+                
+            </div> 
+        </div>
+    </div>  
+    </div>
 {% endblock %}

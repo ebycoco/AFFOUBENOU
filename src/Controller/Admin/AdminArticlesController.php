@@ -41,7 +41,7 @@ class AdminArticlesController extends AbstractController
             $article->setUser($this->getUser());
             $entityManager->persist($article);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Article Créer avec success');
             return $this->redirectToRoute('admin_articles_index');
         }
 
@@ -72,7 +72,7 @@ class AdminArticlesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Article modifier avec success');
             return $this->redirectToRoute('admin_articles_index');
         }
 
@@ -92,7 +92,7 @@ class AdminArticlesController extends AbstractController
             $entityManager->remove($article);
             $entityManager->flush();
         }
-
+        $this->addFlash('danger', 'Article supprimer avec success');
         return $this->redirectToRoute('admin_articles_index');
     }
 }

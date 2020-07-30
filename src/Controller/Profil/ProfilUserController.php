@@ -22,6 +22,9 @@ class ProfilUserController extends AbstractController
     public function index()
     {
         
+        if ($this->getUser()->getAdresse()== null) {
+            $this->addFlash('warning', 'Veuillez mettre votre profile pour faire les achats'); 
+        }
         return $this->render('profil/index.html.twig');
     }
 
@@ -41,6 +44,9 @@ class ProfilUserController extends AbstractController
      */
     public function edit(Request $request, Users $users): Response
     {
+        if ($this->getUser()->getAdresse()== null) {
+            $this->addFlash('warning', 'Veuillez mettre votre profile SVP !'); 
+        }
         $form = $this->createForm(UsersType::class, $users);
         $form->handleRequest($request);
 

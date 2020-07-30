@@ -93,6 +93,7 @@ class CommandeLogo
      */
     private $predefinie;
  
+ 
 
     public function __construct()
     {
@@ -262,6 +263,6 @@ class CommandeLogo
         $this->predefinie = $predefinie;
 
         return $this;
-    }
+    } 
 
 }

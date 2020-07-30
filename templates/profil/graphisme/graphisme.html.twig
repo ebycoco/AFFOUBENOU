@@ -1,0 +1,74 @@
+{% extends 'basecommande.html.twig' %}
+{% block title %}Hello ServiceGraphisme1Controller!
+{% endblock %}
+{% block body %}
+	<section class="service-commande container-fluid" style="background-image:url({{asset('images/service3.png')}});">
+
+		<div class="titre-graph mb-5">
+			<h1 class="text-center">Services graphismes</h1>
+		</div>
+		<div class="trait-graph mb-5"></div>
+		<div class="container">
+		{% for row in categories|batch(2) %} 
+			<div class="row">
+				{% for categorie in row %} 
+				<div class=" col-md-6"> 
+				 
+                    <div class="col-md-12 text-graph text-center">
+					{% if categorie.nomCategorie == 'logo' %}
+					 	<a class="text-decoration-none" href="{{path('profile_service_graphisme_choix',{'id': categorie.id})}}"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'tee-shirt' %}
+						<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'badges' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'cartes_mariages' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'vidéos_publicitaires' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'publicitaire' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'publicitaire' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'cartes_visites' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'menu' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% elseif categorie.nomCategorie == 'branding' %}
+						<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% else %}
+						<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+					{% endif %}
+                        
+                    </div> 
+				</div>
+				{% endfor %} 
+			</div> 
+			{% endfor %}  
+				<div class="logo-image-graph"><img src="{{asset('images/logoafou.png')}}" alt="logo-img" class="logo-img"></div>
+			</div>
+
+		</div>
+	</section>
+{% endblock %}

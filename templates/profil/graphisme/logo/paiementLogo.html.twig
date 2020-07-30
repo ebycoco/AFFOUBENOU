@@ -3,20 +3,20 @@
 {% endblock %}
 {% block body %}
 	<section class="mode-paiement mb-5">
-		<div class="paiement">
-			<h1 class="title">Choisissez votre mode de paiement</h1>
+		<div class="paiement mt-3">
+			<h1 class="text-center">Choisissez votre mode de paiement</h1>
 		</div>
-		<div class="row mb-5">
-			<div class="col-sm-3 col-md-3 col-lg-3">
-				<a href="#" class="btn btn-default" data-toggle="modal" data-target="#orange"><img src="{{asset('images/orang.png')}}" alt="image-operateur" class="image-operateur"></a>
+		<div class="row pl-3">
+			<div class="col-md-3 image-paiement mb-3 mt-3">
+				<a href="#" data-toggle="modal" data-target="#orange"><img src="{{asset('images/orang.png')}}" alt="image-operateur" class="image-operateur"></a>
 			</div>
-			<div class="col-sm-3 col-md-3 col-lg-3">
-				<a href="#" data-toggle="modal" data-target="#mtn"><img src="{{asset('images/mtn.jpg')}}" alt="image-operateur" class="image-operateur"></a>
+			<div class="col-md-3 image-paiement mb-3 mt-3">
+				<a href="#"  data-toggle="modal" data-target="#mtn"><img src="{{asset('images/mtn.jpg')}}" alt="image-operateur" class="image-operateur"></a>
 			</div>
-			<div class="col-sm-3 col-md-3 col-lg-3">
+			<div class="col-md-3 image-paiement mb-3 mt-3">
 				<a href="#" data-toggle="modal" data-target="#moov"><img src="{{asset('images/moov.png')}}" alt="image-operateur" class="image-operateur"></a>
 			</div>
-			<div class="col-sm-3 col-md-3 col-lg-3">
+			<div class="col-md-3 image-paiement mb-3 mt-3">
 				<a href="#" data-toggle="modal" data-target="#espece"><img src="{{asset('images/prixrecu.png')}}" alt="image-operateur" class="image-operateur"></a>
 			</div>
 		</div>
@@ -24,99 +24,105 @@
 		<div class="modal fade" id="orange">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<div class="modal-header">
+					<div class="modal-header  text-muted text-center">
 						<h4 class="modal-title">Pour payer avec orange money
 							<img src="{{asset('images/orang.png')}}" alt="" width="60" height="60"></h4>
 						<button type="button" class="close" data-dismiss="modal">x</button>
 					</div>
 					<div class="modal-body">
-						<div>
-							<p class="text-description">Veillez composez cette syntaxe sur votre
-								<br>
+						<div class="text-center">
+							<p class="text-description">Veuillez composez cette syntaxe sur votre 
 								Téléphone mobile
-								<img src="{{asset('images/mobilephone.png')}}" alt="image-phone" class="image-phone">
+								<img src="{{asset('images/tel.png')}}" alt="image-phone" class="image-phone">
 								<br>
-								<span style="color: red;">
+								<span style="color: red; font-weight: bold;">
 									#144*1*1*montant*code secret#
 								</span><br>
 							</p>
-							<form action="#">
+							<form action="#" method="post">
 								<img src="{{asset('images/notice.png')}}" alt="image-notice" class="image-notice">
 								<label for="code" style="font-size: 20px;">Vous recevrez un code de confirmation</label>
-								<input type="integer" name="code-confirm" class="form-control code-confirm mt-4" placeholder="Entrez le code de confirmation">
-								<button type="submit" class="btn btn-success valide mt-3">Valide</button>
+								<div class="row">
+									<div class="col-md-3"></div>
+									<div class="col-md-6">
+										<div class="col-md-3"></div>
+									<input type="integer" name="code-confirm" class="form-control mt-4" placeholder="Entrez le code de confirmation">
+								</div>
+								</div>
+								<a href="{{path('profile_recu_logo',{'id': commandePredefine.id})}}" class="btn btn-success valide mt-3">Valide</a>
 							</form>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
 		<div class="modal fade" id="mtn">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Pour payer avec momo
+					<div class="modal-header text-muted text-center">
+						<h4 class="modal-title">Pour payer avec MoMo
 							<img src="{{asset('images/mtn.jpg')}}" alt="" width="60" height="60"></h4>
 						<button type="button" class="close" data-dismiss="modal">x</button>
 					</div>
 					<div class="modal-body">
-						<div>
-							<p class="text-description">Veillez composez cette syntaxe sur votre
-								<br>
+						<div class="text-center">
+							<p class="text-description">Veuillez composez cette syntaxe sur votre 
 								Téléphone mobile
-								<img src="{{asset('images/mobilephone.png')}}" alt="image-phone" class="image-phone">
+								<img src="{{asset('images/tel.png')}}" alt="image-phone" class="image-phone">
 								<br>
 								<span style="color: red;">
 									*133*1*1*montant*code secret#
 								</span><br>
 							</p>
-							<form action="#">
+							<form action="#" method="post">
 								<img src="{{asset('images/notice.png')}}" alt="image-notice" class="image-notice">
 								<label for="code" style="font-size: 20px;">Vous recevrez un code de confirmation</label>
-								<input type="integer" name="code-confirm" class="form-control code-confirm mt-4" placeholder="Entrez le code de confirmation">
-								<button type="submit" class="btn btn-success valide mt-3">Valide</button>
+								<div class="row">
+									<div class="col-md-3"></div>
+									<div class="col-md-6">
+										<div class="col-md-3"></div>
+									<input type="integer" name="code-confirm" class="form-control mt-4" placeholder="Entrez le code de confirmation">
+								</div>
+								</div>
+								<a href="{{path('profile_recu_logo',{'id': commandePredefine.id})}}" class="btn btn-success valide mt-3">Valide</a>
 							</form>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
 		<div class="modal fade" id="moov">
 			<div class="modal-dialog modal-lg">
 				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Pour payer avec flooz money
+					<div class="modal-header text-muted text-center">
+						<h4 class="modal-title">Pour payer avec flooz Money
 							<img src="{{asset('images/moov.png')}}" alt="" width="60" height="60"></h4>
 						<button type="button" class="close" data-dismiss="modal">x</button>
 					</div>
 					<div class="modal-body">
-						<div>
-							<p class="text-description">Veillez composez cette syntaxe sur votre
-								<br>
+						<div class="text-center">
+							<p class="text-description">Veuillez composez cette syntaxe sur votre
 								Téléphone mobile
-								<img src="{{asset('images/mobilephone.png')}}" alt="image-phone" class="image-phone">
+								<img src="{{asset('images/tel.png')}}" alt="image-phone" class="image-phone">
 								<br>
 								<span style="color: red;">
 									*155*1*1*montant*code secret#
 								</span><br>
-							</p>
-							<form action="#">
+							</p> 
+							<form action="#" method="post">
 								<img src="{{asset('images/notice.png')}}" alt="image-notice" class="image-notice">
 								<label for="code" style="font-size: 20px;">Vous recevrez un code de confirmation</label>
-								<input type="integer" name="code-confirm" class="form-control code-confirm mt-4" placeholder="Entrez le code de confirmation">
-								<button type="submit" class="btn btn-success valide mt-3">Valide</button>
+								<div class="row">
+									<div class="col-md-3"></div>
+									<div class="col-md-6">
+										<div class="col-md-3"></div>
+									<input type="integer" name="code-confirm" class="form-control mt-4" placeholder="Entrez le code de confirmation">
+								</div>
+								</div>
+								<a href="{{path('profile_recu_logo',{'id': commandePredefine.id})}}" class="btn btn-success valide mt-3">Valide</a>
 							</form>
 						</div>
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>
@@ -130,16 +136,13 @@
 					</div>
 					<div class="modal-body">
 
-						<div class="text-paiement mb-5">
+						<div class="text-center mb-5 ">
 							<p class="text-description">Vous recevrez en
 								<span style="color: red;">48 heures
 								</span>votre logo</p>
 						</div>
 
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">Fermer</button>
-					</div>
+					</div> 
 				</div>
 			</div>
 		</div>

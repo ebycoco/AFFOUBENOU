@@ -7,6 +7,7 @@ use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Vich\UploaderBundle\Form\Type\VichImageType;
@@ -36,15 +37,9 @@ class CommandeLogoType extends AbstractType
                     'placeholder' => 'Vos couleurs'
                 ]
             ])
-            ->add('modification',TextareaType::class,[
-                'required'=>false,  
-                'attr' =>[
-                    'class' => 'form-control text-message',
-                    'placeholder' => 'Ajouter tous les details',
-                    'cols'=>"30",
-                    'rows'=>"10",
-                ]
-            ]) 
+            ->add('modification',CKEditorType::class, [
+                'config_name' => 'main_config',
+                    ]) 
         ;
     }
 

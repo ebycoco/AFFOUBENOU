@@ -89,3 +89,10 @@ liip_imagine:
                 thumbnail:
                     size: [200,150]
                     mode: outbound
+
+        image_detail_admin:
+            quality: 75
+            filters:
+                thumbnail:
+                    size: [369,467]
+                    mode: outbound

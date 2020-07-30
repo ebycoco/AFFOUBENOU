@@ -34,8 +34,14 @@
           Choisir service
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="{{path('service_graphisme')}}">Service graphisme</a>
+        {% if app.user.adresse == null %}
+        <a class="dropdown-item" href="{{path('profile_mise_a_jour', {'id': app.user.id})}}">Service graphisme</a>
+        <a class="dropdown-item" href="{{path('profile_mise_a_jour', {'id': app.user.id})}}">Service web</a> 
+        {% else %}
+          <a class="dropdown-item" href="{{path('profile_service_graphisme')}}">Service graphisme</a>
           <a class="dropdown-item" href="#">Service web</a> 
+        {% endif %} 
+          
         </div>
       </li> 
     </ul>

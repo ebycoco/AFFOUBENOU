@@ -1,0 +1,114 @@
+<style type="text/css">
+
+table{border-collapse: collapse; width: 100%;color: #717375;font-size: 12pt; font-family: Helvetica;line-height: 6mm;}
+strong{color: #000;}
+h1{color: #000;margin: 0;padding: 0;}
+em{font-size: 9pt;}
+table.border td{padding: 3mm 1mm;}
+table.border th,td.indigo{background: indigo;color: #fff;font-weight: normal;border: 1px solid #fff;padding: 1mm 1mm;text-align: left;}
+td.noborder{border: none;}
+.titre{color: #000;}
+.offre{background: rgba(72, 183, 235, 0.664);color: #fff;}
+
+</style>
+<body style="padding-top: 10mm;padding-left:10mm;padding-right:10mm;padding-bottom:10mm;">
+<div style=" text-align:center; background: #f6a722;">
+    <table style="vertical-align:text-top;">
+        <tr>
+            <td style="width:50%; text-align:right;">
+                <img src="images/logo.png" alt="" style=" width:60px ;height:60px;">
+            </td>
+            <td style="width:50%;color: #fff; text-align:left;">
+                <span> Affoubenou</span>
+            </td>
+        </tr>
+    </table> 
+    
+ </div>
+<h1 class="titre" style="padding-top: 10mm;text-align:center;">FACTURE</h1>
+<table style="vertical-align:text-top; padding-top: 10mm;">
+    <tr>
+        <td style="width:75%;">
+            <strong>AFFOUBENOU</strong> <br>
+            Address <br>
+            Contact: <br><br>
+            <em>Dispen&eacute; d'immatriculation au registre du commerce <br>
+                et des soci&eacute;t&eacute;s (RCS) et au r&eacute;pertoire des m&eacute;tiers (RM)
+            </em>
+        </td>
+        <td style="width:25%;">
+            Nom : <strong>{{app.user.nom}}</strong><br>
+            Prenom : <strong>{{app.user.prenom}}</strong><br>
+            contact : {{app.user.numeroTel}}
+        </td>
+    </tr>
+</table>
+<table style="vertical-align: buttom; margin-top:20mm;">
+    <tr>
+    <td style="width: 50%;"><h1>DEVIS N°:0000005</h1></td>
+    <td style=" width: 50%; padding-left: 30mm;">
+        Facture N° : {{commandePredifine.id}}<br>
+        Emis le {{ commandePredifine.createdAt ? commandePredifine.createdAt|date('d-m-Y') : '' }} 
+    
+    </td>
+    </tr>
+</table>
+
+<table class="border" style="padding-top:10mm;">
+    <thead>
+    <tr>
+        <th style="width: 30%;">Categorie</th>
+        <th style="width: 20%;">Prix unitaire</th>
+        <th style="width: 30%;">Quantité</th>
+        <th style="width: 20%;">Montant</th>
+    </tr>
+    </thead>
+    <tbody> 
+        <tr>
+            <td>
+                {{commandePredifine.commandelogo.servicesGraphisme.nom}}
+            </td>
+            <td>
+                {{commandePredifine.commandelogo.servicesGraphisme.prix}}
+            </td>
+            <td>
+                1
+            </td>
+            <td style="text-align: right;">
+                {{commandePredifine.commandelogo.servicesGraphisme.prix}} Fcfa
+            </td>
+
+        </tr> 
+        <tr>
+            <td colspan="4">
+                <br>
+                <br>
+                <br>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="noborder" style="padding:1mm;"></td>
+            <td class="indigo" style="padding:1mm;" >Montant Total HT : </td>
+            <td style="padding:1mm;text-align: right; font-weight: bold;">
+                {{commandePredifine.commandelogo.servicesGraphisme.prix}} Fcfa 
+            </td>
+        </tr>
+    </tbody>
+</table>
+<div style="padding-top: 25mm;">
+    <em> <strong>NB</strong>: Un E-mail vous a été envoyer a votre address {{app.user.email}} Vous pouvez recup&eacute;rer Votre {{commandePredifine.commandelogo.servicesGraphisme.nom}}.<br>
+        si vous ne voyez pas votre {{commandePredifine.commandelogo.servicesGraphisme.nom}} ,veuillez nous contacter au 57 40 16 57 <br>
+        <p>AFFOUBENOU vous remercie pour la comfiance et soyez fidel ensemble nous feront de grande espoir.</p>
+    </em>
+    <hr>
+</div>
+<table style="vertical-align:text-top;">
+    <tr>
+        <td style="width:25%; text-align:right;"> 
+        </td>
+        <td style="width:75%; text-align:right;"> 
+            <img src="images/logo.png" alt="" style=" width:60px ;height:60px;">
+        </td>
+    </tr>
+</table> 
+</body>                                          
