@@ -1,0 +1,55 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CommandeLogoPersonalise index{% endblock %}
+
+{% block body %}
+    <h1>CommandeLogoPersonalise index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>NomLogo</th>
+                <th>Couleur0</th>
+                <th>Couleur1</th>
+                <th>Couleur2</th>
+                <th>Couleur3</th>
+                <th>Modification</th>
+                <th>Etat</th>
+                <th>TypeLogo</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_logo_personalise in commande_logo_personalises %}
+            <tr>
+                <td>{{ commande_logo_personalise.id }}</td>
+                <td>{{ commande_logo_personalise.imageName }}</td>
+                <td>{{ commande_logo_personalise.createdAt ? commande_logo_personalise.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande_logo_personalise.updatedAt ? commande_logo_personalise.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande_logo_personalise.nomLogo }}</td>
+                <td>{{ commande_logo_personalise.couleur0 }}</td>
+                <td>{{ commande_logo_personalise.couleur1 }}</td>
+                <td>{{ commande_logo_personalise.couleur2 }}</td>
+                <td>{{ commande_logo_personalise.couleur3 }}</td>
+                <td>{{ commande_logo_personalise.modification }}</td>
+                <td>{{ commande_logo_personalise.etat ? 'Yes' : 'No' }}</td>
+                <td>{{ commande_logo_personalise.typeLogo }}</td>
+                <td>
+                    <a href="{{ path('commande_logo_personalise_show', {'id': commande_logo_personalise.id}) }}">show</a>
+                    <a href="{{ path('commande_logo_personalise_edit', {'id': commande_logo_personalise.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="13">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_logo_personalise_new') }}">Create new</a>
+{% endblock %}

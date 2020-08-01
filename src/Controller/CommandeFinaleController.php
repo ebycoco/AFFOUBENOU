@@ -53,7 +53,7 @@ class CommandeFinaleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="commande_finale_show", methods={"GET"})
+     * @Route("/ajouter/finale/show/{id}", name="commande_finale_show", methods={"GET"})
      */
     public function show(CommandeFinale $commandeFinale): Response
     {

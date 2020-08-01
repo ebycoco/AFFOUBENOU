@@ -6,8 +6,12 @@ use App\Entity\ServicesGraphisme;
 use App\Entity\CommandeLogo;
 use App\Entity\CommandePredefine;
 use App\Form\CommandeLogoType;
+use App\Entity\CommandeLogoPersonalise;
+use App\Form\CommandeLogoPersonaliseType;
+use App\Repository\CommandeLogoPersonaliseRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -58,5 +62,39 @@ class ProfilCommandeGraphismeController extends AbstractController
         return $this->render('profil/graphisme/logo/paiementLogo.html.twig', [
             'commandePredefine' => $commandePredefine,
         ]);
+    }
+
+    /**
+     * @Route("/commande/logo/personnalise/new", name="commande_logo_personalise_new", methods={"GET","POST"})
+     */
+    public function personnaliselogo(Request $request): Response
+    {
+        $commandeLogoPersonalise = new CommandeLogoPersonalise();
+        $form = $this->createForm(CommandeLogoPersonaliseType::class, $commandeLogoPersonalise);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $commandeLogoPersonalise->setUser($this->getUser());
+            $entityManager->persist($commandeLogoPersonalise);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('profile_commande');
+        }
+
+        return $this->render('profil/graphisme/logo/new.html.twig', [
+            'commande_logo_personalise' => $commandeLogoPersonalise,
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/commande/logo/personnalise/{id}", name="commande_logo_personalise_show", methods={"GET"})
+     */
+    public function show(CommandeLogoPersonalise $commandeLogoPersonalise): Response
+    {
+        return $this->render('commande_logo_personalise/show.html.twig', [
+            'commande_logo_personalise' => $commandeLogoPersonalise,
+            ]);
     }
 }

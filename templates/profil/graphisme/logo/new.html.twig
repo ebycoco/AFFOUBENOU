@@ -1,0 +1,95 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}New CommandeLogoPersonalise{% endblock %}
+
+{% block body %}
+<section class="formulaire-commande">
+    <div class="container mb-4 ml-5">
+        {{ form_start(form) }}
+        <div class="row mt-3">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-4 mt-3 mb-3">
+                        <div class="form-group">
+                            <p class=" text-center text-muted mb-3">Nom du logo <span class="text-required">*</span>
+                            </p>
+                            {{ form_row(form.nomLogo,{'label':false}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 mb-3">
+                        <div class="form-group">
+                            <p class=" text-center text-muted mb-3">Type de format<span class="text-required">*</span>
+                            </p>
+                            {{ form_row(form.typeLogo,{'label':false}) }}
+                        </div>
+                    </div>
+                    <div class="col-md-4 mt-3 mb-3">  
+                            <div class="form-group text-center">
+                                <p class="text-muted mb-3">Si vous avez un exemple telechargez le ici</p> 
+                                {{ form_row(form.imageFile) }} 
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-3">
+
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="form-group col-md-5">
+                                <p class=" text-center text-muted mb-3">couleur 1</p>
+                                {{ form_row(form.couleur0,{'label':false}) }}
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="form-group col-md-5">
+                                <p class=" text-center text-muted mb-3">couleur 2</p>
+                                {{ form_row(form.couleur1,{'label':false}) }}
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="form-group col-md-5">
+                                <p class=" text-center text-muted mb-3">couleur 3</p>
+                                {{ form_row(form.couleur2,{'label':false}) }}
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <p class=" text-center text-muted mb-3">Entrer couleur 2</p>
+                        <div class="row">
+                            <div class="col-md-5"></div>
+                            <div class="form-group col-md-5">
+                                {{ form_row(form.couleur3,{'label':false}) }}
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 mb-3">
+                <h5 class=" text-center text-muted mb-3">Si vous souhaitez apportez des modifications personnelles sur
+                    votre logo </h5>   
+                        <div class="form-group">
+                            {{ form_row(form.modification,{'label':false}) }}
+                        </div>  
+            </div>  
+
+            <button type="submit " class="btn btn-order bouton-envoyer ">Envoyer</button> 
+            {{ form_end(form) }} 
+        </div>
+        
+    </div>
+</section>
+{% endblock %}

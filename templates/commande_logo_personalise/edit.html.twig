@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit CommandeLogoPersonalise{% endblock %}
+
+{% block body %}
+    <h1>Edit CommandeLogoPersonalise</h1>
+
+    {{ include('commande_logo_personalise/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('commande_logo_personalise_index') }}">back to list</a>
+
+    {{ include('commande_logo_personalise/_delete_form.html.twig') }}
+{% endblock %}

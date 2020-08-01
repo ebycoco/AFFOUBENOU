@@ -68,9 +68,15 @@ class CommandePredefine
      */
     private $commandeLogos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeLogoPersonalise::class, mappedBy="predefinie")
+     */
+    private $commandeLogoPersonalises;
+
     public function __construct()
     {
         $this->commandeLogos = new ArrayCollection();
+        $this->commandeLogoPersonalises = new ArrayCollection();
     }
  
 
@@ -174,6 +180,37 @@ class CommandePredefine
             // set the owning side to null (unless already changed)
             if ($commandeLogo->getPredefinie() === $this) {
                 $commandeLogo->setPredefinie(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeLogoPersonalise[]
+     */
+    public function getCommandeLogoPersonalises(): Collection
+    {
+        return $this->commandeLogoPersonalises;
+    }
+
+    public function addCommandeLogoPersonalise(CommandeLogoPersonalise $commandeLogoPersonalise): self
+    {
+        if (!$this->commandeLogoPersonalises->contains($commandeLogoPersonalise)) {
+            $this->commandeLogoPersonalises[] = $commandeLogoPersonalise;
+            $commandeLogoPersonalise->setPredefinie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeLogoPersonalise(CommandeLogoPersonalise $commandeLogoPersonalise): self
+    {
+        if ($this->commandeLogoPersonalises->contains($commandeLogoPersonalise)) {
+            $this->commandeLogoPersonalises->removeElement($commandeLogoPersonalise);
+            // set the owning side to null (unless already changed)
+            if ($commandeLogoPersonalise->getPredefinie() === $this) {
+                $commandeLogoPersonalise->setPredefinie(null);
             }
         }
 

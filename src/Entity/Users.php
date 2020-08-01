@@ -142,6 +142,11 @@ class Users implements UserInterface
      */
     private $commandePredefines;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeLogoPersonalise::class, mappedBy="user")
+     */
+    private $commandeLogoPersonalises;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -157,6 +162,7 @@ class Users implements UserInterface
         $this->categories = new ArrayCollection();
         $this->commandeLogos = new ArrayCollection();
         $this->commandePredefines = new ArrayCollection();
+        $this->commandeLogoPersonalises = new ArrayCollection();
     }
 
     
@@ -717,6 +723,37 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($commandePredefine->getUser() === $this) {
                 $commandePredefine->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeLogoPersonalise[]
+     */
+    public function getCommandeLogoPersonalises(): Collection
+    {
+        return $this->commandeLogoPersonalises;
+    }
+
+    public function addCommandeLogoPersonalise(CommandeLogoPersonalise $commandeLogoPersonalise): self
+    {
+        if (!$this->commandeLogoPersonalises->contains($commandeLogoPersonalise)) {
+            $this->commandeLogoPersonalises[] = $commandeLogoPersonalise;
+            $commandeLogoPersonalise->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeLogoPersonalise(CommandeLogoPersonalise $commandeLogoPersonalise): self
+    {
+        if ($this->commandeLogoPersonalises->contains($commandeLogoPersonalise)) {
+            $this->commandeLogoPersonalises->removeElement($commandeLogoPersonalise);
+            // set the owning side to null (unless already changed)
+            if ($commandeLogoPersonalise->getUser() === $this) {
+                $commandeLogoPersonalise->setUser(null);
             }
         }
 

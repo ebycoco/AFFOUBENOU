@@ -1,0 +1,75 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}CommandeLogoPersonalise{% endblock %}
+
+{% block body %}
+    <h1>CommandeLogoPersonalise</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande_logo_personalise.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ commande_logo_personalise.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ commande_logo_personalise.createdAt ? commande_logo_personalise.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ commande_logo_personalise.updatedAt ? commande_logo_personalise.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>NomLogo</th>
+                <td>{{ commande_logo_personalise.nomLogo }}</td>
+            </tr>
+            <tr>
+                <th>Couleur0</th>
+                <td>{{ commande_logo_personalise.couleur0 }}</td>
+            </tr>
+            <tr>
+                <th>Couleur1</th>
+                <td>{{ commande_logo_personalise.couleur1 }}</td>
+            </tr>
+            <tr>
+                <th>Couleur2</th>
+                <td>{{ commande_logo_personalise.couleur2 }}</td>
+            </tr>
+            <tr>
+                <th>Couleur3</th>
+                <td>{{ commande_logo_personalise.couleur3 }}</td>
+            </tr>
+            <tr>
+                <th>Modification</th>
+                <td>{{ commande_logo_personalise.modification }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ commande_logo_personalise.etat ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>TypeLogo</th>
+                <td> 
+                    {% if  commande_logo_personalise.typeLogo  == 0 %}
+                    Image
+                    {% elseif commande_logo_personalise.typeLogo  == 1 %}
+                    La 1er lettre du nom de logo
+                    {% elseif commande_logo_personalise.typeLogo == 2 %} 
+                    {% else %}
+                          
+                    {% endif %}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('commande_logo_personalise_index') }}">back to list</a>
+
+    <a href="{{ path('commande_logo_personalise_edit', {'id': commande_logo_personalise.id}) }}">edit</a>
+
+    {{ include('commande_logo_personalise/_delete_form.html.twig') }}
+{% endblock %}
