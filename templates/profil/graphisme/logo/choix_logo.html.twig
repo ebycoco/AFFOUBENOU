@@ -9,11 +9,25 @@
 		</div> 
         <div class="row">
             <div class="col-md-6">
-                <h1>choisir un model</h1>
+                <div class="card bg-dark text-white">
+                    <a class="" href="{{path('profile_service_graphisme_logo', {'id': categorie.id})}}">
+                    <img src="{{asset('images/bg_3.jpg')}}" class="card-img" alt="...">
+                    <div class="card-img-overlay"> 
+                            <h1 class="card-title text-center text-black-50">Logo déjà consure</h1> 
+                    </div>
+                </a> 
+                </div> 
             </div>
-            <div class="col-md-6">
-                <h1>Faite votre propre {{categorie.nomCategorie}}</h1>
-                <a class="btn btn-primary" href="{{path('profile_commande_logo_personalise_new')}}">Choisir</a>
+            <div class="col-md-6"> 
+                <div class="card bg-dark text-white">
+                    <a class="" href="{{path('profile_commande_logo_personalise_new')}}">
+                    <img src="{{asset('images/bg_3.jpg')}}" class="card-img" alt="...">
+                    <div class="card-img-overlay"> 
+                            <h1 class="card-title text-center text-black-50">Personnalisé à votre goût</h1> 
+                    </div>
+                </a>
+                </div> 
+                
             </div>
         </div>
 	</section>

@@ -19,6 +19,16 @@ class CommandePredefineRepository extends ServiceEntityRepository
         parent::__construct($registry, CommandePredefine::class);
     }
 
+    public function findByLast()
+    {
+        return $this->createQueryBuilder('c') 
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
     // /**
     //  * @return CommandePredefine[] Returns an array of CommandePredefine objects
     //  */

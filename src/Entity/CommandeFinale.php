@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandeFinaleRepository;
+use App\Repository\CommandeFinaleRepository; 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -60,6 +60,7 @@ class CommandeFinale
      * @ORM\JoinColumn(nullable=false)
      */
     private $commandelogo;
+
 
     public function getId(): ?int
     {
@@ -134,4 +135,5 @@ class CommandeFinale
 
         return $this;
     }
+
 }

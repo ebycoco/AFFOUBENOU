@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}Edit CommandeFinale{% endblock %}
 
@@ -7,7 +7,7 @@
 
     {{ include('commande_finale/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('commande_finale_index') }}">back to list</a>
+    <a href="{{ path('admin_commande_finale_index') }}">back to list</a>
 
     {{ include('commande_finale/_delete_form.html.twig') }}
 {% endblock %}

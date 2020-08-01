@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin\Graphisme;
 
 use App\Entity\CommandeLogo;
 use App\Entity\CommandeFinale;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/commande/finale", name="admin_")
  */
-class CommandeFinaleController extends AbstractController
+class AdminCommandeFinaleController extends AbstractController
 {
     /**
      * @Route("/", name="commande_finale_index", methods={"GET"})
@@ -38,8 +38,9 @@ class CommandeFinaleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $commandeFinale->setUser($this->getUser());
-            $commandeFinale->setCommandelogo($commandeLogo);
-            $entityManager->persist($commandeFinale);
+            $commandeFinale->setCommandelogo($commandeLogo); 
+            $entityManager->persist($commandeFinale); 
+            $commandeLogo->setEtat('1');
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_commande_logo_index');
@@ -53,27 +54,31 @@ class CommandeFinaleController extends AbstractController
     }
 
     /**
-     * @Route("/ajouter/finale/show/{id}", name="commande_finale_show", methods={"GET"})
+     * @Route("/show/finale/{id}", name="commande_finale_show", methods={"GET"})
      */
     public function show(CommandeFinale $commandeFinale): Response
     {
+        
         return $this->render('commande_finale/show.html.twig', [
-            'commande_finale' => $commandeFinale,
+            'commande_finale' => $commandeFinale, 
+            
         ]);
     }
 
     /**
      * @Route("/{id}/edit", name="commande_finale_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, CommandeFinale $commandeFinale): Response
+    public function edit(Request $request, CommandeFinale $commandeFinale,CommandeLogo $commandeLogo): Response
     {
         $form = $this->createForm(CommandeFinaleType::class, $commandeFinale);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager(); 
+            $commandeLogo->setEtat('1');
+            $entityManager->flush();
 
-            return $this->redirectToRoute('commande_finale_index');
+            return $this->redirectToRoute('admin_commande_logo_index');
         }
 
         return $this->render('commande_finale/edit.html.twig', [
@@ -93,6 +98,6 @@ class CommandeFinaleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('commande_finale_index');
+        return $this->redirectToRoute('admin_commande_logo_index');
     }
 }

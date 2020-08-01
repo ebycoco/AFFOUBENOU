@@ -6,11 +6,10 @@
 <section class="commande"> 
     <div class="form-maj ">
         <h1 class="text-center mb-4"><img src="{{asset('images/monitor.png')}}" alt="image-commande" class="image-commande">Vos commandes</h1>
-        <table class="table tableau table-striped">
+        <table class="table tableau table-striped">  
             <thead>
-                <tr>
-                    <th scope="col">N°</th> 
-                    <th scope="col">Produits</th>
+                <tr> 
+                    <th scope="col">Type</th>
                     <th scope="col">Quantité</th> 
                     <th scope="col">Prix</th>
                     <th scope="col">Etat</th> 
@@ -20,9 +19,8 @@
             </thead>
             <tbody>
             {% for commande_logo in commande_logos %}
-              <tr>
-                    <th scope="row">{{commande_logo.id}}</th> 
-                    <td>{{commande_logo.servicesGraphisme.nom}}</td>
+              <tr>  
+                    <td>{{commande_logo.typelogo}}</td>
                     {% if commande_logo.servicesGraphisme.nom == 'Logo' %}
                     <td class="nombre-commande">1</td>
                     {% else %}
@@ -34,11 +32,30 @@
                        <td style="color: #f6a722;">attente</td>  
                     {% else %}
                       <td style="color: green;">validé</td>
-                      <td><a class="btn btn-success" href="{{path('profile_commande_graphisme_fili', {'id': commande_logo.predefinie.id})}}">Voir Produits</a></td>
+                      <td><a class="btn btn-success" href="{{path('profile_commande_graphisme_fili', {'id': commande_logo.id})}}">Voir Produits</a></td>
                     {% endif %} 
                     <td class="date-commande">{{ commande_logo.createdAt ? commande_logo.createdAt|date('d-m-Y') : '' }}</td>
                 </tr>
             {% endfor %} 
+            {% for commande_logo_personalise in commande_logo_personalises %}
+              <tr>
+                    <td>Logo personnalisé</td>
+                    {% if commande_logo_personalise.etat == 'Perso' %}
+                    <td class="nombre-commande">1</td>
+                    {% else %}
+                      <td class="nombre-commande">1</td>
+                    {% endif %} 
+                    <td>{{commande_logo_personalise.prix}}fcfa</td>
+                    {% if commande_logo_personalise.etat == false %}
+                       <td style="color: #f6a722;">attente</td>  
+                       <td style="color: #f6a722;">attente</td>  
+                    {% else %}
+                      <td style="color: green;">validé</td>
+                      <td><a class="btn btn-success" href="{{path('profile_commande_graphisme_fili', {'id': commande_logo_personalise.id})}}">Voir Produits</a></td>
+                    {% endif %} 
+                    <td class="date-commande">{{ commande_logo_personalise.createdAt ? commande_logo_personalise.createdAt|date('d-m-Y') : '' }}</td>
+                </tr>
+            {% endfor %}
             </tbody>
         </table>
         <nav class="text-center" aria-label="...">

@@ -9,6 +9,7 @@ use App\Repository\CommandeLogoRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\CommandeLogoPersonaliseRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
@@ -31,13 +32,14 @@ class ProfilUserController extends AbstractController
     /**
      * @Route("/commande", name="commande", methods={"GET"})
      */
-    public function commande(CommandeLogoRepository $commandeLogoRepository): Response
+    public function commande(CommandeLogoRepository $commandeLogoRepository,CommandeLogoPersonaliseRepository $commandeLogoPersonaliseRepository): Response
     {
         
         return $this->render('profil/commande.html.twig',[
             'commande_logos' => $commandeLogoRepository->findByLastCommand($this->getUser()),
+            'commande_logo_personalises' => $commandeLogoPersonaliseRepository->findAll(),
         ]);
-    }
+    } 
 
     /**
      * @Route("/miseajour/{id}", name="mise_a_jour", methods={"GET","POST"})

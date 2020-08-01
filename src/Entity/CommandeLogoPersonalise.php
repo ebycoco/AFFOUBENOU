@@ -104,6 +104,11 @@ class CommandeLogoPersonalise
      */
     private $predefinie;
 
+    /**
+     * @ORM\Column(type="float")
+     */
+    private $prix;
+
 
     public function getId(): ?int
     {
@@ -268,6 +273,18 @@ class CommandeLogoPersonalise
     public function setPredefinie(?CommandePredefine $predefinie): self
     {
         $this->predefinie = $predefinie;
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }

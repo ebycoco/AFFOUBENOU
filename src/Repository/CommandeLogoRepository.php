@@ -22,8 +22,18 @@ class CommandeLogoRepository extends ServiceEntityRepository
     public function findByLastCommand($value)
     {
         return $this->createQueryBuilder('c')
-        ->andWhere('c.user = :val')
-            ->setParameter('val', $value)
+            ->andWhere('c.user = :val') 
+            ->setParameter('val', $value) 
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
+
+    public function findByLast()
+    {
+        return $this->createQueryBuilder('c') 
             ->orderBy('c.id', 'DESC')
             ->setMaxResults(6)
             ->getQuery()

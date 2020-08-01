@@ -5,7 +5,7 @@
 {% block body %}
     <div class="detail pl-3 pb-3" style="background: #fff;">
         <h1>Commande Logo {{commande_logo.id}}</h1>
-        <a class="btn btn-primary" href="{{ path('admin_commande_logo_index') }}">Retour à la liste</a>
+        <a class="btn btn-primary" href="{{path('admin_commande_logo_travail')}}">Retour à la liste</a>
     <div class="row">
         <div class="col-md-6">
             <img src="{{ vich_uploader_asset(commande_logo.servicesGraphisme, 'imageFile')|imagine_filter('image_detail_admin')}}" alt="">

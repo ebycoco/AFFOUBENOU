@@ -33,6 +33,7 @@ class ProfilCommandeGraphismeController extends AbstractController
                 $entityManager = $this->getDoctrine()->getManager();
                 $commandeLogo->setUser($this->getUser());
                 $commandeLogo->setServicesGraphisme($servicesGraphisme);
+                $commandeLogo->setTypelogo('Logo non pesonnalisé');
                 $entityManager->persist($commandeLogo);
                 $entityManager->flush();
                 return $this->redirectToRoute('profile_commande');
@@ -76,6 +77,7 @@ class ProfilCommandeGraphismeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $commandeLogoPersonalise->setUser($this->getUser());
+            $commandeLogoPersonalise->setPrix('10000');
             $entityManager->persist($commandeLogoPersonalise);
             $entityManager->flush();
 

@@ -19,6 +19,15 @@ class CommandeFinaleRepository extends ServiceEntityRepository
         parent::__construct($registry, CommandeFinale::class);
     }
 
+    public function findByLast()
+    {
+        return $this->createQueryBuilder('c') 
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
     // /**
     //  * @return CommandeFinale[] Returns an array of CommandeFinale objects
     //  */

@@ -92,6 +92,12 @@ class CommandeLogo
      * @ORM\ManyToOne(targetEntity=CommandePredefine::class, inversedBy="commandeLogos")
      */
     private $predefinie;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $typelogo;
+
  
  
 
@@ -263,6 +269,18 @@ class CommandeLogo
         $this->predefinie = $predefinie;
 
         return $this;
-    } 
+    }
+
+    public function getTypelogo(): ?string
+    {
+        return $this->typelogo;
+    }
+
+    public function setTypelogo(?string $typelogo): self
+    {
+        $this->typelogo = $typelogo;
+
+        return $this;
+    }  
 
 }

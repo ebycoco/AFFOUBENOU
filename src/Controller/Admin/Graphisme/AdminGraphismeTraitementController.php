@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller\Admin;
+namespace App\Controller\Admin\Graphisme;
 use App\Entity\CommandeLogo;
 use App\Entity\CommandePredefine;
 use App\Form\CommandeLogoType;
@@ -24,10 +24,20 @@ class AdminGraphismeTraitementController extends AbstractController
     public function index(CommandeLogoRepository $commandeLogoRepository,CommandePredefineRepository $commandePredefineRepository,CommandeFinaleRepository $commandeFinaleRepository): Response
     { 
         return $this->render('commande_logo/index.html.twig', [
-            'commande_logos' => $commandeLogoRepository->findAll(),
-            'commande_logo_pres' => $commandePredefineRepository->findAll(),
-            'commande_logo_finale' => $commandeFinaleRepository->findAll(),
-            'commande_predefinies' => $commandePredefineRepository->findAll(),
+            'commande_logos' => $commandeLogoRepository->findByLast(),
+            'commande_logo_pres' => $commandePredefineRepository->findByLast(),
+            'commande_logo_finale' => $commandeFinaleRepository->findByLast(), 
+        ]);
+    }
+
+    /**
+     * @Route("/travail", name="commande_logo_travail", methods={"GET"})
+     */
+    public function travail(CommandePredefineRepository $commandePredefineRepository,CommandeFinaleRepository $commandeFinaleRepository): Response
+    { 
+        return $this->render('commande_logo/travail.html.twig', [ 
+            'commande_logo_pres' => $commandePredefineRepository->findByLast(),
+            'commande_logo_finale' => $commandeFinaleRepository->findByLast(), 
         ]);
     }
 

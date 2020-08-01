@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin\Graphisme;
 
 use App\Entity\CommandeLogo;
 use App\Entity\CommandePredefine;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * @Route("/admin/commande/predefinie", name="admin_")
  */
-class CommandePredefineController extends AbstractController
+class AdminCommandePredefineController extends AbstractController
 {
     /**
      * @Route("/", name="commande_predefine_index", methods={"GET"})
@@ -39,9 +39,9 @@ class CommandePredefineController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $commandePredefine->setUser($this->getUser());
             $commandePredefine->setCommandelogo($commandeLogo); 
-            $entityManager->persist($commandePredefine);
-            $commandeLogo->setEtat('1');
+            $entityManager->persist($commandePredefine); 
             $commandeLogo->setPredefinie($commandePredefine);
+            $commandeLogo->setEtat('0');
             $entityManager->flush();
 
             return $this->redirectToRoute('admin_commande_logo_index');
@@ -67,13 +67,15 @@ class CommandePredefineController extends AbstractController
     /**
      * @Route("/{id}/edit", name="commande_predefine_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, CommandePredefine $commandePredefine): Response
+    public function edit(Request $request, CommandePredefine $commandePredefine,CommandeLogo $commandeLogo): Response
     {
         $form = $this->createForm(CommandePredefineType::class, $commandePredefine);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $entityManager = $this->getDoctrine()->getManager();
+            $commandeLogo->setEtat('0');
+            $entityManager->flush();
 
             return $this->redirectToRoute('commande_predefine_index');
         }
