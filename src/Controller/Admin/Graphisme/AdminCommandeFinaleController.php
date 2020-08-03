@@ -17,9 +17,9 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminCommandeFinaleController extends AbstractController
 {
     /**
-     * @Route("/", name="commande_finale_index", methods={"GET"})
+     * @Route("/", name="commande_finale_index1", methods={"GET"})
      */
-    public function index(CommandeFinaleRepository $commandeFinaleRepository): Response
+    public function finale(CommandeFinaleRepository $commandeFinaleRepository): Response
     {
         return $this->render('commande_finale/index.html.twig', [
             'commande_finales' => $commandeFinaleRepository->findAll(),
@@ -27,7 +27,7 @@ class AdminCommandeFinaleController extends AbstractController
     }
 
     /**
-     * @Route("/ajouter/finale/{id}", name="commande_finale_new", methods={"GET","POST"})
+     * @Route("/ajouter/finale/{id}", name="commande_finale_new1", methods={"GET","POST"})
      */
     public function new(Request $request,CommandeLogo $commandeLogo): Response
     {
@@ -54,7 +54,7 @@ class AdminCommandeFinaleController extends AbstractController
     }
 
     /**
-     * @Route("/show/finale/{id}", name="commande_finale_show", methods={"GET"})
+     * @Route("/show/finale/{id}", name="commande_finale_show1", methods={"GET"})
      */
     public function show(CommandeFinale $commandeFinale): Response
     {
@@ -66,7 +66,7 @@ class AdminCommandeFinaleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="commande_finale_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="commande_finale_edit1", methods={"GET","POST"})
      */
     public function edit(Request $request, CommandeFinale $commandeFinale,CommandeLogo $commandeLogo): Response
     {
@@ -88,7 +88,7 @@ class AdminCommandeFinaleController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="commande_finale_delete", methods={"DELETE"})
+     * @Route("/{id}", name="commande_finale_delete1", methods={"DELETE"})
      */
     public function delete(Request $request, CommandeFinale $commandeFinale): Response
     {

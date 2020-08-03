@@ -35,7 +35,7 @@ class CommandeLogoRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c') 
             ->orderBy('c.id', 'DESC')
-            ->setMaxResults(6)
+            ->setMaxResults(12)
             ->getQuery()
             ->getResult()
         ;

@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/commande/logo", name="admin_")
+ * @Route("/admin/commande/traitement/logo", name="admin_")
  */
 
 class AdminGraphismeTraitementController extends AbstractController
@@ -21,12 +21,10 @@ class AdminGraphismeTraitementController extends AbstractController
     /**
      * @Route("/", name="commande_logo_index", methods={"GET"})
      */
-    public function index(CommandeLogoRepository $commandeLogoRepository,CommandePredefineRepository $commandePredefineRepository,CommandeFinaleRepository $commandeFinaleRepository): Response
+    public function index(CommandeLogoRepository $commandeLogoRepository): Response
     { 
         return $this->render('commande_logo/index.html.twig', [
-            'commande_logos' => $commandeLogoRepository->findByLast(),
-            'commande_logo_pres' => $commandePredefineRepository->findByLast(),
-            'commande_logo_finale' => $commandeFinaleRepository->findByLast(), 
+            'commande_logos' => $commandeLogoRepository->findByLast(),  
         ]);
     }
 
