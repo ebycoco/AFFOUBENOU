@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CommandeFinalePerso{% endblock %}
+
+{% block body %}
+    <h1>Edit CommandeFinalePerso</h1>
+
+    {{ include('Admin/admin_graphisme/logo/commande_finale_perso/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_commande_finale_perso_index') }}">back to list</a>
+
+    {{ include('Admin/admin_graphisme/logo/commande_finale_perso/_delete_form.html.twig') }}
+{% endblock %}

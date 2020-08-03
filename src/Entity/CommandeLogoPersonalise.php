@@ -2,7 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\CommandeLogoPersonaliseRepository; 
+use App\Repository\CommandeLogoPersonaliseRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection; 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -97,17 +99,38 @@ class CommandeLogoPersonalise
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="commandeLogoPersonalises")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=CommandePredefine::class, inversedBy="commandeLogoPersonalises")
-     */
-    private $predefinie;
+    private $user; 
 
     /**
      * @ORM\Column(type="float")
      */
     private $prix;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $choix;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandePredefiniePerso::class, mappedBy="commandelogoperso")
+     */
+    private $commandePredefiniePersos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeFinalePerso::class, mappedBy="commandelogoperso")
+     */
+    private $commandeFinalePersos;
+
+    /**
+     * @ORM\Column(type="string", length=55)
+     */
+    private $niveau;
+
+    public function __construct()
+    {
+        $this->commandePredefiniePersos = new ArrayCollection();
+        $this->commandeFinalePersos = new ArrayCollection();
+    }
 
 
     public function getId(): ?int
@@ -263,19 +286,7 @@ class CommandeLogoPersonalise
         $this->user = $user;
 
         return $this;
-    }
-
-    public function getPredefinie(): ?CommandePredefine
-    {
-        return $this->predefinie;
-    }
-
-    public function setPredefinie(?CommandePredefine $predefinie): self
-    {
-        $this->predefinie = $predefinie;
-
-        return $this;
-    }
+    } 
 
     public function getPrix(): ?float
     {
@@ -285,6 +296,92 @@ class CommandeLogoPersonalise
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getChoix(): ?string
+    {
+        return $this->choix;
+    }
+
+    public function setChoix(string $choix): self
+    {
+        $this->choix = $choix;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandePredefiniePerso[]
+     */
+    public function getCommandePredefiniePersos(): Collection
+    {
+        return $this->commandePredefiniePersos;
+    }
+
+    public function addCommandePredefiniePerso(CommandePredefiniePerso $commandePredefiniePerso): self
+    {
+        if (!$this->commandePredefiniePersos->contains($commandePredefiniePerso)) {
+            $this->commandePredefiniePersos[] = $commandePredefiniePerso;
+            $commandePredefiniePerso->setCommandelogoperso($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandePredefiniePerso(CommandePredefiniePerso $commandePredefiniePerso): self
+    {
+        if ($this->commandePredefiniePersos->contains($commandePredefiniePerso)) {
+            $this->commandePredefiniePersos->removeElement($commandePredefiniePerso);
+            // set the owning side to null (unless already changed)
+            if ($commandePredefiniePerso->getCommandelogoperso() === $this) {
+                $commandePredefiniePerso->setCommandelogoperso(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeFinalePerso[]
+     */
+    public function getCommandeFinalePersos(): Collection
+    {
+        return $this->commandeFinalePersos;
+    }
+
+    public function addCommandeFinalePerso(CommandeFinalePerso $commandeFinalePerso): self
+    {
+        if (!$this->commandeFinalePersos->contains($commandeFinalePerso)) {
+            $this->commandeFinalePersos[] = $commandeFinalePerso;
+            $commandeFinalePerso->setCommandelogoperso($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeFinalePerso(CommandeFinalePerso $commandeFinalePerso): self
+    {
+        if ($this->commandeFinalePersos->contains($commandeFinalePerso)) {
+            $this->commandeFinalePersos->removeElement($commandeFinalePerso);
+            // set the owning side to null (unless already changed)
+            if ($commandeFinalePerso->getCommandelogoperso() === $this) {
+                $commandeFinalePerso->setCommandelogoperso(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getNiveau(): ?string
+    {
+        return $this->niveau;
+    }
+
+    public function setNiveau(string $niveau): self
+    {
+        $this->niveau = $niveau;
 
         return $this;
     }

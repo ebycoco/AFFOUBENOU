@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandePredefiniePerso index{% endblock %}
+
+{% block body %}
+    <h1>CommandePredefiniePerso index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for commande_predefinie_perso in commande_predefinie_persos %}
+            <tr>
+                <td>{{ commande_predefinie_perso.id }}</td>
+                <td>{{ commande_predefinie_perso.imageName }}</td>
+                <td>{{ commande_predefinie_perso.createdAt ? commande_predefinie_perso.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande_predefinie_perso.updatedAt ? commande_predefinie_perso.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_commande_predefinie_perso_show', {'id': commande_predefinie_perso.id}) }}">show</a>
+                    <a href="{{ path('admin_commande_predefinie_perso_edit', {'id': commande_predefinie_perso.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_commande_predefinie_perso_new') }}">Create new</a>
+{% endblock %}

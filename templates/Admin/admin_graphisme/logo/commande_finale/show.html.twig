@@ -1,0 +1,32 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CommandeFinale{% endblock %}
+
+{% block body %}
+<div class="container">
+    
+    <h1 class="text-center pt-5 mb-5">Votre travail</h1> 
+    <div class="row">
+        <div class="col-md-6">
+            <h1 class="text-center" style="color: rgb(52, 52, 235);">Produit à réaliser</h1>
+            <p class="text-center text-muted">Avec filigrame</p>
+            <img src="{{ vich_uploader_asset(commande_finale.commandelogo.servicesGraphisme, 'imageFile')|imagine_filter('image_detail_admin')}}"
+                alt="">
+            <p><span>Date de commande</span></p>
+            <p>{{ commande_finale.commandelogo.createdAt ? commande_finale.commandelogo.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+            <a class="btn btn-primary" href="{{ path('admin_commande_logo_travail') }}">Retour à la liste</a>
+        </div>
+        <div class="col-md-6">
+            <h1 class="text-center" style="color: rgb(52, 235, 67);">Produit finit</h1>
+            <p class="text-center text-muted">sans filigrame</p>
+            <img src="{{ vich_uploader_asset(commande_finale, 'imageFile')|imagine_filter('image_detail_admin')}}"
+                alt="">
+            <p><span>Date de commande</span></p>
+            <p>{{ commande_finale.createdAt ? commande_finale.createdAt|date('Y-m-d H:i:s') : '' }}</p>
+            <div class="action mb-5">
+                <a class="btn btn-secondary" href="{{ path('admin_commande_finale_edit', {'id': commande_finale.id}) }}">edit</a>
+                {{ include('Admin/admin_graphisme/logo/commande_finale/_delete_form.html.twig') }}</div>
+        </div>
+    </div>
+</div>  
+{% endblock %}

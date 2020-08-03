@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CommandeFinalePerso{% endblock %}
+
+{% block body %}
+    <h1>CommandeFinalePerso</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande_finale_perso.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ commande_finale_perso.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ commande_finale_perso.createdAt ? commande_finale_perso.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ commande_finale_perso.updatedAt ? commande_finale_perso.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_commande_finale_perso_index') }}">back to list</a>
+
+    <a href="{{ path('admin_commande_finale_perso_edit', {'id': commande_finale_perso.id}) }}">edit</a>
+
+    {{ include('Admin/admin_graphisme/logo/commande_finale_perso/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Detail du Logo{% endblock %}
+
+{% block body %}
+
+<div class="detail pl-3 pb-3" style="background: #fff;">
+    <h1>Commande Logo {{commande_logoPerso.id}}</h1>
+    <a class="btn btn-primary" href="{{path('admin_commande_logo_index')}}">Retour à la liste</a>
+    <div class="row">
+        <div class="col-md-12 mt-2">
+
+            <div class="col-md-12 text-center">
+                <h4 style="font-weight: bold;">Nom du logo</h4>
+                <p style="color:#f6a722;font-size:24px;">{{ commande_logoPerso.nomLogo }}</p>
+            </div>
+            <div class="col-md-12 text-center">
+                <div class="row">
+                    <div class="col-md-3">
+                        {% if commande_logoPerso.couleur0 == null %}
+                        {% else %}
+                        <h4 style="font-weight: bold;">Code couleur 01</h4>
+                        <p style="color:#f6a722;font-size:24px;">{{ commande_logoPerso.couleur0 }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        {% if commande_logoPerso.couleur1 == null %}
+                        {% else %}
+                        <h4 style="font-weight: bold;">Code couleur 02</h4>
+                        <p style="color:#f6a722;font-size:24px;">{{ commande_logoPerso.couleur1 }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        {% if commande_logoPerso.couleur2 == null %}
+                        {% else %}
+                        <h4 style="font-weight: bold;">Code couleur 03</h4>
+                        <p style="color:#f6a722;font-size:24px;">{{ commande_logoPerso.couleur2 }}</p>
+                        {% endif %}
+                    </div>
+                    <div class="col-md-3">
+                        {% if commande_logoPerso.couleur3 == null %}
+                        {% else %}
+                        <h4 style="font-weight: bold;">Code couleur 04</h4>
+                        <p style="color:#f6a722;font-size:24px;">{{ commande_logoPerso.couleur3 }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 text-center">
+                {% if commande_logoPerso.modification == null %}
+                {% else %}
+                <h4 style="font-weight: bold;">Détails</h4>
+                <p style="color:#f6a722;font-size:24px;">{{ commande_logoPerso.modification | raw }}</p>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

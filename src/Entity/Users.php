@@ -147,6 +147,16 @@ class Users implements UserInterface
      */
     private $commandeLogoPersonalises;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CommandePredefiniePerso::class, mappedBy="user")
+     */
+    private $commandePredefiniePersos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeFinalePerso::class, mappedBy="user")
+     */
+    private $commandeFinalePersos;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -163,6 +173,8 @@ class Users implements UserInterface
         $this->commandeLogos = new ArrayCollection();
         $this->commandePredefines = new ArrayCollection();
         $this->commandeLogoPersonalises = new ArrayCollection();
+        $this->commandePredefiniePersos = new ArrayCollection();
+        $this->commandeFinalePersos = new ArrayCollection();
     }
 
     
@@ -754,6 +766,68 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($commandeLogoPersonalise->getUser() === $this) {
                 $commandeLogoPersonalise->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandePredefiniePerso[]
+     */
+    public function getCommandePredefiniePersos(): Collection
+    {
+        return $this->commandePredefiniePersos;
+    }
+
+    public function addCommandePredefiniePerso(CommandePredefiniePerso $commandePredefiniePerso): self
+    {
+        if (!$this->commandePredefiniePersos->contains($commandePredefiniePerso)) {
+            $this->commandePredefiniePersos[] = $commandePredefiniePerso;
+            $commandePredefiniePerso->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandePredefiniePerso(CommandePredefiniePerso $commandePredefiniePerso): self
+    {
+        if ($this->commandePredefiniePersos->contains($commandePredefiniePerso)) {
+            $this->commandePredefiniePersos->removeElement($commandePredefiniePerso);
+            // set the owning side to null (unless already changed)
+            if ($commandePredefiniePerso->getUser() === $this) {
+                $commandePredefiniePerso->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeFinalePerso[]
+     */
+    public function getCommandeFinalePersos(): Collection
+    {
+        return $this->commandeFinalePersos;
+    }
+
+    public function addCommandeFinalePerso(CommandeFinalePerso $commandeFinalePerso): self
+    {
+        if (!$this->commandeFinalePersos->contains($commandeFinalePerso)) {
+            $this->commandeFinalePersos[] = $commandeFinalePerso;
+            $commandeFinalePerso->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeFinalePerso(CommandeFinalePerso $commandeFinalePerso): self
+    {
+        if ($this->commandeFinalePersos->contains($commandeFinalePerso)) {
+            $this->commandeFinalePersos->removeElement($commandeFinalePerso);
+            // set the owning side to null (unless already changed)
+            if ($commandeFinalePerso->getUser() === $this) {
+                $commandeFinalePerso->setUser(null);
             }
         }
 

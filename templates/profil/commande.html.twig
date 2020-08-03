@@ -51,7 +51,7 @@
                        <td style="color: #f6a722;">attente</td>  
                     {% else %}
                       <td style="color: green;">validé</td>
-                      <td><a class="btn btn-success" href="{{path('profile_commande_graphisme_fili', {'id': commande_logo_personalise.id})}}">Voir Produits</a></td>
+                      <td><a class="btn btn-success" href="{{path('profile_commande_graphisme_fili_perso', {'id': commande_logo_personalise.id})}}">Voir Produits</a></td>
                     {% endif %} 
                     <td class="date-commande">{{ commande_logo_personalise.createdAt ? commande_logo_personalise.createdAt|date('d-m-Y') : '' }}</td>
                 </tr>
