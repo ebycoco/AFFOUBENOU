@@ -1,0 +1,84 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}New CarteVisite{% endblock %}
+
+{% block body %} 
+    <section class="formulaire-carte-visite mb-5">
+        <div class="container formulaire-carte ">
+            <h1 class="text-center mb-5">Création de la carte de visite</h1>
+                <h3 class="text-center mb-5">2000f la conception</h3>
+           {{ form_start(form) }}
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Votre Prénom(s)<span class="text-required">*</span></h5>
+                    {{ form_row(form.prenom,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Votre nom<span class="text-required">*</span></h5>
+                    {{ form_row(form.nom,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Nom de la société</h5>
+                    {{ form_row(form.nomSociete,{'label':false}) }} 
+                </div> 
+            </div>
+            <div class="row"> 
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Profession<span class="text-required">*</span></h5>
+                    {{ form_row(form.profession,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Localisation<span class="text-required">*</span></h5>
+                    {{ form_row(form.lieu,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Votre numéro de téléphone 1 <span class="text-required">*</span></h5>
+                    {{ form_row(form.contact1,{'label':false}) }} 
+                </div> 
+            </div>
+            <div class="row">
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Votre numéro de téléphone 2</h5>
+                    {{ form_row(form.contact2,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Votre adresse e-mail</h5>
+                    {{ form_row(form.email,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">L’adresse de votre site internet</h5>
+                    {{ form_row(form.addressDuSite,{'label':false}) }} 
+                </div> 
+            </div> 
+            <div class="row"> 
+                <div class="col-md-4 mb-5"> 
+                    <h5 class=" text-center text-muted mb-3">logo</h5>
+                    {{ form_row(form.imageFile,{'label':false}) }} 
+                    <span class="text-red" style="color: red;"> la taille du logo ne doit pas depasser 1Mo</span>
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Un numéro de téléphone fixe</h5>
+                    {{ form_row(form.numeroFixe,{'label':false}) }} 
+                </div>
+                <div class="col-md-4 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Un compte Twitter, skype, facebook…</h5>
+                    {{ form_row(form.social,{'label':false}) }} 
+                </div> 
+            </div> 
+            <div class="row">
+                <div class="col-md-12 mb-5">
+                    <h5 class=" text-center text-muted mb-3">Nombre de quantité a imprimer</h5>
+                    {{ form_row(form.quantite,{'label':false}) }} 
+                </div>
+            </div>
+            <div class="row">
+                <div class=" col-md-12">
+                    <h5 class=" text-center text-muted mb-3">Autres informations</h5>
+                    {{ form_row(form.autresInfor,{'label':false}) }} 
+                    <button type="submit " class="btn btn-order bouton-envoyer">Enregistrer</button>
+                </div>
+            </div>
+        {{ form_end(form) }} 
+        </div>
+    </section> 
+{% endblock %}

@@ -157,6 +157,21 @@ class Users implements UserInterface
      */
     private $commandeFinalePersos;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CarteVisite::class, mappedBy="user")
+     */
+    private $carteVisites;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CarteVisiteFiligramme::class, mappedBy="user")
+     */
+    private $carteVisiteFiligrammes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CarteVisiteFinale::class, mappedBy="user")
+     */
+    private $carteVisiteFinales;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -175,6 +190,9 @@ class Users implements UserInterface
         $this->commandeLogoPersonalises = new ArrayCollection();
         $this->commandePredefiniePersos = new ArrayCollection();
         $this->commandeFinalePersos = new ArrayCollection();
+        $this->carteVisites = new ArrayCollection();
+        $this->carteVisiteFiligrammes = new ArrayCollection();
+        $this->carteVisiteFinales = new ArrayCollection();
     }
 
     
@@ -828,6 +846,99 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($commandeFinalePerso->getUser() === $this) {
                 $commandeFinalePerso->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarteVisite[]
+     */
+    public function getCarteVisites(): Collection
+    {
+        return $this->carteVisites;
+    }
+
+    public function addCarteVisite(CarteVisite $carteVisite): self
+    {
+        if (!$this->carteVisites->contains($carteVisite)) {
+            $this->carteVisites[] = $carteVisite;
+            $carteVisite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteVisite(CarteVisite $carteVisite): self
+    {
+        if ($this->carteVisites->contains($carteVisite)) {
+            $this->carteVisites->removeElement($carteVisite);
+            // set the owning side to null (unless already changed)
+            if ($carteVisite->getUser() === $this) {
+                $carteVisite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarteVisiteFiligramme[]
+     */
+    public function getCarteVisiteFiligrammes(): Collection
+    {
+        return $this->carteVisiteFiligrammes;
+    }
+
+    public function addCarteVisiteFiligramme(CarteVisiteFiligramme $carteVisiteFiligramme): self
+    {
+        if (!$this->carteVisiteFiligrammes->contains($carteVisiteFiligramme)) {
+            $this->carteVisiteFiligrammes[] = $carteVisiteFiligramme;
+            $carteVisiteFiligramme->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteVisiteFiligramme(CarteVisiteFiligramme $carteVisiteFiligramme): self
+    {
+        if ($this->carteVisiteFiligrammes->contains($carteVisiteFiligramme)) {
+            $this->carteVisiteFiligrammes->removeElement($carteVisiteFiligramme);
+            // set the owning side to null (unless already changed)
+            if ($carteVisiteFiligramme->getUser() === $this) {
+                $carteVisiteFiligramme->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarteVisiteFinale[]
+     */
+    public function getCarteVisiteFinales(): Collection
+    {
+        return $this->carteVisiteFinales;
+    }
+
+    public function addCarteVisiteFinale(CarteVisiteFinale $carteVisiteFinale): self
+    {
+        if (!$this->carteVisiteFinales->contains($carteVisiteFinale)) {
+            $this->carteVisiteFinales[] = $carteVisiteFinale;
+            $carteVisiteFinale->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteVisiteFinale(CarteVisiteFinale $carteVisiteFinale): self
+    {
+        if ($this->carteVisiteFinales->contains($carteVisiteFinale)) {
+            $this->carteVisiteFinales->removeElement($carteVisiteFinale);
+            // set the owning side to null (unless already changed)
+            if ($carteVisiteFinale->getUser() === $this) {
+                $carteVisiteFinale->setUser(null);
             }
         }
 

@@ -1,0 +1,13 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}Edit CarteVisite{% endblock %}
+
+{% block body %}
+    <h1>Edit CarteVisite</h1>
+
+    {{ include('profil/graphisme/carte_visite/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('profile_carte_visite_index') }}">back to list</a>
+
+    {{ include('profil/graphisme/carte_visite/_delete_form.html.twig') }}
+{% endblock %}

@@ -44,7 +44,7 @@
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 					{% elseif categorie.nomCategorie == 'cartes_visites' %}
-					<a class="text-decoration-none" href="#"> 
+					<a class="text-decoration-none" href="{{path('profile_carte_visite_new',{'id': categorie.id})}}">
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 					{% elseif categorie.nomCategorie == 'menu' %}

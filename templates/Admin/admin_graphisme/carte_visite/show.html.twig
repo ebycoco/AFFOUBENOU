@@ -1,0 +1,86 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteVisite{% endblock %}
+
+{% block body %}
+    <h1>CarteVisite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_visite.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ carte_visite.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ carte_visite.createdAt ? carte_visite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ carte_visite.updatedAt ? carte_visite.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ carte_visite.nom }}</td>
+            </tr>
+            <tr>
+                <th>Prenom</th>
+                <td>{{ carte_visite.prenom }}</td>
+            </tr>
+            <tr>
+                <th>Profession</th>
+                <td>{{ carte_visite.profession }}</td>
+            </tr>
+            <tr>
+                <th>NomSociete</th>
+                <td>{{ carte_visite.nomSociete }}</td>
+            </tr>
+            <tr>
+                <th>Contact1</th>
+                <td>{{ carte_visite.contact1 }}</td>
+            </tr>
+            <tr>
+                <th>Contact2</th>
+                <td>{{ carte_visite.contact2 }}</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>{{ carte_visite.email }}</td>
+            </tr>
+            <tr>
+                <th>AddressDuSite</th>
+                <td>{{ carte_visite.addressDuSite }}</td>
+            </tr>
+            <tr>
+                <th>NumeroFixe</th>
+                <td>{{ carte_visite.numeroFixe }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ carte_visite.lieu }}</td>
+            </tr>
+            <tr>
+                <th>Social</th>
+                <td>{{ carte_visite.social }}</td>
+            </tr>
+            <tr>
+                <th>AutresInfor</th>
+                <td>{{ carte_visite.autresInfor }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ carte_visite.etat }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ carte_visite.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_carte_visite_index') }}">back to list</a> 
+{% endblock %}

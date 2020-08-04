@@ -116,4 +116,31 @@ vich_uploader:
 
             inject_on_load: false
             delete_on_update: true
+            delete_on_remove: true 
+
+        carteVisite_client:
+            uri_prefix: /images/carteVisite_client
+            upload_destination: '%kernel.project_dir%/public/images/carteVisite_client'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        carteVisite_filigra:
+            uri_prefix: /images/carteVisite_filigra
+            upload_destination: '%kernel.project_dir%/public/images/carteVisite_filigra'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+
+        carteVisite_finale:
+            uri_prefix: /images/carteVisite_finale
+            upload_destination: '%kernel.project_dir%/public/images/carteVisite_finale'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
             delete_on_remove: true
