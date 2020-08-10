@@ -5,7 +5,10 @@
 
 {% block body %}
 	<h1>CarteVisite index</h1>
-<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_carte_visite_finale_index') }}">Voir travail fait</a>
+	{% if affichesfinale == null %} 
+	{% else %} 
+	<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_affiche_finale_index') }}">Voir travail fait</a>
+	{% endif %} 
 	<table class="table">
 		<thead>
 			<tr class="text-center">
@@ -18,28 +21,28 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for carte_visite in carte_visites %}
+			{% for affiche in affiches %}
 				<tr class="text-center">
-					<td>{{ carte_visite.id }}</td>
-					<td>{{ carte_visite.createdAt ? carte_visite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-					<td>{{ carte_visite.user.prenom }}</td>  
+					<td>{{ affiche.id }}</td>
+					<td>{{ affiche.createdAt ? affiche.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ affiche.user.prenom }}</td>  
                     <td>
-                    <a class="btn btn-info" href="{{ path('admin_carte_visite_show', {'id': carte_visite.id}) }}">
+                    <a class="btn btn-info" href="{{ path('admin_affiche_show', {'id': affiche.id}) }}">
                             <i class="fas fa-info"></i> Afficher</a></td>
                     <td>
                         <a class="btn btn-primary"
-                            href="{{path('admin_carte_visite_filigramme_new', {'id': carte_visite.id})}}"> <i
+                            href="{{path('admin_affiche_filigrame_new', {'id': affiche.id})}}"> <i
                                 class="fas fas fa-upload"></i> filigrame</a>
                         <a class="btn btn-primary"
-                            href="{{path('admin_carte_visite_finale_new', {'id': carte_visite.id})}}"> <i
+                            href="{{path('admin_affiche_finale_new', {'id': affiche.id})}}"> <i
                                 class="fas fas fa-upload"></i> sans filigrame</a>
                     </td>
                     <td> 
-                    {% if carte_visite.etat == 'niveau 1' %} 
+                    {% if affiche.etat == 'niveau 1' %} 
                     <p style="background: red; color:#fff">Veuillez deposer le filigramme</p>
-                    {% elseif carte_visite.etat == 'niveau 2' %} 
+                    {% elseif affiche.etat == 'niveau 2' %} 
                     <p style="background: rgb(207, 153, 4); color:#fff">Veuillez deposer produit final</p>
-                    {% elseif carte_visite.etat == 'niveau 3' %}  
+                    {% elseif affiche.etat == 'niveau 3' %}  
                     <i class="fas fa-check-circle" style="color: green;"></i> 
                     {% endif %}  
 				</tr>

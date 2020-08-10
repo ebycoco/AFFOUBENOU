@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseAdmin.html.twig' %}
 
 {% block title %}CarteVisiteFinale{% endblock %}
 
@@ -30,5 +30,5 @@
 
     <a href="{{ path('admin_carte_visite_finale_edit', {'id': carte_visite_finale.id}) }}">edit</a>
 
-    {{ include('carte_visite_finale/_delete_form.html.twig') }}
+    {{ include('Admin/admin_graphisme/carte_visite/carte_visite_finale/_delete_form.html.twig') }}
 {% endblock %}

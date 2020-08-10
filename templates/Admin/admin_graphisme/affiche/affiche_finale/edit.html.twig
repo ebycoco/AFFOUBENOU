@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit AfficheFinale{% endblock %}
+
+{% block body %}
+    <h1>Edit AfficheFinale</h1>
+
+    {{ include('Admin/admin_graphisme/affiche/affiche_finale/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('admin_affiche_finale_index') }}">back to list</a>
+
+    {{ include('Admin/admin_graphisme/affiche/affiche_finale/_delete_form.html.twig') }}
+{% endblock %}

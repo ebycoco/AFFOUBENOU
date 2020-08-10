@@ -18,11 +18,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class CarteVisiteFiligrammeController extends AbstractController
 {
     /**
-     * @Route("/", name="carte_visite_filigramme_index", methods={"GET"})
+     * @Route("/index", name="carte_visite_filigramme_index", methods={"GET"})
      */
     public function index(CarteVisiteFiligrammeRepository $carteVisiteFiligrammeRepository): Response
     {
-        return $this->render('carte_visite_filigramme/index.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_filigramme/index.html.twig', [
             'carte_visite_filigrammes' => $carteVisiteFiligrammeRepository->findAll(),
         ]);
     }
@@ -47,7 +47,7 @@ class CarteVisiteFiligrammeController extends AbstractController
             return $this->redirectToRoute('admin_carte_visite_index');
         }
 
-        return $this->render('carte_visite_filigramme/new.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_filigramme/new.html.twig', [
             'carte_visite_filigramme' => $carteVisiteFiligramme,
             'form' => $form->createView(),
         ]);
@@ -58,7 +58,7 @@ class CarteVisiteFiligrammeController extends AbstractController
      */
     public function show(CarteVisiteFiligramme $carteVisiteFiligramme): Response
     {
-        return $this->render('carte_visite_filigramme/show.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_filigramme/show.html.twig', [
             'carte_visite_filigramme' => $carteVisiteFiligramme,
         ]);
     }
@@ -77,7 +77,7 @@ class CarteVisiteFiligrammeController extends AbstractController
             return $this->redirectToRoute('carte_visite_filigramme_index');
         }
 
-        return $this->render('carte_visite_filigramme/edit.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_filigramme/edit.html.twig', [
             'carte_visite_filigramme' => $carteVisiteFiligramme,
             'form' => $form->createView(),
         ]);

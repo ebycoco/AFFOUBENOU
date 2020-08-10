@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New AfficheFinale{% endblock %}
+
+{% block body %}
+    <h1>Create new AfficheFinale</h1>
+
+    {{ include('Admin/admin_graphisme/affiche/affiche_finale/_form.html.twig') }}
+
+    <a href="{{ path('admin_affiche_finale_index') }}">back to list</a>
+{% endblock %}

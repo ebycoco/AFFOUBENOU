@@ -143,4 +143,22 @@ vich_uploader:
 
             inject_on_load: false
             delete_on_update: true
-            delete_on_remove: true
+            delete_on_remove: true 
+
+        affiche_finale:
+            uri_prefix: /images/affiche_finale
+            upload_destination: '%kernel.project_dir%/public/images/affiche_finale'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+
+        affiche_filigrame:
+            uri_prefix: /images/affiche_filigrame
+            upload_destination: '%kernel.project_dir%/public/images/affiche_filigrame'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 

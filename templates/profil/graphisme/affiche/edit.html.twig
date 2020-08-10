@@ -1,0 +1,13 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}Edit Affiche{% endblock %}
+
+{% block body %}
+    <h1>Edit Affiche</h1>
+
+    {{ include('profil/graphisme/affiche/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('profile_affiche_index') }}">back to list</a>
+
+    {{ include('profil/graphisme/affiche/_delete_form.html.twig') }}
+{% endblock %}

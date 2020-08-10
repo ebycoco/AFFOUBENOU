@@ -1,0 +1,35 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteVisiteFinale index{% endblock %}
+
+{% block body %}
+    <h1>CarteVisiteFinale index</h1>
+<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_carte_visite_index') }}">Aller à la partie dépot</a>
+    <table class="table">
+        <thead>
+            <tr class="text-center">
+                    <th>Date de la commande</th> 
+                    <th>Date de la livraison</th> 
+                    <th>Nom du client</th> 
+                    <th>Voir</th>
+                </tr>
+        </thead>
+        <tbody>
+        {% for carte_visite_finale in carte_visite_finales %}
+            <tr  class="text-center">
+                <td>{{ carte_visite_finale.cartevisite.createdAt ? carte_visite_finale.cartevisite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carte_visite_finale.createdAt ? carte_visite_finale.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carte_visite_finale.cartevisite.user.prenom}}</td>
+                <td>
+                    <a class="btn btn-success" href="{{ path('admin_carte_visite_finale_show', {'id': carte_visite_finale.id}) }}">sans filigrame</a>
+                    
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

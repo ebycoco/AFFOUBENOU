@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}AfficheFinale index{% endblock %}
+
+{% block body %}
+    <h1>AfficheFinale index</h1>
+<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_affiche_index') }}">Aller à la partie dépot</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for affiche_finale in affiche_finales %}
+            <tr>
+                <td>{{ affiche_finale.id }}</td>
+                <td>{{ affiche_finale.imageName }}</td>
+                <td>{{ affiche_finale.createdAt ? affiche_finale.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ affiche_finale.updatedAt ? affiche_finale.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_affiche_finale_show', {'id': affiche_finale.id}) }}">show</a>
+                    <a href="{{ path('admin_affiche_finale_edit', {'id': affiche_finale.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

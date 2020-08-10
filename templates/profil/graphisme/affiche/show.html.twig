@@ -1,0 +1,42 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}Affiche{% endblock %}
+
+{% block body %}
+    <h1>Affiche</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ affiche.id }}</td>
+            </tr>
+            <tr>
+                <th>Info</th>
+                <td>{{ affiche.info }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ affiche.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ affiche.etat }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ affiche.createdAt ? affiche.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ affiche.updatedAt ? affiche.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('profile_affiche_index') }}">back to list</a>
+
+    <a href="{{ path('profile_affiche_edit', {'id': affiche.id}) }}">edit</a>
+
+    {{ include('profil/graphisme/affiche/_delete_form.html.twig') }}
+{% endblock %}

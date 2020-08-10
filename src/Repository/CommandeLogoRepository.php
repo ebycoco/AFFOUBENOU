@@ -25,7 +25,7 @@ class CommandeLogoRepository extends ServiceEntityRepository
             ->andWhere('c.user = :val') 
             ->setParameter('val', $value) 
             ->orderBy('c.id', 'DESC')
-            ->setMaxResults(6)
+            ->setMaxResults(3)
             ->getQuery()
             ->getResult()
         ;

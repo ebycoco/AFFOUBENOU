@@ -17,11 +17,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class CarteVisiteFinaleController extends AbstractController
 {
     /**
-     * @Route("/", name="carte_visite_finale_index", methods={"GET"})
+     * @Route("/index", name="carte_visite_finale_index", methods={"GET"})
      */
     public function index(CarteVisiteFinaleRepository $carteVisiteFinaleRepository): Response
     {
-        return $this->render('carte_visite_finale/index.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_finale/index.html.twig', [
             'carte_visite_finales' => $carteVisiteFinaleRepository->findAll(),
         ]);
     }
@@ -46,7 +46,7 @@ class CarteVisiteFinaleController extends AbstractController
             return $this->redirectToRoute('admin_carte_visite_index');
         }
 
-        return $this->render('carte_visite_finale/new.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_finale/new.html.twig', [
             'carte_visite_finale' => $carteVisiteFinale,
             'form' => $form->createView(),
         ]);
@@ -57,7 +57,7 @@ class CarteVisiteFinaleController extends AbstractController
      */
     public function show(CarteVisiteFinale $carteVisiteFinale): Response
     {
-        return $this->render('carte_visite_finale/show.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_finale/show.html.twig', [
             'carte_visite_finale' => $carteVisiteFinale,
         ]);
     }
@@ -76,7 +76,7 @@ class CarteVisiteFinaleController extends AbstractController
             return $this->redirectToRoute('carte_visite_finale_index');
         }
 
-        return $this->render('carte_visite_finale/edit.html.twig', [
+        return $this->render('Admin/admin_graphisme/carte_visite/carte_visite_finale/edit.html.twig', [
             'carte_visite_finale' => $carteVisiteFinale,
             'form' => $form->createView(),
         ]);

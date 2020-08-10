@@ -172,6 +172,21 @@ class Users implements UserInterface
      */
     private $carteVisiteFinales;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Affiche::class, mappedBy="user")
+     */
+    private $affiches;
+
+    /**
+     * @ORM\OneToMany(targetEntity=AfficheFiligrame::class, mappedBy="user")
+     */
+    private $afficheFiligrames;
+
+    /**
+     * @ORM\OneToMany(targetEntity=AfficheFinale::class, mappedBy="user")
+     */
+    private $afficheFinales;
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -193,6 +208,9 @@ class Users implements UserInterface
         $this->carteVisites = new ArrayCollection();
         $this->carteVisiteFiligrammes = new ArrayCollection();
         $this->carteVisiteFinales = new ArrayCollection();
+        $this->affiches = new ArrayCollection();
+        $this->afficheFiligrames = new ArrayCollection();
+        $this->afficheFinales = new ArrayCollection();
     }
 
     
@@ -939,6 +957,99 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($carteVisiteFinale->getUser() === $this) {
                 $carteVisiteFinale->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Affiche[]
+     */
+    public function getAffiches(): Collection
+    {
+        return $this->affiches;
+    }
+
+    public function addAffich(Affiche $affich): self
+    {
+        if (!$this->affiches->contains($affich)) {
+            $this->affiches[] = $affich;
+            $affich->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAffich(Affiche $affich): self
+    {
+        if ($this->affiches->contains($affich)) {
+            $this->affiches->removeElement($affich);
+            // set the owning side to null (unless already changed)
+            if ($affich->getUser() === $this) {
+                $affich->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AfficheFiligrame[]
+     */
+    public function getAfficheFiligrames(): Collection
+    {
+        return $this->afficheFiligrames;
+    }
+
+    public function addAfficheFiligrame(AfficheFiligrame $afficheFiligrame): self
+    {
+        if (!$this->afficheFiligrames->contains($afficheFiligrame)) {
+            $this->afficheFiligrames[] = $afficheFiligrame;
+            $afficheFiligrame->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAfficheFiligrame(AfficheFiligrame $afficheFiligrame): self
+    {
+        if ($this->afficheFiligrames->contains($afficheFiligrame)) {
+            $this->afficheFiligrames->removeElement($afficheFiligrame);
+            // set the owning side to null (unless already changed)
+            if ($afficheFiligrame->getUser() === $this) {
+                $afficheFiligrame->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AfficheFinale[]
+     */
+    public function getAfficheFinales(): Collection
+    {
+        return $this->afficheFinales;
+    }
+
+    public function addAfficheFinale(AfficheFinale $afficheFinale): self
+    {
+        if (!$this->afficheFinales->contains($afficheFinale)) {
+            $this->afficheFinales[] = $afficheFinale;
+            $afficheFinale->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAfficheFinale(AfficheFinale $afficheFinale): self
+    {
+        if ($this->afficheFinales->contains($afficheFinale)) {
+            $this->afficheFinales->removeElement($afficheFinale);
+            // set the owning side to null (unless already changed)
+            if ($afficheFinale->getUser() === $this) {
+                $afficheFinale->setUser(null);
             }
         }
 
