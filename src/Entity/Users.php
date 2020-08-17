@@ -2,12 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\UsersRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Repository\UsersRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UsersRepository::class)
@@ -187,6 +188,27 @@ class Users implements UserInterface
      */
     private $afficheFinales;
 
+    /**
+     * @ORM\OneToMany(targetEntity=CategorieWeb::class, mappedBy="user")
+     */
+    private $categorieWebs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=AutreFonctionnalite::class, mappedBy="user")
+     */
+    private $autreFonctionnalites;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CommandeServicesWeb::class, mappedBy="user")
+     */
+    private $commandeServicesWebs;
+
+    /**
+     * @ORM\OneToMany(targetEntity=ServiceWebDemo::class, mappedBy="user")
+     */
+    private $serviceWebDemos;
+ 
+
     public function __construct()
     {
         $this->sliders = new ArrayCollection();
@@ -211,6 +233,10 @@ class Users implements UserInterface
         $this->affiches = new ArrayCollection();
         $this->afficheFiligrames = new ArrayCollection();
         $this->afficheFinales = new ArrayCollection();
+        $this->categorieWebs = new ArrayCollection();
+        $this->autreFonctionnalites = new ArrayCollection();
+        $this->commandeServicesWebs = new ArrayCollection();
+        $this->serviceWebDemos = new ArrayCollection(); 
     }
 
     
@@ -1055,5 +1081,130 @@ class Users implements UserInterface
 
         return $this;
     }
+
+    /**
+     * @return Collection|CategorieWeb[]
+     */
+    public function getCategorieWebs(): Collection
+    {
+        return $this->categorieWebs;
+    }
+
+    public function addCategorieWeb(CategorieWeb $categorieWeb): self
+    {
+        if (!$this->categorieWebs->contains($categorieWeb)) {
+            $this->categorieWebs[] = $categorieWeb;
+            $categorieWeb->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCategorieWeb(CategorieWeb $categorieWeb): self
+    {
+        if ($this->categorieWebs->contains($categorieWeb)) {
+            $this->categorieWebs->removeElement($categorieWeb);
+            // set the owning side to null (unless already changed)
+            if ($categorieWeb->getUser() === $this) {
+                $categorieWeb->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|AutreFonctionnalite[]
+     */
+    public function getAutreFonctionnalites(): Collection
+    {
+        return $this->autreFonctionnalites;
+    }
+
+    public function addAutreFonctionnalite(AutreFonctionnalite $autreFonctionnalite): self
+    {
+        if (!$this->autreFonctionnalites->contains($autreFonctionnalite)) {
+            $this->autreFonctionnalites[] = $autreFonctionnalite;
+            $autreFonctionnalite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAutreFonctionnalite(AutreFonctionnalite $autreFonctionnalite): self
+    {
+        if ($this->autreFonctionnalites->contains($autreFonctionnalite)) {
+            $this->autreFonctionnalites->removeElement($autreFonctionnalite);
+            // set the owning side to null (unless already changed)
+            if ($autreFonctionnalite->getUser() === $this) {
+                $autreFonctionnalite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CommandeServicesWeb[]
+     */
+    public function getCommandeServicesWebs(): Collection
+    {
+        return $this->commandeServicesWebs;
+    }
+
+    public function addCommandeServicesWeb(CommandeServicesWeb $commandeServicesWeb): self
+    {
+        if (!$this->commandeServicesWebs->contains($commandeServicesWeb)) {
+            $this->commandeServicesWebs[] = $commandeServicesWeb;
+            $commandeServicesWeb->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommandeServicesWeb(CommandeServicesWeb $commandeServicesWeb): self
+    {
+        if ($this->commandeServicesWebs->contains($commandeServicesWeb)) {
+            $this->commandeServicesWebs->removeElement($commandeServicesWeb);
+            // set the owning side to null (unless already changed)
+            if ($commandeServicesWeb->getUser() === $this) {
+                $commandeServicesWeb->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ServiceWebDemo[]
+     */
+    public function getServiceWebDemos(): Collection
+    {
+        return $this->serviceWebDemos;
+    }
+
+    public function addServiceWebDemo(ServiceWebDemo $serviceWebDemo): self
+    {
+        if (!$this->serviceWebDemos->contains($serviceWebDemo)) {
+            $this->serviceWebDemos[] = $serviceWebDemo;
+            $serviceWebDemo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeServiceWebDemo(ServiceWebDemo $serviceWebDemo): self
+    {
+        if ($this->serviceWebDemos->contains($serviceWebDemo)) {
+            $this->serviceWebDemos->removeElement($serviceWebDemo);
+            // set the owning side to null (unless already changed)
+            if ($serviceWebDemo->getUser() === $this) {
+                $serviceWebDemo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+   
 
 }

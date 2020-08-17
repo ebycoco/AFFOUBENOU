@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteVisite index
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des sites web</h1>
+	{% if siteDemos == null %} 
+	{% else %} 
+	<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_affiche_finale_index') }}">Voir travail fait</a>
+	{% endif %} 
+	<table class="table">
+		<thead>
+			<tr class="text-center">
+				<th>Id</th>
+				<th>Date de la commande</th>
+                <th>Voir</th>  
+			</tr>
+		</thead>
+		<tbody>
+			{% for commande_services_web in commande_services_webs %}
+				<tr class="text-center">
+					<td>{{ commande_services_web.id }}</td>
+					<td>{{ commande_services_web.createdAt ? commande_services_web.createdAt|date('Y-m-d H:i:s') : '' }}</td> 
+                    <td>
+                    <a class="btn btn-info" href="{{ path('admin_service_web_demo_show', {'id': commande_services_web.id}) }}">
+                            <i class="fas fa-info"></i> Voir</a>
+                    </td>   
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="19">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

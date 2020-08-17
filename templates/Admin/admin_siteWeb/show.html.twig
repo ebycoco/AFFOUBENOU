@@ -1,0 +1,42 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}affiche{% endblock %}
+
+{% block body %}
+    <h1>affiche</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ affiche.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ affiche.info | raw }}</td>
+            </tr>
+            <tr>
+                <th>Quantité</th>
+                <td>{{ affiche.quantite }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ affiche.createdAt ? affiche.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ affiche.updatedAt ? affiche.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>   
+            <tr>
+                <th>Etat</th>
+                <td>{{ affiche.etat }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ affiche.prix }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_affiche_index') }}">back to list</a> 
+{% endblock %}

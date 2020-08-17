@@ -18,6 +18,17 @@ class CommandeLogoPersonaliseRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, CommandeLogoPersonalise::class);
     }
+    public function findByLastCommandperso($value)
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.user = :val') 
+            ->setParameter('val', $value) 
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
     // /**
     //  * @return CommandeLogoPersonalise[] Returns an array of CommandeLogoPersonalise objects

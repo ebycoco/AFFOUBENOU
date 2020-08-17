@@ -1,0 +1,73 @@
+{% extends 'basecommande.html.twig' %} {% block title %}Hello FormSiteController!{% endblock %} {% block body %}
+<section class="form-site">
+    <div class="row">
+        <div class="col-md-6 image-site">
+            <img src="{{asset('images/imageSite.jpg')}}" alt="image-site" class="image-site">
+        </div>
+        <div class="col-md-6">
+
+            {{ form_start(form) }} 
+               <div class="row">
+                    <div class="col-md-6 mt-3">
+                        <h5 class=" text-center text-muted mb-3">Nom de votre site</h5>
+                        {{ form_row(form.nomEntreprise,{'label':false}) }} 
+                    </div> 
+                    <div class="col-md-6 mt-3">
+                        <h5 class=" text-center text-muted mb-3">Nom de votre Entreprise</h5>
+                        {{ form_row(form.nomSite,{'label':false}) }} 
+                    </div> 
+               </div>   
+                    <div class="row">
+                        <div class="col-md-12 text-center mt-3">
+                            <h5 class="text-muted  mb-3">reseaux sociaux</h5>
+                        </div>
+                    </div>
+                    <div class="row"> 
+                        <div class="col-md-6">
+                            <div class="mb-3"> 
+                                {{ form_row(form.social1,{'label':false}) }} 
+                            </div> 
+                            <div class="mb-3"> 
+                            {{ form_row(form.social2,{'label':false}) }} 
+                            </div>
+                        </div> 
+                        <div class="col-md-6">
+                            <div class=" mb-3"> 
+                            {{ form_row(form.social3,{'label':false}) }} 
+                        </div> 
+                        <div class=" mb-3"> 
+                            {{ form_row(form.social4,{'label':false}) }} 
+                        </div>
+                        </div> 
+                    </div> 
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h5 class=" text-center text-muted mb-3">Détail du site</h5>
+                            <div class=" mb-3"> 
+                            {{ form_row(form.detail,{'label':false}) }} 
+                        </div>
+                        </div>
+                    </div>  
+                <button type="submit" class="btn btn-default bouton-envoyer mt-4">Contunier</button>
+                <div class="mb-4 retour-site">
+                <a href="{{path('profile_commande_services_web_index')}}" class=" btn btn-primary">Retour</a>
+                </div>
+            {{ form_end(form) }}
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+
+{# {% extends 'basecommande.html.twig' %}
+
+{% block title %}New CommandeServicesWeb{% endblock %}
+
+{% block body %}
+    <h1>Create new CommandeServicesWeb</h1>
+    
+
+    {{ include('commande_services_web/_form.html.twig') }}
+
+    <a href="{{ path('profile_commande_services_web_index') }}">back to list</a>
+{% endblock %} #}

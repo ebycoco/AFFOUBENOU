@@ -1,0 +1,57 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteVisite index
+{% endblock %}
+
+{% block body %}
+	<h1>Liste des sites web</h1>
+	{% if siteDemos == null %} 
+	{% else %} 
+	<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_service_web_demo_index') }}">Voir travail fait</a>
+	{% endif %} 
+	<table class="table">
+		<thead>
+			<tr class="text-center">
+				<th>Id</th>
+				<th>Categorie</th>
+				<th>Date de la commande</th> 
+				<th>Nom du client</th>
+                <th>Détails</th>
+				<th>Ajouter</th>
+                <th>Etat</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for site in sites %}
+				<tr class="text-center">
+					<td>{{ site.id }}</td>
+					<td>{{ site.categorieWeb.nom }}</td>
+					<td>{{ site.createdAt ? site.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ site.user.prenom }}</td>  
+                    <td>
+                    <a class="btn btn-info" href="{{ path('admin_services_web_show', {'id': site.id}) }}">
+                            <i class="fas fa-info"></i> Afficher</a></td>
+                    <td>
+                        <a class="btn btn-primary"
+                            href="{{path('admin_service_web_demo_new', {'id': site.id})}}"> <i
+                                class="fas fas fa-upload"></i> filigrame</a>
+                        <a class="btn btn-primary"
+                            href="#"> <i
+                                class="fas fas fa-upload"></i> Activé le site</a>
+                    </td>
+                    <td> 
+                    {% if site.lien == 'inactive' %} 
+                    <p style="background: rgb(207, 153, 4); color:#fff">Veuillez deposer le site</p> 
+                    
+                    {% elseif site.lien == 'active' %}  
+                    <i class="fas fa-check-circle" style="color: green;"></i> 
+                    {% endif %}  
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="19">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

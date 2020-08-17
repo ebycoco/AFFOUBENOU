@@ -1,0 +1,58 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CommandeServicesWeb{% endblock %}
+
+{% block body %}
+    <h1>CommandeServicesWeb</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ commande_services_web.id }}</td>
+            </tr>
+            <tr>
+                <th>NomEntreprise</th>
+                <td>{{ commande_services_web.nomEntreprise }}</td>
+            </tr>
+            <tr>
+                <th>NomSite</th>
+                <td>{{ commande_services_web.nomSite }}</td>
+            </tr>
+            <tr>
+                <th>DetailSite</th>
+                <td>{{ commande_services_web.detail }}</td>
+            </tr>
+            <tr>
+                <th>Social1</th>
+                <td>{{ commande_services_web.social1 }}</td>
+            </tr>
+            <tr>
+                <th>Social2</th>
+                <td>{{ commande_services_web.social2 }}</td>
+            </tr>
+            <tr>
+                <th>Social3</th>
+                <td>{{ commande_services_web.social3 }}</td>
+            </tr>
+            <tr>
+                <th>Social4</th>
+                <td>{{ commande_services_web.social4 }}</td>
+            </tr>
+            <tr>
+                <th>Lien</th>
+                <td>{{ commande_services_web.lien }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ commande_services_web.createdAt ? commande_services_web.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ commande_services_web.updatedAt ? commande_services_web.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_site_index') }}">Retour à la liste</a>  
+{% endblock %}

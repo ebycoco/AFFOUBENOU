@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit CategorieWeb{% endblock %}
+
+{% block body %}
+    <h1>Edit CategorieWeb</h1>
+
+    {{ include('categorie_web/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('categorie_web_index') }}">back to list</a>
+
+    {{ include('categorie_web/_delete_form.html.twig') }}
+{% endblock %}

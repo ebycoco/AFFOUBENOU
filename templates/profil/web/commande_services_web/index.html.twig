@@ -1,0 +1,15 @@
+{% extends 'basecommande.html.twig' %} {% block title %}Hello ChoixSiteController!{% endblock %} {% block body %}
+<section class="container-fluid choix-site mb-5">
+    <h2 style="text-align: center; font-weight: bold; color:#7c22f6;" class="text-title mb-5">Quels types de sites souhaitez-vous ?</h2>
+    
+    <div class="row">
+    {% for categorie_web in categorie_webs %} 
+        <div class="col-md-4 mb-5">
+            <a href="{{ path('profile_commande_services_web_new', {'id': categorie_web.id}) }}">
+                <h1 class="titre-choix-site">{{ categorie_web.nom }}</h1>
+            </a>
+        </div>
+        {% endfor %} 
+    </div> 
+</section>
+{% endblock %}

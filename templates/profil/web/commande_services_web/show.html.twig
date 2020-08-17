@@ -1,0 +1,23 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}CommandeServicesWeb{% endblock %}
+
+{% block body %}  
+    <section class="voir-site mb-3">
+        <div class="row"> 
+            <div class="col-md-6">
+                <img src="{{asset('images/imageSite.jpg')}}" alt="image-site" class="image-site">
+            </div>
+            <div class="col-md-6">
+                <h1 style="margin-top:10%; text-align:center;">{{ commande_services_web.nomSite }}</h1>
+                <div>
+                    <img src="{{ vich_uploader_asset(commande_services_web.demo, 'imageFile')}}" alt="image-voir-site" class="image-voir-site" style="width:800px; max-width:100%; heigth:auto;" >
+                </div>
+                <div style="margin-top:30px">
+                    <a href="{{path('profile_voir_site', {'id': commande_services_web.id})}}" class="btn btn-default bouton-voir-site">Voir</a>
+                    <a href="#" class="btn btn-default bouton-voir-site-acheter">Acheter</a>
+                </div>
+            </div>
+        </div>
+    </section> 
+{% endblock %}

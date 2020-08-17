@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}ServiceWebDemo index{% endblock %}
+
+{% block body %}
+    <h1>ServiceWebDemo index</h1>
+    <a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_site_index') }}">Aller à la partie dépot</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Numero de commande</th> 
+                <th>Client</th> 
+                <th>Utilisateur du dépôt</th> 
+                <th>Date de dépôt</th> 
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for service_web_demo in service_web_demos %}
+            <tr>
+                <td>{{ service_web_demo.commandeServiceWeb.id }}</td> 
+                <td>{{ service_web_demo.user.prenom }}</td> 
+                <td>{{ service_web_demo.commandeServiceWeb.user.prenom }}</td> 
+                <td>{{ service_web_demo.createdAt ? service_web_demo.createdAt|date('d-m-Y H:i') : '' }}</td> 
+                <td>
+                    <a class="btn btn-success" href=" {{ path('admin_service_web_demo_show', {'id': service_web_demo.id}) }}">Voir</a> 
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

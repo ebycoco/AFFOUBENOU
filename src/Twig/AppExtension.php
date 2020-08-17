@@ -37,4 +37,6 @@ class AppExtension extends AbstractExtension
         $currentRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route');
         return $currentRoute == $route ? $activeClass : '';
     }
+
+    
 }

@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AutreFonctionnalite index{% endblock %}
+
+{% block body %}
+    <h1>AutreFonctionnalite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>Description</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for autre_fonctionnalite in autre_fonctionnalites %}
+            <tr>
+                <td>{{ autre_fonctionnalite.id }}</td>
+                <td>{{ autre_fonctionnalite.imageName }}</td>
+                <td>{{ autre_fonctionnalite.description }}</td>
+                <td>{{ autre_fonctionnalite.createdAt ? autre_fonctionnalite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ autre_fonctionnalite.updatedAt ? autre_fonctionnalite.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('autre_fonctionnalite_show', {'id': autre_fonctionnalite.id}) }}">show</a>
+                    <a href="{{ path('autre_fonctionnalite_edit', {'id': autre_fonctionnalite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('autre_fonctionnalite_new') }}">Create new</a>
+{% endblock %}

@@ -162,3 +162,21 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true 
+
+        demoweb:
+            uri_prefix: /images/demoweb
+            upload_destination: '%kernel.project_dir%/public/images/demoweb'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+
+        fontionnalite:
+            uri_prefix: /images/fontionnalite
+            upload_destination: '%kernel.project_dir%/public/images/fontionnalite'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 

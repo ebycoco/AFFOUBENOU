@@ -28,7 +28,7 @@
 							class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 							<!-- Add icons to the links using the .nav-icon class
 														               with font-awesome or any other icon font library -->
-							<li class="nav-item has-treeview menu-open">
+							<li class="nav-item has-treeview">
 								<a href="#" class="nav-link {{set_active_route('admin_slogan_index')}} {{set_active_route('admin_slogan_new')}} {{set_active_route('admin_slogan_show')}}{{set_active_route('admin_slogan_edit')}} {{set_active_route('admin_image_slogan_index')}}
 										{{set_active_route('admin_image_slogan_new')}}{{set_active_route('admin_image_slogan_show')}}  {{set_active_route('admin_graphisme_index')}} {{set_active_route('admin_graphisme_new')}} {{set_active_route('admin_graphisme_show')}}{{set_active_route('admin_graphisme_edit')}}{{set_active_route('admin_service_web_index')}} {{set_active_route('admin_service_web_new')}} {{set_active_route('admin_service_web_show')}}{{set_active_route('admin_service_web_edit')}} {{set_active_route('admin_sliders_index')}} {{set_active_route('admin_sliders_new')}} {{set_active_route('admin_sliders_show')}}{{set_active_route('sliders_edit')}} {{set_active_route('admin_articles_index')}} {{set_active_route('admin_articles_new')}} {{set_active_route('admin_articles_show')}} {{set_active_route('admin_articles_edit')}}">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
@@ -71,7 +71,7 @@
 									</li>
 								</ul>
 							</li>
-							<li class="nav-item has-treeview menu-open">
+							<li class="nav-item has-treeview ">
 								<a href="#" class="nav-link {{set_active_route('admin_avantage_du_site_index')}} {{set_active_route('admin_avantage_du_site_new')}} {{set_active_route('admin_avantage_du_site_show')}} {{set_active_route('admin_avantage_du_site_edit')}} {{set_active_route('admin_identite_du_site_index')}} {{set_active_route('admin_identite_du_site_new')}} {{set_active_route('admin_identite_du_site_show')}}{{set_active_route('admin_identite_du_site_edit')}}">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
 									<p>
@@ -93,8 +93,8 @@
 										</a>
 									</li> 
 								</ul>
-							</li>
-							<li class="nav-item has-treeview menu-open">
+							</li> 
+							<li class="nav-item has-treeview">
 								<a href="#" class="nav-link {{set_active_route('admin_commande_logo_index')}} {{set_active_route('admin_commande_logo_travail')}} ">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
 									<p>
@@ -111,6 +111,29 @@
 									</li>
 									<li class="nav-item">
 										<a href="{{path('admin_commande_logo_travail')}}" class="nav-link {{set_active_route('admin_commande_logo_travail')}}">
+											<i class="fas fa-book"></i>
+											<p>Voir </p>
+										</a>
+									</li>  
+								</ul>
+							</li>
+							<li class="nav-item has-treeview ">
+								<a href="#" class="nav-link {{set_active_route('admin_site_index')}} {{set_active_route('admin_service_web_demo_index')}} ">
+									<i class="nav-icon fas fa-tachometer-alt"></i>
+									<p>
+										Site Web
+										<i class="right fas fa-angle-left"></i>
+									</p>
+								</a>
+								<ul class="nav nav-treeview">
+									<li class="nav-item">
+										<a href="{{path('admin_site_index')}}" class="nav-link {{set_active_route('admin_site_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Les commandes</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{path('admin_service_web_demo_index')}}" class="nav-link {{set_active_route('admin_service_web_demo_index')}}">
 											<i class="fas fa-book"></i>
 											<p>Voir </p>
 										</a>

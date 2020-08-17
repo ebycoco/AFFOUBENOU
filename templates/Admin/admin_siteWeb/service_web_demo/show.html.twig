@@ -1,0 +1,34 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}ServiceWebDemo{% endblock %}
+
+{% block body %}
+    <h1>ServiceWebDemo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ service_web_demo.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ service_web_demo.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ service_web_demo.createdAt ? service_web_demo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ service_web_demo.updatedAt ? service_web_demo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a class="btn btn-primary" href="{{ path('admin_service_web_demo_index') }}">back to list</a>
+
+    <a href="{{ path('admin_service_web_demo_edit', {'id': service_web_demo.id}) }}">edit</a>
+
+    {{ include('Admin/admin_siteWeb/service_web_demo/_delete_form.html.twig') }}
+{% endblock %}

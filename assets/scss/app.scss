@@ -41,8 +41,7 @@ border-color: none;
 box-shadow:none;
 }
 .avatar{
-position: absolute;
-top: 10%;
+position: relative; 
 left: 35%;
 }
 .avatar img{
@@ -438,4 +437,106 @@ h1 {
 }
 .text-choix{
     margin-top: 75%;
+}
+//  etape du site
+
+.choix-site {
+    padding: 50px;
+    background-color: #e5e5e5;
+}
+
+.titre-choix-site {
+    width: 300px;
+    text-align: center;
+    margin-left: 20%;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+a:focus {
+    text-decoration-line: none;
+}
+
+a:hover {
+    text-decoration-line: none;
+}
+
+.text-title {
+    font-size: 50px !important;
+}
+
+// formulaire site
+
+.formulaire-site {
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+.image-site {
+    max-width: 100%;
+    height: auto;
+    opacity: 1;
+}
+.retour-site{
+    margin-top: -6%;
+}
+
+.nom {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+.bouton-envoyer {
+    border-radius: 10px;
+    color: #fff;
+}
+
+.bouton-envoyer:hover {
+    color: #fff;
+}
+
+.formulaire-choix-site {
+    margin-top: 100px !important;
+}
+
+// commande site
+
+.bouton-voir-site{
+    width:100px;
+    margin-top:50px !important;
+    background-color:#7c22f6;
+    color:#fff;
+    margin-right:20px;
+    margin-left:35%;
+}
+
+.bouton-voir-site-acheter{
+    width:100px;
+    margin-top:50px !important;
+    background-color: #7c22f6;
+    color:#fff;
+
+}
+
+.image-voir-site{
+    border-radius:20px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2)
+}
+
+
+.bouton-voir-site-acheter:hover{
+    color:#fff;
+    background-color:#f6a722
+}
+
+
+
+.bouton-voir-site:hover {
+    color:#fff;
+    background-color: #f6a722;
 }

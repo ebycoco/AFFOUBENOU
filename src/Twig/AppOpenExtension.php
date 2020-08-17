@@ -6,7 +6,7 @@ use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
 
-class AppAffouExtension extends AbstractExtension
+class AppOpenExtension extends AbstractExtension
 {
     public function getFilters(): array
     {
@@ -16,21 +16,18 @@ class AppAffouExtension extends AbstractExtension
             // Reference: https://twig.symfony.com/doc/2.x/advanced.html#automatic-escaping
             new TwigFilter('filter_name', [$this, 'doSomething']),
         ];
-    }
+    } 
 
     public function getFunctions(): array
     {
         return [
-            new TwigFunction('pluralize', [$this, 'doSomething']),
+            new TwigFunction('set_active_route1', [$this, 'doSomething']),
         ];
     }
 
-    public function doSomething(int $count,string $singular,?string $plural =null):string
+    public function doSomething(string $route,?string $openClass ='menu-open'):string
     {
-        $plural = $plural ?? $singular . 's';
-        $str = $count === 1 ? $singular : $plural;
-        return "$count $str";
+        $currentRoute = $this->requestStack->getCurrentRequest()->attributes->get('_route'); 
+        return $currentRoute == $route ? $openClass : '';
     }
-
-    
 }

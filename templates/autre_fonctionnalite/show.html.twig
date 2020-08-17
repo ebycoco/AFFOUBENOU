@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}AutreFonctionnalite{% endblock %}
+
+{% block body %}
+    <h1>AutreFonctionnalite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ autre_fonctionnalite.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ autre_fonctionnalite.imageName }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ autre_fonctionnalite.description }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ autre_fonctionnalite.createdAt ? autre_fonctionnalite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ autre_fonctionnalite.updatedAt ? autre_fonctionnalite.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('autre_fonctionnalite_index') }}">back to list</a>
+
+    <a href="{{ path('autre_fonctionnalite_edit', {'id': autre_fonctionnalite.id}) }}">edit</a>
+
+    {{ include('autre_fonctionnalite/_delete_form.html.twig') }}
+{% endblock %}

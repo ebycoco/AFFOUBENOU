@@ -39,7 +39,7 @@
         <a class="dropdown-item" href="{{path('profile_mise_a_jour', {'id': app.user.id})}}">Service web</a> 
         {% else %}
           <a class="dropdown-item" href="{{path('profile_service_graphisme')}}">Service graphisme</a>
-          <a class="dropdown-item" href="#">Service web</a> 
+          <a class="dropdown-item" href="{{path('profile_commande_services_web_index')}}">Service web</a> 
         {% endif %} 
           
         </div>

@@ -1,0 +1,60 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<section class="commande"> 
+    <div class="form-maj ">
+        <h1 class="text-center mb-4"><img src="{{asset('images/monitor.png')}}" alt="image-commande" class="image-commande">Vos commandes</h1>
+        <table class="table tableau table-striped">  
+            <thead>
+                <tr> 
+                    <th scope="col">Type</th>
+                    <th scope="col">Categorie</th> 
+                    <th scope="col">Prix</th>
+                    <th scope="col">Etat</th>
+                    <th scope="col">Prouit</th>  
+                    <th scope="col">Dates de commandes</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for commande_web in commande_webs %}
+              <tr>  
+                    <td>{{commande_web.id}}</td>
+                    <td>{{commande_web.categorieWeb.nom}}</td> 
+                    <td>150 000fcfa</td>
+                    {% if commande_web.lien == 'inactive' %}
+                       <td style="color: #f6a722;">attente</td> 
+                       <td style="color: #f6a722;">attente</td> 
+                    {% elseif commande_web.lien == 'active' %}
+                      <td style="color: green;">validé</td>
+                      <td>
+                        <a class="btn btn-success" href="{{path('profile_commande_services_web_show', {'id': commande_web.id})}}">Voir</a>
+                      </td>
+                    {% endif %} 
+                    <td class="date-commande">{{ commande_web.createdAt ? commande_web.createdAt|date('d-m-Y') : '' }}</td>
+                </tr>
+            {% endfor %} 
+            </tbody>
+        </table>
+        <nav class="text-center" aria-label="...">
+  <ul class="pagination">
+    <li class="page-item disabled">
+      <span class="page-link">Previous</span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <span class="page-link">
+        2
+        <span class="sr-only">(current)</span>
+      </span>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
+    </div> 
+</section>
+{% endblock %}
