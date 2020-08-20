@@ -9,7 +9,7 @@
         {{ include('profil/_categorie.html.twig') }}
         <div class="col-10">
           <h1 class="text-center mb-4">
-            Commandes Affiche
+            Commandes Badge
           </h1>
         </div>
 
@@ -32,26 +32,26 @@
                 </tr>
             </thead>
             <tbody> 
-            {% for affiche in affiches %}
+            {% for badge in badges %}
               <tr>
-                    <td>Affiche</td>
-                    {% if affiche.etat == 'niveau 1' %}
+                    <td>Badge</td>
+                    {% if badge.etat == 'niveau 1' %}
                     <td class="nombre-commande">1</td>
-                    <td>{{affiche.prix}}fcfa</td>
+                    <td>{{badge.prix}}fcfa</td>
                     <td style="color: #f6a722;">attente</td>
                     <td style="color: #f6a722;">attente</td> 
                     {% else %} 
                       <td class="nombre-commande">1</td>
-                      <td>{{affiche.prix}}fcfa</td>
+                      <td>{{badge.prix}}fcfa</td>
                     {% endif %} 
-                    {% if affiche.etat == 'niveau 2' %}
+                    {% if badge.etat == 'niveau 2' %}
                        <td style="color: #f6a722;">attente</td>  
                        <td style="color: #f6a722;">attente</td>  
-                    {% elseif affiche.etat == 'niveau 3'  %}
+                    {% elseif badge.etat == 'niveau 3'  %}
                       <td style="color: green;">validé</td> 
-                      <td><a class="btn btn-success" href="{{path('profile_affiche_filigrame_show', {'id': affiche.id})}}">Voir</a></td>
+                      <td><a class="btn btn-success" href="{{path('profile_badges_filigramme_show', {'id': badge.id})}}">Voir</a></td>
                     {% endif %} 
-                    <td class="date-commande">{{ affiche.createdAt ? affiche.createdAt|date('d-m-Y') : '' }}</td>
+                    <td class="date-commande">{{ badge.createdAt ? badge.createdAt|date('d-m-Y') : '' }}</td>
                 </tr>
                 {% else %}
             <tr>
@@ -61,7 +61,7 @@
             </tbody>
         </table>
        <div class="pagination">
-        {{ knp_pagination_render(affiches) }}
+        {{ knp_pagination_render(badges) }}
       </div>
     </div> 
 </section>

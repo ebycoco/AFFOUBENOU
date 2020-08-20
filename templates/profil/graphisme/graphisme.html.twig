@@ -12,8 +12,7 @@
 		{% for row in categories|batch(2) %} 
 			<div class="row">
 				{% for categorie in row %} 
-				<div class=" col-md-6"> 
-				 
+				<div class=" col-md-6">  
                     <div class="col-md-12 text-graph text-center">
 					{% if categorie.nomCategorie == 'logo' %}
 					 	<a class="text-decoration-none" href="{{path('profile_service_graphisme_choix',{'id': categorie.id})}}"> 
@@ -23,8 +22,8 @@
 						<a class="text-decoration-none" href="#"> 
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
-					{% elseif categorie.nomCategorie == 'Badges' %}
-					<a class="text-decoration-none" href="#"> 
+					{% elseif categorie.nomCategorie == 'badges' %}
+					<a class="text-decoration-none" href="{{path('profile_badges_new',{'id': categorie.id})}}"> 
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 						{% elseif categorie.nomCategorie == 'Flyers' %}

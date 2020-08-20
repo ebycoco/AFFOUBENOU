@@ -2,15 +2,11 @@
 
 namespace App\Controller\Admin\Graphisme\Affiche;
 
-use App\Entity\Affiche;
-use App\Entity\CarteVisite;
+use App\Entity\Affiche; 
 use App\Repository\AfficheFinaleRepository;
-use App\Repository\AfficheRepository;
-use App\Repository\CarteVisiteRepository;
-use Symfony\Component\HttpFoundation\Request;
+use App\Repository\AfficheRepository; 
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use App\Repository\CarteVisiteFiligrammeRepository;
+use Symfony\Component\Routing\Annotation\Route; 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**

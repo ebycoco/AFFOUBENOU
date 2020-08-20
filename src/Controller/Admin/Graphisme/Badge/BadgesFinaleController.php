@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin\Graphisme\Badge;
 
+use App\Entity\Badges;
 use App\Entity\BadgesFinale;
 use App\Form\BadgesFinaleType;
 use App\Repository\BadgesFinaleRepository;
@@ -11,24 +12,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/badges/finale")
+ * @Route("/admin/commande/badges-finale", name="admin_")
  */
 class BadgesFinaleController extends AbstractController
 {
     /**
-     * @Route("/", name="badges_finale_index", methods={"GET"})
+     * @Route("/index", name="badges_finale_index", methods={"GET"})
      */
     public function index(BadgesFinaleRepository $badgesFinaleRepository): Response
     {
-        return $this->render('badges_finale/index.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_finale/index.html.twig', [
             'badges_finales' => $badgesFinaleRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="badges_finale_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="badges_finale_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,Badges $badge): Response
     {
         $badgesFinale = new BadgesFinale();
         $form = $this->createForm(BadgesFinaleType::class, $badgesFinale);
@@ -36,13 +37,16 @@ class BadgesFinaleController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $badgesFinale->setUser($this->getUser());
+            $badgesFinale->setBadge($badge);
+            $badge->setEtat('niveau 3');
             $entityManager->persist($badgesFinale);
             $entityManager->flush();
 
-            return $this->redirectToRoute('badges_finale_index');
+            return $this->redirectToRoute('admin_badge_index');
         }
 
-        return $this->render('badges_finale/new.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_finale/new.html.twig', [
             'badges_finale' => $badgesFinale,
             'form' => $form->createView(),
         ]);
@@ -53,7 +57,7 @@ class BadgesFinaleController extends AbstractController
      */
     public function show(BadgesFinale $badgesFinale): Response
     {
-        return $this->render('badges_finale/show.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_finale/show.html.twig', [
             'badges_finale' => $badgesFinale,
         ]);
     }
@@ -69,10 +73,10 @@ class BadgesFinaleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('badges_finale_index');
+            return $this->redirectToRoute('admin_badge_index');
         }
 
-        return $this->render('badges_finale/edit.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_finale/edit.html.twig', [
             'badges_finale' => $badgesFinale,
             'form' => $form->createView(),
         ]);
@@ -89,6 +93,6 @@ class BadgesFinaleController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('badges_finale_index');
+        return $this->redirectToRoute('admin_badge_index');
     }
 }

@@ -19,11 +19,21 @@ class BadgesRepository extends ServiceEntityRepository
         parent::__construct($registry, Badges::class);
     }
 
+    public function findAllVisibleQuery($value)
+    {
+        return $this->createQueryBuilder('b')
+            ->andWhere('b.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('b.id', 'DESC') 
+            ->getQuery() 
+        ;
+    }
+
     // /**
     //  * @return Badges[] Returns an array of Badges objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findAllVisibleQuery($value)
     {
         return $this->createQueryBuilder('b')
             ->andWhere('b.exampleField = :val')

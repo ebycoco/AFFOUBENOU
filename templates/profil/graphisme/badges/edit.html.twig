@@ -1,0 +1,13 @@
+{% extends 'basecommande.html.twig' %}
+
+{% block title %}Edit Badges{% endblock %}
+
+{% block body %}
+    <h1>Edit Badges</h1>
+
+    {{ include('profil/graphisme/badges/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('profile_badges_index') }}">back to list</a>
+
+    {{ include('profil/graphisme/badges/_delete_form.html.twig') }}
+{% endblock %}

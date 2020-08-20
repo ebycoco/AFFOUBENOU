@@ -6,18 +6,21 @@ use App\Entity\BadgesFiligramme;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 
 class BadgesFiligrammeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('imageName')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('user')
-            ->add('badge')
-        ;
+        ->add('imageFile',VichImageType::class,[ 
+            'required'=>false,
+            'download_link' => false,
+            'image_uri' => false,
+            'label' => 'Image de filigramme',
+            
+        ])
+        ; 
     }
 
     public function configureOptions(OptionsResolver $resolver)

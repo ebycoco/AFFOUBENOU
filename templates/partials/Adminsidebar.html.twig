@@ -95,9 +95,9 @@
 								</ul>
 							</li> 
 							<li class="nav-item has-treeview">
-								<a href="#" class="nav-link {{set_active_route('admin_categorie_index')}} {{set_active_route('admin_commande_logo_index')}} {{set_active_route('admin_commande_logo_travail')}}{{set_active_route('admin_carte_visite_index')}} {{set_active_route('admin_carte_menu_index')}} {{set_active_route('admin_affiche_index')}}">
+								<a href="#" class="nav-link {{set_active_route('admin_categorie_index')}} {{set_active_route('admin_commande_logo_index')}} {{set_active_route('admin_commande_logo_travail')}}{{set_active_route('admin_carte_visite_index')}} {{set_active_route('admin_carte_menu_index')}} {{set_active_route('admin_affiche_index')}} {{set_active_route('admin_badge_index')}}{{set_active_route('admin_carte_visite_finale_index')}} {{set_active_route('admin_affiche_finale_index')}}">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
-									<p>
+									<p> 
 										Graphisme 
 										<i class="right fas fa-angle-left"></i>
 									</p>
@@ -116,7 +116,7 @@
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="{{path('admin_carte_visite_index')}}" class="nav-link {{set_active_route('admin_carte_visite_index')}}">
+										<a href="{{path('admin_carte_visite_index')}}" class="nav-link {{set_active_route('admin_carte_visite_index')}} {{set_active_route('admin_carte_visite_finale_index')}} ">
 											<i class="fas fa-book"></i>
 											<p>Commandes carte de visite</p>
 										</a>
@@ -128,11 +128,17 @@
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="{{path('admin_affiche_index')}}" class="nav-link {{set_active_route('admin_affiche_index')}}">
+										<a href="{{path('admin_affiche_index')}}" class="nav-link {{set_active_route('admin_affiche_index')}} {{set_active_route('admin_affiche_finale_index')}}">
 											<i class="fas fa-book"></i>
 											<p>Commandes affiche</p>
 										</a>
 									</li>
+									<li class="nav-item">
+										<a href="{{path('admin_badge_index')}}" class="nav-link {{set_active_route('admin_badge_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Badge </p>
+										</a>
+									</li> 
 									<li class="nav-item">
 										<a href="{{path('admin_commande_logo_travail')}}" class="nav-link {{set_active_route('admin_commande_logo_travail')}}">
 											<i class="fas fa-book"></i>

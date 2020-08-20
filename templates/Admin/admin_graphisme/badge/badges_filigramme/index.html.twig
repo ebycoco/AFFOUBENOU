@@ -1,11 +1,11 @@
  {% extends 'baseAdmin.html.twig' %}
 
-{% block title %}Commande Affiche{% endblock %}
+{% block title %}Commande Filigramme index{% endblock %}
 
 {% block body %}
-<h1>Liste des commandes d'affiche traités </h1>
+<h1>Commande Filigramme index</h1>
 
-<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_affiche_index') }}">Aller à la partie dépot</a>
+<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_badge_index') }}">Aller à la partie dépot</a>
 <div class="row">  
     <div class="col-md-12"> 
         <table class="table">
@@ -18,20 +18,20 @@
                 </tr>
             </thead>
             <tbody>
-                {% for affiche_finale in affiche_finales %}
+                {% for badges_filigramme in badges_filigrammes %}
                 <tr>
                     <td class="text-center">
-                        {{affiche_finale.affiche.createdAt ? affiche_finale.affiche.createdAt|date('d-m-Y H:m') : ''}}
+                        {{badges_filigramme.badge.createdAt ? badges_filigramme.badge.createdAt|date('d-m-Y H:m') : ''}}
                     </td>
                     <td class="text-center">
-                        {{affiche_finale.createdAt ? affiche_finale.createdAt|date('d-m-Y H:m') : ''}}
+                        {{badges_filigramme.createdAt ? badges_filigramme.createdAt|date('d-m-Y H:m') : ''}}
                     </td>
                     <td class="text-center">
-                        {{affiche_finale.affiche.user.prenom}}
+                        {{badges_filigramme.badge.user.prenom}}
                     </td>
                     <td class="text-center">
                         <a class="btn btn-success"
-                            href="{{ path('admin_affiche_finale_show', {'id': affiche_finale.id}) }}"> <i
+                            href="{{ path('admin_badges_filigramme_show', {'id': badges_filigramme.id}) }}"> <i
                                 class="fas fa-eye"></i> sans filigrame</a>
                     </td>
                 </tr>

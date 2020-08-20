@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Admin\Graphisme\Badge;
 
+use App\Entity\Badges;
 use App\Entity\BadgesFiligramme;
 use App\Form\BadgesFiligrammeType;
 use App\Repository\BadgesFiligrammeRepository;
@@ -11,24 +12,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/badges/filigramme")
+ * @Route("/admin/badges-filigramme", name="admin_")
  */
 class BadgesFiligrammeController extends AbstractController
 {
     /**
-     * @Route("/", name="badges_filigramme_index", methods={"GET"})
+     * @Route("/index", name="badges_filigramme_index", methods={"GET"})
      */
     public function index(BadgesFiligrammeRepository $badgesFiligrammeRepository): Response
     {
-        return $this->render('badges_filigramme/index.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_filigramme/index.html.twig', [
             'badges_filigrammes' => $badgesFiligrammeRepository->findAll(),
         ]);
     }
 
     /**
-     * @Route("/new", name="badges_filigramme_new", methods={"GET","POST"})
+     * @Route("/new/{id}", name="badges_filigramme_new", methods={"GET","POST"})
      */
-    public function new(Request $request): Response
+    public function new(Request $request,Badges $badge): Response
     {
         $badgesFiligramme = new BadgesFiligramme();
         $form = $this->createForm(BadgesFiligrammeType::class, $badgesFiligramme);
@@ -36,13 +37,17 @@ class BadgesFiligrammeController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
+            $badgesFiligramme->setUser($this->getUser());
+            $badgesFiligramme->setBadge($badge);
+            $badge->setEtat('niveau 2');
+            $badge->setPredefinie($badgesFiligramme);
             $entityManager->persist($badgesFiligramme);
             $entityManager->flush();
 
-            return $this->redirectToRoute('badges_filigramme_index');
+            return $this->redirectToRoute('admin_badge_index');
         }
 
-        return $this->render('badges_filigramme/new.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_filigramme/new.html.twig', [
             'badges_filigramme' => $badgesFiligramme,
             'form' => $form->createView(),
         ]);
@@ -53,7 +58,7 @@ class BadgesFiligrammeController extends AbstractController
      */
     public function show(BadgesFiligramme $badgesFiligramme): Response
     {
-        return $this->render('badges_filigramme/show.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_filigramme/show.html.twig', [
             'badges_filigramme' => $badgesFiligramme,
         ]);
     }
@@ -69,10 +74,10 @@ class BadgesFiligrammeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('badges_filigramme_index');
+            return $this->redirectToRoute('admin_badge_index');
         }
 
-        return $this->render('badges_filigramme/edit.html.twig', [
+        return $this->render('Admin/admin_graphisme/badge/badges_filigramme/edit.html.twig', [
             'badges_filigramme' => $badgesFiligramme,
             'form' => $form->createView(),
         ]);
@@ -89,6 +94,6 @@ class BadgesFiligrammeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('badges_filigramme_index');
+        return $this->redirectToRoute('admin_badge_index');
     }
 }

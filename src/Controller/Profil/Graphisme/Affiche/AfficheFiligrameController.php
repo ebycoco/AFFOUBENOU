@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/profile/affiche/filigrame", name="profile_")
+ * @Route("/profile/affiche-filigrame", name="profile_")
  */
 class AfficheFiligrameController extends AbstractController
 { 

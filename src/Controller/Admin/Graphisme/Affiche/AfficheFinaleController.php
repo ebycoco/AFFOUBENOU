@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/commande/affiche/finale", name="admin_")
+ * @Route("/admin/commande/affiche-finale", name="admin_")
  */
 class AfficheFinaleController extends AbstractController
 {

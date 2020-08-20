@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New BadgesFiligramme{% endblock %}
+
+{% block body %}
+    <h1>Create new BadgesFiligramme</h1>
+
+    {{ include('Admin/admin_graphisme/badge/badges_filigramme/_form.html.twig') }}
+
+    <a href="{{ path('admin_badges_filigramme_index') }}">back to list</a>
+{% endblock %}

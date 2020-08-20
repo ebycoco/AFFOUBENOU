@@ -1,4 +1,4 @@
-{% extends 'base.html.twig' %}
+{% extends 'basecommande.html.twig' %}
 
 {% block title %}Badges index{% endblock %}
 
@@ -29,8 +29,8 @@
                 <td>{{ badge.createdAt ? badge.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ badge.updatedAt ? badge.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
-                    <a href="{{ path('badges_show', {'id': badge.id}) }}">show</a>
-                    <a href="{{ path('badges_edit', {'id': badge.id}) }}">edit</a>
+                    <a href="{{ path('profile_badges_show', {'id': badge.id}) }}">show</a>
+                    <a href="{{ path('profile_badges_edit', {'id': badge.id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}
@@ -41,5 +41,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('badges_new') }}">Create new</a>
+    <a href="{{ path('profile_badges_new') }}">Create new</a>
 {% endblock %}

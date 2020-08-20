@@ -4,10 +4,10 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Liste des commandes d'affiche</h1>
-	{% if affichesfinale == null %} 
+	<h1>Badge index</h1>
+	{% if badgesfinales == null %} 
 	{% else %} 
-	<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_affiche_finale_index') }}">Voir travail fait</a>
+	<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_badges_finale_index') }}">Voir travail fait</a>
 	{% endif %} 
 	<table class="table">
 		<thead>
@@ -21,28 +21,28 @@
 			</tr>
 		</thead>
 		<tbody>
-			{% for affiche in affiches %}
+			{% for badge in badges %}
 				<tr class="text-center">
-					<td>{{ affiche.id }}</td>
-					<td>{{ affiche.createdAt ? affiche.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-					<td>{{ affiche.user.prenom }}</td>  
+					<td>{{ badge.id }}</td>
+					<td>{{ badge.createdAt ? badge.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ badge.user.prenom }}</td>  
                     <td>
-                    <a class="btn btn-info" href="{{ path('admin_affiche_show', {'id': affiche.id}) }}">
+                    <a class="btn btn-info" href="{{ path('admin_badge_show', {'id': badge.id}) }}">
                             <i class="fas fa-info"></i> Afficher</a></td>
                     <td>
                         <a class="btn btn-primary"
-                            href="{{path('admin_affiche_filigrame_new', {'id': affiche.id})}}"> <i
+                            href="{{path('admin_badges_filigramme_new', {'id': badge.id})}}"> <i
                                 class="fas fas fa-upload"></i> filigrame</a>
                         <a class="btn btn-primary"
-                            href="{{path('admin_affiche_finale_new', {'id': affiche.id})}}"> <i
+                            href="{{path('admin_badges_finale_new', {'id': badge.id})}}"> <i
                                 class="fas fas fa-upload"></i> sans filigrame</a>
                     </td>
                     <td> 
-                    {% if affiche.etat == 'niveau 1' %} 
+                    {% if badge.etat == 'niveau 1' %} 
                     <p style="background: red; color:#fff">Veuillez deposer le filigramme</p>
-                    {% elseif affiche.etat == 'niveau 2' %} 
+                    {% elseif badge.etat == 'niveau 2' %} 
                     <p style="background: rgb(207, 153, 4); color:#fff">Veuillez deposer produit final</p>
-                    {% elseif affiche.etat == 'niveau 3' %}  
+                    {% elseif badge.etat == 'niveau 3' %}  
                     <i class="fas fa-check-circle" style="color: green;"></i> 
                     {% endif %}  
 				</tr>
