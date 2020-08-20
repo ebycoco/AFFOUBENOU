@@ -14,6 +14,6 @@ class ProfilleController extends AbstractController
      */
     public function profil()
     {
-        return $this->redirectToRoute('profile_index');
+        return $this->redirectToRoute('profile_profile');
     }
 }

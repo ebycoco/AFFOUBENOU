@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteMenu index{% endblock %}
+
+{% block body %}
+    <h1>CarteMenu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Menus</th>
+                <th>Contact</th>
+                <th>Lieu</th>
+                <th>Etat</th>
+                <th>Prix</th>
+                <th>Quantite</th>
+                <th>Info</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte_menu in carte_menus %}
+            <tr>
+                <td>{{ carte_menu.id }}</td>
+                <td>{{ carte_menu.nom }}</td>
+                <td>{{ carte_menu.menus }}</td>
+                <td>{{ carte_menu.contact }}</td>
+                <td>{{ carte_menu.lieu }}</td>
+                <td>{{ carte_menu.etat }}</td>
+                <td>{{ carte_menu.prix }}</td>
+                <td>{{ carte_menu.quantite }}</td>
+                <td>{{ carte_menu.info }}</td>
+                <td>{{ carte_menu.createdAt ? carte_menu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carte_menu.updatedAt ? carte_menu.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('carte_menu_show', {'id': carte_menu.id}) }}">show</a>
+                    <a href="{{ path('carte_menu_edit', {'id': carte_menu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="12">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

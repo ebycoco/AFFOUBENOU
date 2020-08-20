@@ -1,0 +1,34 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteMenuFinale{% endblock %}
+
+{% block body %}
+    <h1>CarteMenuFinale</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_menu_finale.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ carte_menu_finale.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ carte_menu_finale.createdAt ? carte_menu_finale.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ carte_menu_finale.updatedAt ? carte_menu_finale.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('carte_menu_finale_index') }}">back to list</a>
+
+    <a href="{{ path('carte_menu_finale_edit', {'id': carte_menu_finale.id}) }}">edit</a>
+
+    {{ include('carte_menu_finale/_delete_form.html.twig') }}
+{% endblock %}

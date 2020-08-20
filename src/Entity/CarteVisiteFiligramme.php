@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CarteVisiteFiligrammeRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -59,6 +61,16 @@ class CarteVisiteFiligramme
      * @ORM\JoinColumn(nullable=false)
      */
     private $cartevisite;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CarteVisite::class, mappedBy="predefinie")
+     */
+    private $carteVisites;
+
+    public function __construct()
+    {
+        $this->carteVisites = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -132,5 +144,36 @@ class CarteVisiteFiligramme
     public function getImageName(): ?string
     {
         return $this->imageName;
+    }
+
+    /**
+     * @return Collection|CarteVisite[]
+     */
+    public function getCarteVisites(): Collection
+    {
+        return $this->carteVisites;
+    }
+
+    public function addCarteVisite(CarteVisite $carteVisite): self
+    {
+        if (!$this->carteVisites->contains($carteVisite)) {
+            $this->carteVisites[] = $carteVisite;
+            $carteVisite->setPredefinie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteVisite(CarteVisite $carteVisite): self
+    {
+        if ($this->carteVisites->contains($carteVisite)) {
+            $this->carteVisites->removeElement($carteVisite);
+            // set the owning side to null (unless already changed)
+            if ($carteVisite->getPredefinie() === $this) {
+                $carteVisite->setPredefinie(null);
+            }
+        }
+
+        return $this;
     }
 }

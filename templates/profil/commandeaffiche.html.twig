@@ -1,0 +1,68 @@
+{% extends 'baseProfile.html.twig' %}
+
+{% block title %}Hello ProfileController!{% endblock %}
+
+{% block body %}
+<section class="commande">
+    <div class="form-maj ">
+      <div class="row">
+        {{ include('profil/_categorie.html.twig') }}
+        <div class="col-10">
+          <h1 class="text-center mb-4">
+            Commandes Affiche
+          </h1>
+        </div>
+
+      </div>
+        
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-primary" role="alert">
+				{{ message }}
+			</div>
+    {% endfor %} 
+        <table class="table tableau table-striped">  
+            <thead>
+                <tr> 
+                    <th scope="col">Type</th>
+                    <th scope="col">Quantité</th> 
+                    <th scope="col">Prix</th>
+                    <th scope="col">Etat</th> 
+                    <th scope="col">Image</th> 
+                    <th scope="col">Dates de commandes</th>
+                </tr>
+            </thead>
+            <tbody> 
+            {% for affiche in affiches %}
+              <tr>
+                    <td>Logo personnalisé</td>
+                    {% if affiche.etat == 'niveau 1' %}
+                    <td class="nombre-commande">1</td>
+                    <td>{{affiche.prix}}fcfa</td>
+                    <td style="color: #f6a722;">attente</td>
+                    <td style="color: #f6a722;">attente</td> 
+                    {% else %} 
+                      <td class="nombre-commande">1</td>
+                      <td>{{affiche.prix}}fcfa</td>
+                    {% endif %} 
+                    {% if affiche.etat == 'niveau 2' %}
+                       <td style="color: #f6a722;">attente</td>  
+                       <td style="color: #f6a722;">attente</td>  
+                    {% elseif affiche.etat == 'niveau 3'  %}
+                      <td style="color: green;">validé</td> 
+                      <td><a class="btn btn-success" href="{{path('profile_affiche_filigrame_show', {'id': affiche.id})}}">Voir</a></td>
+                    {% endif %} 
+                    <td class="date-commande">{{ affiche.createdAt ? affiche.createdAt|date('d-m-Y') : '' }}</td>
+                </tr>
+                {% else %}
+            <tr>
+                <td colspan="6" class="text-center">Vous n'avez pas de commande en attent</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+       <div class="pagination">
+        {{ knp_pagination_render(affiches) }}
+      </div>
+    </div> 
+</section>
+{% endblock %}

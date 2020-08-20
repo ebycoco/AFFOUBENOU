@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AfficheFiligrameRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
@@ -60,6 +62,16 @@ class AfficheFiligrame
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Affiche::class, mappedBy="predefinie")
+     */
+    private $affiches;
+
+    public function __construct()
+    {
+        $this->affiches = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -127,23 +139,40 @@ class AfficheFiligrame
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
-    }
-
-    public function setCreatedAt(\DateTimeInterface $createdAt): self
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
+    } 
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
+    } 
+
+    /**
+     * @return Collection|Affiche[]
+     */
+    public function getAffiches(): Collection
+    {
+        return $this->affiches;
     }
 
-    public function setUpdatedAt(\DateTimeInterface $updatedAt): self
+    public function addAffich(Affiche $affich): self
     {
-        $this->updatedAt = $updatedAt;
+        if (!$this->affiches->contains($affich)) {
+            $this->affiches[] = $affich;
+            $affich->setPredefinie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAffich(Affiche $affich): self
+    {
+        if ($this->affiches->contains($affich)) {
+            $this->affiches->removeElement($affich);
+            // set the owning side to null (unless already changed)
+            if ($affich->getPredefinie() === $this) {
+                $affich->setPredefinie(null);
+            }
+        }
 
         return $this;
     }

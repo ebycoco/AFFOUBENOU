@@ -68,6 +68,11 @@ class Affiche
      */
     private $prix;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=AfficheFiligrame::class, inversedBy="affiches")
+     */
+    private $predefinie;
+
     public function __construct()
     {
         $this->afficheFiligrames = new ArrayCollection();
@@ -208,6 +213,18 @@ class Affiche
     public function setPrix(float $prix): self
     {
         $this->prix = $prix;
+
+        return $this;
+    }
+
+    public function getPredefinie(): ?AfficheFiligrame
+    {
+        return $this->predefinie;
+    }
+
+    public function setPredefinie(?AfficheFiligrame $predefinie): self
+    {
+        $this->predefinie = $predefinie;
 
         return $this;
     }

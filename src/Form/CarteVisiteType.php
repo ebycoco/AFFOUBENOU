@@ -22,10 +22,18 @@ class CarteVisiteType extends AbstractType
             ->add('profession',TextType::class)
             ->add('nomSociete',TextType::class)
             ->add('contact1',IntegerType::class)
-            ->add('contact2',IntegerType::class)
-            ->add('email',EmailType::class)
-            ->add('addressDuSite',TextType::class)
-            ->add('numeroFixe',IntegerType::class)
+            ->add('contact2',IntegerType::class,[
+                'required'=>false,
+            ])
+            ->add('email',EmailType::class,[
+                'required'=>false,
+            ])
+            ->add('addressDuSite',TextType::class,[
+                'required'=>false,
+            ])
+            ->add('numeroFixe',IntegerType::class,[
+                'required'=>false,
+            ])
             ->add('lieu',TextType::class)
             ->add('imageFile',VichImageType::class,[ 
                 'required'=>false,
@@ -37,6 +45,7 @@ class CarteVisiteType extends AbstractType
             ->add('quantite',IntegerType::class)
             ->add('social',TextType::class)
             ->add('autresInfor',TextareaType::class,[
+                'required'=>false,
                 'attr' =>[
                     'class' => 'form-control', 
                     'cols'=>"30",

@@ -1,0 +1,13 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}Edit CarteMenuFinale{% endblock %}
+
+{% block body %}
+    <h1>Edit CarteMenuFinale</h1>
+
+    {{ include('carte_menu_finale/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('carte_menu_finale_index') }}">back to list</a>
+
+    {{ include('carte_menu_finale/_delete_form.html.twig') }}
+{% endblock %}

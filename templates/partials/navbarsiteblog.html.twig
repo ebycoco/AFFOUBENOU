@@ -1,0 +1,36 @@
+        <nav class="navbar navbar-expand-lg navbar-primary bg-dark  ">
+            <a class="navbar-brand" href="#">{{commande_services_web.nomSite}}</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon" style="color:#fff; background-color:#fff;"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                  <a class="nav-link" href="{{path('profile_voir_site',{'id': commande_services_web.id})}}" style="margin-left:400px;">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">SERVICES</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="{{path('profile_voir_site_porfolio',{'id': commande_services_web.id})}}">PORTFOLIO</a>
+                </li>
+                 <li class="nav-item">
+                  <a class="nav-link" href="#">BLOG</a>
+                </li> 
+              </ul>
+              <ul class="navbar-nav ml-auto">
+                <li>
+                  <a class="nav-link" href="#"><img src="{{asset('images/1.png')}}" alt="facebook" class="reseau-sociaux"></a>
+                </li>
+                <li>
+                  <a class="nav-link" href="#"><img src="{{asset('images/4.png')}}" alt="facebook" class="reseau-sociaux"></a>
+                </li>
+                <li>
+                  <a class="nav-link" href="#"><img src="{{asset('images/3.png')}}" alt="facebook" class="reseau-sociaux"></a>
+                </li>
+              </ul>
+            </div>
+          </nav>

@@ -41,6 +41,7 @@ class CarteVisiteFiligrammeController extends AbstractController
             $carteVisiteFiligramme->setUser($this->getUser());
             $carteVisiteFiligramme->setCartevisite($carteVisite);
             $carteVisite->setEtat('niveau 2');
+            $carteVisite->setPredefinie($carteVisiteFiligramme);
             $entityManager->persist($carteVisiteFiligramme);
             $entityManager->flush();
 

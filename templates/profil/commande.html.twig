@@ -3,9 +3,23 @@
 {% block title %}Hello ProfileController!{% endblock %}
 
 {% block body %}
-<section class="commande"> 
+<section class="commande">
     <div class="form-maj ">
-        <h1 class="text-center mb-4"><img src="{{asset('images/monitor.png')}}" alt="image-commande" class="image-commande">Vos commandes</h1>
+      <div class="row">
+        {{ include('profil/_categorie.html.twig') }}
+        <div class="col-8">
+          <h1 class="text-center mb-4">
+            Commandes Logo simple
+          </h1>
+        </div>
+
+      </div>
+        
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-primary" role="alert">
+				{{ message }}
+			</div>
+    {% endfor %} 
         <table class="table tableau table-striped">  
             <thead>
                 <tr> 
@@ -36,46 +50,16 @@
                     {% endif %} 
                     <td class="date-commande">{{ commande_logo.createdAt ? commande_logo.createdAt|date('d-m-Y') : '' }}</td>
                 </tr>
-            {% endfor %} 
-            {% for commande_logo_personalise in commande_logo_personalises %}
-              <tr>
-                    <td>Logo personnalisé</td>
-                    {% if commande_logo_personalise.etat == 'Perso' %}
-                    <td class="nombre-commande">1</td>
-                    {% else %}
-                      <td class="nombre-commande">1</td>
-                    {% endif %} 
-                    <td>{{commande_logo_personalise.prix}}fcfa</td>
-                    {% if commande_logo_personalise.etat == false %}
-                       <td style="color: #f6a722;">attente</td>  
-                       <td style="color: #f6a722;">attente</td>  
-                    {% else %}
-                      <td style="color: green;">validé</td>
-                      <td><a class="btn btn-success" href="{{path('profile_commande_graphisme_fili_perso', {'id': commande_logo_personalise.id})}}">Voir</a></td>
-                    {% endif %} 
-                    <td class="date-commande">{{ commande_logo_personalise.createdAt ? commande_logo_personalise.createdAt|date('d-m-Y') : '' }}</td>
-                </tr>
-            {% endfor %}
+                {% else %}
+            <tr>
+                <td colspan="6" class="text-center">Vous n'avez pas de commande en attent</td>
+            </tr>
+            {% endfor %}  
             </tbody>
         </table>
-        <nav class="text-center" aria-label="...">
-  <ul class="pagination">
-    <li class="page-item disabled">
-      <span class="page-link">Previous</span>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">1</a></li>
-    <li class="page-item active" aria-current="page">
-      <span class="page-link">
-        2
-        <span class="sr-only">(current)</span>
-      </span>
-    </li>
-    <li class="page-item"><a class="page-link" href="#">3</a></li>
-    <li class="page-item">
-      <a class="page-link" href="#">Next</a>
-    </li>
-  </ul>
-</nav>
+       <div class="pagination">
+        {{ knp_pagination_render(commande_logos) }}
+      </div>
     </div> 
 </section>
 {% endblock %}

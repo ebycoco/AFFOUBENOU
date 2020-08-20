@@ -1,0 +1,25 @@
+{% extends 'baseProfile.html.twig' %}
+{% block title %}Hello CommandeDispoController!
+{% endblock %}
+{% block body %}
+	<section class="commande-dispo mb-5">
+		<div class="row">
+			<div class="col-md-12">
+                <img src="{{asset('images/notification.png')}}" alt="image-commande-dispo" class="image-commande-dispo">
+            <span class="titre-dispo">Votre Logo est disponible</span>
+            </div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="text-center image-filigrane-fini">
+					<img src="{{ vich_uploader_asset(carteMenu.predefinie, 'imageFile')|imagine_filter('image_filigrane')}}" class="img-fluid rounded"  alt="">
+ 				</div>  
+			</div> 
+		</div>
+        <div class="row">
+            <div class="col-md-12 text-center mt-3">
+                    <a href="{{path('profile_commande_graphisme_mod', {'id': carteMenu.id})}}" class="btn btn-success">Acheter sans le filigrane</a>
+                </div> 
+        </div>
+	</section>
+{% endblock %}

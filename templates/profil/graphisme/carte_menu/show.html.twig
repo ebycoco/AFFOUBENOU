@@ -1,0 +1,62 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteMenu{% endblock %}
+
+{% block body %}
+    <h1>CarteMenu</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_menu.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ carte_menu.nom }}</td>
+            </tr>
+            <tr>
+                <th>Menus</th>
+                <td>{{ carte_menu.menus }}</td>
+            </tr>
+            <tr>
+                <th>Contact</th>
+                <td>{{ carte_menu.contact }}</td>
+            </tr>
+            <tr>
+                <th>Lieu</th>
+                <td>{{ carte_menu.lieu }}</td>
+            </tr>
+            <tr>
+                <th>Etat</th>
+                <td>{{ carte_menu.etat }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ carte_menu.prix }}</td>
+            </tr>
+            <tr>
+                <th>Quantite</th>
+                <td>{{ carte_menu.quantite }}</td>
+            </tr>
+            <tr>
+                <th>Info</th>
+                <td>{{ carte_menu.info }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ carte_menu.createdAt ? carte_menu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ carte_menu.updatedAt ? carte_menu.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('carte_menu_index') }}">back to list</a>
+
+    <a href="{{ path('carte_menu_edit', {'id': carte_menu.id}) }}">edit</a>
+
+    {{ include('carte_menu/_delete_form.html.twig') }}
+{% endblock %}

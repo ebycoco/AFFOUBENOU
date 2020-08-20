@@ -15,7 +15,7 @@ use Dompdf\Options;
 class ProfilRecuController extends AbstractController
 {
     /**
-     * @Route("/logo/{id}/Reçu", name="recu_logo")
+     * @Route("/logo/Reçu/{id}/Reçu", name="recu_logo")
      */
     public function logo(CommandePredefine $commandePredifine)
     {

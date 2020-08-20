@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New CategorieWeb{% endblock %}
+
+{% block body %}
+    <h1>Create new CategorieWeb</h1>
+
+    {{ include('Admin/admin_siteWeb/categorie_web/_form.html.twig') }}
+
+    <a href="{{ path('admin_categorie_web_index') }}">back to list</a>
+{% endblock %}

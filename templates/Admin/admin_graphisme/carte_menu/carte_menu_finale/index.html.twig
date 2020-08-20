@@ -1,0 +1,37 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteMenuFinale index{% endblock %}
+
+{% block body %}
+    <h1>CarteMenuFinale index</h1>
+<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_carte_menu_index') }}">Aller à la partie dépot</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte_menu_finale in carte_menu_finales %}
+            <tr>
+                <td>{{ carte_menu_finale.id }}</td>
+                <td>{{ carte_menu_finale.imageName }}</td>
+                <td>{{ carte_menu_finale.createdAt ? carte_menu_finale.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carte_menu_finale.updatedAt ? carte_menu_finale.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('carte_menu_finale_show', {'id': carte_menu_finale.id}) }}">show</a>
+                    <a href="{{ path('carte_menu_finale_edit', {'id': carte_menu_finale.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table> 
+{% endblock %}

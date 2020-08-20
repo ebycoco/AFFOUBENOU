@@ -17,7 +17,7 @@ use App\Repository\ServiceWebDemoRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/profile/commande/services/web",name="profile_")
+ * @Route("/profile/services-web",name="profile_")
  */
 class CommandeServicesWebController extends AbstractController
 {
@@ -31,6 +31,18 @@ class CommandeServicesWebController extends AbstractController
             'categorie_webs' => $categorieWebRepository->findAll(),
         ]);
     }
+    /* en dessous ces pour web */
+
+     /**
+     * @Route("/commande/web", name="commande_web", methods={"GET"})
+     */
+    public function commandeWeb(CommandeServicesWebRepository $commandeServicesWebRepository): Response
+    {
+        
+        return $this->render('profil/commandeweb.html.twig',[
+            'commande_webs' => $commandeServicesWebRepository->findByLastCommandweb($this->getUser()),
+        ]);
+    } 
 
     /**
      * @Route("/new/{id}", name="commande_services_web_new", methods={"GET","POST"})

@@ -29,7 +29,7 @@
                     {% elseif commande_web.lien == 'active' %}
                       <td style="color: green;">validé</td>
                       <td>
-                        <a class="btn btn-success" href="{{path('profile_commande_services_web_show', {'id': commande_web.id})}}">Voir</a>
+                        <a class="btn btn-success"href="{{path('profile_commande_services_web_show', {'id': commande_web.id})}}">Voir</a>
                       </td>
                     {% endif %} 
                     <td class="date-commande">{{ commande_web.createdAt ? commande_web.createdAt|date('d-m-Y') : '' }}</td>

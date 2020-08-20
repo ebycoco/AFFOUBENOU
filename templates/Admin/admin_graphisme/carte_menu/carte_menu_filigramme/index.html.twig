@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteMenuFiligramme index{% endblock %}
+
+{% block body %}
+    <h1>CarteMenuFiligramme index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for carte_menu_filigramme in carte_menu_filigrammes %}
+            <tr>
+                <td>{{ carte_menu_filigramme.id }}</td>
+                <td>{{ carte_menu_filigramme.imageName }}</td>
+                <td>{{ carte_menu_filigramme.createdAt ? carte_menu_filigramme.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ carte_menu_filigramme.updatedAt ? carte_menu_filigramme.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('carte_menu_filigramme_show', {'id': carte_menu_filigramme.id}) }}">show</a>
+                    <a href="{{ path('carte_menu_filigramme_edit', {'id': carte_menu_filigramme.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('carte_menu_filigramme_new') }}">Create new</a>
+{% endblock %}

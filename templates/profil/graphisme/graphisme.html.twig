@@ -23,7 +23,11 @@
 						<a class="text-decoration-none" href="#"> 
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
-					{% elseif categorie.nomCategorie == 'badges' %}
+					{% elseif categorie.nomCategorie == 'Badges' %}
+					<a class="text-decoration-none" href="#"> 
+							<h2>{{categorie.nom}}</h2>  
+                        </a> 
+						{% elseif categorie.nomCategorie == 'Flyers' %}
 					<a class="text-decoration-none" href="#"> 
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
@@ -36,7 +40,7 @@
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 					{% elseif categorie.nomCategorie == 'publicitaire' %}
-					<a class="text-decoration-none" href="#"> 
+					<a class="text-decoration-none" href="{{path('profile_affiche_new',{'id': categorie.id})}}"> 
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 					{% elseif categorie.nomCategorie == 'publicitaire' %}
@@ -48,7 +52,7 @@
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 					{% elseif categorie.nomCategorie == 'menu' %}
-					<a class="text-decoration-none" href="#"> 
+					<a class="text-decoration-none" href="{{path('profile_carte_menu_new',{'id': categorie.id})}}"> 
 							<h2>{{categorie.nom}}</h2>  
                         </a> 
 					{% elseif categorie.nomCategorie == 'branding' %}

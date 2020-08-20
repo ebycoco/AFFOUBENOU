@@ -10,19 +10,55 @@ use App\Entity\CommandeLogoPersonalise;
 use App\Entity\CommandePredefiniePerso;
 use App\Form\CommandeLogoPersonaliseType;
 use App\Repository\CommandeLogoPersonaliseRepository;
+use App\Repository\CommandeLogoRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- *  @Route("/profile", name="profile_")
+ *  @Route("/profile/logo", name="profile_")
  */
 
 class ProfilCommandeGraphismeController extends AbstractController
 {
+    /* Afficher les logo de la partie profile */
+
     /**
-     * @Route("/commande/logo/{id}", name="commande_graphisme", methods={"GET","POST"})
+     * Elle permet de lister les logo simple dans la partie commande du profile 
+     * @Route("/commande/logo-simple", name="commande", methods={"GET"})
+     */
+    public function commandeGrap(CommandeLogoRepository $commandeLogoRepository, PaginatorInterface $paginator,Request $request): Response
+    {
+        $logosimple = $paginator->paginate(
+            $commandeLogoRepository->findAllVisibleQuery($this->getUser()),
+            $request->query->getInt('page', 1), /*page number*/
+            4 /*limit per page*/
+        );
+        return $this->render('profil/commande.html.twig',[
+            'commande_logos' => $logosimple, 
+        ]);
+    } 
+
+    /**
+     * Elle permet de lister les logo personnalise dans la partie commande du profile 
+     * @Route("/commande/logo-personnalise", name="commande_perso", methods={"GET"})
+     */
+    public function commandeGrapperso(CommandeLogoPersonaliseRepository $commandeLogoPersonaliseRepository, PaginatorInterface $paginator,Request $request): Response
+    {
+        $logoperso = $paginator->paginate(
+            $commandeLogoPersonaliseRepository->findAllVisibleQuery($this->getUser()),
+            $request->query->getInt('page', 1), /*page number*/
+            4 /*limit per page*/
+        );
+        return $this->render('profil/commandeperso.html.twig',[ 
+            'commande_logo_personalises' => $logoperso,
+        ]);
+    } 
+
+    /**
+     * @Route(" /{id}", name="commande_graphisme", methods={"GET","POST"})
      */
     public function logo(ServicesGraphisme $servicesGraphisme, Request $request)
     {
@@ -37,7 +73,8 @@ class ProfilCommandeGraphismeController extends AbstractController
                 $commandeLogo->setTypelogo('Logo non pesonnalisé');
                 $entityManager->persist($commandeLogo);
                 $entityManager->flush();
-                return $this->redirectToRoute('profile_commande');
+                $this->addFlash('success', 'Votre achat à été effectuer avec success');
+            return $this->redirectToRoute('profile_commande');
             }
             return $this->render('profil/graphisme/logo/commande_logo.html.twig', [
                 'services' => $servicesGraphisme,
@@ -47,7 +84,7 @@ class ProfilCommandeGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/logo/predefinie/{id}", name="commande_graphisme_fili", methods={"GET","POST"})
+     * @Route("/predefinie/{id}", name="commande_graphisme_fili", methods={"GET","POST"})
      */
     public function logofiligrame(CommandePredefine $commandePredefine)
     {
@@ -57,7 +94,7 @@ class ProfilCommandeGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/logo/predefinie/perso/{id}", name="commande_graphisme_fili_perso", methods={"GET","POST"})
+     * @Route(" /predefinie/perso/{id}", name="commande_graphisme_fili_perso", methods={"GET","POST"})
      */
     public function logofiligrameperso(CommandePredefiniePerso $commandePredefiniePerso)
     {
@@ -67,7 +104,7 @@ class ProfilCommandeGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/logo/paiement/{id}", name="commande_graphisme_mod", methods={"GET","POST"})
+     * @Route(" /paiement/{id}", name="commande_graphisme_mod", methods={"GET","POST"})
      */
     public function modepaiement(CommandePredefine $commandePredefine)
     {
@@ -77,7 +114,7 @@ class ProfilCommandeGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/logo/perso/paiement/{id}", name="commande_graphisme_mod_perso", methods={"GET","POST"})
+     * @Route("/perso/paiement/{id}", name="commande_graphisme_mod_perso", methods={"GET","POST"})
      */
     public function modepaiementperso(CommandePredefiniePerso $commandePredefiniePerso)
     {
@@ -87,7 +124,7 @@ class ProfilCommandeGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/logo/personnalise/new", name="commande_logo_personalise_new", methods={"GET","POST"})
+     * @Route(" /personnalise/new", name="commande_logo_personalise_new", methods={"GET","POST"})
      */
     public function personnaliselogo(Request $request): Response
     {
@@ -104,6 +141,7 @@ class ProfilCommandeGraphismeController extends AbstractController
             $entityManager->persist($commandeLogoPersonalise);
             $entityManager->flush();
 
+            $this->addFlash('success', 'Votre achat à été effectuer avec success');
             return $this->redirectToRoute('profile_commande');
         }
 
@@ -114,7 +152,7 @@ class ProfilCommandeGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/commande/logo/personnalise/{id}", name="commande_logo_personalise_show", methods={"GET"})
+     * @Route(" /personnalise/{id}", name="commande_logo_personalise_show", methods={"GET"})
      */
     public function show(CommandeLogoPersonalise $commandeLogoPersonalise): Response
     {

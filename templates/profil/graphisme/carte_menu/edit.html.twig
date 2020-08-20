@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CarteMenu{% endblock %}
+
+{% block body %}
+    <h1>Edit CarteMenu</h1>
+
+    {{ include('carte_menu/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('carte_menu_index') }}">back to list</a>
+
+    {{ include('carte_menu/_delete_form.html.twig') }}
+{% endblock %}

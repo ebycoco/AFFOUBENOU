@@ -20,6 +20,7 @@ class ServiceWebDemoType extends AbstractType
             'label' => 'Image Filigrame',
             
         ])
+        ->add('lien')
         ;
     }
 

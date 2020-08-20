@@ -1,0 +1,58 @@
+.site-blog{
+    padding:80px;
+}
+
+.contenu-site-blog{
+    height:400px;
+}
+
+.bouton-login{
+    width:200px;
+    background-color:#ffd9a0;
+    color:#000;
+ 
+}
+
+.bouton-sign-up{
+     width:200px;
+    background-color:#000;
+    color:#fff;
+    margin-left:20px;
+ 
+}
+
+.bouton-login:hover, :focus{
+
+    background-color: #fff;
+    color:#000;
+}
+
+.navbar-menu-navigation{
+
+    background-color:#000 !important;
+}
+
+.bouton-sign-up:hover, :focus{
+        background-color: #ffd9a0;
+        color:#000;
+       
+}
+
+.navbar a{
+    color:#fff !important;
+}
+
+.reseau-sociaux{
+    width:20px;
+    height:20px;
+    margin-right:10px;
+    
+}
+
+.nav-link img:hover, :focus{
+    opacity:0.5;
+}
+
+.title{
+    font-size:80px;
+}

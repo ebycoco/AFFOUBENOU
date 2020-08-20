@@ -6,6 +6,7 @@ use App\Entity\Affiche;
 use App\Entity\AfficheFiligrame;
 use App\Form\AfficheFiligrameType;
 use App\Repository\AfficheFinaleRepository;
+use App\Repository\CarteMenuFinaleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\AfficheFiligrameRepository;
 use Symfony\Component\HttpFoundation\Response;
@@ -13,7 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- * @Route("/admin/commande/affiche/filigrame", name="admin_")
+ * @Route("/admin/affiche/filigrame", name="admin_")
  */
 class AfficheFiligrameController extends AbstractController
 {
@@ -41,6 +42,7 @@ class AfficheFiligrameController extends AbstractController
             $afficheFiligrame->setUser($this->getUser());
             $afficheFiligrame->setAffiche($affiche);
             $affiche->setEtat('niveau 2');
+            $affiche->setPredefinie($afficheFiligrame);
             $entityManager->persist($afficheFiligrame);
             $entityManager->flush();
 

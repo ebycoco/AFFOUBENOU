@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\CommandeLogo;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -40,12 +41,24 @@ class CommandeLogoRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+/**
+     * @return Query
+     */  
+    public function findAllVisibleQuery($value): Query
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'DESC') 
+            ->getQuery() 
+        ;
+    }
 
     // /**
     //  * @return CommandeLogo[] Returns an array of CommandeLogo objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findAllVisibleQuery($value)
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

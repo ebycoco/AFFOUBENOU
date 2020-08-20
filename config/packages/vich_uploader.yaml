@@ -163,6 +163,24 @@ vich_uploader:
             delete_on_update: true
             delete_on_remove: true 
 
+        cartemenu_filigrame:
+            uri_prefix: /images/cartemenu_filigrame
+            upload_destination: '%kernel.project_dir%/public/images/cartemenu_filigrame'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        cartemenu_finale:
+            uri_prefix: /images/cartemenu_finale
+            upload_destination: '%kernel.project_dir%/public/images/cartemenu_finale'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
         demoweb:
             uri_prefix: /images/demoweb
             upload_destination: '%kernel.project_dir%/public/images/demoweb'
@@ -175,6 +193,24 @@ vich_uploader:
         fontionnalite:
             uri_prefix: /images/fontionnalite
             upload_destination: '%kernel.project_dir%/public/images/fontionnalite'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+
+        badge_filigrame:
+            uri_prefix: /images/badge_filigrame
+            upload_destination: '%kernel.project_dir%/public/images/badge_filigrame'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true 
+
+        badge_finale:
+            uri_prefix: /images/badge_finale
+            upload_destination: '%kernel.project_dir%/public/images/badge_finale'
             namer: Vich\UploaderBundle\Naming\UniqidNamer
 
             inject_on_load: false

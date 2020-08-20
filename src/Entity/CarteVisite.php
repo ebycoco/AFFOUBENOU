@@ -141,6 +141,11 @@ class CarteVisite
      */
     private $quantite;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=CarteVisiteFiligramme::class, inversedBy="carteVisites")
+     */
+    private $predefinie;
+
     public function __construct()
     {
         $this->carteVisiteFiligrammes = new ArrayCollection();
@@ -447,6 +452,18 @@ class CarteVisite
     public function setQuantite(int $quantite): self
     {
         $this->quantite = $quantite;
+
+        return $this;
+    }
+
+    public function getPredefinie(): ?CarteVisiteFiligramme
+    {
+        return $this->predefinie;
+    }
+
+    public function setPredefinie(?CarteVisiteFiligramme $predefinie): self
+    {
+        $this->predefinie = $predefinie;
 
         return $this;
     }

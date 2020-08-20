@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\CommandeLogoPersonalise;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -27,6 +28,18 @@ class CommandeLogoPersonaliseRepository extends ServiceEntityRepository
             ->setMaxResults(3)
             ->getQuery()
             ->getResult()
+        ;
+    }
+    /**
+     * @return Query
+     */  
+    public function findAllVisibleQuery($value): Query
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'DESC') 
+            ->getQuery() 
         ;
     }
 

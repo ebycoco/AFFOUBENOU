@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Affiche;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -18,12 +19,23 @@ class AfficheRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Affiche::class);
     }
-
+    /**
+     * @return Query
+     */  
+    public function findAllVisibleQuery($value): Query
+    {
+        return $this->createQueryBuilder('a')
+            ->andWhere('a.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('a.id', 'DESC') 
+            ->getQuery() 
+        ;
+    }
     // /**
     //  * @return Affiche[] Returns an array of Affiche objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findAllVisibleQuery($value)
     {
         return $this->createQueryBuilder('a')
             ->andWhere('a.exampleField = :val')

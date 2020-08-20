@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CarteMenuFiligramme{% endblock %}
+
+{% block body %}
+    <h1>CarteMenuFiligramme</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ carte_menu_filigramme.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ carte_menu_filigramme.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ carte_menu_filigramme.createdAt ? carte_menu_filigramme.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ carte_menu_filigramme.updatedAt ? carte_menu_filigramme.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('carte_menu_filigramme_index') }}">back to list</a>
+
+    <a href="{{ path('carte_menu_filigramme_edit', {'id': carte_menu_filigramme.id}) }}">edit</a>
+
+    {{ include('Admin/admin_graphisme/carte_menu_filigramme/_delete_form.html.twig') }}
+{% endblock %}

@@ -10,13 +10,13 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 /**
- *  @Route("/profile", name="profile_")
+ *  @Route("/profile/graphisme", name="profile_")
  */
 
 class ProfilServiceGraphismeController extends AbstractController
 {
     /**
-     * @Route("/graphisme", name="service_graphisme")
+     * @Route("/", name="service_graphisme")
      */
     public function index(CategorieRepository $categorieRepository)
     {
@@ -26,7 +26,7 @@ class ProfilServiceGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/graphisme/choix/logo/{id}", name="service_graphisme_choix")
+     * @Route("/choix/logo/{id}", name="service_graphisme_choix")
      */
     public function choix(ServicesGraphismeRepository $servicesLogoRepository,Categorie $categorie)
     { 
@@ -38,7 +38,7 @@ class ProfilServiceGraphismeController extends AbstractController
     }
 
     /**
-     * @Route("/graphisme/logo/{id}", name="service_graphisme_logo")
+     * @Route("/logo/{id}", name="service_graphisme_logo")
      */
     public function logo(ServicesGraphismeRepository $servicesLogoRepository,Categorie $categorie)
     { 

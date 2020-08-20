@@ -207,6 +207,36 @@ class Users implements UserInterface
      * @ORM\OneToMany(targetEntity=ServiceWebDemo::class, mappedBy="user")
      */
     private $serviceWebDemos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CarteMenu::class, mappedBy="user")
+     */
+    private $carteMenus;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CarteMenuFiligramme::class, mappedBy="user")
+     */
+    private $carteMenuFiligrammes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=CarteMenuFinale::class, mappedBy="user")
+     */
+    private $carteMenuFinales;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Badges::class, mappedBy="user")
+     */
+    private $badges;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BadgesFiligramme::class, mappedBy="user")
+     */
+    private $badgesFiligrammes;
+
+    /**
+     * @ORM\OneToMany(targetEntity=BadgesFinale::class, mappedBy="user")
+     */
+    private $badgesFinales;
  
 
     public function __construct()
@@ -236,7 +266,13 @@ class Users implements UserInterface
         $this->categorieWebs = new ArrayCollection();
         $this->autreFonctionnalites = new ArrayCollection();
         $this->commandeServicesWebs = new ArrayCollection();
-        $this->serviceWebDemos = new ArrayCollection(); 
+        $this->serviceWebDemos = new ArrayCollection();
+        $this->carteMenus = new ArrayCollection();
+        $this->carteMenuFiligrammes = new ArrayCollection();
+        $this->carteMenuFinales = new ArrayCollection();
+        $this->badges = new ArrayCollection();
+        $this->badgesFiligrammes = new ArrayCollection();
+        $this->badgesFinales = new ArrayCollection(); 
     }
 
     
@@ -1200,6 +1236,192 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($serviceWebDemo->getUser() === $this) {
                 $serviceWebDemo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarteMenu[]
+     */
+    public function getCarteMenus(): Collection
+    {
+        return $this->carteMenus;
+    }
+
+    public function addCarteMenu(CarteMenu $carteMenu): self
+    {
+        if (!$this->carteMenus->contains($carteMenu)) {
+            $this->carteMenus[] = $carteMenu;
+            $carteMenu->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteMenu(CarteMenu $carteMenu): self
+    {
+        if ($this->carteMenus->contains($carteMenu)) {
+            $this->carteMenus->removeElement($carteMenu);
+            // set the owning side to null (unless already changed)
+            if ($carteMenu->getUser() === $this) {
+                $carteMenu->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarteMenuFiligramme[]
+     */
+    public function getCarteMenuFiligrammes(): Collection
+    {
+        return $this->carteMenuFiligrammes;
+    }
+
+    public function addCarteMenuFiligramme(CarteMenuFiligramme $carteMenuFiligramme): self
+    {
+        if (!$this->carteMenuFiligrammes->contains($carteMenuFiligramme)) {
+            $this->carteMenuFiligrammes[] = $carteMenuFiligramme;
+            $carteMenuFiligramme->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteMenuFiligramme(CarteMenuFiligramme $carteMenuFiligramme): self
+    {
+        if ($this->carteMenuFiligrammes->contains($carteMenuFiligramme)) {
+            $this->carteMenuFiligrammes->removeElement($carteMenuFiligramme);
+            // set the owning side to null (unless already changed)
+            if ($carteMenuFiligramme->getUser() === $this) {
+                $carteMenuFiligramme->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CarteMenuFinale[]
+     */
+    public function getCarteMenuFinales(): Collection
+    {
+        return $this->carteMenuFinales;
+    }
+
+    public function addCarteMenuFinale(CarteMenuFinale $carteMenuFinale): self
+    {
+        if (!$this->carteMenuFinales->contains($carteMenuFinale)) {
+            $this->carteMenuFinales[] = $carteMenuFinale;
+            $carteMenuFinale->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCarteMenuFinale(CarteMenuFinale $carteMenuFinale): self
+    {
+        if ($this->carteMenuFinales->contains($carteMenuFinale)) {
+            $this->carteMenuFinales->removeElement($carteMenuFinale);
+            // set the owning side to null (unless already changed)
+            if ($carteMenuFinale->getUser() === $this) {
+                $carteMenuFinale->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Badges[]
+     */
+    public function getBadges(): Collection
+    {
+        return $this->badges;
+    }
+
+    public function addBadge(Badges $badge): self
+    {
+        if (!$this->badges->contains($badge)) {
+            $this->badges[] = $badge;
+            $badge->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBadge(Badges $badge): self
+    {
+        if ($this->badges->contains($badge)) {
+            $this->badges->removeElement($badge);
+            // set the owning side to null (unless already changed)
+            if ($badge->getUser() === $this) {
+                $badge->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BadgesFiligramme[]
+     */
+    public function getBadgesFiligrammes(): Collection
+    {
+        return $this->badgesFiligrammes;
+    }
+
+    public function addBadgesFiligramme(BadgesFiligramme $badgesFiligramme): self
+    {
+        if (!$this->badgesFiligrammes->contains($badgesFiligramme)) {
+            $this->badgesFiligrammes[] = $badgesFiligramme;
+            $badgesFiligramme->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBadgesFiligramme(BadgesFiligramme $badgesFiligramme): self
+    {
+        if ($this->badgesFiligrammes->contains($badgesFiligramme)) {
+            $this->badgesFiligrammes->removeElement($badgesFiligramme);
+            // set the owning side to null (unless already changed)
+            if ($badgesFiligramme->getUser() === $this) {
+                $badgesFiligramme->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|BadgesFinale[]
+     */
+    public function getBadgesFinales(): Collection
+    {
+        return $this->badgesFinales;
+    }
+
+    public function addBadgesFinale(BadgesFinale $badgesFinale): self
+    {
+        if (!$this->badgesFinales->contains($badgesFinale)) {
+            $this->badgesFinales[] = $badgesFinale;
+            $badgesFinale->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBadgesFinale(BadgesFinale $badgesFinale): self
+    {
+        if ($this->badgesFinales->contains($badgesFinale)) {
+            $this->badgesFinales->removeElement($badgesFinale);
+            // set the owning side to null (unless already changed)
+            if ($badgesFinale->getUser() === $this) {
+                $badgesFinale->setUser(null);
             }
         }
 

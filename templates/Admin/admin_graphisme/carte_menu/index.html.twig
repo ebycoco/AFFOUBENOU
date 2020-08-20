@@ -1,0 +1,56 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}CarteVisite index
+{% endblock %}
+
+{% block body %}
+	<h1>CarteVisite index</h1>
+	{% if CarteMenufinales == null %} 
+	{% else %} 
+	<a class="btn btn-dark mb-4 mt-4" href="{{ path('admin_affiche_finale_index') }}">Voir travail fait</a>
+	{% endif %} 
+	<table class="table">
+		<thead>
+			<tr class="text-center">
+				<th>Id</th>
+				<th>Date de la commande</th> 
+				<th>Nom du client</th>
+                <th>Détails</th>
+				<th>Ajouter</th>
+                <th>Etat</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for CarteMenu in CarteMenus %}
+				<tr class="text-center">
+					<td>{{ CarteMenu.id }}</td>
+					<td>{{ CarteMenu.createdAt ? CarteMenu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+					<td>{{ CarteMenu.user.prenom }}</td>  
+                    <td>
+                    <a class="btn btn-info" href="{{ path('admin_carte_menu_show', {'id': CarteMenu.id}) }}">
+                            <i class="fas fa-info"></i> Afficher</a></td>
+                    <td>
+                        <a class="btn btn-primary"
+                            href="{{path('admin_carte_menu_filigramme_new', {'id': CarteMenu.id})}}"> <i
+                                class="fas fas fa-upload"></i> filigrame</a>
+                        <a class="btn btn-primary"
+                            href="{{path('admin_carte_menu_finale_new', {'id': CarteMenu.id})}}"> <i
+                                class="fas fas fa-upload"></i> sans filigrame</a>
+                    </td>
+                    <td> 
+                    {% if CarteMenu.etat == 'niveau 1' %} 
+                    <p style="background: red; color:#fff">Veuillez deposer le filigramme</p>
+                    {% elseif CarteMenu.etat == 'niveau 2' %} 
+                    <p style="background: rgb(207, 153, 4); color:#fff">Veuillez deposer produit final</p>
+                    {% elseif CarteMenu.etat == 'niveau 3' %}  
+                    <i class="fas fa-check-circle" style="color: green;"></i> 
+                    {% endif %}  
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="19">no records found</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

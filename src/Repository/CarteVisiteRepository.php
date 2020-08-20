@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Repository;
-
+use Doctrine\ORM\Query;
+use Doctrine\ORM\QueryBuilder;
 use App\Entity\CarteVisite;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -18,12 +19,36 @@ class CarteVisiteRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, CarteVisite::class);
     }
+    /**
+     * @return Query
+     */  
+    public function findAllVisibleQuery($value): Query
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'DESC') 
+            ->getQuery() 
+        ;
+    }
+
+    public function findByLastCommandCarte($value) 
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.user = :val')
+            ->setParameter('val', $value)
+            ->orderBy('c.id', 'DESC')
+            ->setMaxResults(6)
+            ->getQuery()
+            ->getResult()
+        ;
+    } 
 
     // /**
     //  * @return CarteVisite[] Returns an array of CarteVisite objects
     //  */
     /*
-    public function findByExampleField($value)
+    public function findByLastCommand($value)
     {
         return $this->createQueryBuilder('c')
             ->andWhere('c.exampleField = :val')

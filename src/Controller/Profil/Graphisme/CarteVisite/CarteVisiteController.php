@@ -3,18 +3,36 @@
 namespace App\Controller\Profil\Graphisme\CarteVisite;
 
 use App\Entity\CarteVisite;
+use App\Entity\CarteVisiteFiligramme;
 use App\Form\CarteVisiteType;
 use App\Repository\CarteVisiteRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/profile/carte/visite", name="profile_")
+ * @Route("/profile/carte-visite", name="profile_")
  */
 class CarteVisiteController extends AbstractController
 {
+         
+
+    /**
+     * @Route("/commande", name="commande_carte_site", methods={"GET"})
+     */
+    public function commandeCartevisite(CarteVisiteRepository $carteVisiteRepository, PaginatorInterface $paginator,Request $request): Response
+    {
+        $carteVisite = $paginator->paginate(
+            $carteVisiteRepository->findAllVisibleQuery($this->getUser()),
+            $request->query->getInt('page', 1), /*page number*/
+            6 /*limit per page*/
+    );
+        return $this->render('profil/commandecartesite.html.twig',[ 
+            'carte_visites' => $carteVisite ,
+        ]);
+    }  
     /**
      * @Route("/", name="carte_visite_index", methods={"GET"})
      */
@@ -41,7 +59,7 @@ class CarteVisiteController extends AbstractController
             $carteVisite->setPrix('2000');
             $entityManager->persist($carteVisite);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Votre achat à été effectuer avec success');
             return $this->redirectToRoute('profile_commande');
         }
 
@@ -60,6 +78,7 @@ class CarteVisiteController extends AbstractController
             'carte_visite' => $carteVisite,
         ]);
     }
+    
 
     /**
      * @Route("/{id}/edit", name="carte_visite_edit", methods={"GET","POST"})

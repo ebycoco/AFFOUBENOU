@@ -1,0 +1,11 @@
+{% extends 'baseAdmin.html.twig' %}
+
+{% block title %}New CarteMenuFinale{% endblock %}
+
+{% block body %}
+    <h1>Create new CarteMenuFinale</h1>
+
+    {{ include('Admin/admin_graphisme/carte_menu/carte_menu_finale/_form.html.twig') }}
+
+    <a href="{{ path('admin_carte_menu_finale_index') }}">back to list</a>
+{% endblock %}

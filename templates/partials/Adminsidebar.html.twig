@@ -95,18 +95,42 @@
 								</ul>
 							</li> 
 							<li class="nav-item has-treeview">
-								<a href="#" class="nav-link {{set_active_route('admin_commande_logo_index')}} {{set_active_route('admin_commande_logo_travail')}} ">
+								<a href="#" class="nav-link {{set_active_route('admin_categorie_index')}} {{set_active_route('admin_commande_logo_index')}} {{set_active_route('admin_commande_logo_travail')}}{{set_active_route('admin_carte_visite_index')}} {{set_active_route('admin_carte_menu_index')}} {{set_active_route('admin_affiche_index')}}">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
 									<p>
-										Graphisme
+										Graphisme 
 										<i class="right fas fa-angle-left"></i>
 									</p>
 								</a>
 								<ul class="nav nav-treeview">
 									<li class="nav-item">
+										<a href="{{path('admin_categorie_index')}}" class="nav-link {{set_active_route('admin_categorie_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Type de categories</p>
+										</a>
+									</li>
+									<li class="nav-item">
 										<a href="{{path('admin_commande_logo_index')}}" class="nav-link {{set_active_route('admin_commande_logo_index')}}">
 											<i class="fas fa-book"></i>
-											<p>Voir les commandes</p>
+											<p>Commandes logo</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{path('admin_carte_visite_index')}}" class="nav-link {{set_active_route('admin_carte_visite_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Commandes carte de visite</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{path('admin_carte_menu_index')}}" class="nav-link {{set_active_route('admin_carte_menu_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Commandes carte Menu</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="{{path('admin_affiche_index')}}" class="nav-link {{set_active_route('admin_affiche_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Commandes affiche</p>
 										</a>
 									</li>
 									<li class="nav-item">
@@ -118,24 +142,24 @@
 								</ul>
 							</li>
 							<li class="nav-item has-treeview ">
-								<a href="#" class="nav-link {{set_active_route('admin_site_index')}} {{set_active_route('admin_service_web_demo_index')}} ">
+								<a href="#" class="nav-link {{set_active_route('admin_site_index')}} {{set_active_route('admin_service_web_demo_index')}} {{set_active_route('admin_categorie_web_index')}} ">
 									<i class="nav-icon fas fa-tachometer-alt"></i>
-									<p>
+									<p> 
 										Site Web
 										<i class="right fas fa-angle-left"></i>
 									</p>
 								</a>
 								<ul class="nav nav-treeview">
+								<li class="nav-item">
+										<a href="{{path('admin_categorie_web_index')}}" class="nav-link {{set_active_route('admin_categorie_web_index')}}">
+											<i class="fas fa-book"></i>
+											<p>Type de site </p>
+										</a>
+									</li>
 									<li class="nav-item">
 										<a href="{{path('admin_site_index')}}" class="nav-link {{set_active_route('admin_site_index')}}">
 											<i class="fas fa-book"></i>
 											<p>Les commandes</p>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a href="{{path('admin_service_web_demo_index')}}" class="nav-link {{set_active_route('admin_service_web_demo_index')}}">
-											<i class="fas fa-book"></i>
-											<p>Voir </p>
 										</a>
 									</li>  
 								</ul>

@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BadgesFinale{% endblock %}
+
+{% block body %}
+    <h1>BadgesFinale</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ badges_finale.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ badges_finale.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ badges_finale.createdAt ? badges_finale.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ badges_finale.updatedAt ? badges_finale.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('badges_finale_index') }}">back to list</a>
+
+    <a href="{{ path('badges_finale_edit', {'id': badges_finale.id}) }}">edit</a>
+
+    {{ include('badges_finale/_delete_form.html.twig') }}
+{% endblock %}
