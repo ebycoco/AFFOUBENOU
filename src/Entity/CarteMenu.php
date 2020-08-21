@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CarteMenuRepository::class)
@@ -27,6 +28,11 @@ class CarteMenu
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(
+     *      min = 20, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $menus;
 
@@ -58,6 +64,7 @@ class CarteMenu
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\Positive
      */
     private $quantite;
 
