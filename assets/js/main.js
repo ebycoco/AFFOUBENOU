@@ -6,15 +6,17 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import '../scss/app.scss';
+import '../scss/main.scss';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to import it.
 import $ from 'jquery';
 import 'bootstrap';
 
 $(function () {
-  $('.custom-file-input').on('change', function (e) {
-    var inputFile = e.currentTarget;
-    $(inputFile).parent().find('.custom-file-input').html(inputFile.files[0].name);
-  });
+    $(".navbar .menu a").on("click", function (event) {
+        event.preventDefault(); 
+        var hash = this.hash;
+        
+        $('body,html').animate({ scrollTop: $(hash).offset().top }, 900, function () { window.location.hash = hash;})
+    })
 })

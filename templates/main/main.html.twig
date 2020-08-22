@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<title>Accueil | AFFOUBENOU</title>
+		{% block stylesheets %}
+			{{encore_entry_link_tags('main')}}
+		{% endblock %}
+        
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="60">
+    <div class="container-fluid"> 
+        <section id="accueil">
+           <div class="header">
+             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+              <img src="{{asset('images/vrailogo.png')}}" alt="" width="60" height="60" >
+                 <img style="margin-left: 40%;">
+                 <button class="navbar-toggler" type="button" data-toggle="collapse"
+                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                     aria-label="Toggle navigation">
+                     <span class="navbar-toggler-icon"></span>
+                 </button>
+
+                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav menu-centre menu mr-auto" >
+                         <li class="nav-item">
+                             <a class="nav-link text-menu" href="#accueil"
+                                 style=" font-size:20px;">Accueil</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link text-menu" href="#Apropos" >A propos</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link text-menu" href="#section" >Service</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link text-menu" href="#blog" >Blog</a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link text-menu" href="#contact" >Contact</a>
+                         </li>
+                     </ul>
+                     <ul class="navbar-nav ml-auto">
+                         {% if not app.user %}
+                         <li><a href="{{path('app_profil_user')}}"
+                                 class="btn btn-default bouton-connecter-acceuil-affoubenou mr-3">Se connecter</a></li>
+                         <li><a href="{{path('app_register')}}"
+                                 class="btn btn-default bouton-inscrire-acceuil-affoubenou">S'inscrire</a></li>
+                         {% else %}
+                         <li><a href="{{path('profile_profile')}}"
+                                 class="btn btn-default bouton-inscrire-acceuil-affoubenou">Profile</a></li>
+                         {% endif %}
+                     </ul>
+                 </div>
+             </nav>
+             <div class="row  accueil">
+                 <div class=" col-md-6 mt-5 mb-5">
+                     <h1 style="color:#fff; font-size:50px;"><span style="margin-left:20%;">AKWABA </span> <br><span
+                             style="margin-left:30%;">sur</span> <br> <span style="margin-left:15%;">AFFOUBENOU
+                         </span></h1>
+                     <a href="#" class="btn btn-default bouton-commencer-accueil">Commencer</a>
+                 </div>
+                 <div class=" col-md-6 mb-5">
+                     <img src="{{asset('images/YK22.png')}}" alt="" class="img-fluid image-arriere-plan"
+                         style="max-width: 100%; height: auto;">
+                 </div>
+             </div> 
+            <div class="row" style="background-color: #ccc;">
+                <div class="col-md-1"> 
+                </div>
+                <div class="col-md-2">
+                    <a href="#"><img src="{{asset('images/website.png')}}" alt="" width="100" height="100"
+                            class="image-liens"></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#"><img src="{{asset('images/usercard.png')}}" alt="" width="100" height="100"
+                            class="image-liens"></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#"><img src="{{asset('images/bells.png')}}" alt="" width="100" height="100"
+                            class="image-liens"></a>
+                </div>
+                <div class="col-md-2">
+                    <a href="#"><img src="{{asset('images/advertising.png')}}" alt="" width="100" height="100"
+                            class="image-liens"></a>
+                </div>
+                <div class="col-md-2 mt-1">
+                    <a href="#"><img src="{{asset('images/shirt.png')}}" alt="" width="100" height="100"
+                            class="image-liens"></a>
+                </div>
+                <div class="col-md-1"> 
+                </div>
+            </div> 
+           </div>
+        </section>
+        <section id="Apropos">
+            <div class="apropos">
+                <div>
+                    <h1 class="title" style="text-align:center; padding-top:8%; font-size:50px;">A Propos de Nous</h1>
+                    <div class="trait"></div>
+                    <div class="row">
+                        <div class="col-md-6"> 
+                                <img src="{{asset('images/approosimg.png')}}" alt="" class="image-apropos"
+                                    style="width:400px;height:407px;" >
+                        </div>
+                        <div class="col-md-6">
+                            <p class="" style="font-size:22px;margin:auto; text-align: justify;">Le Lorem Ipsum est simplement du
+                                faux texte employé
+                                dans la
+                                composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte
+                                standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla
+                                ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il
+                                n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique
+                                informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les
+                                années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum,
+                                et, plus récemment, par son inclusion dans des applications de mise en page de texte,
+                                comme Aldus PageMaker.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section> 
+        <section id="section" class="services">
+            <div class="services">
+                <div>
+                    <h1 class="title mt-5" style="font-size:50px; padding-top:8%; text-align:center;">Services</h1>
+                    <div class="trait"></div>
+                    <h4  style="font-size:30px;text-align:center;">La plateforme Affoubenou vous propose une panopluie de
+                        <br>services du web au design</h4>
+
+                    <div class="row ml-5  mt-5 mb-5">
+                        <div class="col-md-4">
+                            <div>
+                                <a href="#"><img src="{{asset('images/bg1.jpg')}}" alt="" width="250" height="250"
+                                        class="image-service-accueil"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <a href="#"><img src="{{asset('images/carte.png')}}" alt="" width="250" height="250"
+                                        class="image-service-accueil"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <a href="#"><img src="{{asset('images/valid.png')}}" alt="" width="250" height="250"
+                                        class="image-service-accueil"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ml-5">
+                        <div class="col-md-4 mb-5">
+                            <div>
+                                <a href="#"><img src="{{asset('images/Rectangle167.png')}}" alt="" width="250"
+                                        height="250" class="image-service-accueil"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div>
+                                <a href="#"><img src="{{asset('images/reto.png')}}" alt="" width="250" height="250"
+                                        class="image-service-accueil"></a>
+                            </div>
+                        </div>
+                        <div class="col-md-4 mb-5">
+                            <div>
+                                <a href="#"><img src="{{asset('images/menupro.jpg')}}" alt="" width="250" height="250"
+                                        class="image-service-accueil"></a>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+                </section>
+                <section class="blog mt-5 mb-5" id="blog">
+                    <h1 style="text-align:center; font-size:50px;font-weight:bold;padding-top:8%;">Blog</h1>
+                    <p style="font-size:30px; text-align:center;">Aller à la rencontre de nos bloggeurs avec des
+                        articles à vous <br>couper le souffle</p>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card">
+                                <img src="{{asset('images/pourquoiblog.jpg')}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">Pourquoi
+                                        créer un blog ?</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary bouton-blog" style="margin-left:23%;">Blog</a>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="{{asset('images/Avatar1.png')}}" alt="" width="70" height="70">
+                                        </div>
+                                        <div class="col-md-10 mt-2">
+                                            <p>By Carmel Kouassi <br> <span style="color:indigo;">25 Mai 2020</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card">
+                                <img src="{{asset('images/strategiemarketing.jpg')}}" class="card-img-top" alt="..."
+                                    style="height:220px;">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">Quelle
+                                        stratégie pour votre business ?</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary bouton-blog"
+                                        style="margin-left:23%;">Marketting</a>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="{{asset('images/Avatar1.png')}}" alt="" width="70" height="70">
+                                        </div>
+                                        <div class="col-md-10 mt-2">
+                                            <p>By Carmel Kouassi <br> <span style="color:indigo;">25 Mai 2020</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-4">
+                            <div class="card">
+                                <img src="{{asset('images/commentimage.jpg')}}" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">Comment
+                                        vendre en ligne ?</h5>
+                                    <p class="card-text">Some quick example text to build on the card title and make up
+                                        the bulk of the card's content.</p>
+                                    <a href="#" class="btn btn-primary bouton-blog" style="margin-left:23%;">Vente</a>
+                                </div>
+                                <div class="card-footer">
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <img src="{{asset('images/Avatar1.png')}}" alt="" width="70" height="70">
+                                        </div>
+                                        <div class="col-md-10 mt-2">
+                                            <p>By Carmel Kouassi <br> <span style="color:indigo;">25 Mai 2020</span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="contact mt-5 mb-5" id="contact">
+                    <h1 style="text-align:center; font-size:50px;padding-top:8%;">Nos Contacts</h1>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <form class="form-group">
+                                <div>
+                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
+                                        placeholder="nom">
+                                </div>
+                                <div>
+                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
+                                        placeholder="prenom">
+                                </div>
+                                <div>
+                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
+                                        placeholder="email">
+                                </div>
+                                <div>
+                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
+                                        placeholder="website">
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12 mt-5">
+                                        <label for="message"><span
+                                                style="margin-left:350px;font-size:20px;">Message</span> </label>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <textarea rows="10" cols="52" class="message"></textarea>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit"
+                                        class="btn btn-default bouton-envoyer-accueil">Envoyer</button>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-md-6">
+                            <img src="{{asset('images/contactimage.jpg')}}" alt="" style="width:100%; height:auto;">
+                        </div>
+                    </div>
+                </section>
+            </div> 
+     {% block javascripts %}
+        {{encore_entry_script_tags('main')}}
+    {% endblock %}
+    </body>
+    </html>

@@ -20,7 +20,16 @@ class MainController extends AbstractController
      */
     public function index(SlidersRepository $slidersRepository,ArticlesRepository $articlesRepository,EquipesRepository $equipesRepository, GraphismeRepository $graphismeRepository,ImageSloganRepository $imageSloganRepository,SloganRepository $sloganRepository)
     {
-        return $this->render('main/index.html.twig', [ 
+        // return $this->render('main/index.html.twig', [ 
+        //     'sliders' => $slidersRepository->findBySlid(), 
+        //     'serviceGraphs' => $graphismeRepository->findByGraphisme(),
+        //     'equipes' => $equipesRepository->findAll(), 
+        //     'articles' => $articlesRepository->findBy(['active'=>true],['createdAt'=>'desc'],3), 
+        //     'slogans' => $sloganRepository->findBySlogan(), 
+        //     'imageslogans' => $imageSloganRepository->findByImagSlog(), 
+        // ]);
+
+        return $this->render('main/main.html.twig', [ 
             'sliders' => $slidersRepository->findBySlid(), 
             'serviceGraphs' => $graphismeRepository->findByGraphisme(),
             'equipes' => $equipesRepository->findAll(), 

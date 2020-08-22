@@ -1,0 +1,84 @@
+.accueil{
+    padding:80px;
+    background-color:#f6a721;
+}
+
+
+.bg-light{
+    background-color:#f6a721 !important;
+}
+
+.text-menu{
+    color:#000 !important;
+}
+
+.bouton-commencer-accueil{
+    width:300px;
+    margin-top:60px;
+    font-size:40px;
+    background-color:#fff;
+    border-radius:20px;
+    margin-left:100px;
+}
+
+.image-arriere-plan{
+    background-color:#f6a722;
+    position:absolute;
+    left:40%;
+}
+
+.bouton-connecter-acceuil-affoubenou{
+    background-color:#fff;
+    border-radius:20px;
+}
+
+.bouton-inscrire-acceuil-affoubenou{
+    background-color:#fff;
+    border-radius:20px;
+}
+
+.image-liens:hover, :focus{
+    opacity:0.8;
+}
+
+.bouton-connecter-acceuil-affoubenou:hover, :focus{
+    background-color: #7c22f6;
+    color:#fff;
+}
+
+.bouton-inscrire-acceuil-affoubenou:hover, :focus{
+    background-color: #7c22f6;
+    color:#fff;
+}
+
+.bouton-commencer-accueil:hover, :focus{
+    background-color: #7c22f6;
+    color:#fff;
+}
+
+
+.image-apropos{
+    border-radius:50%;
+    position:absolute;
+    left:20%;
+    border:1px solid #000;
+    padding:10px;
+    
+}
+
+.image-service-accueil{
+    border-radius:50%;
+    border:1px solid #000;
+
+}
+
+.bouton-service{
+    background-color:#fff;  
+    position:absolute;
+    top:50%;
+    right:40%;
+    width:200px;
+    
+}
+
+
