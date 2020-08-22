@@ -16,6 +16,10 @@
 /phpunit.xml
 ###< symfony/phpunit-bridge ###
 
+###> custom env vars ###
+/public/images
+###< end custom env vars ###
+
 ###> liip/imagine-bundle ###
 /public/media/cache/
 ###< liip/imagine-bundle ###
