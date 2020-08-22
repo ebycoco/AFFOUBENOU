@@ -177,74 +177,37 @@
                     <p style="font-size:30px; text-align:center;">Aller à la rencontre de nos bloggeurs avec des
                         articles à vous <br>couper le souffle</p>
                     <div class="row">
+                    {% for article in articles %}
                         <div class="col-sm-12 col-md-4">
-                            <div class="card">
-                                <img src="{{asset('images/pourquoiblog.jpg')}}" class="card-img-top" alt="...">
+                            <div class="blog card bg-white rounded shadow">
+                               <div class="mv-100 overflow-hidden">
+                                 <img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}"
+                                     class="card-img-top rounded-top"
+                                     alt="{{article.titre}}">
+                               </div>
                                 <div class="card-body">
-                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">Pourquoi
-                                        créer un blog ?</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
+                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">
+                                        {{article.titre}}</h5>
+                                    <p class="card-text text-muted">
+                                        {{article.contenu  | striptags |u.truncate(50,'...')}}
+                                        </p>
                                     <a href="#" class="btn btn-primary bouton-blog" style="margin-left:23%;">Blog</a>
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
                                         <div class="col-md-2">
-                                            <img src="{{asset('images/Avatar1.png')}}" alt="" width="70" height="70">
+                                            <img src="{{asset('build/avatar/Avatar1.png')}}" alt="" width="70"
+                                                height="70">
                                         </div>
                                         <div class="col-md-10 mt-2">
-                                            <p>By Carmel Kouassi <br> <span style="color:indigo;">25 Mai 2020</span></p>
+                                            <p>By {{article.user.prenom}} <br> <span
+                                                    style="color:indigo;">{{article.createdAt | ago}}</span></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-4">
-                            <div class="card">
-                                <img src="{{asset('images/strategiemarketing.jpg')}}" class="card-img-top" alt="..."
-                                    style="height:220px;">
-                                <div class="card-body">
-                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">Quelle
-                                        stratégie pour votre business ?</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary bouton-blog"
-                                        style="margin-left:23%;">Marketting</a>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="{{asset('images/Avatar1.png')}}" alt="" width="70" height="70">
-                                        </div>
-                                        <div class="col-md-10 mt-2">
-                                            <p>By Carmel Kouassi <br> <span style="color:indigo;">25 Mai 2020</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-4">
-                            <div class="card">
-                                <img src="{{asset('images/commentimage.jpg')}}" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">Comment
-                                        vendre en ligne ?</h5>
-                                    <p class="card-text">Some quick example text to build on the card title and make up
-                                        the bulk of the card's content.</p>
-                                    <a href="#" class="btn btn-primary bouton-blog" style="margin-left:23%;">Vente</a>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="{{asset('images/Avatar1.png')}}" alt="" width="70" height="70">
-                                        </div>
-                                        <div class="col-md-10 mt-2">
-                                            <p>By Carmel Kouassi <br> <span style="color:indigo;">25 Mai 2020</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        {% endfor %} 
                     </div>
                 </section>
                 <section class="contact mt-5 mb-5" id="contact">

@@ -25,7 +25,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('main', './assets/js/main.js')
-    //.addEntry('page2', './assets/js/page2.js')
+    //.addEntry('admin', './assets/js/admin.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -69,6 +69,12 @@ Encore
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()
     //.addEntry('admin', './assets/js/admin.js')
+
+    .copyFiles({
+        from: './assets/avatar',
+        to: '[path][name].[hash:8].[ext]',
+        context:'./assets'
+    })
 ;
 
 module.exports = Encore.getWebpackConfig();

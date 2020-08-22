@@ -170,3 +170,11 @@ border-bottom: 1px solid #fff;
 :focus {
     border: 1px solid #7c22f6;
 }
+.blog{
+    img{
+        transition: transform 0.3s ease-out;
+    &:hover{
+        transform: scale(1.075);
+    }
+    }
+}
