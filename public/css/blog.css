@@ -1,0 +1,149 @@
+body {
+    background: #7c22f6;
+}
+
+.Blog{
+    background: #7c22f6;
+    padding: 80px;
+    margin-top: 55px;
+}
+.hauteur-left img{
+    width: 690px;
+    height: 267px;
+    border-radius: 20px;
+}
+.hauteur-left .sous-haut{
+    margin-top: 35px;
+    padding-bottom: 20px; 
+    
+}
+.bar{
+    margin-top: 10px;
+    width: 690px;
+    border-bottom: 1px solid #fff; 
+}
+.hauteur-left .sous-haut h2{ 
+    margin-right: 5px;
+    text-align: left;
+    color: #fff !important;
+}
+.hauteur-rigth .sous-haut-rigth{
+    margin-top: 35px; 
+}
+.hauteur-left .sous-haut img{
+    width: 380px;
+    height: 156px;
+    border-radius: 20px;
+} 
+.hauteur-rigth .sous-haut-rigth img{
+    width: 160px;
+    height: 66px;
+    border-radius: 20px;
+}
+.hauteur-rigth .sous-haut-rigth p{
+    margin-right: 5px;
+    text-align: left;
+    color: #fff !important;
+}
+.hauteur-rigth  .populaires{
+    background: #f6a722;
+    text-align: center;
+    margin-top: 160px;
+}
+.hauteur-rigth .Récents{
+    background: #f6a722;
+    text-align: center;
+    margin-top: 55px;
+}
+.hauteur-rigth .Récents h1{
+    color: #fff !important;
+}
+.hauteur-rigth  .populaires h1{
+    color: #fff !important;
+}
+
+.hauteur .resu-haut h1{
+    color: #fff !important;
+}
+.hauteur .resu-haut p{
+    color: #fff !important;
+    margin-bottom: 35px;
+}
+.hauteur .sous .image img{
+    width: 669px;
+    height: 407px; 
+    border-radius: 20px;
+} 
+.bar-article{
+    background: #fff !important;
+    border-radius: 20px;
+}
+.hauteur-rigth  .populaires-1{
+    background: #f6a722;
+    text-align: center; 
+}
+.hauteur-rigth  .populaires-1 h1{ 
+    color:#fff;
+}
+.commentaire .avatar img{
+    width: 80px;
+    height: 80px;
+    border-radius: 50px; 
+    margin-top:  -15px;
+}
+.commentaire h4{
+    color: black !important;
+}
+.commentaire .text h6,.commentaire .text p{
+    color: black !important;
+}
+.commentaire .text span{
+    color: #fff !important;
+}
+.commentaire .text .boutton-commentaire{ 
+    background: #f6a722;
+    border: #f6a722;
+    font-weight: 900; 
+    color: #fff !important;
+    cursor: pointer;
+}
+.commentaire-saisi h1{
+    color: #fff !important;
+}
+.commentaire-saisi .saisir{ 
+    background: #fff;
+    border-radius: 20px;
+}
+.commentaire-saisi .saisir{ 
+    margin-top: 15px;
+}
+.commentaire-saisi .saisir .form-comment{
+    border: none;
+    border-bottom: 1px solid #ccc;
+}
+.commentaire-saisi .saisir  button{ 
+    width: 150px;
+    padding: 10px; 
+    margin-left: 10px;
+    margin-right: 10px;
+    background: #f6a722; 
+    border: #f6a722;
+    font-weight: 900; 
+    color: #fff !important;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.avatar-auteur{
+    text-align: center;
+}
+.auteur .avatar-auteur img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+.like a .fa-heart{
+    color: red;
+}
+.like a .fa-thumbs-up{
+    color: blue;
+}

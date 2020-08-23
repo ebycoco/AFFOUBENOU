@@ -17,19 +17,19 @@ class ContactType extends AbstractType
         $builder
             ->add('prenom',TextType::class,[
                 'attr' =>[
-                    'class' => 'form-contact',
+                    'class' => 'form-control formulaire-item',
                     'placeholder' => 'Votre Prenom'
                 ]
             ])
             ->add('email',EmailType::class,[
                 'attr' =>[
-                    'class' => 'form-contact',
+                    'class' => 'form-control formulaire-item',
                     'placeholder' => 'Votre E-mail'
                 ]
             ])
             ->add('message',TextareaType::class,[
                 'attr' =>[
-                    'class' => 'form-control', 
+                    'class' => 'form-control contact-textaerat', 
                     'cols'=>"30",
                     'rows'=>"10",
                 ]

@@ -1,19 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital&display=swap');
 @import "~bootstrap/scss/bootstrap";
 
- .navbar{
-     box-shadow: 0px 5px 5px #f6a822ad;
- }
-.navbar .navbar-collapse{
+.navbar {
+    box-shadow: 0px 5px 5px #f6a822ad;
+}
+
+.navbar .navbar-collapse {
     text-align: center;
 }
+
 .accueil {
     padding: 80px;
     background-color: #f6a722;
 }
-.navbar-light .navbar-toggler{
-    border-style: none; 
-} 
+
+.navbar-light .navbar-toggler {
+    border-style: none;
+}
 
 .bg-light {
     background-color: #f6a722 !important;
@@ -71,9 +74,9 @@
 
 
 .image-apropos {
-    border-radius: 50%;  
+    border-radius: 50%;
     border: 1px solid #000;
-    padding: 10px; 
+    padding: 10px;
 }
 
 .image-service-accueil {
@@ -89,25 +92,30 @@
     right: 40%;
     width: 200px;
 
-} 
+}
+
 .navbar-light .navbar-nav .show>.nav-link,
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.show,
-.navbar-light .navbar-nav  .active {
+.navbar-light .navbar-nav .active {
     color: #fff !important;
     border-bottom: 1px solid #fff;
 }
-.navbar-light .navbar-nav li a{
+
+.navbar-light .navbar-nav li a {
     font-size: 20px;
 }
-.navbar-light .navbar-nav.menu-centre li a:hover{
+
+.navbar-light .navbar-nav.menu-centre li a:hover {
     color: #fff !important;
     border-bottom: 1px solid #fff;
 }
-.navbar-collapse .menu li a:focus{
-border:none;
-border-bottom: 1px solid #fff;
+
+.navbar-collapse .menu li a:focus {
+    border: none;
+    border-bottom: 1px solid #fff;
 }
+
 .trait {
     width: 160px;
     height: 2px;
@@ -115,9 +123,10 @@ border-bottom: 1px solid #fff;
     margin: 40px auto;
 }
 
-.navbar li a{ 
-    color:  #000 !important;
+.navbar li a {
+    color: #000 !important;
 }
+
 .bouton-blog {
     top: 46%;
     position: absolute;
@@ -150,7 +159,8 @@ border-bottom: 1px solid #fff;
     background-color: #fff;
     border: 1px solid #eee;
     color: #000;
-} 
+}
+
 .bouton-envoyer-accueil {
     width: 200px;
     font-size: 20px;
@@ -170,14 +180,17 @@ border-bottom: 1px solid #fff;
 :focus {
     border: 1px solid #7c22f6;
 }
-.blog-acceuil{
-    img{
+
+.blog-acceuil {
+    img {
         transition: transform 0.3s ease-out;
-    &:hover{
-        transform: scale(1.075);
-    }
+
+        &:hover {
+            transform: scale(1.075);
+        }
     }
 }
-.contact-textaerat{
+
+.contact-textaerat {
     margin-left: 5%;
 }

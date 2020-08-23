@@ -1,0 +1,7 @@
+{% include ("partials/headerMain.html.twig") with {"title": block("title")} %}
+
+<div class="container-fluid">
+     {% block body %}{% endblock %} 	
+</div> 
+{% include ("partials/footerMain.html.twig") %}
+

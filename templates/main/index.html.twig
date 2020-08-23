@@ -5,8 +5,8 @@
 
 {% block body %}
 	<div class="hero-wrap">
-	{% set numero = 1 %}
-		{% for slider in sliders %} 
+		{% set numero = 1 %}
+		{% for slider in sliders %}
 			<div class="banner{{numero}}">
 				<img src="{{ vich_uploader_asset(slider, 'imageFile')|imagine_filter('slider')}}" class="banner{{numero}}">
 				<div class="text-box text-box{{numero}}">
@@ -43,7 +43,7 @@
 				</div>
 			</div>
 		</div>
-	</section> 
+	</section>
 
 	<section class="ftco-section">
 		<div class="container">
@@ -60,7 +60,7 @@
 							<img src="{{ vich_uploader_asset(serviceGraph, 'imageFile')|imagine_filter('service_graph_accueil')}}" class="card-img-top card-img-service" alt="...">
 							<a href="#" class="bouton btn btn-blue">Ajouter</a>
 							<div class="card-body ">
-								<h5 class="card-title text-center">{{serviceGraph.titre}}</h5> 
+								<h5 class="card-title text-center">{{serviceGraph.titre}}</h5>
 							</div>
 						</div>
 					</div>
@@ -104,7 +104,7 @@
 				</div>
 			</div>
 		</div>
-	</section>  
+	</section>
 	<section class="ftco-section">
 		<div class="container">
 			<div class="row justify-content-center pb-5 mb-3">
@@ -121,7 +121,8 @@
 							<div class="text p-4">
 								<div class="meta mb-2">
 									<div>
-										<P>{{article.createdAt | date('F')}} {{article.createdAt | date('d')}},{{article.createdAt | date('Y')}}</P>
+										<P>{{article.createdAt | date('F')}}
+											{{article.createdAt | date('d')}},{{article.createdAt | date('Y')}}</P>
 									</div>
 									<div>
 										<a href="#">{{article.user.prenom}}</a>
@@ -141,5 +142,5 @@
 				{% endfor %}
 			</div>
 		</div>
-	</section> 
+	</section>
 {% endblock %}

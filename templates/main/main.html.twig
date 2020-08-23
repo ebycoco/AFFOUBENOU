@@ -1,59 +1,9 @@
-<!DOCTYPE html>
-<html>
-	<head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1"> 
-		<title>Accueil | AFFOUBENOU</title>
-		{% block stylesheets %}
-			{{encore_entry_link_tags('main')}}
-		{% endblock %}
-        
-	</head>
-	<body data-spy="scroll" data-target=".navbar" data-offset="60">
-    <div class="container-fluid"> 
+ {% extends 'baseMain.html.twig' %} 
+ {% block title %}Accueil | AFFOUBENOU{% endblock %}
+ {% block body %}
         <section id="accueil">
            <div class="header">
-             <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <img src="{{asset('images/vrailogo.png')}}" alt="" width="60" height="60" >
-                 <img style="margin-left: 40%;">
-                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                     aria-label="Toggle navigation">
-                     <span class="navbar-toggler-icon"></span>
-                 </button>
-
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                     <ul class="navbar-nav menu-centre menu mr-auto" >
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#accueil"
-                                 style=" font-size:20px;">Accueil</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#Apropos" >A propos</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#section" >Service</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#blog" >Blog</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#contact" >Contact</a>
-                         </li>
-                     </ul>
-                     <ul class="navbar-nav ml-auto">
-                         {% if not app.user %}
-                         <li><a href="{{path('app_profil_user')}}"
-                                 class="btn btn-default bouton-connecter-acceuil-affoubenou mr-3">Se connecter</a></li>
-                         <li><a href="{{path('app_register')}}"
-                                 class="btn btn-default bouton-inscrire-acceuil-affoubenou">S'inscrire</a></li>
-                         {% else %}
-                         <li><a href="{{path('profile_profile')}}"
-                                 class="btn btn-default bouton-inscrire-acceuil-affoubenou">Profile</a></li>
-                         {% endif %}
-                     </ul>
-                 </div>
-             </nav>
+             {% include ("partials/navbarMain.html.twig") %}
              <div class="row  accueil">
                  <div class=" col-md-6 mt-5 mb-5">
                      <h1 style="color:#fff; font-size:50px;"><span style="margin-left:20%;">AKWABA </span> <br><span
@@ -100,23 +50,18 @@
                     <h1 class="title" style="text-align:center; padding-top:8%; font-size:50px;">A Propos de Nous</h1>
                     <div class="trait"></div>
                     <div class="row">
+                    {% for identite_du_site in identite_du_sites %}
                         <div class="col-md-6"> 
-                                <img src="{{asset('images/approosimg.png')}}" alt="" class="image-apropos"
+                                <img src="{{ vich_uploader_asset(identite_du_site, 'imageFile')|imagine_filter('identite_site')}}"
+                                    alt="" class="image-apropos"
                                     style="width:400px;height:407px;" >
                         </div>
                         <div class="col-md-6">
-                            <p class="" style="font-size:22px;margin:auto; text-align: justify;">Le Lorem Ipsum est simplement du
-                                faux texte employé
-                                dans la
-                                composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte
-                                standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla
-                                ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte. Il
-                                n'a pas fait que survivre cinq siècles, mais s'est aussi adapté à la bureautique
-                                informatique, sans que son contenu n'en soit modifié. Il a été popularisé dans les
-                                années 1960 grâce à la vente de feuilles Letraset contenant des passages du Lorem Ipsum,
-                                et, plus récemment, par son inclusion dans des applications de mise en page de texte,
-                                comme Aldus PageMaker.</p>
+                            <p class="" style="font-size:22px;margin:auto; text-align: justify;">
+                            {{identite_du_site.contexte | raw}}
+                                </p>
                         </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -176,13 +121,14 @@
                     <h1 style="text-align:center; font-size:50px;font-weight:bold;padding-top:8%;">Blog</h1>
                     <p style="font-size:30px; text-align:center;">Aller à la rencontre de nos bloggeurs avec des
                         articles à vous <br>couper le souffle</p>
+                        {% for row in articles|batch(3) %}
                     <div class="row">
-                    {% for article in articles %}
+                    {% for article in row %}
                         <div class="col-sm-12 col-md-4">
-                            <div class="blog card bg-white rounded shadow">
-                               <div class="mv-100 overflow-hidden">
+                            <div class="blog-acceuil card bg-white rounded shadow">
+                               <div class="mv-100 rounded-top overflow-hidden">
                                  <img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}"
-                                     class="card-img-top rounded-top"
+                                     class="card-img-top "
                                      alt="{{article.titre}}">
                                </div>
                                 <div class="card-body">
@@ -191,7 +137,8 @@
                                     <p class="card-text text-muted">
                                         {{article.contenu  | striptags |u.truncate(50,'...')}}
                                         </p>
-                                    <a href="#" class="btn btn-primary bouton-blog" style="margin-left:23%;">Blog</a>
+                                    <a href="{{ path('app_articles_show', {'slug': article.slug}) }}"
+                                        class="btn btn-primary bouton-blog" style="margin-left:23%;">Blog</a>
                                 </div>
                                 <div class="card-footer">
                                     <div class="row">
@@ -209,51 +156,38 @@
                         </div>
                         {% endfor %} 
                     </div>
+                    {% endfor %}
                 </section>
                 <section class="contact mt-5 mb-5" id="contact">
-                    <h1 style="text-align:center; font-size:50px;padding-top:8%;">Nos Contacts</h1>
+                    <h1 style="text-align:center; font-size:50px;padding-top:8%;">Nos Contacts</h1> 
                     <div class="row">
-                        <div class="col-md-6">
-                            <form class="form-group">
-                                <div>
-                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
-                                        placeholder="nom">
-                                </div>
-                                <div>
-                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
-                                        placeholder="prenom">
-                                </div>
-                                <div>
-                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
-                                        placeholder="email">
-                                </div>
-                                <div>
-                                    <input type="text" name="nom" value="" class="form-control formulaire-item"
-                                        placeholder="website">
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-12 mt-5">
-                                        <label for="message"><span
-                                                style="margin-left:350px;font-size:20px;">Message</span> </label>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <textarea rows="10" cols="52" class="message"></textarea>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button type="submit"
-                                        class="btn btn-default bouton-envoyer-accueil">Envoyer</button>
-                                </div>
-                            </form>
+                    <div class="col-md-6">
+                         {{ form_start(form) }} 
+                        <div class="col-md-12">
+                            {{ form_row(form.prenom,{'label':false}) }}
+                        </div> 
+                        <div class="col-md-12">
+                            {{ form_row(form.email,{'label':false}) }}
+                        </div>   
+                        <div class="col-md-12 mt-5">
+                            <label for="message"><span style="margin-left:350px;font-size:20px;">Message</span>
+                            </label>
                         </div>
-                        <div class="col-md-6">
-                            <img src="{{asset('images/contactimage.jpg')}}" alt="" style="width:100%; height:auto;">
+                        <div class="col-md-12">
+                            {{ form_row(form.message,{'label':false}) }}
+                        </div>  
+                        {# <label for="message" class="message mt-4">Votre message</label>
+                        <textarea name="message" id="message" cols="30" rows="10" class="form-control mt-4"></textarea> #}
+                        <div class="button">
+                            <button type="submit" class="btn btn-default bouton-envoyer-accueil">Envoyer</button>
                         </div>
-                    </div>
+                        {{ form_end(form) }} 
+                          </div>
+                          <div class="col-md-6">
+                              <img src="{{asset('images/contactimage.jpg')}}" alt="" style="width:100%; height:auto;">
+                          </div>
+                        </div> 
                 </section>
             </div> 
-     {% block javascripts %}
-        {{encore_entry_script_tags('main')}}
-    {% endblock %}
-    </body>
-    </html>
+            {% endblock %}
+     
