@@ -21,16 +21,24 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $email;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 50, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $message;
 

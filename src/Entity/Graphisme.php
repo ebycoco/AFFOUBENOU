@@ -24,13 +24,15 @@ class Graphisme
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $titre;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="image_Graph", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="image_Graph", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */

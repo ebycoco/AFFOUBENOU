@@ -26,6 +26,8 @@ class CommandePredefiniePerso
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="logo_Graph_filgrame", fileNameProperty="imageName") 
+     * @Assert\NotNull(message="Veuillez mettre une image")
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */

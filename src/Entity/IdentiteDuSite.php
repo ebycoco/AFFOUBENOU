@@ -25,6 +25,8 @@ class IdentiteDuSite
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="identite_du_site", fileNameProperty="imageName")
+     * @Assert\NotNull(message="Veuillez mettre une image")
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -39,6 +41,12 @@ class IdentiteDuSite
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
+     * @Assert\Length(
+     *      min = 50, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $contexte;
 

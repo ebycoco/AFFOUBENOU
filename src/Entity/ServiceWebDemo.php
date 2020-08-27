@@ -26,7 +26,8 @@ class ServiceWebDemo
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="demoweb", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="demoweb", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -70,6 +71,7 @@ class ServiceWebDemo
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank 
      */
     private $lien;
 

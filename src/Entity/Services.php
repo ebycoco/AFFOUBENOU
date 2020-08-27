@@ -24,10 +24,11 @@ class Services
     private $id;
 
 
-     /**
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="services", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="services", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -42,11 +43,18 @@ class Services
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
+     * @Assert\Length(
+     *      min = 50, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $description;
 

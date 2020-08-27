@@ -32,7 +32,8 @@ class CommandeLogoPersonalise
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="logo_Graph_client", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="logo_Graph_client", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -59,6 +60,7 @@ class CommandeLogoPersonalise
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $nomLogo;
 
@@ -92,7 +94,7 @@ class CommandeLogoPersonalise
     private $etat = false;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer") 
      */
     private $typeLogo;
 
@@ -109,6 +111,7 @@ class CommandeLogoPersonalise
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $choix;
 

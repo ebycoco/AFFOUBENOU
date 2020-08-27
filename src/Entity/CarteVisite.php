@@ -28,7 +28,8 @@ class CarteVisite
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="carteVisite_client", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="carteVisite_client", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -64,16 +65,19 @@ class CarteVisite
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $profession;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $nomSociete;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $contact1;
 
@@ -99,11 +103,13 @@ class CarteVisite
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $lieu;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $social;
 

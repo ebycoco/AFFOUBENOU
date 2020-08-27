@@ -27,7 +27,8 @@ class ServicesGraphisme
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="services_graphisme", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="services_graphisme", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -65,7 +66,7 @@ class ServicesGraphisme
     private $categorie;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float")  
      */
     private $prix;
 
@@ -76,6 +77,7 @@ class ServicesGraphisme
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $nom;
 

@@ -29,6 +29,7 @@ class CarteMenu
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      * @Assert\Length(
      *      min = 20, 
      *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
@@ -39,11 +40,13 @@ class CarteMenu
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $contact;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $lieu;
 
@@ -60,6 +63,7 @@ class CarteMenu
 
     /**
      * @ORM\Column(type="float")
+     * 
      */
     private $prix;
 

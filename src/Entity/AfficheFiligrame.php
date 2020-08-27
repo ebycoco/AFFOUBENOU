@@ -29,7 +29,7 @@ class AfficheFiligrame
      * 
      * @Vich\UploadableField(mapping="affiche_filigrame", fileNameProperty="imageName")
      * @Assert\NotNull(message="Veuillez mettre une image")
-     * @Assert\Image(maxSize = "4M")
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */

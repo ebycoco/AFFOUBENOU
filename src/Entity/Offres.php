@@ -21,6 +21,7 @@ class Offres
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $titre; 
 

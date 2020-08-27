@@ -24,10 +24,12 @@ class Sliders
      */
     private $id;
 
-     /**
+    /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="sliders", fileNameProperty="imageName")
+     * @Assert\NotNull(message="Veuillez mettre une image")
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -43,6 +45,7 @@ class Sliders
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $titre;
 

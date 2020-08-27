@@ -25,7 +25,8 @@ class Temoignages
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="temoignages", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="temoignages", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */
@@ -40,11 +41,18 @@ class Temoignages
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $username;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
+     * @Assert\Length(
+     *      min = 50, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $contenue;
 

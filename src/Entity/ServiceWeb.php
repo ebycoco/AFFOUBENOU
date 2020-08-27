@@ -24,7 +24,8 @@ class ServiceWeb
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
-     * @Vich\UploadableField(mapping="services_web", fileNameProperty="imageName")
+     * @Vich\UploadableField(mapping="services_web", fileNameProperty="imageName") 
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */

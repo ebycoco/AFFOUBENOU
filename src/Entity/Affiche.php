@@ -23,6 +23,7 @@ class Affiche
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      * @Assert\Length(
      *      min = 50, 
      *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
@@ -71,7 +72,7 @@ class Affiche
     private $afficheFinales;
 
     /**
-     * @ORM\Column(type="float")
+     * @ORM\Column(type="float") 
      */
     private $prix;
 

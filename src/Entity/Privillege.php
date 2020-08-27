@@ -21,6 +21,7 @@ class Privillege
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $titre;
 

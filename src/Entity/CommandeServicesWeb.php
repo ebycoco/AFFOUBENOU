@@ -23,11 +23,13 @@ class CommandeServicesWeb
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $nomEntreprise;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $nomSite;  
 
@@ -53,6 +55,7 @@ class CommandeServicesWeb
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $lien;
     /**

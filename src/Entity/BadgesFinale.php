@@ -26,6 +26,8 @@ class BadgesFinale
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
      * 
      * @Vich\UploadableField(mapping="badge_finale", fileNameProperty="imageName")
+     * @Assert\NotNull(message="Veuillez mettre une image")
+     * @Assert\Image(maxSize = "8M")
      * 
      * @var File|null
      */

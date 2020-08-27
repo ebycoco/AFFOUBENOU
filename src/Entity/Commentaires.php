@@ -21,6 +21,12 @@ class Commentaires
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *      min = 50, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $contenu;
   

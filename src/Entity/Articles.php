@@ -43,11 +43,18 @@ class Articles
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
      */
     private $titre;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank (message="Ce champs ne pas être vide")
+     * @Assert\Length(
+     *      min = 50, 
+     *      minMessage = "Veuillez entrer au minium {{ limit }} charactaire", 
+     *      allowEmptyString = false
+     * )
      */
     private $contenu;
 
