@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainBadge{% endblock %}
+
+{% block body %}
+    <h1>MainBadge</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_badge.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ main_badge.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ main_badge.createdAt ? main_badge.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ main_badge.updatedAt ? main_badge.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_badge_index') }}">back to list</a>
+
+    <a href="{{ path('admin_main_badge_edit', {'id': main_badge.id}) }}">edit</a>
+
+{{ include('Admin/main_badge/_delete_form.html.twig') }}
+
+{% endblock %}

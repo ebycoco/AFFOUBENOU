@@ -1,0 +1,15 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}Edit MainCarteVisite{% endblock %}
+
+{% block body %}
+    <h1>Edit MainCarteVisite</h1>
+
+    {{ include('Admin/main_carte_visite/_form.html.twig', {'button_label': 'Update'}) }}
+
+<a href="{{ path('admin_main_carte_visite_index') }}">back to list</a>
+
+
+    {{ include('Admin/main_carte_visite/_delete_form.html.twig') }}
+{% endblock %}

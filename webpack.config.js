@@ -26,6 +26,7 @@ Encore
     .addEntry('app', './assets/js/app.js')
     .addEntry('main', './assets/js/main.js')
     .addEntry('mainblog', './assets/js/mainblog.js')
+    .addEntry('login', './assets/js/login.js')
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
@@ -73,8 +74,7 @@ Encore
     .copyFiles({
         from: './assets/avatar',
         to: '[path][name].[hash:8].[ext]',
-        context:'./assets'
-    })
-;
+        context: './assets'
+    });
 
 module.exports = Encore.getWebpackConfig();

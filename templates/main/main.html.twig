@@ -1,193 +1,304 @@
- {% extends 'baseMain.html.twig' %} 
- {% block title %}Accueil | AFFOUBENOU{% endblock %}
- {% block body %}
-        <section id="accueil">
-           <div class="header">
-             {% include ("partials/navbarMain.html.twig") %}
-             <div class="row  accueil">
-                 <div class=" col-md-6 mt-5 mb-5">
-                     <h1 style="color:#fff; font-size:50px;"><span style="margin-left:20%;">AKWABA </span> <br><span
-                             style="margin-left:30%;">sur</span> <br> <span style="margin-left:15%;">AFFOUBENOU
-                         </span></h1>
-                     <a href="#" class="btn btn-default bouton-commencer-accueil">Commencer</a>
-                 </div>
-                 <div class=" col-md-6 mb-5">
-                     <img src="{{asset('images/YK22.png')}}" alt="" class="img-fluid image-arriere-plan"
-                         style="max-width: 100%; height: auto;">
-                 </div>
-             </div> 
-            <div class="row" style="background-color: #ccc;">
-                <div class="col-md-1"> 
-                </div>
-                <div class="col-md-2">
-                    <a href="#"><img src="{{asset('images/website.png')}}" alt="" width="100" height="100"
-                            class="image-liens"></a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#"><img src="{{asset('images/usercard.png')}}" alt="" width="100" height="100"
-                            class="image-liens"></a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#"><img src="{{asset('images/bells.png')}}" alt="" width="100" height="100"
-                            class="image-liens"></a>
-                </div>
-                <div class="col-md-2">
-                    <a href="#"><img src="{{asset('images/advertising.png')}}" alt="" width="100" height="100"
-                            class="image-liens"></a>
-                </div>
-                <div class="col-md-2 mt-1">
-                    <a href="#"><img src="{{asset('images/shirt.png')}}" alt="" width="100" height="100"
-                            class="image-liens"></a>
-                </div>
-                <div class="col-md-1"> 
-                </div>
-            </div> 
-           </div>
-        </section>
-        <section id="Apropos">
-            <div class="apropos">
-                <div>
-                    <h1 class="title" style="text-align:center; padding-top:8%; font-size:50px;">A Propos de Nous</h1>
-                    <div class="trait"></div>
-                    <div class="row">
-                    {% for identite_du_site in identite_du_sites %}
-                        <div class="col-md-6"> 
-                                <img src="{{ vich_uploader_asset(identite_du_site, 'imageFile')|imagine_filter('identite_site')}}"
-                                    alt="" class="image-apropos"
-                                    style="width:400px;height:407px;" >
-                        </div>
-                        <div class="col-md-6">
-                            <p class="" style="font-size:22px;margin:auto; text-align: justify;">
-                            {{identite_du_site.contexte | raw}}
-                                </p>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </section> 
-        <section id="section" class="services">
-            <div class="services">
-                <div>
-                    <h1 class="title mt-5" style="font-size:50px; padding-top:8%; text-align:center;">Services</h1>
-                    <div class="trait"></div>
-                    <h4  style="font-size:30px;text-align:center;">La plateforme Affoubenou vous propose une panopluie de
-                        <br>services du web au design</h4>
+{% extends 'baseMain.html.twig' %}
+{% block title %}Accueil | AFFOUBENOU
+{% endblock %}
+{% block body %}
+	<section id="accueil">
+		<div class="header">
+			<div class="row">
+				{% include ("partials/navbarMain.html.twig") %}
+			</div>
+			<div class="row  accueil">
+				<div class=" col-md-6 mt-5 mb-5 akwaba">
+					<h1>
+						<span style="margin-left:20%;"></span>
+						<br><span style="margin-left:30%;"></span>
+						<br>
+						<span style="margin-left:25%;">AKWABA
+						</span>
+					</h1>
+					<a href="{{path('profile_profile')}}" class="btn btn-default bouton-commencer-accueil">Commencer</a>
 
-                    <div class="row ml-5  mt-5 mb-5">
-                        <div class="col-md-4">
-                            <div>
-                                <a href="#"><img src="{{asset('images/bg1.jpg')}}" alt="" width="250" height="250"
-                                        class="image-service-accueil"></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <a href="#"><img src="{{asset('images/carte.png')}}" alt="" width="250" height="250"
-                                        class="image-service-accueil"></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <a href="#"><img src="{{asset('images/valid.png')}}" alt="" width="250" height="250"
-                                        class="image-service-accueil"></a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row ml-5">
-                        <div class="col-md-4 mb-5">
-                            <div>
-                                <a href="#"><img src="{{asset('images/Rectangle167.png')}}" alt="" width="250"
-                                        height="250" class="image-service-accueil"></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div>
-                                <a href="#"><img src="{{asset('images/reto.png')}}" alt="" width="250" height="250"
-                                        class="image-service-accueil"></a>
-                            </div>
-                        </div>
-                        <div class="col-md-4 mb-5">
-                            <div>
-                                <a href="#"><img src="{{asset('images/menupro.jpg')}}" alt="" width="250" height="250"
-                                        class="image-service-accueil"></a>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </section>
-                <section class="blog mt-5 mb-5" id="blog">
-                    <h1 style="text-align:center; font-size:50px;font-weight:bold;padding-top:8%;">Blog</h1>
-                    <p style="font-size:30px; text-align:center;">Aller à la rencontre de nos bloggeurs avec des
-                        articles à vous <br>couper le souffle</p>
-                        {% for row in articles|batch(3) %}
-                    <div class="row">
-                    {% for article in row %}
-                        <div class="col-sm-12 col-md-4">
-                            <div class="blog-acceuil card bg-white rounded shadow">
-                               <div class="mv-100 rounded-top overflow-hidden">
-                                 <img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}"
-                                     class="card-img-top "
-                                     alt="{{article.titre}}">
-                               </div>
-                                <div class="card-body">
-                                    <h5 class="card-title mt-4" style="font-weight:bold;text-align:center;">
-                                        {{article.titre}}</h5>
-                                    <p class="card-text text-muted">
-                                        {{article.contenu  | striptags |u.truncate(50,'...')}}
-                                        </p>
-                                    <a href="{{ path('app_articles_show', {'slug': article.slug}) }}"
-                                        class="btn btn-primary bouton-blog" style="margin-left:23%;">Blog</a>
-                                </div>
-                                <div class="card-footer">
-                                    <div class="row">
-                                        <div class="col-md-2">
-                                            <img src="{{asset('build/avatar/Avatar1.png')}}" alt="" width="70"
-                                                height="70">
-                                        </div>
-                                        <div class="col-md-10 mt-2">
-                                            <p>By {{article.user.prenom}} <br> <span
-                                                    style="color:indigo;">{{article.createdAt | ago}}</span></p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        {% endfor %} 
-                    </div>
-                    {% endfor %}
-                </section>
-                <section class="contact mt-5 mb-5" id="contact">
-                    <h1 style="text-align:center; font-size:50px;padding-top:8%;">Nos Contacts</h1> 
-                    <div class="row">
-                    <div class="col-md-6">
-                         {{ form_start(form) }} 
-                        <div class="col-md-12">
-                            {{ form_row(form.prenom,{'label':false}) }}
-                        </div> 
-                        <div class="col-md-12">
-                            {{ form_row(form.email,{'label':false}) }}
-                        </div>   
-                        <div class="col-md-12 mt-5">
-                            <label for="message"><span style="margin-left:350px;font-size:20px;">Message</span>
-                            </label>
-                        </div>
-                        <div class="col-md-12">
-                            {{ form_row(form.message,{'label':false}) }}
-                        </div>  
-                        {# <label for="message" class="message mt-4">Votre message</label>
-                        <textarea name="message" id="message" cols="30" rows="10" class="form-control mt-4"></textarea> #}
-                        <div class="button">
-                            <button type="submit" class="btn btn-default bouton-envoyer-accueil">Envoyer</button>
-                        </div>
-                        {{ form_end(form) }} 
-                          </div>
-                          <div class="col-md-6">
-                              <img src="{{asset('images/contactimage.jpg')}}" alt="" style="width:100%; height:auto;">
-                          </div>
-                        </div> 
-                </section>
-            </div> 
-            {% endblock %}
-     
+				</div>
+				<div class=" col-md-6 mb-5 image-bienvenue">
+					<img src="{{asset('images/YK22.png')}}" alt="" class="img-fluid">
+				</div>
+			</div>
+			{% for avantage_du_site in avantage_du_sites %}
+
+				<div class="row banner-main" style="background-image: url({{ vich_uploader_asset(avantage_du_site, 'imageFile')|imagine_filter('banner_avantage')}})">
+				{% endfor %}
+
+				<div class="col-md-1"></div>
+				<div class="col-md-2">
+					{% if is_granted ('ROLE_USER') %}
+                        {% if app.user.adresse == null %}
+                            <a href="{{path('profile_profile')}}">
+                            {% else %}
+                                <a href="{{path('profile_commande_services_web_index')}}">
+                                {% endif %}
+                    {% else %} 
+                    <a href="{{path('profile_profile')}}"> 
+                    {% endif %}
+                        <img src="{{asset('images/main/1.png')}}" alt="" width="100" height="100" class="image-liens">
+                    </a>
+				</div>
+				<div class="col-md-2">
+					{% if is_granted ('ROLE_USER') %}
+                        {% if app.user.adresse == null %}
+                            <a href="{{path('profile_profile')}}">
+                            {% else %}
+                                <a href="{{path('profile_service_graphisme')}}">
+                                {% endif %}
+                    {% else %} 
+                    <a href="{{path('profile_profile')}}"> 
+                    {% endif %}
+                        <img src="{{asset('images/main/2.png')}}" alt="" width="100" height="100" class="image-liens">
+                    </a>
+				</div>
+				<div class="col-md-2">
+					{% if is_granted ('ROLE_USER') %}
+                        {% if app.user.adresse == null %}
+                            <a href="{{path('profile_profile')}}">
+                            {% else %}
+                                <a href="{{path('profile_service_graphisme')}}">
+                                {% endif %}
+                    {% else %} 
+                    <a href="{{path('profile_profile')}}"> 
+                    {% endif %}
+                        <img src="{{asset('images/main/3.png')}}" alt="" width="100" height="100" class="image-liens">
+                    </a>
+				</div>
+				<div class="col-md-2">
+					{% if is_granted ('ROLE_USER') %}
+                        {% if app.user.adresse == null %}
+                            <a href="{{path('profile_profile')}}">
+                            {% else %}
+                                <a href="{{path('profile_service_graphisme')}}">
+                                {% endif %}
+                    {% else %} 
+                    <a href="{{path('profile_profile')}}"> 
+                    {% endif %}
+                        <img src="{{asset('images/main/4.png')}}" alt="" width="100" height="100" class="image-liens">
+                    </a>
+				</div>
+				<div class="col-md-2 mt-1">
+					{% if is_granted ('ROLE_USER') %}
+                        {% if app.user.adresse == null %}
+                            <a href="{{path('profile_profile')}}">
+                            {% else %}
+                                <a href="{{path('profile_service_graphisme')}}">
+                                {% endif %}
+                    {% else %} 
+                    <a href="{{path('profile_profile')}}"> 
+                    {% endif %}
+                        <img src="{{asset('images/main/6.png')}}" alt="" width="100" height="100" class="image-liens">
+                    </a>
+				</div>
+				<div class="col-md-1"></div>
+			</div>
+		</div>
+	</section>
+	<section id="Apropos">
+		<div class="apropos">
+			<div>
+				<h1 class="title">A Propos de Nous</h1>
+				<div class="trait"></div>
+				<div class="row">
+					{% for identite_du_site in identite_du_sites %}
+						<div class="col-md-6 pl-5">
+							<img src="{{ vich_uploader_asset(identite_du_site, 'imageFile')|imagine_filter('identite_site')}}" alt="" class="image-apropos">
+						</div>
+						<div class="col-md-6">
+							<p class="description">
+								{{identite_du_site.contexte | raw}}
+							</p>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	</section>
+	<section id="section">
+		<div class="services"> 
+				<h1 class="title mt-5">Services</h1>
+				<div class="trait"></div>
+				<h4>La plateforme Affoubenou vous propose une panopluie de
+					<br>services du web au design</h4>
+
+				<div class="row ml-5  mt-5 mb-5">
+					{% for affiche in affiches %}
+						<div class="col-md-4">
+							<div>
+								{% if is_granted ('ROLE_USER') %}
+                                    {% if app.user.adresse == null %}
+                                        <a href="{{path('profile_profile')}}">
+                                        {% else %}
+                                            <a href="{{path('profile_service_graphisme')}}">
+                                            {% endif %}
+                                {% else %} 
+                                <a href="{{path('profile_profile')}}"> 
+                                {% endif %} 
+									<img src="{{vich_uploader_asset(affiche, 'imageFile')}}" alt="" width="250" height="250" class="image-service-accueil"></a>
+							</div>
+						</div>
+					{% endfor %}
+					{% for badge in badges %}
+						<div class="col-md-4">
+							<div>
+								{% if is_granted ('ROLE_USER') %}
+                                    {% if app.user.adresse == null %}
+                                        <a href="{{path('profile_profile')}}">
+                                        {% else %}
+                                            <a href="{{path('profile_service_graphisme')}}">
+                                            {% endif %}
+                                {% else %} 
+                                <a href="{{path('profile_profile')}}"> 
+                                {% endif %} 
+									<img src="{{vich_uploader_asset(badge, 'imageFile')}}" alt="" width="250" height="250" class="image-service-accueil"></a>
+							</div>
+						</div>
+					{% endfor %}
+
+					{% for carte_menu in carte_menus %}
+						<div class="col-md-4">
+							<div>
+								{% if is_granted ('ROLE_USER') %}
+                                    {% if app.user.adresse == null %}
+                                        <a href="{{path('profile_profile')}}">
+                                        {% else %}
+                                            <a href="{{path('profile_service_graphisme')}}">
+                                            {% endif %}
+                                {% else %} 
+                                <a href="{{path('profile_profile')}}"> 
+                                {% endif %} 
+									<img src="{{vich_uploader_asset(carte_menu, 'imageFile')}}" alt="" width="250" height="250" class="image-service-accueil"></a>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+				<div class="row ml-5 mt-5 mb-5">
+					{% for carte_viste in carte_vistes %}
+						<div class="col-md-4">
+							<div>
+                                {% if is_granted ('ROLE_USER') %}
+                                    {% if app.user.adresse == null %}
+                                        <a href="{{path('profile_profile')}}">
+                                        {% else %}
+                                            <a href="{{path('profile_service_graphisme')}}">
+                                            {% endif %}
+                                {% else %} 
+                                <a href="{{path('profile_profile')}}"> 
+                                {% endif %} 
+									<img src="{{vich_uploader_asset(carte_viste, 'imageFile')}}" alt="" width="250" height="250" class="image-service-accueil"></a>
+ 							</div>
+						</div>
+					{% endfor %}
+
+					{% for template in templates %}
+						<div class="col-md-4">
+							<div>
+								{% if is_granted ('ROLE_USER') %}
+                                    {% if app.user.adresse == null %}
+                                        <a href="{{path('profile_profile')}}">
+                                        {% else %}
+                                            <a href="{{path('profile_commande_services_web_index')}}">
+                                            {% endif %}
+                                {% else %} 
+                                <a href="{{path('profile_profile')}}"> 
+                                {% endif %} 
+									<img src="{{vich_uploader_asset(template, 'imageFile')}}" alt="" width="250" height="250" class="image-service-accueil"></a>
+							</div>
+						</div>
+					{% endfor %}
+					{% for logo in logos %}
+						<div class="col-md-4">
+							<div>
+								{% if is_granted ('ROLE_USER') %}
+                                    {% if app.user.adresse == null %}
+                                        <a href="{{path('profile_profile')}}">
+                                        {% else %}
+                                            <a href="{{path('profile_service_graphisme')}}">
+                                            {% endif %}
+                                {% else %} 
+                                <a href="{{path('profile_profile')}}"> 
+                                {% endif %} 
+									<img src="{{vich_uploader_asset(logo, 'imageFile')}}" alt="" width="250" height="250" class="image-service-accueil"></a>
+							</div>
+						</div>
+					{% endfor %}
+				</div> 
+		</div>
+	</section>
+	<section class="blog mt-5 mb-5" id="blog">
+		<h1>Blog</h1>
+		<div class="trait"></div>
+		<p class="description">Aller à la rencontre de nos bloggeurs avec des couper le souffle</p>
+		{% for row in articles|batch(3) %}
+			<div class="row">
+				{% for article in row %}
+					<div class="col-sm-12 col-md-4">
+						<div class="blog-acceuil card bg-white rounded shadow">
+							<div class="mv-100 rounded-top overflow-hidden">
+								<img src="{{ vich_uploader_asset(article, 'imageFile')|imagine_filter('article_index')}}" class="card-img-top " alt="{{article.titre}}">
+							</div>
+							<div class="card-body">
+								<h5 class="card-title mt-4">
+									{{article.titre}}</h5>
+								<p class="card-text text-muted">
+									{{article.contenu  | striptags |u.truncate(50,'...')}}
+								</p>
+								<a href="{{ path('app_articles_show', {'slug': article.slug}) }}" class="btn btn-primary bouton-blog">Blog</a>
+							</div>
+							<div class="card-footer">
+								<div class="row">
+									<div class="col-md-2">
+										<img src="{{asset('build/avatar/Avatar1.png')}}" alt="" width="70" height="70">
+									</div>
+									<div class="col-md-10 mt-2">
+										<p>By
+											{{article.user.prenom}}
+											<br>
+											<span style="color:indigo;">{{article.createdAt | ago}}</span>
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+	</section>
+	<section class="contact mt-5 mb-5" id="contact">
+		<h1>Nos Contacts</h1>
+		<div class="trait"></div>
+		<div class="row">
+			<div class="col-md-6">
+				{{ form_start(form) }}
+				<div class="col-md-12">
+					{{ form_row(form.prenom,{'label':false}) }}
+				</div>
+				<div class="col-md-12">
+					{{ form_row(form.email,{'label':false}) }}
+				</div>
+				<div class="col-md-12 mt-5 message">
+					<label for="message">
+						<span>Message</span>
+					</label>
+				</div>
+				<div class="col-md-12">
+					{{ form_row(form.message,{'label':false}) }}
+				</div>
+				{# <label for="message" class="message mt-4">Votre message</label>
+																																				                <textarea name="message" id="message" cols="30" rows="10" class="form-control mt-4"></textarea> #}
+				<div class="button">
+					<button type="submit" class="btn btn-default bouton-envoyer-accueil">Envoyer</button>
+				</div>
+				{{ form_end(form) }}
+			</div>
+			<div class="col-md-6 image-arriere-plan">
+				<img src="{{asset('images/contactimage.jpg')}}" alt="">
+			</div>
+		</div>
+	</section>
+{% endblock %}

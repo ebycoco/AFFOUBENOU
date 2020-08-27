@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital&display=swap');
+@import "~bootstrap/scss/bootstrap";
+
+ body {
+     background-image: linear-gradient(to right, #ff5722, #ff9800);
+     margin-top: 150px !important;
+     font-family: 'Roboto', sans-serif;
+ }
+
+ .register-left {
+     text-align: center;
+     color: #fff;
+ }
+
+ .register-left p {
+     padding: 20px 20px 0px;
+ }
+
+ .register-left .btn-primary {
+     border-radius: 20px;
+     background-color: #fff;
+     border: none;
+     color: #ff9800;
+ }
+
+ .register-left .btn-primary:hover {
+     border-radius: 20px;
+     background-color: #ff9800;
+     border: none;
+     color: #fff;
+ }
+
+ .titre {
+     text-align: center;
+     color: #fff;
+ }
+
+ input {
+     text-align: center;
+     color: #eeee;
+ }
+
+ .register-right .btn-primary:hover {
+     border-radius: 20px;
+     background-color: #fff;
+     border: none;
+     color: #ff9800;
+ }
+
+ .register-right .btn-primary {
+     display: flex;
+     align-items: center;
+     border-radius: 20px;
+     background-color: #ff9800;
+     border: none;
+     color: #fff;
+     margin-right: 40px
+ }
+
+ .register-right {
+     border: none;
+     background-color: #f8f8f8;
+     border-top-left-radius: 10% 50%;
+     border-bottom-left-radius: 10% 50%;
+     padding: 30px;
+ }
+
+ .register-right h3 {
+     color: #5e5e5e;
+ }
+
+ .register-left .affoubenou {
+     animation: mover 1s infinite alternate;
+ }
+
+ @keyframes mover {
+     0% {
+         transform: translateY(0);
+     }
+
+     100% {
+         transform: translateY(-30px);
+     }
+ }
+
+ .connecter {
+     margin-left: 35%;
+ }

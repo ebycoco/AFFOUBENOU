@@ -237,6 +237,36 @@ class Users implements UserInterface
      * @ORM\OneToMany(targetEntity=BadgesFinale::class, mappedBy="user")
      */
     private $badgesFinales;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MainLogo::class, mappedBy="user")
+     */
+    private $mainLogos;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MainCarteVisite::class, mappedBy="user")
+     */
+    private $mainCarteVisites;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MainCarteMenu::class, mappedBy="user")
+     */
+    private $mainCarteMenus;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MainBadge::class, mappedBy="user")
+     */
+    private $mainBadges;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MainAffiche::class, mappedBy="user")
+     */
+    private $mainAffiches;
+
+    /**
+     * @ORM\OneToMany(targetEntity=MainTemplateSite::class, mappedBy="user")
+     */
+    private $mainTemplateSites;
  
 
     public function __construct()
@@ -272,7 +302,13 @@ class Users implements UserInterface
         $this->carteMenuFinales = new ArrayCollection();
         $this->badges = new ArrayCollection();
         $this->badgesFiligrammes = new ArrayCollection();
-        $this->badgesFinales = new ArrayCollection(); 
+        $this->badgesFinales = new ArrayCollection();
+        $this->mainLogos = new ArrayCollection();
+        $this->mainCarteVisites = new ArrayCollection();
+        $this->mainCarteMenus = new ArrayCollection();
+        $this->mainBadges = new ArrayCollection();
+        $this->mainAffiches = new ArrayCollection();
+        $this->mainTemplateSites = new ArrayCollection(); 
     }
 
     
@@ -1422,6 +1458,192 @@ class Users implements UserInterface
             // set the owning side to null (unless already changed)
             if ($badgesFinale->getUser() === $this) {
                 $badgesFinale->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MainLogo[]
+     */
+    public function getMainLogos(): Collection
+    {
+        return $this->mainLogos;
+    }
+
+    public function addMainLogo(MainLogo $mainLogo): self
+    {
+        if (!$this->mainLogos->contains($mainLogo)) {
+            $this->mainLogos[] = $mainLogo;
+            $mainLogo->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMainLogo(MainLogo $mainLogo): self
+    {
+        if ($this->mainLogos->contains($mainLogo)) {
+            $this->mainLogos->removeElement($mainLogo);
+            // set the owning side to null (unless already changed)
+            if ($mainLogo->getUser() === $this) {
+                $mainLogo->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MainCarteVisite[]
+     */
+    public function getMainCarteVisites(): Collection
+    {
+        return $this->mainCarteVisites;
+    }
+
+    public function addMainCarteVisite(MainCarteVisite $mainCarteVisite): self
+    {
+        if (!$this->mainCarteVisites->contains($mainCarteVisite)) {
+            $this->mainCarteVisites[] = $mainCarteVisite;
+            $mainCarteVisite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMainCarteVisite(MainCarteVisite $mainCarteVisite): self
+    {
+        if ($this->mainCarteVisites->contains($mainCarteVisite)) {
+            $this->mainCarteVisites->removeElement($mainCarteVisite);
+            // set the owning side to null (unless already changed)
+            if ($mainCarteVisite->getUser() === $this) {
+                $mainCarteVisite->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MainCarteMenu[]
+     */
+    public function getMainCarteMenus(): Collection
+    {
+        return $this->mainCarteMenus;
+    }
+
+    public function addMainCarteMenu(MainCarteMenu $mainCarteMenu): self
+    {
+        if (!$this->mainCarteMenus->contains($mainCarteMenu)) {
+            $this->mainCarteMenus[] = $mainCarteMenu;
+            $mainCarteMenu->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMainCarteMenu(MainCarteMenu $mainCarteMenu): self
+    {
+        if ($this->mainCarteMenus->contains($mainCarteMenu)) {
+            $this->mainCarteMenus->removeElement($mainCarteMenu);
+            // set the owning side to null (unless already changed)
+            if ($mainCarteMenu->getUser() === $this) {
+                $mainCarteMenu->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MainBadge[]
+     */
+    public function getMainBadges(): Collection
+    {
+        return $this->mainBadges;
+    }
+
+    public function addMainBadge(MainBadge $mainBadge): self
+    {
+        if (!$this->mainBadges->contains($mainBadge)) {
+            $this->mainBadges[] = $mainBadge;
+            $mainBadge->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMainBadge(MainBadge $mainBadge): self
+    {
+        if ($this->mainBadges->contains($mainBadge)) {
+            $this->mainBadges->removeElement($mainBadge);
+            // set the owning side to null (unless already changed)
+            if ($mainBadge->getUser() === $this) {
+                $mainBadge->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MainAffiche[]
+     */
+    public function getMainAffiches(): Collection
+    {
+        return $this->mainAffiches;
+    }
+
+    public function addMainAffich(MainAffiche $mainAffich): self
+    {
+        if (!$this->mainAffiches->contains($mainAffich)) {
+            $this->mainAffiches[] = $mainAffich;
+            $mainAffich->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMainAffich(MainAffiche $mainAffich): self
+    {
+        if ($this->mainAffiches->contains($mainAffich)) {
+            $this->mainAffiches->removeElement($mainAffich);
+            // set the owning side to null (unless already changed)
+            if ($mainAffich->getUser() === $this) {
+                $mainAffich->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|MainTemplateSite[]
+     */
+    public function getMainTemplateSites(): Collection
+    {
+        return $this->mainTemplateSites;
+    }
+
+    public function addMainTemplateSite(MainTemplateSite $mainTemplateSite): self
+    {
+        if (!$this->mainTemplateSites->contains($mainTemplateSite)) {
+            $this->mainTemplateSites[] = $mainTemplateSite;
+            $mainTemplateSite->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMainTemplateSite(MainTemplateSite $mainTemplateSite): self
+    {
+        if ($this->mainTemplateSites->contains($mainTemplateSite)) {
+            $this->mainTemplateSites->removeElement($mainTemplateSite);
+            // set the owning side to null (unless already changed)
+            if ($mainTemplateSite->getUser() === $this) {
+                $mainTemplateSite->setUser(null);
             }
         }
 

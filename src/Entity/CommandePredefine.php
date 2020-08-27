@@ -9,6 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommandePredefineRepository::class)
@@ -38,7 +39,7 @@ class CommandePredefine
      */
     private $imageName;
 
-     
+
     /**
      * @Gedmo\Timestampable(on="create")
      * @ORM\Column(type="datetime"), nullable=true
@@ -68,17 +69,13 @@ class CommandePredefine
      */
     private $commandeLogos;
 
-    /**
-     * @ORM\OneToMany(targetEntity=CommandeLogoPersonalise::class, mappedBy="predefinie")
-     */
-    private $commandeLogoPersonalises;
+    
 
     public function __construct()
     {
-        $this->commandeLogos = new ArrayCollection();
-        $this->commandeLogoPersonalises = new ArrayCollection();
+        $this->commandeLogos = new ArrayCollection(); 
     }
- 
+
 
     public function getId(): ?int
     {
@@ -99,14 +96,14 @@ class CommandePredefine
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
-    } 
+    }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-     /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -141,7 +138,7 @@ class CommandePredefine
         return $this->imageName;
     }
 
-     
+
 
     public function getCommandelogo(): ?CommandeLogo
     {
@@ -180,37 +177,6 @@ class CommandePredefine
             // set the owning side to null (unless already changed)
             if ($commandeLogo->getPredefinie() === $this) {
                 $commandeLogo->setPredefinie(null);
-            }
-        }
-
-        return $this;
-    }
-
-    /**
-     * @return Collection|CommandeLogoPersonalise[]
-     */
-    public function getCommandeLogoPersonalises(): Collection
-    {
-        return $this->commandeLogoPersonalises;
-    }
-
-    public function addCommandeLogoPersonalise(CommandeLogoPersonalise $commandeLogoPersonalise): self
-    {
-        if (!$this->commandeLogoPersonalises->contains($commandeLogoPersonalise)) {
-            $this->commandeLogoPersonalises[] = $commandeLogoPersonalise;
-            $commandeLogoPersonalise->setPredefinie($this);
-        }
-
-        return $this;
-    }
-
-    public function removeCommandeLogoPersonalise(CommandeLogoPersonalise $commandeLogoPersonalise): self
-    {
-        if ($this->commandeLogoPersonalises->contains($commandeLogoPersonalise)) {
-            $this->commandeLogoPersonalises->removeElement($commandeLogoPersonalise);
-            // set the owning side to null (unless already changed)
-            if ($commandeLogoPersonalise->getPredefinie() === $this) {
-                $commandeLogoPersonalise->setPredefinie(null);
             }
         }
 

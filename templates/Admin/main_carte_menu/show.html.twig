@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainCarteMenu{% endblock %}
+
+{% block body %}
+    <h1>MainCarteMenu</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_carte_menu.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ main_carte_menu.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ main_carte_menu.createdAt ? main_carte_menu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ main_carte_menu.updatedAt ? main_carte_menu.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_carte_menu_index') }}">back to list</a>
+
+    <a href="{{ path('admin_main_carte_menu_edit', {'id': main_carte_menu.id}) }}">edit</a>
+
+{{ include('Admin/main_carte_menu/_delete_form.html.twig') }}
+
+{% endblock %}

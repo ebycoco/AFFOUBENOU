@@ -1,3 +1,118 @@
-{% block javascripts %}
-	{{encore_entry_script_tags('mainblog')}}
-{% endblock %}</body></html>
+<section class="footer pb-5">
+
+	<div class="row">
+		<div class="col-md-3 text-center">
+			<div class="row p-2">
+				<div class="col-md-12">
+					<img src="{{asset('images/vrailogo.png')}}" alt="" style="width:100%; height:auto;">
+				</div>
+				<div class="col-md-12 description">
+					<p>Affoubenou est une startup
+											de création de contenu web et de graphisme dans le but
+											d'assurer la visibilité de votre business
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-3 text-center reseau-sociaux-footer">
+			<h3 class=" titre-menu">Menu
+			</h3>
+			<p>
+				<a href="#accueil">Accueil</a>
+			</p>
+			<p>
+				<a href="#Apropos">A propos</a>
+			</p>
+			<p>
+				<a href="#service">Service</a>
+			</p>
+			<p>
+				<a href="#blog">Blog
+				</a>
+			</p>
+			<p>
+				<a href="#contact">Contact</a>
+			</p>
+		</div>
+		<div class="col-md-3 text-center liste-menu">
+			<h3 class=" titre-menu">Faites vos commandes
+			</h3>
+			{% for categorie in categories %}
+				{% if categorie.nomCategorie == 'logo' %}
+					<a class="text-decoration-none" href="{{path('profile_service_graphisme_choix',{'id': categorie.id})}}">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'tee-shirt' %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'badges' %}
+					<a class="text-decoration-none" href="{{path('profile_badges_new',{'id': categorie.id})}}">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'Flyers' %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'cartes_mariages' %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'vidéos_publicitaires' %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'publicitaire' %}
+					<a class="text-decoration-none" href="{{path('profile_affiche_new',{'id': categorie.id})}}">
+						{{categorie.nom}}
+					</a>
+				{% elseif categorie.nomCategorie == 'publicitaire' %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'cartes_visites' %}
+					<a class="text-decoration-none" href="{{path('profile_carte_visite_new',{'id': categorie.id})}}">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'menu' %}
+					<a class="text-decoration-none" href="{{path('profile_carte_menu_new',{'id': categorie.id})}}">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% elseif categorie.nomCategorie == 'branding' %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% else %}
+					<a class="text-decoration-none" href="#">
+						<p>{{categorie.nom}}</p>
+					</a>
+				{% endif %}
+			{% endfor %}
+
+		</div>
+		<div class="col-md-3 text-center ">
+			<h3 class=" titre-menu">Affoubenou CI</h3>
+			<div class="contenu p-2">
+				<p style="color:#fff;">est situé à Abidjan cocody-angré pharmacie chateaux d'eau
+										à 100m de l'école Lavoisel
+				</p>
+			</div>
+
+			<form class="form-group">
+				<input type="text" name="emailfooter" value="" class="form-control emailfooter" placeholder="email">
+				<a href="#" class="btn btn-default bouton-abonner-footer mt-5">S'abonner</a>
+			</form>
+		</div>
+	</div>
+	<div class=" col-md-12 text-center mt-3">
+		<a href="">
+			<img src="{{asset('images/twitter.png')}}" alt="" width="80" height="80" class="image-sociaux-footer">
+		</a>
+		<a href="">
+			<img src="{{asset('images/images.png')}}" alt="" width="80" height="80" class="image-sociaux-footer">
+		</a>
+		<a href="">
+			<img src="{{asset('images/facebook.jpeg')}}" alt="" width="80" height="80" class="image-sociaux-footer">
+		</a>
+	</div>
+</section>

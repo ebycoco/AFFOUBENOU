@@ -7,6 +7,7 @@ use App\Entity\Commentaires;
 use App\Form\CommentairesType;
 use App\Form\CommentairesIconnuType;
 use App\Repository\ArticlesRepository;
+use App\Repository\CategorieRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -53,11 +54,10 @@ class ArticlesController extends AbstractController
         ]);
     }
 
-    /**
-     * @IsGranted("ROLE_USER")  
+    /**   
      * @Route("/articles/article/{slug}", name="app_articles_show", methods={"GET","POST"})
      */
-    public function show(Articles $article,ArticlesRepository $articlesRepository,Request $request,CommentairesRepository $commentairesRepository): Response
+    public function show(Articles $article,ArticlesRepository $articlesRepository,Request$request, CategorieRepository $categorieRepository): Response
     {
         $commentaire = new Commentaires();
         $form = $this->createForm(CommentairesType::class, $commentaire);
@@ -73,7 +73,8 @@ class ArticlesController extends AbstractController
             return $this->redirectToRoute('app_articles_index');
         }
         return $this->render('articles/show.html.twig', [
-            'article' => $article, 
+            'article' => $article,
+            'categories' => $categorieRepository->findAll(),
             'form' => $form->createView(),
             'populaires' => $articlesRepository->findByPopulaireRecent('1'),
         ]);

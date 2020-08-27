@@ -194,3 +194,86 @@
 .contact-textaerat {
     margin-left: 5%;
 }
+/* ---------------------------- footer ------------------------------------ */
+.footer {
+    font-size: 20px;
+    color: #fff !important;
+    background-color: #000;
+
+    .description {
+        margin-top: -8%;
+    }
+
+    .liste-menu {
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+    }
+
+    .reseau-sociaux-footer p {
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        a:focus {
+            background-color: #000;
+            border: #fff !important;
+        }
+    }
+
+    .emailfooter {
+        width: 90%;
+        height: 50px;
+        background-color: #000;
+        border: 1px solid #7c22f6;
+        border-radius: 20px;
+        color: inherit;
+        font-size: 22px;
+    }
+
+    .emailfooter:hover {
+        background-color: #000;
+        color: inherit;
+
+    }
+
+    .emailfooter::placeholder {
+        text-align: center;
+        font-size: 30px;
+        color: inherit;
+    }
+
+    .image-sociaux-footer {
+        border-radius: 40px;
+    }
+
+    .image-sociaux-footer {
+        opacity: 0.3;
+    }
+
+    .image-sociaux-footer:hover {
+        opacity: 1;
+    }
+
+    .bouton-abonner-footer {
+        width: 200px;
+        background-color: #f6a722;
+        color: inherit;
+        font-size: 23px;
+        border-radius: 15px;
+    }
+
+    .bouton-abonner-footer:hover {
+        color: inherit;
+    }
+
+    .titre-menu {
+        margin-top: 15%;
+        text-align: center;
+        color: #fff;
+        font-weight: bold;
+    }
+}

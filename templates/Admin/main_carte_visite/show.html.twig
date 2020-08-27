@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainCarteVisite{% endblock %}
+
+{% block body %}
+    <h1>MainCarteVisite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_carte_visite.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ main_carte_visite.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ main_carte_visite.createdAt ? main_carte_visite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ main_carte_visite.updatedAt ? main_carte_visite.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_carte_visite_index') }}">back to list</a>
+
+    <a href="{{ path('admin_main_carte_visite_edit', {'id': main_carte_visite.id}) }}">edit</a>
+
+{{ include('Admin/main_carte_visite/_delete_form.html.twig') }}
+
+{% endblock %}

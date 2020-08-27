@@ -1,0 +1,41 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainAffiche index{% endblock %}
+
+{% block body %}
+    <h1>MainAffiche index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for main_affiche in main_affiches %}
+            <tr>
+                <td>{{ main_affiche.id }}</td>
+                <td>{{ main_affiche.imageName }}</td>
+                <td>{{ main_affiche.createdAt ? main_affiche.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ main_affiche.updatedAt ? main_affiche.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_main_affiche_show', {'id': main_affiche.id}) }}">show</a>
+                    <a href="{{ path('admin_main_affiche_edit', {'id': main_affiche.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+<a href="{{ path('admin_main_affiche_new') }}">Create new</a>
+
+{% endblock %}

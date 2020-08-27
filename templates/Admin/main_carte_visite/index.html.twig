@@ -1,0 +1,40 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainCarteVisite index{% endblock %}
+
+{% block body %}
+    <h1>MainCarteVisite index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for main_carte_visite in main_carte_visites %}
+            <tr>
+                <td>{{ main_carte_visite.id }}</td>
+                <td>{{ main_carte_visite.imageName }}</td>
+                <td>{{ main_carte_visite.createdAt ? main_carte_visite.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ main_carte_visite.updatedAt ? main_carte_visite.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_main_carte_visite_show', {'id': main_carte_visite.id}) }}">show</a>
+                    <a href="{{ path('admin_main_carte_visite_edit', {'id': main_carte_visite.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_carte_visite_new') }}">Create new</a>
+{% endblock %}

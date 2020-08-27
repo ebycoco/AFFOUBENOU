@@ -216,3 +216,56 @@ vich_uploader:
             inject_on_load: false
             delete_on_update: true
             delete_on_remove: true 
+        main_badge:
+            uri_prefix: /images/main_badge
+            upload_destination: '%kernel.project_dir%/public/images/main_badge'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        main_carte_menu:
+            uri_prefix: /images/main_carte_menu
+            upload_destination: '%kernel.project_dir%/public/images/main_carte_menu'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        main_carte_site:
+            uri_prefix: /images/main_carte_site
+            upload_destination: '%kernel.project_dir%/public/images/main_carte_site'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        main_logo:
+            uri_prefix: /images/main_logo
+            upload_destination: '%kernel.project_dir%/public/images/main_logo'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        main_template_site:
+            uri_prefix: /images/main_template_site
+            upload_destination: '%kernel.project_dir%/public/images/main_template_site'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true
+
+        main_affiche:
+            uri_prefix: /images/main_affiche
+            upload_destination: '%kernel.project_dir%/public/images/main_affiche'
+            namer: Vich\UploaderBundle\Naming\UniqidNamer
+
+            inject_on_load: false
+            delete_on_update: true
+            delete_on_remove: true

@@ -13,7 +13,7 @@ import $ from 'jquery';
 import 'bootstrap';
 
 $(function () {
-    $(".navbar .menu a").on("click", function (event) {
+    $(".navbar .menu a, .reseau-sociaux-footer a").on("click", function (event) {
         event.preventDefault(); 
         var hash = this.hash;
         

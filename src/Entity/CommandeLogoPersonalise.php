@@ -4,11 +4,12 @@ namespace App\Entity;
 
 use App\Repository\CommandeLogoPersonaliseRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection; 
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CommandeLogoPersonaliseRepository::class)
@@ -83,12 +84,12 @@ class CommandeLogoPersonalise
     /**
      * @ORM\Column(type="text", nullable=true)
      */
-    private $modification;  
+    private $modification;
 
     /**
      * @ORM\Column(type="boolean", options={"default": false})
      */
-    private $etat=false;
+    private $etat = false;
 
     /**
      * @ORM\Column(type="integer")
@@ -99,7 +100,7 @@ class CommandeLogoPersonalise
      * @ORM\ManyToOne(targetEntity=Users::class, inversedBy="commandeLogoPersonalises")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $user; 
+    private $user;
 
     /**
      * @ORM\Column(type="float")
@@ -210,14 +211,14 @@ class CommandeLogoPersonalise
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
-    } 
+    }
 
     public function getUpdatedAt(): ?\DateTimeInterface
     {
         return $this->updatedAt;
     }
 
-     /**
+    /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
      * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
@@ -250,7 +251,7 @@ class CommandeLogoPersonalise
     public function getImageName(): ?string
     {
         return $this->imageName;
-    } 
+    }
 
     public function getEtat(): ?bool
     {
@@ -286,7 +287,7 @@ class CommandeLogoPersonalise
         $this->user = $user;
 
         return $this;
-    } 
+    }
 
     public function getPrix(): ?float
     {

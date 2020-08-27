@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\OffresRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**

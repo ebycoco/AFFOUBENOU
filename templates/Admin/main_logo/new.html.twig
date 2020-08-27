@@ -1,0 +1,14 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}New MainLogo{% endblock %}
+
+{% block body %}
+    <h1>Create new MainLogo</h1>
+
+{{ include('Admin/main_logo/_form.html.twig') }}
+
+
+<a href="{{ path('admin_main_logo_index') }}">back to list</a>
+
+{% endblock %}

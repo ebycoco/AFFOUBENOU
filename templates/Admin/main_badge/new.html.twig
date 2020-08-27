@@ -1,0 +1,14 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}New MainBadge{% endblock %}
+
+{% block body %}
+    <h1>Create new MainBadge</h1>
+
+{{ include('Admin/main_badge/_form.html.twig') }}
+
+
+<a href="{{ path('admin_main_badge_index') }}">back to list</a>
+
+{% endblock %}

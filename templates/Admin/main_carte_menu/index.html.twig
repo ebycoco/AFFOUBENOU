@@ -1,0 +1,40 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainCarteMenu index{% endblock %}
+
+{% block body %}
+    <h1>MainCarteMenu index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>ImageName</th>
+                <th>CreatedAt</th>
+                <th>UpdatedAt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for main_carte_menu in main_carte_menus %}
+            <tr>
+                <td>{{ main_carte_menu.id }}</td>
+                <td>{{ main_carte_menu.imageName }}</td>
+                <td>{{ main_carte_menu.createdAt ? main_carte_menu.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ main_carte_menu.updatedAt ? main_carte_menu.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('admin_main_carte_menu_show', {'id': main_carte_menu.id}) }}">show</a>
+                    <a href="{{ path('admin_main_carte_menu_edit', {'id': main_carte_menu.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_carte_menu_new') }}">Create new</a>
+{% endblock %}

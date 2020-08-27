@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainLogo{% endblock %}
+
+{% block body %}
+    <h1>MainLogo</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_logo.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ main_logo.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ main_logo.createdAt ? main_logo.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ main_logo.updatedAt ? main_logo.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_logo_index') }}">back to list</a>
+
+    <a href="{{ path('admin_main_logo_edit', {'id': main_logo.id}) }}">edit</a>
+
+{{ include('Admin/main_logo/_delete_form.html.twig') }}
+
+{% endblock %}

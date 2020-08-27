@@ -6,10 +6,10 @@
 
 {% block body %}
 	<section class="Blog">
-{% include ("partials/navbarMainblog.html.twig") %}
+		{% include ("partials/navbarMainblog.html.twig") %}
 		<div class="blog-section">
 			<div class="row">
-				<div class="mt-5 col-md-7 hauteur"> 
+				<div class="mt-5 col-md-7 hauteur">
 					<div class="resu-haut">
 						<h1>{{ article.titre }}</h1>
 						<p>{{article.contenu |striptags |u.truncate(200,'...')}}</p>
@@ -25,46 +25,52 @@
 							<p>{{article.contenu | raw}}</p>
 							<div class="like">
 								{% if is_granted("ROLE_USER") %}
-								{% for favoris in article.favoris %}
-								{% if favoris.id == app.user.id %}
-								<a href="{{path('app_retrait_favoris',{id:article.id})}}">
-									<i class="fas fa-heart"></i>
-								</a>
+									{% for favoris in article.favoris %}
+										{% if favoris.id == app.user.id %}
+											<a href="{{path('app_retrait_favoris',{id:article.id})}}">
+												<i class="fas fa-heart"></i>
+											</a>
+										{% else %}
+											<a href="{{path('app_ajout_favoris',{id:article.id})}}">
+												<i class="far fa-heart"></i>
+											</a>
+										{% endif %}
+									{% else %}
+										<a href="{{path('app_ajout_favoris',{id:article.id})}}">
+											<i class="far fa-heart"></i>
+										</a>
+									{% endfor %}
 								{% else %}
-								<a href="{{path('app_ajout_favoris',{id:article.id})}}">
-									<i class="far fa-heart"></i>
-								</a>
-								{% endif %}
-								{% else %}
-								<a href="{{path('app_ajout_favoris',{id:article.id})}}">
-									<i class="far fa-heart"></i>
-								</a>
-								{% endfor %}
-								{% else %}
-								<a href="{{path('app_ajout_favoris',{id:article.id})}}">
-									<i class="far fa-heart"></i>
-								</a>
+									<a href="{{path('app_ajout_favoris',{id:article.id})}}">
+										<i class="far fa-heart"></i>
+									</a>
 								{% endif %}
 							</div>
 						</div>
 					</div>
 					<div class="row mt-5 ml-1 commentaire">
-						<h4 class="ml-3 ">{{pluralize(article.commentaires | length,'commentaire')}} </h4>
+						<h4 class="ml-3 ">{{pluralize(article.commentaires | length,'commentaire')}}
+						</h4>
 						<div class="row mt-4">
 							{% if article.commentaires | length > 0 %}
-							{% for commentaire in article.commentaires | slice(2) %}
-							<div class="col-md-2 avatar mt-3">
-								<img src="{{asset('images/masor.jpg')}}" alt="">
-							</div>
-							<div class="col-md-10 text mt-3">
-								<h6> {{commentaire.user.prenom}}</h6>
-								<span>{{commentaire.createdAt | date('d')}} {{commentaire.createdAt | date('F')}}
-									{{commentaire.createdAt | date('Y')}} à {{commentaire.createdAt | date('H:i')}} min</span>
-								<p>{{commentaire.contenu}}</p>
-								<button type="submit" class="boutton-commentaire">Répondre</button>
-							</div>
-							{% endfor %}
-							{% else %}
+								{% for commentaire in article.commentaires | slice(2) %}
+									<div class="col-md-2 avatar mt-3">
+										<img src="{{asset('build/avatar/Avatar1.png')}}" alt="">
+									</div>
+									<div class="col-md-10 text mt-3">
+										<h6>
+											{{commentaire.user.prenom}}</h6>
+										<span>{{commentaire.createdAt | date('d')}}
+											{{commentaire.createdAt | date('F')}}
+											{{commentaire.createdAt | date('Y')}}
+											à
+											{{commentaire.createdAt | date('H:i')}}
+											min</span>
+										<p>{{commentaire.contenu}}</p>
+										<button type="submit" class="boutton-commentaire">Répondre</button>
+									</div>
+								{% endfor %}
+								{% else %}
 
 							{% endif %}
 
@@ -74,34 +80,48 @@
 						<h1 class="text-center">Laisser un commentaire</h1>
 						<div class="saisir col-md-12">
 							{% if not app.user%}
-							{{ form_start(form) }}
-							<div class="form-group col-md-12">
-								{{ form_row(form.nom,{'label':false}) }}
-							</div>
-							<div class="form-group col-md-12">
-								{{ form_row(form.email,{'label':false}) }}
-							</div>
-							<div class="form-group col-md-12">
-								{{ form_row(form.contenu,{'label':'commentaire'})}}
-							</div>
-							<div class="button-comment text-center pb-3">
-								<button type="submit">Envoyer</button>
-							</div>
-							{{ form_end(form) }}
+								{{ form_start(form) }}
+								<div class="form-group col-md-12">
+									{{ form_row(form.contenu,{'label':'commentaire'})}}
+								</div>
+								<div class=" text-center pb-3">
+									<button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModalCenter">Envoyer</button>
+								</div>
+								{{ form_end(form) }}
 							{% else %}
-							{{ form_start(form) }}
-							<div class="form-group col-md-12">
-								{{ form_row(form.contenu,{'label':'commentaire'})}}
-							</div>
-							<div class="button-comment text-center pb-3">
-								<button>Envoyer</button>
-							</div>
-							{{ form_end(form) }}
+								{{ form_start(form) }}
+								<div class="form-group col-md-12">
+									{{ form_row(form.contenu,{'label':'commentaire'})}}
+								</div>
+								<div class="button-comment text-center pb-3">
+									<button>Envoyer</button>
+								</div>
+								{{ form_end(form) }}
 							{% endif %}
 						</div>
 					</div>
+					<!-- Modal -->
+					<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+						<div class="modal-dialog modal-dialog-centered" role="document">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body" style="color: rgb(248, 104, 8); font-weight: bold;">
+									Vous devrez vous connecter pour pouvoir faire des commentaire
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+									<a href="{{path('app_profil_user')}}" type="button" class="btn btn-primary">Se connecter</a>
+								</div>
+							</div>
+						</div>
+					</div>
 					<div class="retour text-center mt-5">
-						<a class="btn btn-primary" href="{{path('app_articles_index')}}">Retour au blog</a>
+						<a class="btn btn-primary" href="{{path('app_home')}}">Retour</a>
 					</div>
 				</div>
 				<div class="col-md-1"></div>
@@ -110,50 +130,48 @@
 						<h1>Populaires</h1>
 					</div>
 					{% for populaire in populaires %}
-					<div class="row sous-haut-rigth">
-						<div class="col-md-6 ">
-							<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
-								<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}"
-									alt="">
-							</a>
+						<div class="row sous-haut-rigth">
+							<div class="col-md-6 ">
+								<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+									<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}" alt="">
+								</a>
+							</div>
+							<div class="col-md-6">
+								<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+									<p>{{ populaire.titre }}</p>
+								</a>
+							</div>
+							<div class="bar"></div>
 						</div>
-						<div class="col-md-6">
-							<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
-								<p>{{ populaire.titre }}</p>
-							</a>
-						</div>
-						<div class="bar"></div>
-					</div>
 					{% endfor %}
 					<div class="Récents">
 						<h1>Récents</h1>
 					</div>
 					{% for populaire in populaires %}
-					<div class="row sous-haut-rigth">
-						<div class="col-md-6 ">
-							<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
-								<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}"
-									alt="">
-							</a>
+						<div class="row sous-haut-rigth">
+							<div class="col-md-6 ">
+								<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+									<img src="{{ vich_uploader_asset(populaire, 'imageFile')|imagine_filter('article_index')}}" alt="">
+								</a>
+							</div>
+							<div class="col-md-6">
+								<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
+									<p>{{ populaire.titre }}</p>
+								</a>
+							</div>
+							<div class="bar"></div>
 						</div>
-						<div class="col-md-6">
-							<a href="{{ path('app_articles_show', {'slug': populaire.slug}) }}">
-								<p>{{ populaire.titre }}</p>
-							</a>
-						</div>
-						<div class="bar"></div>
-					</div>
 					{% endfor %}
 					<div class="auteur mt-3">
 						<h1 class="text-center">Auteur de l'article</h1>
 						<div class="avatar-auteur">
-							<img src="{{asset('images/masor.jpg')}}" alt="">
+							<img src="{{asset('build/avatar/Avatar1.png')}}" alt="">
 							<h1 class="text-center">{{article.user.prenom}}</h1>
 						</div>
 					</div>
 				</div>
 
 			</div>
-		</div> 
+		</div>
 	</section>
 {% endblock %}

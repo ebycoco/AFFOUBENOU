@@ -1,41 +1,44 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-              <img src="{{asset('images/vrailogo.png')}}" alt="" width="60" height="60" >
-                 <img style="margin-left: 40%;">
-                 <button class="navbar-toggler" type="button" data-toggle="collapse"
-                     data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                     aria-label="Toggle navigation">
-                     <span class="navbar-toggler-icon"></span>
-                 </button>
+	<a class="navbar-brand" href="#accueil">
 
-                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                     <ul class="navbar-nav menu-centre menu mr-auto" >
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#accueil"
-                                 style=" font-size:20px;">Accueil</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#Apropos" >A propos</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#section" >Service</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#blog" >Blog</a>
-                         </li>
-                         <li class="nav-item">
-                             <a class="nav-link text-menu" href="#contact" >Contact</a>
-                         </li>
-                     </ul>
-                     <ul class="navbar-nav ml-auto">
-                         {% if not app.user %}
-                         <li><a href="{{path('app_profil_user')}}"
-                                 class="btn btn-default bouton-connecter-acceuil-affoubenou mr-3">Se connecter</a></li>
-                         <li><a href="{{path('app_register')}}"
-                                 class="btn btn-default bouton-inscrire-acceuil-affoubenou">S'inscrire</a></li>
-                         {% else %}
-                         <li><a href="{{path('profile_profile')}}"
-                                 class="btn btn-default bouton-inscrire-acceuil-affoubenou">Profile</a></li>
-                         {% endif %}
-                     </ul>
-                 </div>
-             </nav>
+		<img src="{{asset('images/vrailogo.png')}}" alt="" width="60" height="60">
+	</a>
+	<img class="espace">
+	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav menu mr-auto">
+			<li class="nav-item">
+				<a class="nav-link text-menu" href="#accueil">Accueil</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-menu" href="#Apropos">A propos</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-menu" href="#section">Service</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-menu" href="#blog">Blog</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link text-menu" href="#contact">Contact</a>
+			</li>
+		</ul>
+		<ul class="navbar-nav ml-auto">
+			{% if not app.user %}
+				<li>
+					<a href="{{path('app_profil_user')}}" class="btn btn-default bouton-connecter-acceuil-affoubenou mr-3">Se connecter</a>
+				</li>
+				<li>
+					<a href="{{path('app_register')}}" class="btn btn-default bouton-inscrire-acceuil-affoubenou">S'inscrire</a>
+				</li>
+			{% else %}
+				<li>
+					<a href="{{path('profile_profile')}}" class="btn btn-default bouton-inscrire-acceuil-affoubenou">Profile</a>
+				</li>
+			{% endif %}
+		</ul>
+	</div>
+</nav>

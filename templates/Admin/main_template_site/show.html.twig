@@ -1,0 +1,36 @@
+{% extends 'baseAdmin.html.twig' %}
+
+
+{% block title %}MainTemplateSite{% endblock %}
+
+{% block body %}
+    <h1>MainTemplateSite</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ main_template_site.id }}</td>
+            </tr>
+            <tr>
+                <th>ImageName</th>
+                <td>{{ main_template_site.imageName }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ main_template_site.createdAt ? main_template_site.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>UpdatedAt</th>
+                <td>{{ main_template_site.updatedAt ? main_template_site.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('admin_main_template_site_index') }}">back to list</a>
+
+    <a href="{{ path('admin_main_template_site_edit', {'id': main_template_site.id}) }}">edit</a>
+
+{{ include('Admin/main_template_site/_delete_form.html.twig') }}
+
+{% endblock %}
